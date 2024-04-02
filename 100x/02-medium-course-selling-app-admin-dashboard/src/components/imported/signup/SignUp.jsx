@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { varEmail } from '../../../atoms/Atom';
 
 function Copyright(props) {
   return (
@@ -30,15 +34,44 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+function SignUp() {
+    const [firstName,setFirstName] = useState("")
+    const [lastName,setLastName] = useState("")
+    const [email,setEmail] = useRecoilState(varEmail)
+    const [password,setPassword] = useState("")
+    const navigate = useNavigate();
+
+    const handleSubmit = () => {
+        console.log(`${firstName}, ${lastName},${email},${password}`)
+        createUser();
+    }
+    const createUser = async() => {
+        // API call here to create a new user
+        try{
+            const response = await fetch("http://100.93.3.137:3001/admin/signup",{
+                method : 'POST',
+                headers : {
+                    'Content-Type': 'application/json',
+                },
+                body : JSON.stringify({
+                    firstName,email,lastName,password
+                })
+            })
+
+            const data  = await response.json();
+            console.log(response)
+            console.log("data",data)
+            if(response.status === 200){ 
+                alert('Registration Successful')
+                navigate( "/login" )
+            }else{
+                alert('Error in Registration');
+            }
+        }catch(error){
+            console.log(error.message)
+            alert(error.message)
+        }
+    }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -58,7 +91,7 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -69,6 +102,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(e)=>setFirstName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -79,6 +113,7 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={e=>setLastName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -89,6 +124,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={e=>setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -100,6 +136,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={e=>setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -114,6 +151,7 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleSubmit}
             >
               Sign Up
             </Button>
@@ -131,3 +169,5 @@ export default function SignUp() {
     </ThemeProvider>
   );
 }
+
+export default SignUp;

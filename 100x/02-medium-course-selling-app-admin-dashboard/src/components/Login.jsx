@@ -1,18 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { Button, Card, TextField } from "@mui/material";
-import AppBar from "./Appbar";
-import { useRecoilState } from "recoil";
-import {varUserName,varPassword} from '../atoms/Atom';
+import { useRecoilState,useSetRecoilState } from "recoil";
+import {varPassword, varEmail, tokenExist} from '../atoms/Atom';
+
 
 /// File is incomplete. You need to add input boxes to take input for users to login.
 function Login(){
 
-    const [userName,setUserName] = useRecoilState(varUserName);
+    const [email,setEmail] = useRecoilState(varEmail);
     const [password,setPassword] = useRecoilState(varPassword);
+    const setTokenExist = useSetRecoilState(tokenExist) // token existence state used in
     const navigate = useNavigate();
     const handleLogin = async() => {
         loginUser()
-        console.log(`${userName},${password}`);
+        console.log(`${email},${password}`); 
     }
     const loginUser = async() => {
         try{
@@ -22,15 +23,16 @@ function Login(){
                     'Content-Type': 'application/json', //headers is super Important 
                 },
                 body : JSON.stringify({
-                    userName,password
+                    email,password
                 })
             })
             const data  = await response.json()
             console.log(data)         
             if(response.status===200){
                 localStorage.setItem('token',data.token)
-                alert('Successfully Logged In')
-                navigate("/dashboard")
+                console.log('Successfully Logged In')
+                setTokenExist(true)
+                setTimeout(() => navigate("/dashboard"), 5000);
             }else{
                  alert("Invalid Username or Password");
             }
@@ -41,11 +43,10 @@ function Login(){
 
     return <div>
         <br/>
-        <AppBar/>
         <center>
         <Card variant={"outlined"} style={{'padding':'5%','marginTop':'6%','width':'40%','marginLeft':''}} >
         <h4>Login to admin dashboard</h4>
-        <TextField id="outlined-basic" label="Username" variant="outlined" onChange={e=> setUserName(e.target.value)} /><br/><br/>    
+        <TextField id="outlined-basic" label="Email" variant="outlined" onChange={e=> setEmail(e.target.value)} /><br/><br/>    
         <TextField type='password' label="Password" variant='outlined' onChange={(e)=>{setPassword(e.target.value)}} /><br/><br/>
         <Button onClick={handleLogin}>Login</Button>
         <br/>

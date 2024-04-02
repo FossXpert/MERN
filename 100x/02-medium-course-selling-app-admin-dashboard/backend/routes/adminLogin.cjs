@@ -8,16 +8,16 @@ router.use(cors());
 router.post("/signup",async (req,res) => {
     try{
         const adminModel = require('../model/admin.cjs')
-        const userExist = await adminModel.findOne({userName : req.body.userName})
+        const userExist = await adminModel.findOne({email : req.body.email})
 
         if(userExist){
             return res.status(409).send({
                 message : "User Exist Mate , Back OFF!"
             })}
-        const {firstName, lastName, email, userName, password } = req.body;
+        const {firstName, lastName, email, password } = req.body;
         const newAdmin = new adminModel({
         firstName:firstName, lastName:lastName, email:email, 
-        userName : userName, password:password })
+        password:password })
         await newAdmin.save()
 
         const token = generateJWT(newAdmin.userName)
@@ -37,8 +37,8 @@ router.post('/login',async (req,res) => {
 
     try{
         const adminModel = require('../model/admin.cjs')
-        const {userName,password} = req.body;
-        const adminExist = await adminModel.findOne({userName : userName})
+        const {email,password} = req.body;
+        const adminExist = await adminModel.findOne({email : email})
         if(!adminExist){
             return res.status(401).json({
                 message :"User Not Exist , Please Signup"
@@ -51,7 +51,7 @@ router.post('/login',async (req,res) => {
             })
         }
 
-        const token  = generateJWT(adminExist.userName)
+        const token  = generateJWT(adminExist.email)
         res.status(200).send({
             message : "Logged In Successfully",
             token : token
@@ -62,6 +62,6 @@ router.post('/login',async (req,res) => {
             message : "Login Failed",
             error : error.message
         })
-    }
+    }   
 })
 module.exports = router

@@ -11,7 +11,7 @@ var adminSchema = mongoose.Schema({
     userName : {
         type: String,
         unique : false , 
-        required : true
+        required : false
     },
     password : {
         type : String,

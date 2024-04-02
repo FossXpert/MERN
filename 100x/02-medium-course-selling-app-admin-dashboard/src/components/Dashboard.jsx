@@ -1,32 +1,32 @@
 import { useEffect , useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import AppBar, { Logout } from "./Appbar";
+import { tokenExist } from "../atoms/Atom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 function Dashboard() {
-    const [courses,setCourses] = useState([])
+    const [courses, setCourses] = useState([]);
+    const tokenExists = useRecoilValue(tokenExist);
+    const setTokenExist = useSetRecoilState(tokenExist);
     const navigate = useNavigate();
 
-
-    useEffect(()=> {
+    useEffect(() => {
         const token = localStorage.getItem('token');
-        if(!token){
-            alert("Token Empty's")
-            navigate('/login')
+        if (!token) {
+            alert("Token Empty's");
+            navigate('/login');
+        } else {
+            const decodedToken = decodeToken(token);
+            if (!decodedToken) {
+                alert("Invalid Token");
+                navigate('/login');
+            } else {
+                setTokenExist(true); // Update tokenExist atom once when component mounts
+                fetchCourses();
+                console.log("tokenEXITS"+tokenExists)
+            }
         }
-        const decodedToken  =  decodeToken(token);
-        console.log("decodedToken : ", decodedToken)
-        if(!decodedToken){
-            alert("Invalid Token");
-            navigate('/login')
-        }
-        fetchCourses();
-    },[])
-
-    const logout = async () => {
-        let token = await localStorage.getItem('token');
-        console.log("Logging out "+token);
-        localStorage.clear();
-        navigate('/login')
-    }
+    }, [navigate, setTokenExist,tokenExists]);
 
      
     const decodeToken = () => {
@@ -52,9 +52,10 @@ function Dashboard() {
                 setCourses(data)
                 console.log("Courses Fetched SuccessFully")
                 console.log(data)
+                console.log("tokenExists",tokenExists)
             }else{
                 console.log("Fetching Error")
-                logout()
+                Logout();
             }
         }catch(error){
             console.log(error.message)
@@ -63,10 +64,14 @@ function Dashboard() {
     const handleViewCourse = async(courseID) => {
         navigate('/courses/'+courseID)
     }
-        
+
+
+    
     return  (
         <div>
-            <Button variant="contained" onClick={logout}>Logout</Button>
+        <div>
+            {tokenExists && <AppBar renderComponent="logout"/>}
+        </div>
             <div>
             {courses.map(course => (
                 <div key={course._id}>

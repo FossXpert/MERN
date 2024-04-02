@@ -111,7 +111,7 @@ router.put('/updateCourse/:id',authenticateJWT, async (req, res)=>{
 router.delete('/deleteCourse/:id',authenticateJWT,async (req,res)=>{
     try{
         const id = req.params.id;
-        const deltedCourse = await courses.findOneAndDelete({courseID : id});
+        const deltedCourse = await courses.findOneAndDelete({_id : id});
         if(!deltedCourse){
             console.log("No Such Course Exist")
             res.send({

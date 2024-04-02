@@ -1,6 +1,6 @@
 import { atom } from "recoil"
-const varUserName = atom({
-    key : 'userName',
+const varEmail = atom({
+    key : 'email',
     default : ""
 })
 
@@ -9,4 +9,9 @@ const varPassword = atom({
     default : ""
 })
 
-export {varUserName, varPassword} 
+const tokenExist = atom({
+    key: 'tokenExist',
+    default: false
+})
+
+export {varEmail, varPassword,tokenExist} 

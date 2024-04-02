@@ -45,6 +45,31 @@ function ViewOneCourse() {
       alert('Error in Fetching Course');
     }
   }
+  const handleDelete = (courseID) => {
+        deleteCourse(courseID)
+  }
+  const deleteCourse = async(id) => {
+    try {
+        const response = await fetch(`http://100.93.3.137:3001/courses/deleteCourse/${id}`,{
+          method:"DELETE",
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + localStorage.getItem('token')
+          },
+       })
+       const data  = await response.json();
+       if (response.status === 200) { // Corrected to === for comparison
+        console.log(data)
+        console.log("Data deleted Successfully");
+      } else {
+        console.log('Error In deleting Data');
+      }
+
+    } catch (error) {
+      console.log("In ERROR pART")
+      console.log(error.message)
+    }
+  }
   const handleUpdate = (courseID) => {
     setShowUpdate(true)
     setCurrCourse(courseID)
@@ -67,7 +92,7 @@ function ViewOneCourse() {
                     <p>Posted by: {course.isPostedby}</p>
                     <p>Purchased by: {course.isPurchasedBy}</p>
                     <Button onClick={()=>handleUpdate(course._id)}>Edit</Button>
-                    <Button>Delete</Button>
+                    <Button onClick={()=>handleDelete(course._id)}>Delete</Button>
                 </div>
                 ))}
             </div>

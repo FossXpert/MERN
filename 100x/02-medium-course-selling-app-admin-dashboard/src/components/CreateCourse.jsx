@@ -19,7 +19,8 @@ function CreateCourse() {
             const response  = await fetch("http://100.93.3.137:3001/courses/createCourse",{
                 method : 'POST',
                 headers : {
-                    'Content-Type' : 'application/json'
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer ' + localStorage.getItem('token')
                 },
                 body : JSON.stringify({
                     courseID,courseTitle,courseDescription,courseImage,
@@ -41,28 +42,6 @@ function CreateCourse() {
         }
     }
 
-    const updateCourse = async(id) => {
-        try {
-            const response = await fetch(`http://100.93.3.137:3001/courses/updateCourse/${id}`,{
-                method : 'PUT',
-                headers : {
-                    'Content-Type' : 'application/json'},
-                body : JSON.stringify({
-                    courseID,courseTitle,courseDescription,courseImage,
-                    coursePrice,isPostedby,isPurchasedBy
-                })
-            })
-            const data = await  response.json();
-            if(response.status === 200){
-                console.log(data);
-            }else{
-                console.log("failed to updatye")
-            }
-        } catch (error) {
-            console.log(error.message)            
-        }
-    }
-
     
     return <div>
         <h1>Create Course Page</h1>      
@@ -74,20 +53,6 @@ function CreateCourse() {
         isPostedby: <input type="text" value={isPostedby} onChange={e=>setIsPostedBy(e.target.value)}/><br/>
         isPurchasedBy: <input type="text" value={isPurchasedBy} onChange={e=>setIsPurchasedBy(e.target.value)}/><br/>
         <button onClick={handleCreateCourse}>Create Course</button><br/>
-        <div>
-        {/* {courses.map(course => (
-                    <div key={course._id}>
-                        <h3>{course.courseTitle}</h3>
-                        <p>{course.courseDescription}</p>
-                        <img src={course.courseImage} alt={course.courseTitle} style={{width: '15vw'}} />
-                        <p>Price: {course.coursePrice}</p>
-                        <p>Posted by: {course.isPostedby}</p>
-                        <p>Purchased by: {course.isPurchasedBy}</p>
-                        <button onClick>Update</button>
-                        <button onClick>Delete</button>
-                    </div>
-                ))} */}
-        </div>
      </div>
 }
 
