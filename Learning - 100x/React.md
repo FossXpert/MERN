@@ -18,4 +18,6 @@ export {varEmail, varPassword,tokenExist}
     const setTokenExist = useSetRecoilState(tokenExist);
 ```
 
-## 
+## To generate project structure use below command after navigating inside your project
+
+tree /F /A > project_structure.txt
