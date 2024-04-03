@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^5.4.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha --require ts-node/register test/*.spec.ts"
+  }
+}
