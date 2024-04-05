@@ -1,0 +1,33 @@
+my-typescript-project/
+│
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   │   ├── UserController.ts
+│   │   │   └── ...
+│   │   ├── models/
+│   │   │   ├── User.ts
+│   │   │   └── ...
+│   │   ├── routes/
+│   │   │   ├── userRoutes.ts
+│   │   │   └── ...
+│   │   └── index.ts
+│   ├── dist/
+│   ├── node_modules/
+│   └── package.json
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── App.tsx
+│   │   │   └── ...
+│   │   ├── pages/
+│   │   │   ├── HomePage.tsx
+│   │   │   └── ...
+│   │   └── index.tsx
+│   ├── dist/
+│   ├── node_modules/
+│   ├── public/
+│   └── package.json
+│
+└── tsconfig.json
