@@ -12,7 +12,7 @@ const generateJWT = (userName:string) : string => {
 
 const authenticateJWT = (req:Request,res : Response,next :NextFunction):string => {
 
-    const auth = req.headers.authorization;
+    const auth = req.headers.get('authorization');
     if(auth){
         const token = auth.split(' ')[1];
         jwt.verify(token, secretKey,(error : any,user : any)=>{
@@ -24,6 +24,10 @@ const authenticateJWT = (req:Request,res : Response,next :NextFunction):string =
                 req.user  =user;
                 next();
             }
+        })
+    }else {
+        res.status(500).send({
+            message : "Auth Header is missing, Please Check"
         })
     }
 }
