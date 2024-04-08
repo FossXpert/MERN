@@ -1,33 +1,40 @@
-import { NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-const secretKey : string = 'Sec3t';
-const options :jwt.SignOptions = {
-    expiresIn : '10h'
+import { Request, Response, NextFunction } from 'express';
+import jwt, { JwtPayload } from 'jsonwebtoken';
+
+const secretKey: string = 'Sec3t';
+const options: jwt.SignOptions = {
+    expiresIn: '10h'
 };
 
-const generateJWT = (userName:string) : string => {
-    const payload = {userName}
-    return jwt.sign(payload,secretKey,options)
+interface UserPayload {
+    userName: string;
+}
+
+const generateJWT = (userName: string): string => {
+    const payload: UserPayload = { userName };
+    return jwt.sign(payload, secretKey, options);
 };
 
-const authenticateJWT = (req:Request,res : Response,next :NextFunction):string => {
+const authenticateJWT = (req: Request, res: Response, next: NextFunction): void => {
+    const authHeader = req.headers.authorization;
 
-    const auth = req.headers.get('authorization');
-    if(auth){
-        const token = auth.split(' ')[1];
-        jwt.verify(token, secretKey,(error : any,user : any)=>{
-            if(error){
-                res.status(500).send({
-                    message : 'Sorry , Token Extraction issue Ocurred'
-                });
-            }else{
-                req.user  =user;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+        const token = authHeader.split(' ')[1];
+
+        jwt.verify(token, secretKey, (error: jwt.VerifyErrors | null, decodedToken: JwtPayload | string | undefined) => {
+            if (error) {
+                res.status(401).json({ message: 'Invalid token' });
+            } else if (!decodedToken) {
+                res.status(401).json({ message: 'Token not provided' });
+            } else {
+                const userPayload = decodedToken as UserPayload;
+                (req as any).user = userPayload;
                 next();
             }
-        })
-    }else {
-        res.status(500).send({
-            message : "Auth Header is missing, Please Check"
-        })
+        });
+    } else {
+        res.status(401).json({ message: 'Authentication header missing or invalid' });
     }
-}
+};
+
+export { generateJWT, authenticateJWT };

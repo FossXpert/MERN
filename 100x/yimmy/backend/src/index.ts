@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import adminRouter from './routes/adminLoginSignup';
 
 const port : number = 3001
 const app: express.Application = express();
@@ -23,7 +24,7 @@ mongoose.connection.on('error', (err: Error) => {
     console.log(`mongoose Error: ${err}`);
 });
 
-app.use()
+app.use('/admin',adminRouter)
 app.listen(port,"100.93.3.137",() => {
     console.log(`Backend is running on PORT : ${port}`)
 })
