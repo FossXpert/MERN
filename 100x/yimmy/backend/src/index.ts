@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import adminRouter from './routes/adminLoginSignup';
+import adminRouter from './routes/adminRoutes';
 
 const port : number = 3001
 const app: express.Application = express();

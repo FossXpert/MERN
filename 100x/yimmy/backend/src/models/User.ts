@@ -11,7 +11,7 @@ interface IUser extends Document {
 
 //Define mongoose Schema
 
-const adminSchema: Schema<IAdmin> = new Schema<IAdmin>({
+const adminSchema: Schema<IUser> = new Schema<IUser>({
     isAdmin: {type: Boolean, default: false},
     firstName: { type: String },
     lastName:  { type: String},
@@ -21,5 +21,5 @@ const adminSchema: Schema<IAdmin> = new Schema<IAdmin>({
 });
 
 // Define and export Admin model
-const Admin = mongoose.model<IAdmin>('SellingCoursesAdmin', adminSchema);
+const Admin = mongoose.model<IUser>('courseUser', adminSchema);
 export default Admin;

@@ -1,33 +1,74 @@
-my-typescript-project/
+course-selling-app/
 │
 ├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   │   ├── UserController.ts
-│   │   │   └── ...
-│   │   ├── models/
-│   │   │   ├── User.ts
-│   │   │   └── ...
-│   │   ├── routes/
-│   │   │   ├── userRoutes.ts
-│   │   │   └── ...
-│   │   └── index.ts
-│   ├── dist/
-│   ├── node_modules/
+│   ├── controllers/
+│   │   ├── userController.ts
+│   │   ├── courseController.ts
+│   │   ├── adminController.ts
+│   │   ├── authController.ts
+│   │   └── errorController.ts
+│   │
+│   ├── models/
+│   │   ├── User.ts
+│   │   ├── Course.ts
+│   │   ├── Admin.ts
+│   │   └── Transaction.ts
+│   │
+│   ├── routes/
+│   │   ├── userRoutes.ts
+│   │   ├── courseRoutes.ts
+│   │   ├── adminRoutes.ts
+│   │   └── authRoutes.ts
+│   │
+│   ├── middleware/
+│   │   └── authMiddleware.ts
+│   │
+│   ├── config/
+│   │   └── database.ts
+│   │
+│   ├── app.ts
 │   └── package.json
 │
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── App.tsx
-│   │   │   └── ...
-│   │   ├── pages/
-│   │   │   ├── HomePage.tsx
-│   │   │   └── ...
-│   │   └── index.tsx
-│   ├── dist/
-│   ├── node_modules/
-│   ├── public/
-│   └── package.json
-│
-└── tsconfig.json
+└── frontend/
+    ├── public/
+    ├── src/
+    │   ├── components/
+    │   ├── views/
+    │   ├── assets/
+    │   ├── App.tsx
+    │   └── index.tsx
+    ├── package.json
+    └── ...
+
+
+Usage of Controller
+
+n a typical MVC (Model-View-Controller) architecture, controllers handle the application logic, 
+process requests from the client, interact with the models (database), and prepare responses to be sent back to the client.
+
+Considering your project involves user authentication, course management, and possibly other 
+functionalities, you may have different controllers to handle these features.
+
+Here's a general guideline on how you might structure your controllers:
+
+User Controller:
+
+Handles user-related operations such as user registration, login, logout, profile management, etc.
+Contains methods to interact with the User model.
+Course Controller:
+
+Manages operations related to courses such as listing all courses, creating new courses, updating course details, deleting courses, etc.
+Contains methods to interact with the Course model.
+Admin Controller:
+
+If your application has an admin panel for managing users, courses, or other entities, you might have an Admin controller to handle these operations.
+This controller would contain methods to perform administrative tasks such as managing user roles, approving user registrations, managing course enrollments, etc.
+Authentication Controller:
+
+Handles authentication-related operations such as generating JWT tokens, verifying tokens, and middleware for protecting routes that require authentication.
+Error Handling Controller:
+
+Centralizes error handling for the application, catching any unhandled errors and responding appropriately to the client.
+Each controller typically corresponds to a specific set of routes in your application. For example, routes related to user management would be handled by the User Controller, while routes related to courses would be handled by the Course Controller.
+
+You may organize your controllers in separate files within a controllers directory in your project. For example:
