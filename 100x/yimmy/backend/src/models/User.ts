@@ -14,9 +14,14 @@ interface User extends Document {
 const userSchema: Schema<User> = new Schema<User>({
     _id : {type: String , default: uuidv4},
     username : { type:String , required: true },
-
+    email : { type: String , unique:true,required:true},
+    password : {type:String, required:true, minlength: 6},
+    role:{
+        type:String,default:'user', required:true, 
+        enum : ['user','admin']
+    },
 });
 
-// Define and export Admin model
-const Admin = mongoose.model<User>('courseUser', userSchema);
-export default Admin;
+// Define and export user model
+const UserModel = mongoose.model<User>('courseUser', userSchema);
+export default UserModel;
