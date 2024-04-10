@@ -1,25 +1,22 @@
 import mongoose,{Document,Schema} from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
-interface IUser extends Document {
-    isAdmin : boolean,
-    firstName?: string,
-    lastName?: string,
-    email?: string,
-    userName?: string,
-    password : string
+interface User extends Document {
+    _id : string,
+    username : string,
+    email : string,
+    password : string,
+    role : string
 }
 
 //Define mongoose Schema
 
-const adminSchema: Schema<IUser> = new Schema<IUser>({
-    isAdmin: {type: Boolean, default: false},
-    firstName: { type: String },
-    lastName:  { type: String},
-    email:{ type:String , unique:true ,required: [true,"Why no `email`?"] },
-    userName: { type: String ,unique:true  } ,
-    password: { type: String , required: [true,"Why no `password`?"]}
+const userSchema: Schema<User> = new Schema<User>({
+    _id : {type: String , default: uuidv4},
+    username : { type:String , required: true },
+
 });
 
 // Define and export Admin model
-const Admin = mongoose.model<IUser>('courseUser', adminSchema);
+const Admin = mongoose.model<User>('courseUser', userSchema);
 export default Admin;
