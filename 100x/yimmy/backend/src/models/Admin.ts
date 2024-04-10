@@ -1,18 +1,19 @@
 import { v4 as uuid4 } from 'uuid'
 import mongoose, { Document, Schema } from 'mongoose';
+import learn from '../../yimmy-learning-backend/model-admin';
 
 interface Admin extends Document {
-    _id: string;
+    id: string;
     username: string;
     password: string;
 }
 
 const adminSchema: Schema<Admin> = new Schema<Admin>({
-    _id: { type: String, default: uuid4 },
-    username: { type: String, required: [true, 'Username is required'] },
-    password: { type: String, required: [true, 'Password is required'], minLength: [6, "Password must be at least 6 characters"] },
+    id:{type: String, default:  () => uuid4(),required:true,unique:true},
+    username: { type: String, unique:true, required: [true, 'Username is required'] },
+    password: { type: String, unique:true, required: [true, 'Password is required'], 
+    minLength: [6, "Password must be at least 6 characters"] },
 })
+export default mongoose.model<Admin>("Admin", adminSchema)
 
-export default mongoose.model<Admin>("courseAdmin", adminSchema)
-
-
+// learn

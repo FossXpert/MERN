@@ -1,0 +1,34 @@
+Table Users {
+  id String [PK]
+  username String
+  email String
+  password String
+  role String
+}
+
+Table Courses {
+  id String [PK]
+  title String
+  description String
+  price Number
+  category String
+  admin_id ObjectId [ref: > Admins.id]
+}
+
+Table Admins {
+  id String [PK]
+  username String
+  password String
+}
+
+Table Transactions {
+  id String [PK]
+  user_id ObjectId
+  course_id ObjectId
+  transactionDate Date
+  amountPaid Number
+  paymentMethod String
+}
+
+Ref: Transactions.user_id > Users.id
+Ref: Transactions.course_id > Courses.id

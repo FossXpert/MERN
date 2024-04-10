@@ -1,8 +1,8 @@
 import mongoose,{Document,Schema} from "mongoose";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid4 } from "uuid";
 
 interface User extends Document {
-    _id : string,
+    id : string,
     username : string,
     email : string,
     password : string,
@@ -12,10 +12,10 @@ interface User extends Document {
 //Define mongoose Schema
 
 const userSchema: Schema<User> = new Schema<User>({
-    _id : {type: String , default: uuidv4},
-    username : { type:String , required: true },
-    email : { type: String , unique:true,required:true},
-    password : {type:String, required:true, minlength: 6},
+    id:{type: String, default:  () => uuid4(),required:true,unique:true},
+    username: { type: String, unique:true, required: [true, 'Username is required'] },
+    password: { type: String, unique:true, required: [true, 'Password is required'], 
+    minLength: [6, "Password must be at least 6 characters"] },
     role:{
         type:String,default:'user', required:true, 
         enum : ['user','admin']
@@ -23,5 +23,5 @@ const userSchema: Schema<User> = new Schema<User>({
 });
 
 // Define and export user model
-const UserModel = mongoose.model<User>('courseUser', userSchema);
+const UserModel = mongoose.model<User>('User', userSchema);
 export default UserModel;

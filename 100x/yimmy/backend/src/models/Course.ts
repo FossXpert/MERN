@@ -2,7 +2,7 @@ import mongoose,{Document,Schema} from 'mongoose'
 import {v4 as uuid4} from 'uuid'
 
 interface Course extends Document{
-  _id: string;
+  id: string;
   title:string;
   description:string;
   price:number;
@@ -11,7 +11,7 @@ interface Course extends Document{
 }
 
 const courseSchema : Schema<Course> = new Schema<Course>({
-    _id : {type : String , default : uuid4()},
+  id:{type: String, default:  () => uuid4(),required:true,unique:true},
     title:{ type : String , required : true },
     description:{ type : String ,required: true } ,
     price:{ type:Number , required:true },
@@ -19,7 +19,7 @@ const courseSchema : Schema<Course> = new Schema<Course>({
       type:String ,
       enum:['Design','Code','Marketing']
     },
-    admin_id: { type:String, required:true, ref:'courseAdmin'}
+    admin_id: { type:String, required:true, ref:'Admin'}
 });
 
-export default mongoose.model<Course>('courses',courseSchema);
+export default mongoose.model<Course>('Courses',courseSchema);
