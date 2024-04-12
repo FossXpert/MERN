@@ -38,4 +38,5 @@ passport.deserializeUser(function(obj, done) {
 });
 
 /* Google AUTH */
-// Testing-12345678909
+const GoogleStrategy = require('passport-google-oauth20').Strategy;// GOOGLE STRATEGY
+const GOOGLE_CLIENT_ID = ''
