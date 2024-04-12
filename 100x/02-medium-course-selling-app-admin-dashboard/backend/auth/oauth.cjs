@@ -62,4 +62,11 @@ app.get('auth/google/callback',
         res.redirect('/success')
     });
 
+    app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/error' }), // Authenticate using Google strategy
+    (req, res) => {
+        // If authentication is successful, redirect to '/success' route
+        res.redirect('/success');
+    }
+);
 app.listen(3001, () => console.log(`Listening on port ${3001}...`));
