@@ -24,7 +24,7 @@ mongoose.connection.on('error', (err)=> {
 //Routes
 app.use('/courses',require('./routes/courses.cjs'));
 app.use('/admin',require('./routes/adminLogin.cjs'))
-app.listen(port,"100.93.3.137",() => {
+app.listen(port,() => {
     console.log(`Backend is running on PORT : ${port}`)
 })
 
