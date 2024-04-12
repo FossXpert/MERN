@@ -16,7 +16,7 @@ app.use(session({
 const passport = require('passport')
 var userProfile;
 
-app.use(passport.initialize)
+app.use(passport.initialize());
 app.use(passport.session());
 
 app.set('view engine','ejs')
@@ -61,3 +61,5 @@ app.get('auth/google/callback',
     function(req,res) {
         res.redirect('/success')
     });
+
+app.listen(3001, () => console.log(`Listening on port ${3001}...`));
