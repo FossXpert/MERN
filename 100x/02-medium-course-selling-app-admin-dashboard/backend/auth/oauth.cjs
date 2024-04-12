@@ -38,7 +38,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 /* Google AUTH */
-c
+
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const GOOGLE_CLIENT_ID = 'our-google-client-id';
 const GOOGLE_CLIENT_SECRET = 'our-google-client-secret';
