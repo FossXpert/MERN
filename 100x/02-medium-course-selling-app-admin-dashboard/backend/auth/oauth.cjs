@@ -39,4 +39,18 @@ passport.deserializeUser(function(obj, done) {
 
 /* Google AUTH */
 const GoogleStrategy = require('passport-google-oauth20').Strategy;// GOOGLE STRATEGY
-const GOOGLE_CLIENT_ID = ''
+const GOOGLE_CLIENT_ID = '414536054328-9n5jm6mv43qau9bjjb04nnqkpasn17pt.apps.googleusercontent.com'
+const GOOGLE_CLIENT_SECRET = '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'
+
+passport.use(new GoogleStrategy({
+    clientID : GOOGLE_CLIENT_ID,
+    clientSecret : GOOGLE_CLIENT_SECRET,
+    callbackURL : "http://localhost:3001/auth/google/callback"
+    },
+    function (accessToken, refreshToken, profile, done){
+        userProfile = profile;
+        return done(null,userProfile);
+    }
+));
+
+app.get('/auth/google',passport.authenticate)
