@@ -25,13 +25,13 @@ app.get('/success',(req,res) => res.send(userProfile));
 app.get('/error',(req,res) => res.send("error Loggin in"));
 
 passport.serializeUser(function(user, done) {
-  console.log("serializing");
+  console.log("Serializing");
   console.log(JSON.stringify(user))
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
-  console.log("deserializing")
+  console.log("Deserializing")
   userProfile=obj;
   console.log(userProfile)
   done(null, obj);
