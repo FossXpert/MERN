@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import SignUp from './components/imported/signup/SignUp';
 import ViewOneCourse from './components/ViewOneCourse';
+import { Google } from './components/Google';
    // This file shows how you can do routing in React.
 // Try going to /login, /register, /about, /courses on the website and see how the html changes
 // based on the route.
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard/>} />
                 <Route path="/courses/:courseID" element={<ViewOneCourse />} />
                 <Route path='/signup' element={<SignUp/>} />
+                <Route path='/google' element={<Google/>}/>
             </Routes>
         </Router>
         </>
