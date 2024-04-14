@@ -2,7 +2,11 @@ const express = require('express')
 const cors = require('cors');
 const app = express();
 const session = require('express-session')
-app.use(cors())
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true, // Enable sending cookies and other credentials
+  };
+app.use(cors(corsOptions));
 const port = 3001
 app.set('view engine','ejs');
 
