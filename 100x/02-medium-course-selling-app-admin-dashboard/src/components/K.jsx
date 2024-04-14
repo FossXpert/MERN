@@ -6,7 +6,7 @@ function Kuku() {
     const handleSignIn = async () => {
     try {
       // Make a GET request to initiate the Google authentication process
-      const response = await axios.get('http://localhost:3001/signGoogle');
+      const response = await axios.get('http://localhost:3001/signGoogle',{withCredentials:true});
       // Redirect to Google authentication page
       window.location.href = response.data.redirectUrl;
     } catch (error) {
