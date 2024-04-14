@@ -61,7 +61,7 @@ passport.use(new GoogleStrategy({
 app.get('/signGoogle',(req,res)=>{
     // The request will be redirected to Google for authentication, so this
     // the response will be skipped.
-    res.redirect('/auth/google/success');
+    res.redirect('/auth/google');
 })
 
 app.get('/auth/google',
