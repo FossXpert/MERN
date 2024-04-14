@@ -17,7 +17,7 @@ function Kuku() {
     const fetchUserProfile = async () => {
     try {
       // Make a GET request to fetch user profile after successful authentication
-      const response = await axios.get('http://localhost:3001/success');
+      const response = await axios.get('http://localhost:3001/auth/login/success');
       // Update state with user profile
       setUserProfile(response.data);
     } catch (error) {
