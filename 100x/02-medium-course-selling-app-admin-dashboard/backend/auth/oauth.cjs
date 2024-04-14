@@ -54,7 +54,12 @@ passport.use(new GoogleStrategy({
     }
 ));
 
-app.get('/signGoogle')
+app.get('/signGoogle',(req,res)=>{
+    // The request will be redirected to Google for authentication, so this
+    // the response will be skipped.
+    console.log("/signGoogle hit!");
+    res.redirect('/auth/google');
+})
 
 app.get('/auth/google',
     passport.authenticate('google',{scope : ['profile','email']}));
