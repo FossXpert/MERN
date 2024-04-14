@@ -1,7 +1,9 @@
 const express = require('express')
+const cors = require('cors');
 const app = express();
 const session = require('express-session')
-
+app.use(cors())
+const port = 3001
 app.set('view engine','ejs');
 
 app.use(session({
@@ -59,7 +61,8 @@ app.get('/auth/google',
     passport.authenticate('google', { failureRedirect: '/error' }), // Authenticate using Google strategy
     (req, res) => {
         // If authentication is successful, redirect to '/success' route
-        res.redirect('/success');});
+        res.redirect('/success');
+    });
 
     
-app.listen(3001, () => console.log(`Listening on port ${3001}...`));
+app.listen(port, () => console.log(`Listening on port ${port}...`));
