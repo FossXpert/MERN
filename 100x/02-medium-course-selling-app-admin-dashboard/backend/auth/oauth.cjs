@@ -23,6 +23,9 @@ app.use(passport.session());
 app.set('view engine','ejs')
 
 app.get('/success',(req,res) => res.send(userProfile));
+app.get('/success',(req,res)=>{
+    console.log(res)
+})
 app.get('/error',(req,res) => res.send("error Loggin in"));
 
 passport.serializeUser(function(user, done) {
