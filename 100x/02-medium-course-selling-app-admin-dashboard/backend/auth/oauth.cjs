@@ -2,23 +2,13 @@ const express = require('express')
 const cors = require('cors');
 const app = express();
 const session = require('express-session')
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true, // Enable sending cookies and other credentials
+  };
+app.use(cors(corsOptions));
 const port = 3001
 app.set('view engine','ejs');
-
-
-// Define CORS options dynamically based on the request origin
-const corsOptions = (req, callback) => {
-    const allowedOrigins = ['http://localhost:5173']; // Add more origins if needed
-    const origin = req.header('Origin');
-    if (allowedOrigins.includes(origin)) {
-      callback(null, { origin: true, credentials: true });
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  };
-  
-  // Use CORS middleware with dynamic options
-  app.use(cors(corsOptions));
 
 app.use(session({
     secret : 'SECRET',
