@@ -22,9 +22,10 @@ app.use(passport.session());
 
 app.set('view engine','ejs')
 
-app.get('/success',(req,res) => res.send(userProfile));
+// app.get('/success',(req,res) => res.send(userProfile));
 app.get('/success',(req,res)=>{
-    console.log(res)
+    console.log(userProfile)
+    res.send(userProfile)
 })
 app.get('/error',(req,res) => res.send("error Loggin in"));
 
