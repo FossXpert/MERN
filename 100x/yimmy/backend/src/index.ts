@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 // Enable CORS for all domains
 app.use(cors());
 
-const port: number = parseInt(process.env.PORT || '3000', 10);
+const port: number = parseInt(process.env.PORT || '3001', 10);
 const host : String = process.env.HOST || 'localhost';
 const connectionStringLocal: string = "mongodb://localhost:27017/";
 const connectionString: string =
