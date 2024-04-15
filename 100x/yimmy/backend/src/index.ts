@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import adminRouter from "./routes/adminRoutes";
 import dotenv from 'dotenv';
 
-const port: number = 3001;
+const port: number = process.env.PORT;
 const host : String = process.env.HOST
 const app: express.Application = express();
 app.use(bodyParser.json());
