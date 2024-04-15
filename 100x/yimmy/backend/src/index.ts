@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const port: number = process.env.PORT;
-const host : String = process.env.HOST
+const host : String = process.env.HOST;
 const connectionStringLocal: string = "mongodb://localhost:27017/";
 const connectionString: string =
   "mongodb+srv://rahulray8518:rahulray85188101@cluster0.oveeh21.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -29,6 +29,6 @@ mongoose.connection.on("error", (err: Error) => {
 });
 
 app.use("/admin", adminRouter);
-app.listen(port,, () => {
+app.listen(port,host, () => {
   console.log(`Backend is running on PORT : ${port}`);
 });
