@@ -29,6 +29,7 @@ mongoose.connection.on("error", (err: Error) => {
 });
 
 app.use("/admin", adminRouter);
-app.listen(port,host, () => {
-  console.log(`Backend is running on PORT : ${port}`);
-});
+app.listen(port, host, () => {
+    console.log(`Backend is running on PORT : ${port}`);
+  });
+  
