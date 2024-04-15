@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const port: number = parseInt(process.env.PORT || '3000', 10);
-const host : String = process.env.HOST;
+const host : String = process.env.HOST || 'localhost';
 const connectionStringLocal: string = "mongodb://localhost:27017/";
 const connectionString: string =
   "mongodb+srv://rahulray8518:rahulray85188101@cluster0.oveeh21.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
