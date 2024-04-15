@@ -1,1 +1,2 @@
-import bycrypt from 'bycrypt'
+import bcrypt from 'bcrypt'
+
