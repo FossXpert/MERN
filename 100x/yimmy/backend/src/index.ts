@@ -6,7 +6,7 @@ import adminRouter from "./routes/adminRoutes";
 import dotenv from 'dotenv';
 
 const port: number = 3001;
-const host : 
+const host : String = process.env.HOST
 const app: express.Application = express();
 app.use(bodyParser.json());
 // Enable CORS for all domains
