@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import adminRouter from "./routes/adminRoutes";
+import dotenv from 'dotenv';
 
 const port: number = 3001;
 const host : 
