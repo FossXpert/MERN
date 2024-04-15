@@ -1,1 +1,1 @@
-const bcrypt = 
+import bcrypt from 'bcrypt'
