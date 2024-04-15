@@ -4,14 +4,15 @@ import cors from "cors";
 import mongoose from "mongoose";
 import adminRouter from "./routes/adminRoutes";
 import dotenv from 'dotenv';
+dotenv.config();
 
-const port: number = process.env.PORT;
-const host : String = process.env.HOST
 const app: express.Application = express();
 app.use(bodyParser.json());
 // Enable CORS for all domains
 app.use(cors());
 
+const port: number = process.env.PORT;
+const host : String = process.env.HOST
 const connectionStringLocal: string = "mongodb://localhost:27017/";
 const connectionString: string =
   "mongodb+srv://rahulray8518:rahulray85188101@cluster0.oveeh21.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
