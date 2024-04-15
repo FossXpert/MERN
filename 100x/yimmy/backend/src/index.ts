@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import adminRouter from "./routes/adminRoutes";
 
 const port: number = 3001;
+const host : 
 const app: express.Application = express();
 app.use(bodyParser.json());
 // Enable CORS for all domains
@@ -26,6 +27,6 @@ mongoose.connection.on("error", (err: Error) => {
 });
 
 app.use("/admin", adminRouter);
-app.listen(port, "100.93.3.137", () => {
+app.listen(port,, () => {
   console.log(`Backend is running on PORT : ${port}`);
 });
