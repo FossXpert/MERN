@@ -14,7 +14,8 @@ interface User extends Document {
 const userSchema: Schema<User> = new Schema<User>({
     id:{type: String, default:  () => uuid4(),required:true,unique:true},
     username: { type: String, unique:true, required: [true, 'Username is required'] },
-    password: { type: String, unique:true, required: [true, 'Password is required'], 
+    email:{type:String,unique:true,required:[true,'Valid Email-ID is required']},
+    password: { type: String, required: [true, 'Password is required'], 
     minLength: [6, "Password must be at least 6 characters"] },
     role:{
         type:String,default:'user', required:true, 

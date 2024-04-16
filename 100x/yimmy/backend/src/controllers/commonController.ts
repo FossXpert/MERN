@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import { User } from '../models/User';
-import { Admin } from '../models/Admin';
+import User  from '../models/User';
+import Admin from '../models/Admin';
 import { Request, Response } from 'express';
 
 
