@@ -3,6 +3,7 @@ import UserModel, {User}  from '../models/User';
 import Admin from '../models/Admin';
 import { Request, Response } from 'express';
 import { Jwt } from 'jsonwebtoken';
+import { json } from 'body-parser';
 
 require('dotenv').config()
 
@@ -53,16 +54,19 @@ const userSignup = async(req:Request,role:string,res:Response) => {
 const userLogin = async(req: Request, res: Response)=>{
     try {
         let {email,password} = req.body;
-        //checking if email exist
-        if(!(!!await validateEmailID(email))){
-            throw new Error("Email Doesn't Exist")
-        };
-        //verifying the password
-        if(await comparePassword(password,email)){
-            
+        let userData = await validateEmailID(email)
+        if(userData===null){
+            throw new Error("Unable to find the account with this email address")
+        }
+        if(await comparePassword(password,userData.email)){
+            console.log(userData)
+            res.status(200).send({
+                message : "Success",
+                data : userData,
+            })
         }
     } catch (error:any) {
         
     }
 };
-export default userSignup;
+export default {userSignup,userLogin};
