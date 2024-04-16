@@ -23,7 +23,11 @@ const userSignup = async(req:Request,role:string,res:Response) => {
 
         const password = bcrypt.hash(req.body.password , 12);
 
-        
+        const user = new UserModel({
+            ...req.body,
+            password,
+            role
+        })
 
     } catch (error) {
         
