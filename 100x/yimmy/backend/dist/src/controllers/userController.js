@@ -63,7 +63,7 @@ const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         let { email, password } = req.body;
         let userData = yield validateEmailID(email);
         if (userData === null) {
-            throw new Error("Unable to find the account with this email address");
+            throw new Error("Invalid email address or password");
         }
         if (yield comparePassword(password, userData.password)) {
             console.log(userData);
@@ -72,11 +72,14 @@ const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 data: userData,
             });
         }
-        res.send("Wrong Password");
+        else {
+            // Handle incorrect password
+            throw new Error("Invalid email address or password");
+        }
     }
     catch (error) {
         return res.status(500).json({
-            message: error.message
+            message: error.message,
         });
     }
 });
