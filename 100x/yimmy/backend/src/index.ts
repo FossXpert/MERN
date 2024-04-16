@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-import adminRouter from "./routes/adminRoutes";
+import adminRouter from "./routes/userRoutes";
 import dotenv from 'dotenv';
 dotenv.config();
 
