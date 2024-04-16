@@ -8,7 +8,7 @@ const userSignup = async(req:Request,role:string,res:Response) => {
     try {
         //validate Email ID
         const validateEmailID = async(email:string) : Promise<boolean> =>{
-            let isEmailExist : User | null = await UserModel.findOne({ email });
+            let isEmailExist  = await UserModel.findOne({ email });
             return !!isEmailExist;
         };
         if (await validateEmailID(req.body.email)) {
