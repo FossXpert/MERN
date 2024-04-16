@@ -6,10 +6,10 @@ import { Jwt } from 'jsonwebtoken';
 
 require('dotenv').config()
 
-const validateEmailID = async(email:string) : Promise<boolean> =>({
+const validateEmailID = async(email:string) : Promise<boolean> =>{
     let isEmailExist : User | null = await UserModel.findOne({ email });
     return !!isEmailExist;
-});
+};
 const validateUserName = async(username:string) : Promise<boolean> =>{
     let isUsernameExist : User | null = await UserModel.findOne({ username });
     return !!isUsernameExist; 
@@ -17,8 +17,8 @@ const validateUserName = async(username:string) : Promise<boolean> =>{
 const encryptPassword = async(password: string):Promise<string>=>{
     return await bcrypt.hash(password ,12);
 };
-const comparePassword = async(password : string,existingPassword : string):Promise<boolean>=>{
-    return await bcrypt.compare(password,existingPassword);
+const comparePassword = async(password : string,email : string):Promise<boolean>=>{
+    
 }
 const userSignup = async(req:Request,role:string,res:Response) => {
     try {
@@ -50,7 +50,20 @@ const userSignup = async(req:Request,role:string,res:Response) => {
         })
     }
 }
-const userLogin = async(req: Request, res: Response)=>({
+const userLogin = async(req: Request, res: Response)=>{
+    try {
+        let {email,password} = req.body;
+        //checking if email exist
+        if(await validateEmailID(email)){
+            throw new Error("Email Doesn't Exist")
+            return;
+        };
+        //verifying the password
+        if(await comparePassword(password,email)){
 
-})
+        }
+    } catch (error:any) {
+        
+    }
+};
 export default userSignup;
