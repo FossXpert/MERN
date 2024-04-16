@@ -9,6 +9,7 @@ const userSignup = async(req:Request,role:string,res:Response) => {
         //Get user from database of same name if any
         const validateUser = async(email:string) =>{
             let user = await  User.findOne({ email });
+            
         }
     } catch (error) {
         
