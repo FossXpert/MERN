@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const adminRoutes_1 = __importDefault(require("./routes/adminRoutes"));
+const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -28,7 +28,7 @@ mongoose_1.default.connection.on("disconnected", () => {
 mongoose_1.default.connection.on("error", (err) => {
     console.log(`mongoose Error: ${err}`);
 });
-app.use("/admin", adminRoutes_1.default);
+app.use("/admin", userRoutes_1.default);
 app.listen(port, host, () => {
     console.log(`Backend is running on PORT : ${port}`);
 });
