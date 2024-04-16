@@ -21,15 +21,21 @@ const userSignup = async(req:Request,role:string,res:Response) => {
 
         //save password using bcrypt
 
-        const password = bcrypt.hash(req.body.password , 12);
+        const password = await bcrypt.hash(req.body.password , 12);
 
         const user = new UserModel({
             ...req.body,
             password,
             role
         })
+        await user.save();
+        return res.status(201).json({
+            message: "Hurry! now you are successfully registred. Please login."
+          });
 
-    } catch (error) {
-        
+    } catch (error:any) {
+        return res.status(500).json({
+            message: error.message
+        })
     }
 }
