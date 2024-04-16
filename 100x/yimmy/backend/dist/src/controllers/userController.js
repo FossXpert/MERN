@@ -72,6 +72,7 @@ const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 data: userData,
             });
         }
+        res.send("Wrong Password");
     }
     catch (error) {
         return res.status(500).json({

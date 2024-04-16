@@ -52,23 +52,26 @@ export const userSignup = async(req:Request,role:string,res:Response) => {
         })
     }
 }
-export const userLogin = async(req: Request, res: Response)=>{
+export const userLogin = async (req: Request, res: Response) => {
     try {
-        let {email,password} = req.body;
-        let userData = await validateEmailID(email)
-        if(userData===null){
-            throw new Error("Unable to find the account with this email address")
+        let { email, password } = req.body;
+        let userData = await validateEmailID(email);
+        if (userData === null) {
+            throw new Error("Invalid email address or password");
         }
-        if(await comparePassword(password,userData.password)){
-            console.log(userData)
+        if (await comparePassword(password, userData.password)) {
+            console.log(userData);
             res.status(200).send({
-                message : "Success",
-                data : userData,
-            })
+                message: "Success",
+                data: userData,
+            });
+        } else {
+            // Handle incorrect password
+            throw new Error("Invalid email address or password");
         }
-    } catch (error:any) {
+    } catch (error: any) {
         return res.status(500).json({
-            message: error.message
-         })
+            message: error.message,
+        });
     }
-}
+};
