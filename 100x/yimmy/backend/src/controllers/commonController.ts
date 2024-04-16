@@ -7,13 +7,13 @@ import { Request, Response } from 'express';
 const userSignup = async(req:Request,role:string,res:Response) => {
     try {
         //Get user from database of same name if any
-        const validateEmailID = async(email:string) =>{
-            let isEmailExist = await User.findOne({ email });
+        const validateEmailID = async(email:string) : Promise<boolean> =>{
+            let isEmailExist : = await User.findOne({ email });
             return isEmailExist?true:false;
         };
 
-        //validating emailID
-        const validateUserName = async(username:string) =>{
+        //validating emailId
+        const validateUserName = async(username:string) : Promise<boolean> =>{
             let isUsernameExist = await User.findOne({ username });
             return isUsernameExist?true:false;
         };
