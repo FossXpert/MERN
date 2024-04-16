@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import UserModel, {User}  from '../models/User';
 import Admin from '../models/Admin';
 import { Request, Response } from 'express';
-import { Document } from 'mongoose';
 
 
 const userSignup = async(req:Request,role:string,res:Response) => {
