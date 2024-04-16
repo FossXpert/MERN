@@ -21,7 +21,8 @@ const encryptPassword = async(password: string):Promise<string>=>{
 const comparePassword = async(password : string,existingPassword : string):Promise<boolean>=>{
     return bcrypt.compare(password, existingPassword);
 };
-const userSignup = async(req:Request,role:string,res:Response) => {
+
+export const userSignup = async(req:Request,role:string,res:Response) => {
     try {
         //validate Email ID
         if ((!!await validateEmailID(req.body.email))) {
@@ -51,14 +52,14 @@ const userSignup = async(req:Request,role:string,res:Response) => {
         })
     }
 }
-const userLogin = async(req: Request, res: Response)=>{
+export const userLogin = async(req: Request, res: Response)=>{
     try {
         let {email,password} = req.body;
         let userData = await validateEmailID(email)
         if(userData===null){
             throw new Error("Unable to find the account with this email address")
         }
-        if(await comparePassword(password,userData.email)){
+        if(await comparePassword(password,userData.password)){
             console.log(userData)
             res.status(200).send({
                 message : "Success",
@@ -66,7 +67,8 @@ const userLogin = async(req: Request, res: Response)=>{
             })
         }
     } catch (error:any) {
-        
+        return res.status(500).json({
+            message: error.message
+         })
     }
-};
-export default {userSignup,userLogin};
+}

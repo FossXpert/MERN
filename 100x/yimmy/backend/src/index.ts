@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-import adminRouter from "./routes/userRoutes";
+import userRouter from "./routes/userRoutes";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -28,7 +28,7 @@ mongoose.connection.on("error", (err: Error) => {
   console.log(`mongoose Error: ${err}`);
 });
 
-app.use("/admin", adminRouter);
+app.use("/admin", userRouter);
 app.listen(port, host, () => {
     console.log(`Backend is running on PORT : ${port}`);
   });

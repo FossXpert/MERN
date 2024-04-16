@@ -1,6 +1,6 @@
 import express from 'express';
 import { Request, Response } from 'express';
-import userSignup from '../controllers/userController'; // Import the userSignup function
+import {userSignup,userLogin} from '../controllers/userController'; // Import the userSignup function
 import { Router } from 'express';
 const router:Router = express.Router();
 
@@ -16,5 +16,15 @@ router.post('/signup', async (req: Request, res: Response) => {
         });
     }
 });
-
+router.post('/login', async (req: Request, res: Response) => {
+    try {
+        // Call the userSignup function
+        await userLogin(req, res);
+    } catch (error:any) {
+        console.error('Error in user Login:', error);
+        res.status(500).json({ message: 'Internal server error' ,
+            error : error
+        });
+    }
+});
 export default router;
