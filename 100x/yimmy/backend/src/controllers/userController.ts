@@ -6,18 +6,20 @@ import { Jwt } from 'jsonwebtoken';
 
 require('dotenv').config()
 
-const validateEmailID = async(email:string) : Promise<boolean> =>{
+const validateEmailID = async(email:string) : Promise<boolean> =>({
     let isEmailExist : User | null = await UserModel.findOne({ email });
     return !!isEmailExist;
-};
+});
 const validateUserName = async(username:string) : Promise<boolean> =>{
     let isUsernameExist : User | null = await UserModel.findOne({ username });
     return !!isUsernameExist; 
 };
 const encryptPassword = async(password: string):Promise<string>=>{
-    return await  bcrypt.hash(password ,12);
+    return await bcrypt.hash(password ,12);
 };
-const decryptPassword = async()
+const comparePassword = async(password : string,existingPassword : string):Promise<boolean>=>{
+    return await bcrypt.compare(password,existingPassword);
+}
 const userSignup = async(req:Request,role:string,res:Response) => {
     try {
         //validate Email ID
@@ -31,7 +33,7 @@ const userSignup = async(req:Request,role:string,res:Response) => {
             return;
         }
         //save password using bcrypt
-        const password = await bcrypt.hash(req.body.password , 12);
+        const password = await encryptPassword(req.body.password);
         const user = new UserModel({
             ...req.body,
             password,
