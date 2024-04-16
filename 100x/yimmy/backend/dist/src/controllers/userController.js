@@ -60,10 +60,14 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
 exports.userSignup = userSignup;
 const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const role = req.headers.role;
         let { email, password } = req.body;
         let userData = yield validateEmailID(email);
         if (userData === null) {
-            throw new Error("Invalid email address or password");
+            throw new Error("Invalid email address");
+        }
+        if (userData.role !== role) {
+            throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
         }
         if (yield comparePassword(password, userData.password)) {
             console.log(userData);

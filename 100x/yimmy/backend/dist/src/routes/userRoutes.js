@@ -28,7 +28,7 @@ router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
 }));
-router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/login/:role', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Call the userSignup function
         yield (0, userController_1.userLogin)(req, res);

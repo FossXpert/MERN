@@ -54,12 +54,13 @@ export const userSignup = async(req:Request,role:string,res:Response) => {
 }
 export const userLogin = async (req: Request, res: Response) => {
     try {
+        const role = req.headers.role;
         let { email, password } = req.body;
         let userData = await validateEmailID(email);
         if (userData === null) {
             throw new Error("Invalid email address");
         }
-        if(userData.role !== req.headers.role){
+        if(userData.role !== role){
             throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
         }
         if (await comparePassword(password, userData.password)) {
