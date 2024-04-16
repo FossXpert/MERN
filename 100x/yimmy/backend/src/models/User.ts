@@ -1,7 +1,7 @@
 import mongoose,{Document,Schema} from "mongoose";
 import { v4 as uuid4 } from "uuid";
 
-interface User extends Document {
+export interface User extends Document {
     id : string,
     username : string,
     email : string,
