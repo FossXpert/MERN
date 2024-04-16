@@ -1,6 +1,6 @@
 import express from 'express';
 import { Request, Response } from 'express';
-import userSignup from '../controllers/commonController'; // Import the userSignup function
+import userSignup from '../controllers/userController'; // Import the userSignup function
 import { Router } from 'express';
 const router:Router = express.Router();
 

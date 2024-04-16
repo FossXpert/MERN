@@ -13,13 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const commonController_1 = __importDefault(require("../controllers/commonController")); // Import the userSignup function
+const userController_1 = __importDefault(require("../controllers/userController")); // Import the userSignup function
 const router = express_1.default.Router();
 // Define a route for user signup
 router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Call the userSignup function
-        yield (0, commonController_1.default)(req, 'user', res);
+        yield (0, userController_1.default)(req, 'user', res);
     }
     catch (error) {
         console.error('Error in user signup:', error);
