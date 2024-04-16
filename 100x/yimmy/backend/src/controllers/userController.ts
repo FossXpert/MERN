@@ -2,8 +2,9 @@ import bcrypt from 'bcrypt';
 import UserModel, {User}  from '../models/User';
 import Admin from '../models/Admin';
 import { Request, Response } from 'express';
+import { Jwt } from 'jsonwebtoken';
 
-
+require('dotenv').config()
 const userSignup = async(req:Request,role:string,res:Response) => {
     try {
         //validate Email ID
@@ -43,5 +44,7 @@ const userSignup = async(req:Request,role:string,res:Response) => {
         })
     }
 }
+const userLogin = async(req: Request, res: Response)=>({
 
+})
 export default userSignup;

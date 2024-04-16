@@ -9,9 +9,11 @@ router.post('/signup', async (req: Request, res: Response) => {
     try {
         // Call the userSignup function
         await userSignup(req, 'user', res);
-    } catch (error) {
+    } catch (error:any) {
         console.error('Error in user signup:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ message: 'Internal server error' ,
+            error : error
+        });
     }
 });
 
