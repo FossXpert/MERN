@@ -19,7 +19,11 @@ const userSignup = async(req:Request,role:string,res:Response) => {
             return !!isUsernameExist; 
         };
 
-        const savePassword
+        //save password using bcrypt
+
+        const password = bcrypt.hash(req.body.password , 12);
+
+        
 
     } catch (error) {
         
