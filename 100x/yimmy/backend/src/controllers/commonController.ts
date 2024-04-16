@@ -38,3 +38,5 @@ const userSignup = async(req:Request,role:string,res:Response) => {
         })
     }
 }
+
+export default userSignup;
