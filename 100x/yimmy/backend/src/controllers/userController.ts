@@ -1,9 +1,7 @@
 import bcrypt from 'bcrypt';
 import UserModel, {User}  from '../models/User';
-import Admin from '../models/Admin';
 import { Request, Response } from 'express';
-import { Jwt } from 'jsonwebtoken';
-import { json } from 'body-parser';
+
 import { generateJWT } from './authController';
 
 require('dotenv').config()
