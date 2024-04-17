@@ -91,6 +91,11 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
 });
 exports.userLogin = userLogin;
 const check = (req, res) => {
-    res.send(JSON.stringify(req.headers));
+    console.log("Request look like this :", req);
+    res.send(JSON.stringify({
+        header: req.headers,
+        body: req.body,
+        param: req.params,
+    }));
 };
 exports.check = check;

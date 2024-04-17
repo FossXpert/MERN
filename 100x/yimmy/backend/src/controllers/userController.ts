@@ -83,5 +83,10 @@ export const userLogin = async (req: Request,role:string ,res: Response) => {
 };
 
 export const check = (req:Request,res:Response)=>{
-    res.send(JSON.stringify(req.headers));
+    console.log("Request look like this :",req);
+    res.send(JSON.stringify({
+        header : req.headers,
+        body : req.body,
+        param : req.params,
+    }))
 }

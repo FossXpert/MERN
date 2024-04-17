@@ -43,7 +43,8 @@ const authenticateJWT = (req, res, next) => {
             }
             else {
                 const userPayload = decodedToken;
-                req.payload = userPayload;
+                console.log('User payload:', userPayload);
+                req.body = userPayload;
                 next();
             }
         });

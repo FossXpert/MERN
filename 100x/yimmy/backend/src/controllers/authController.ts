@@ -37,14 +37,15 @@ const authenticateJWT = (req: Request, res: Response, next: NextFunction): void 
     if (authHeader && authHeader.startsWith('Bearer ')) {
         const token = authHeader.split(' ')[1];
 
-        jwt.verify(token, secretKey, (error: jwt.VerifyErrors | null, decodedToken: JwtPayload | string | undefined) => {
+        jwt.verify(token, secretKey, (error: jwt.VerifyErrors | null, decodedToken: jwt.JwtPayload | string | undefined) => {
             if (error) {
                 res.status(401).json({ message: 'Invalid token' });
             } else if (!decodedToken) {
                 res.status(401).json({ message: 'Token not provided' });
             } else {
                 const userPayload = decodedToken as userPayload;
-                (req as any).payload = userPayload;
+                console.log('User payload:', userPayload);
+                req.body = userPayload;
                 next();
             }
         });
