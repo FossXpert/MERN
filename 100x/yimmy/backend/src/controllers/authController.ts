@@ -14,7 +14,7 @@ interface UserPayload extends JwtPayload {
 const generateJWT = (payload:UserPayload) => {
     return jwt.sign(payload, secretKey, options);
 };
-
+//auto
 const authenticateJWT = (req: Request, res: Response, next: NextFunction): void => {
     const authHeader = req.headers.authorization;
 
