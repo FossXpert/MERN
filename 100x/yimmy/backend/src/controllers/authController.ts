@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const secretKey: string = 'Sec3t';
 const options: jwt.SignOptions = {
-    expiresIn: process.env.expiresIn
+    expiresIn: process.env.EXPIRESIN
 };
 
 interface UserPayload extends JwtPayload {
