@@ -94,6 +94,7 @@ const check = (req, res) => {
     console.log("Request look like this :", req);
     res.send(JSON.stringify({
         header: req.headers,
+        token: req.token,
         body: req.body,
         param: req.params,
     }));

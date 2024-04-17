@@ -42,9 +42,9 @@ const authenticateJWT = (req, res, next) => {
                 res.status(401).json({ message: 'Token not provided' });
             }
             else {
-                const userPayload = decodedToken;
-                console.log('User payload:', userPayload);
-                req.body = userPayload;
+                const decoded = decodedToken;
+                console.log('User payload:', decoded);
+                req.token = decoded;
                 next();
             }
         });
