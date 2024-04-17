@@ -28,7 +28,7 @@ mongoose_1.default.connection.on("disconnected", () => {
 mongoose_1.default.connection.on("error", (err) => {
     console.log(`mongoose Error: ${err}`);
 });
-app.use("/admin", userRoutes_1.default);
+app.use("/user", userRoutes_1.default);
 app.listen(port, host, () => {
     console.log(`Backend is running on PORT : ${port}`);
 });
