@@ -63,7 +63,7 @@ export const userLogin = async (req: Request,role:string ,res: Response) => {
             throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
         }
         if (await comparePassword(password, userData.password)) {
-            console.log(userData);
+            let token  = 
             res.status(200).send({
                 message: "Success",
                 data: userData,

@@ -6,11 +6,13 @@ const options: jwt.SignOptions = {
     expiresIn: '10h'
 };
 
-interface UserPayload {
-    userName: string;
+interface UserPayload extends JwtPayload {
+    userName: string,
+    email : string,
+    role : string
 }
 
-const generateJWT = (userName: string): string => {
+const generateJWT = ():  => {
     const payload: UserPayload = { userName };
     return jwt.sign(payload, secretKey, options);
 };
