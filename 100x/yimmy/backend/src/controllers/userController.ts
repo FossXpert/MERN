@@ -4,6 +4,7 @@ import Admin from '../models/Admin';
 import { Request, Response } from 'express';
 import { Jwt } from 'jsonwebtoken';
 import { json } from 'body-parser';
+import { generateJWT } from './authController';
 
 require('dotenv').config()
 
@@ -63,10 +64,12 @@ export const userLogin = async (req: Request,role:string ,res: Response) => {
             throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
         }
         if (await comparePassword(password, userData.password)) {
-            let token  = 
+            let token  = generateJWT(userData);
+            localStorage.setItem("token",token);
             res.status(200).send({
                 message: "Success",
                 data: userData,
+                Token:token
             });
         } else {
             // Handle incorrect password
