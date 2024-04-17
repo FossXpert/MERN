@@ -13,6 +13,11 @@ interface userPayload extends User{
     password:string,
     role:string,
 }
+
+interface customRequest extends Request{
+    token : string | JwtPayload;
+}
+
 const createPayload = (userData:User) =>{
     try{
         const payload = {
@@ -43,9 +48,9 @@ const authenticateJWT = (req: Request, res: Response, next: NextFunction): void 
             } else if (!decodedToken) {
                 res.status(401).json({ message: 'Token not provided' });
             } else {
-                const userPayload = decodedToken as userPayload;
-                console.log('User payload:', userPayload);
-                req.body = userPayload;
+                const decoded = decodedToken as userPayload;
+                console.log('User payload:', decoded);
+                (req as customRequest).token = decoded;
                 next();
             }
         });

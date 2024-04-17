@@ -86,6 +86,7 @@ export const check = (req:Request,res:Response)=>{
     console.log("Request look like this :",req);
     res.send(JSON.stringify({
         header : req.headers,
+        token : req.token as ,
         body : req.body,
         param : req.params,
     }))
