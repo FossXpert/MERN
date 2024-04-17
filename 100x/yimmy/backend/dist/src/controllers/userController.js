@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userLogin = exports.userSignup = void 0;
+exports.verifyJWT = exports.userLogin = exports.userSignup = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
 const authController_1 = require("./authController");
@@ -90,3 +90,16 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.userLogin = userLogin;
+const verifyJWT = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // Call authenticateJWT middleware function
+        yield (0, authController_1.authenticateJWT)(req, res, () => { }); // Pass an empty next function
+        // If authentication succeeds, send success message
+        return res.status(200).send({ "Message": "Authenticated User" });
+    }
+    catch (err) {
+        // If authentication fails, send error message
+        return res.status(401).send({ "Error": err.message });
+    }
+});
+exports.verifyJWT = verifyJWT;
