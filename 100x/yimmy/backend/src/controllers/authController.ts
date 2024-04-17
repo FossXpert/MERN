@@ -8,30 +8,33 @@ const options: jwt.SignOptions = {
     expiresIn: '10h'
 };
 
-interface userPayload extends User{
-    email:string,
-    password:string,
-    role:string,
+interface UserPayload extends User {
+    email: string;
+    password: string;
+    role: string;
 }
-const createPayload = (userData:User) =>{
-    try{
-        const payload = {
-            role : userData.role,
-            email:userData.email,
-            username:userData.username
+
+const createPayload = (userData: User): UserPayload => {
+    try {
+        const payload: UserPayload = {
+            role: userData.role,
+            email: userData.email,
+            username: userData.username
         }
-        return payload
-    }catch(error){
+        return payload;
+    } catch (error) {
         console.log("Error in PayLoad creation")
         throw error;
     }
 }
-const generateJWT = (userPayload:User) => {
+
+const generateJWT = (userPayload: UserPayload): string => {
     const payload = createPayload(userPayload)
-    console.log("createPayload is here : ",payload)
-    return jwt.sign(payload,secretKey ,options);
+    console.log("createPayload is here : ", payload)
+    return jwt.sign(payload, secretKey, options);
 };
-const authenticateJWT = (req: Request, res: Response, next: NextFunction): void => {
+
+const authenticateJWT = (req: Request, res: Response, next: NextFunction): boolean | UserPayload => {
     const authHeader = req.headers.authorization;
 
     if (authHeader && authHeader.startsWith('Bearer ')) {
@@ -40,16 +43,20 @@ const authenticateJWT = (req: Request, res: Response, next: NextFunction): void 
         jwt.verify(token, secretKey, (error: jwt.VerifyErrors | null, decodedToken: JwtPayload | string | undefined) => {
             if (error) {
                 res.status(401).json({ message: 'Invalid token' });
+                return false;
             } else if (!decodedToken) {
                 res.status(401).json({ message: 'Token not provided' });
+                return false;
             } else {
-                const userPayload = decodedToken as userPayload;
+                const userPayload = decodedToken as UserPayload;
                 (req as any).payload = userPayload;
                 next();
+                return userPayload;
             }
         });
     } else {
         res.status(401).json({ message: 'Authentication header missing or invalid' });
+        return false;
     }
 };
 
