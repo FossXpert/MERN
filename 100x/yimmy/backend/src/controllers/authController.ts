@@ -11,7 +11,8 @@ interface UserPayload extends JwtPayload {
     email : string,
     role : string
 }
-const generateJWT = (payload:UserPayload) => {
+
+const generateJWT = (payload: UserPayload) => {
     return jwt.sign(payload, secretKey, options);
 };
 const authenticateJWT = (req: Request, res: Response, next: NextFunction): void => {
