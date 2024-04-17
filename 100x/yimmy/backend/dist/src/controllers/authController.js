@@ -5,12 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authenticateJWT = exports.generateJWT = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+require('dotenv').config();
 const secretKey = 'Sec3t';
 const options = {
-    expiresIn: '10h'
+    expiresIn: process.env.EXPIRESIN
 };
-const generateJWT = (userName) => {
-    const payload = { userName };
+const generateJWT = (payload) => {
     return jsonwebtoken_1.default.sign(payload, secretKey, options);
 };
 exports.generateJWT = generateJWT;
@@ -27,7 +27,7 @@ const authenticateJWT = (req, res, next) => {
             }
             else {
                 const userPayload = decodedToken;
-                req.user = userPayload;
+                req.payload = userPayload;
                 next();
             }
         });

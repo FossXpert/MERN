@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userLogin = exports.userSignup = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
+const authController_1 = require("./authController");
 require('dotenv').config();
 const validateEmailID = (email) => __awaiter(void 0, void 0, void 0, function* () {
     let isEmailExist = yield User_1.default.findOne({ email });
@@ -69,10 +70,12 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
             throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
         }
         if (yield comparePassword(password, userData.password)) {
-            console.log(userData);
+            let token = (0, authController_1.generateJWT)(userData);
+            localStorage.setItem("token", token);
             res.status(200).send({
                 message: "Success",
                 data: userData,
+                Token: token
             });
         }
         else {
