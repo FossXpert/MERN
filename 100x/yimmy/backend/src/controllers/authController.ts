@@ -61,7 +61,7 @@ const authenticateJWT = (
           const decoded = decodedToken as userPayload;
           console.log("User payload:", decoded);
           (req as customRequest).token = decoded;
-          console.log("Request as custom request", req.token);
+          console.log("Request as custom request");
           next();
         }
       },
