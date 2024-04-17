@@ -64,9 +64,9 @@ export const userLogin = async (req: Request,role:string ,res: Response) => {
             throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
         }
         if (await comparePassword(password, userData.password)) {
+            console.log("Userdata  :"+userData);
             let token  = generateJWT(userData);
-            localStorage.setItem("token",token);
-            res.status(200).send({
+                res.status(200).send({
                 message: "Success",
                 data: userData,
                 Token:token

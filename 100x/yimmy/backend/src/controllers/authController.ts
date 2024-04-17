@@ -5,16 +5,31 @@ require('dotenv').config()
 
 const secretKey: string = 'Sec3t';
 const options: jwt.SignOptions = {
-    expiresIn: process.env.EXPIRESIN
+    expiresIn: '10h'
 };
-interface UserPayload extends User {
-    username: string,
-    email : string,
-    role : string
-}
 
-const generateJWT = (payload: User) => {
-    return jwt.sign(payload, secretKey, options);
+interface userPayload extends User{
+    email:string,
+    password:string,
+    role:string,
+}
+const createPayload = (userData:User) =>{
+    try{
+        const payload = {
+            role : userData.role,
+            email:userData.email,
+            username:userData.username
+        }
+        return payload
+    }catch(error){
+        console.log("Error in PayLoad creation")
+        throw error;
+    }
+}
+const generateJWT = (userPayload:User) => {
+    const payload = createPayload(userPayload)
+    console.log("createPayload is here : ",payload)
+    return jwt.sign(payload,secretKey ,options);
 };
 const authenticateJWT = (req: Request, res: Response, next: NextFunction): void => {
     const authHeader = req.headers.authorization;
@@ -28,7 +43,7 @@ const authenticateJWT = (req: Request, res: Response, next: NextFunction): void 
             } else if (!decodedToken) {
                 res.status(401).json({ message: 'Token not provided' });
             } else {
-                const userPayload = decodedToken as UserPayload;
+                const userPayload = decodedToken as userPayload;
                 (req as any).payload = userPayload;
                 next();
             }

@@ -70,8 +70,8 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
             throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
         }
         if (yield comparePassword(password, userData.password)) {
+            console.log("Userdata  :" + userData);
             let token = (0, authController_1.generateJWT)(userData);
-            localStorage.setItem("token", token);
             res.status(200).send({
                 message: "Success",
                 data: userData,

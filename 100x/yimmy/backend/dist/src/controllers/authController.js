@@ -8,9 +8,25 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 require('dotenv').config();
 const secretKey = 'Sec3t';
 const options = {
-    expiresIn: process.env.EXPIRESIN
+    expiresIn: '10h'
 };
-const generateJWT = (payload) => {
+const createPayload = (userData) => {
+    try {
+        const payload = {
+            role: userData.role,
+            email: userData.email,
+            username: userData.username
+        };
+        return payload;
+    }
+    catch (error) {
+        console.log("Error in PayLoad creation");
+        throw error;
+    }
+};
+const generateJWT = (userPayload) => {
+    const payload = createPayload(userPayload);
+    console.log("createPayload is here : ", payload);
     return jsonwebtoken_1.default.sign(payload, secretKey, options);
 };
 exports.generateJWT = generateJWT;
