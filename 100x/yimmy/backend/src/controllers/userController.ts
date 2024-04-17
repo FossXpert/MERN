@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import UserModel, {User}  from '../models/User';
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
 import { authenticateJWT, generateJWT } from './authController';
 import { verify } from 'jsonwebtoken';
@@ -82,15 +82,6 @@ export const userLogin = async (req: Request,role:string ,res: Response) => {
     }
 };
 
-export const verifyJWT = async (req: Request, res: Response): Promise<void> => {
-    try {
-        // Call authenticateJWT middleware function
-        await authenticateJWT(req, res, () => {}); // Pass an empty next function
-        
-        // If authentication succeeds, send success message
-        return res.status(200).send({ "Message": "Authenticated User" });
-    } catch (err) {
-        // If authentication fails, send error message
-        return res.status(401).send({ "Error": err.message });
-    }
+export const check = (req:Request,res:Response)=>{
+    res.send(JSON.stringify(req.headers));
 }

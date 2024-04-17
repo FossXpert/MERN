@@ -37,23 +37,19 @@ const authenticateJWT = (req, res, next) => {
         jsonwebtoken_1.default.verify(token, secretKey, (error, decodedToken) => {
             if (error) {
                 res.status(401).json({ message: 'Invalid token' });
-                return false;
             }
             else if (!decodedToken) {
                 res.status(401).json({ message: 'Token not provided' });
-                return false;
             }
             else {
                 const userPayload = decodedToken;
                 req.payload = userPayload;
                 next();
-                return userPayload;
             }
         });
     }
     else {
         res.status(401).json({ message: 'Authentication header missing or invalid' });
-        return false;
     }
 };
 exports.authenticateJWT = authenticateJWT;

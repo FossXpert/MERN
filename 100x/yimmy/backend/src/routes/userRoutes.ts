@@ -1,7 +1,8 @@
 import express from 'express';
 import { Request, Response } from 'express';
-import {userSignup,userLogin} from '../controllers/userController'; // Import the userSignup function
+import {userSignup,userLogin, check} from '../controllers/userController'; // Import the userSignup function
 import { Router } from 'express';
+import { authenticateJWT } from '../controllers/authController';
 const router:Router = express.Router();
 
 // Define a route for user signup
@@ -28,4 +29,7 @@ router.post('/login', async (req: Request, res: Response) => {
         });
     }
 });
+router.get('/login',authenticateJWT,async(req:Request,res:Response)=>{
+    await check(req,res);
+})
 export default router;
