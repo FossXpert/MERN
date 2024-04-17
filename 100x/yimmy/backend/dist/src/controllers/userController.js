@@ -58,9 +58,8 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.userSignup = userSignup;
-const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const role = req.headers.role;
         let { email, password } = req.body;
         let userData = yield validateEmailID(email);
         if (userData === null) {

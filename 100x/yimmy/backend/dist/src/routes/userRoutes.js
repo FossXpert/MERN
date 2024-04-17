@@ -28,10 +28,11 @@ router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
 }));
-router.post('/login/:role', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const role = req.query.role;
         // Call the userSignup function
-        yield (0, userController_1.userLogin)(req, res);
+        yield (0, userController_1.userLogin)(req, role, res);
     }
     catch (error) {
         console.error('Error in user Login:', error);

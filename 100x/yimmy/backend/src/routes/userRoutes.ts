@@ -18,9 +18,9 @@ router.post('/signup', async (req: Request, res: Response) => {
 });
 router.post('/login', async (req: Request, res: Response) => {
     try {
-        const role = req.query.role;
+        const role = req.query.role as string;
         // Call the userSignup function
-        await userLogin(req,role, res);
+        await userLogin(req,role,res);
     } catch (error:any) {
         console.error('Error in user Login:', error);
         res.status(500).json({ message: 'Internal server error' ,
