@@ -1,19 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
+require('dotenv').config()
 
 const secretKey: string = 'Sec3t';
 const options: jwt.SignOptions = {
-    expiresIn: '10h'
+    expiresIn: process.env.expiresIn
 };
 
 interface UserPayload extends JwtPayload {
-    userName: string,
+    username: string,
     email : string,
     role : string
 }
 
-const generateJWT = ():  => {
-    const payload: UserPayload = { userName };
+const generateJWT = (payload:UserPayload) => {
     return jwt.sign(payload, secretKey, options);
 };
 
@@ -30,7 +30,7 @@ const authenticateJWT = (req: Request, res: Response, next: NextFunction): void 
                 res.status(401).json({ message: 'Token not provided' });
             } else {
                 const userPayload = decodedToken as UserPayload;
-                (req as any).user = userPayload;
+                (req as any).payload = userPayload;
                 next();
             }
         });
