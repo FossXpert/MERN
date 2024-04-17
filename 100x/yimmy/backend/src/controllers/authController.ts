@@ -1,18 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import { User } from '../models/User';
 require('dotenv').config()
 
 const secretKey: string = 'Sec3t';
 const options: jwt.SignOptions = {
     expiresIn: process.env.EXPIRESIN
 };
-interface UserPayload extends JwtPayload {
+interface UserPayload extends User {
     username: string,
     email : string,
     role : string
 }
 
-const generateJWT = (payload: UserPayload) => {
+const generateJWT = (payload: User) => {
     return jwt.sign(payload, secretKey, options);
 };
 const authenticateJWT = (req: Request, res: Response, next: NextFunction): void => {
