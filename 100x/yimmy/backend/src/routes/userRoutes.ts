@@ -16,7 +16,7 @@ router.post('/signup', async (req: Request, res: Response) => {
         });
     }
 });
-router.post('/login/:role', async (req: Request, res: Response) => {
+router.post('/login', async (req: Request, res: Response) => {
     try {
         const role = req.query.role;
         // Call the userSignup function
