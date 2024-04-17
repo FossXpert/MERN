@@ -10,6 +10,7 @@ const validateEmailID = async(email:string) : Promise<User|null> =>{
     let isEmailExist : User | null = await UserModel.findOne({ email });
     return isEmailExist;
 };
+
 const validateUserName = async(username:string) : Promise<User|null> =>{
     let isUsernameExist : User | null = await UserModel.findOne({ username });
     return isUsernameExist; 
