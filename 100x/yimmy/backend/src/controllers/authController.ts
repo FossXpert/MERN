@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 require('dotenv').config()
-
+//COMMENT ADDED TO CHECK AUTO COMMIT WORKS OR NOT
 const secretKey: string = 'Sec3t';
 const options: jwt.SignOptions = {
     expiresIn: process.env.EXPIRESIN
