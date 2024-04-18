@@ -29,7 +29,4 @@ router.post('/login', async (req: Request, res: Response) => {
         });
     }
 });
-router.get('/login',authenticateJWT,async(req:Request,res:Response)=>{
-    await check(req,res);
-})
 export default router;
