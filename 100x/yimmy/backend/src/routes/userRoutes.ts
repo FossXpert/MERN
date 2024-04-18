@@ -2,7 +2,7 @@ import express from 'express';
 import { Request, Response } from 'express';
 import {userSignup,userLogin, check} from '../controllers/userController'; // Import the userSignup function
 import { Router } from 'express';
-import { authenticateJWT } from '../controllers/authController';
+import { authenticateJWT } from '../controllers/signup/authController';
 const router:Router = express.Router();
 
 // Define a route for user signup

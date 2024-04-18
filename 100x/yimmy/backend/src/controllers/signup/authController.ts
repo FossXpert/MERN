@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { User } from "../models/User";
+import { User } from "../../models/User";
 require("dotenv").config();
 
 const secretKey: string = "Sec3t";
