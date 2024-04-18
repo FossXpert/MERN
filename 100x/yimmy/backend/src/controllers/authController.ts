@@ -15,7 +15,7 @@ interface userPayload extends User {
 }
 
 interface customRequest extends Request {
-  token: string | JwtPayload;
+  payload: userPayload | JwtPayload;
 }
 
 const createPayload = (userData: User) => {
@@ -60,8 +60,8 @@ const authenticateJWT = (
         } else {
           const decoded = decodedToken as userPayload;
           console.log("User payload:", decoded);
-          (req as customRequest).token = decoded;
-          console.log("Request as custom request");
+          (req as customRequest).payload = decoded;
+          console.log("Request as custom request", (req as customRequest).payload);
           next();
         }
       },
