@@ -2,8 +2,9 @@ import bcrypt from "bcrypt";
 import UserModel, { User } from "../models/User";
 import { NextFunction, Request, Response } from "express";
 
-import { authenticateJWT, generateJWT } from "./authController";
+import { authenticateJWT, customRequest, generateJWT } from "./authController";
 import { verify } from "jsonwebtoken";
+
 
 require("dotenv").config();
 
@@ -92,6 +93,7 @@ export const check = (req: Request, res: Response) => {
       header: req.headers,
       body: req.body,
       param: req.params,
+      payload : (req as customRequest).payload
     }),
   );
 };

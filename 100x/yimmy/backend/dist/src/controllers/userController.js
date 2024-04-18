@@ -96,6 +96,7 @@ const check = (req, res) => {
         header: req.headers,
         body: req.body,
         param: req.params,
+        payload: req.payload
     }));
 };
 exports.check = check;

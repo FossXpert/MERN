@@ -14,7 +14,7 @@ interface userPayload extends User {
   role: string;
 }
 
-interface customRequest extends Request {
+export interface customRequest extends Request {
   payload: userPayload | JwtPayload;
 }
 
