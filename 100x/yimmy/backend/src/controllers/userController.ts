@@ -19,6 +19,7 @@ const validateUserName = async (username: string): Promise<User | null> => {
 const encryptPassword = async (password: string): Promise<string> => {
   return await bcrypt.hash(password, 12);
 };
+const vaildateMobile = async(mobile:)
 const comparePassword = async (
   password: string,
   existingPassword: string,
