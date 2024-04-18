@@ -3,7 +3,6 @@ import UserModel, { User } from "../models/User";
 import { NextFunction, Request, Response } from "express";
 
 import { authenticateJWT, customRequest, generateJWT } from "./signup/jwtHandler";
-import { verify } from "jsonwebtoken";
 
 
 require("dotenv").config();
@@ -19,7 +18,10 @@ const validateUserName = async (username: string): Promise<User | null> => {
 const encryptPassword = async (password: string): Promise<string> => {
   return await bcrypt.hash(password, 12);
 };
-const vaildateMobile = async(mobile:)
+const vaildateMobile = async(mobile:string):Promise<User|null> => {
+    let isMobileExist : User|null = await UserModel.findOne({mobile});
+    return isMobileExist;
+}
 const comparePassword = async (
   password: string,
   existingPassword: string,
@@ -30,10 +32,20 @@ const comparePassword = async (
 export const userSignup = async (req: Request, role: string, res: Response) => {
   try {
     //validate Email ID
-    if (!!(await validateEmailID(req.body.email))) {
+    var mode = 'email';
+    if(req.body.email===null){
+        mode = 'mobile'
+    }
+    //validate Email
+    if (!!(await validateEmailID(req.body.email)) && mode==='email') {
       res.status(409).json("This email id already exist");
       return;
     }
+    //validate Mobile
+    if (!!(await vaildateMobile(req.body.mobile)) && mode==='mobile') {
+        res.status(409).json("This Mobile Number already exist");
+        return;
+      }
     //validating Username
     if (!!(await validateUserName(req.body.username))) {
       res.status(422).send("The username you have entered is not valid");
@@ -56,6 +68,7 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
     });
   }
 };
+
 export const userLogin = async (req: Request, role: string, res: Response) => {
   try {
     let { email, password } = req.body;
@@ -88,7 +101,6 @@ export const userLogin = async (req: Request, role: string, res: Response) => {
 };
 
 export const check = (req: Request, res: Response) => {
-//   console.log("Request look like this :", req);
   res.send(
     JSON.stringify({
       header: req.headers,
