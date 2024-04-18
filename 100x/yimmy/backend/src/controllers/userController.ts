@@ -86,8 +86,7 @@ export const userLogin = async (req: Request, role: string, res: Response) => {
 };
 
 export const check = (req: Request, res: Response) => {
-  console.log("Request look like this :", req);
-  const tokenPayload = 
+//   console.log("Request look like this :", req);
   res.send(
     JSON.stringify({
       header: req.headers,

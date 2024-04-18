@@ -16,7 +16,7 @@ exports.check = exports.userLogin = exports.userSignup = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
 const authController_1 = require("./authController");
-require('dotenv').config();
+require("dotenv").config();
 const validateEmailID = (email) => __awaiter(void 0, void 0, void 0, function* () {
     let isEmailExist = yield User_1.default.findOne({ email });
     return isEmailExist;
@@ -34,12 +34,12 @@ const comparePassword = (password, existingPassword) => __awaiter(void 0, void 0
 const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         //validate Email ID
-        if ((!!(yield validateEmailID(req.body.email)))) {
-            res.status(409).json('This email id already exist');
+        if (!!(yield validateEmailID(req.body.email))) {
+            res.status(409).json("This email id already exist");
             return;
         }
         //validating Username
-        if ((!!(yield validateUserName(req.body.username)))) {
+        if (!!(yield validateUserName(req.body.username))) {
             res.status(422).send("The username you have entered is not valid");
             return;
         }
@@ -49,12 +49,12 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
             role }));
         yield user.save();
         return res.status(201).json({
-            message: "Hurry! now you are successfully registred. Please login."
+            message: "Hurry! now you are successfully registred. Please login.",
         });
     }
     catch (error) {
         return res.status(500).json({
-            message: error.message
+            message: error.message,
         });
     }
 });
@@ -75,7 +75,7 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
             res.status(200).send({
                 message: "Success",
                 data: userData,
-                Token: token
+                Token: token,
             });
         }
         else {
@@ -91,10 +91,9 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
 });
 exports.userLogin = userLogin;
 const check = (req, res) => {
-    console.log("Request look like this :", req);
+    //   console.log("Request look like this :", req);
     res.send(JSON.stringify({
         header: req.headers,
-        token: req.token,
         body: req.body,
         param: req.params,
     }));
