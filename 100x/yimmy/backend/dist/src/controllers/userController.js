@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.check = exports.userLogin = exports.userSignup = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
-const authController_1 = require("./authController");
+const jwtHandler_1 = require("./signup/jwtHandler");
 require("dotenv").config();
 const validateEmailID = (email) => __awaiter(void 0, void 0, void 0, function* () {
     let isEmailExist = yield User_1.default.findOne({ email });
@@ -28,14 +28,28 @@ const validateUserName = (username) => __awaiter(void 0, void 0, void 0, functio
 const encryptPassword = (password) => __awaiter(void 0, void 0, void 0, function* () {
     return yield bcrypt_1.default.hash(password, 12);
 });
+const vaildateMobile = (mobile) => __awaiter(void 0, void 0, void 0, function* () {
+    let isMobileExist = yield User_1.default.findOne({ mobile });
+    return isMobileExist;
+});
 const comparePassword = (password, existingPassword) => __awaiter(void 0, void 0, void 0, function* () {
     return bcrypt_1.default.compare(password, existingPassword);
 });
 const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         //validate Email ID
-        if (!!(yield validateEmailID(req.body.email))) {
+        var mode = 'email';
+        if (req.body.email === null) {
+            mode = 'mobile';
+        }
+        //validate Email
+        if (!!(yield validateEmailID(req.body.email)) && mode === 'email') {
             res.status(409).json("This email id already exist");
+            return;
+        }
+        //validate Mobile
+        if (!!(yield vaildateMobile(req.body.mobile)) && mode === 'mobile') {
+            res.status(409).json("This Mobile Number already exist");
             return;
         }
         //validating Username
@@ -71,7 +85,7 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
         }
         if (yield comparePassword(password, userData.password)) {
             console.log("Userdata  :" + userData);
-            let token = (0, authController_1.generateJWT)(userData);
+            let token = (0, jwtHandler_1.generateJWT)(userData);
             res.status(200).send({
                 message: "Success",
                 data: userData,
@@ -91,7 +105,6 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
 });
 exports.userLogin = userLogin;
 const check = (req, res) => {
-    //   console.log("Request look like this :", req);
     res.send(JSON.stringify({
         header: req.headers,
         body: req.body,
