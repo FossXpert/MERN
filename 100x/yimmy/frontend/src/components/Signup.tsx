@@ -13,6 +13,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { atomEmail, atomRememberMe, atomRole, atomUserName } from './atom';
+import axios from 'axios';
 
 function Copyright(props: TypographyProps) {
   return (
@@ -37,11 +38,16 @@ export default function SignIn() {
   const [role,setRole]:[string,(role:string)=>void] = useRecoilState(atomRole);
   const [remeberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
 
-  const handleSubmit = () => {
+  const checkSignin = async() => {
+      try {
+        
+        const data = axios.post("")
 
+      } catch (error) {
+          console.log(error)
+          throw error
+      }
   }
-
-  const 
 
   return (
     <ThemeProvider theme={defaultTheme}>
