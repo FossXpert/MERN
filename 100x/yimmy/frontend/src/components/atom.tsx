@@ -1,11 +1,18 @@
 import { atom } from "recoil";
 
-export const email = atom({
+export const atomEmail = atom({
     key : 'email',
     default : ""
 });
-
-export const token = atom({
-    key : 'token',
+export const atomUserName = atom({
+    key : 'username',
     default : ""
+})
+export const atomRememberMe = atom({
+    key : 'remeberme',
+    default : false
+})
+export const atomRole = atom({
+    key : 'role',
+    default : 'user'
 })

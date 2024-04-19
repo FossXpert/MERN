@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useRecoilState, useResetRecoilState } from 'recoil';
+import { atomEmail, atomRememberMe, atomRole, atomUserName } from './atom';
 
 function Copyright(props: TypographyProps) {
   return (
@@ -29,6 +31,17 @@ function Copyright(props: TypographyProps) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+
+  const [email,setEmail]:[string,(email:string)=>void] = useRecoilState(atomEmail);
+  const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
+  const [role,setRole]:[string,(role:string)=>void] = useRecoilState(atomRole);
+  const [remeberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
+
+  const handleSubmit = () => {
+
+  }
+
+  const 
 
   return (
     <ThemeProvider theme={defaultTheme}>
