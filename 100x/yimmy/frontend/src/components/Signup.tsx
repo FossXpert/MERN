@@ -107,9 +107,14 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
+                setPassword(e.target.value)
+              }}
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox value="remember" color="primary" checked={remeberme} onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
+                setRemember(e.target.checked) //learn here
+              }} />}
               label="Remember me"
             />
             <Button
