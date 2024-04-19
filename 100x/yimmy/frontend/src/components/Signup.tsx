@@ -11,9 +11,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useRecoilState, useResetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { atomEmail, atomRememberMe, atomRole, atomUserName } from './atom';
 import axios from 'axios';
+import { useState } from 'react';
 
 function Copyright(props: TypographyProps) {
   return (
@@ -37,15 +38,32 @@ export default function SignIn() {
   const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
   const [role,setRole]:[string,(role:string)=>void] = useRecoilState(atomRole);
   const [remeberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
+  const [password,setPassword] : [string,(password:string)=>void] = useState("")
 
-  const checkSignin = async() => {
+
+  const handleSubmit = () => {
+    checkSignin();
+  }
+  const checkSignin = async(): Promise<void> =>{
       try {
-        
-        const data = axios.post("")
-
+        const body = {
+            email,
+            username,
+            password,
+        };
+        const url = `localhost:3001/user/login?role=${role}`
+        const response = await axios.post(url,body,{
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (response.status >= 200 && response.status < 300) {
+          console.log('Request successful:', response.data);
+        } else {
+          console.log('Request failed:', response.statusText);
+        }
       } catch (error) {
           console.log(error)
-          throw error
       }
   }
 
@@ -76,6 +94,9 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setEmail(e.target.value);
+              }}
             />
             <TextField
               margin="normal"
