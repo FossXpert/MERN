@@ -52,7 +52,7 @@ export default function SignIn() {
             username,
             password,
         };
-        const url = `localhost:3001/user/login?role=${role}`
+        const url = `http://localhost:3001/user/login?role=${role}`
         const response = await axios.post(url,body,{
           headers: {
             'Content-Type': 'application/json',
