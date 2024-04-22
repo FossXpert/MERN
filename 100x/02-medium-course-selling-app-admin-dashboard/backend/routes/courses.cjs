@@ -17,7 +17,7 @@ router.get('/courses',authenticateJWT,async(req,res)=>{
     }
 })
 
-//router for getting the course after update
+//router for getting the course after update Where Should I watch thisj
 router.get('/updatedcourse/:courseID',authenticateJWT,async(req,res)=>{
     try{
         const id = req.params.courseID

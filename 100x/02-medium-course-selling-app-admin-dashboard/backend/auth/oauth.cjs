@@ -4,12 +4,19 @@ const app = express();
 const session = require('express-session')
 const corsOptions = {
     origin: 'http://localhost:5173',
-    credentials: true, // Enable sending cookies and other credentials
+    credentials: true, // Enable sending cookies and other credentials,
+    
   };
 app.use(cors(corsOptions));
 const port = 3001
 app.set('view engine','ejs');
-
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
 app.use(session({
     secret : 'SECRET',
     resave : false,
@@ -65,12 +72,13 @@ passport.use(new GoogleStrategy({
 app.get('/signGoogle',(req,res)=>{
     // The request will be redirected to Google for authentication, so this
     // the response will be skipped.
+    res.header('Access-Contorl-Allow-Origin','http://localhost:5173/k');
+    res.header('Referrer-Policy','no-referrer-when-downgrade');
     res.redirect('/auth/google');
 })
 
 app.get('/auth/google',
     passport.authenticate('google',{scope : ['profile','email']}));
-
     app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/error' }), // Authenticate using Google strategy
     (req, res) => {
