@@ -115,7 +115,7 @@ export default function SignIn() {
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" checked={remeberme} onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
-                setRemember(e.target.checked) //learn here
+                setRemember(e.target.checked) //Learn here
               }} />}
               label="Remember me"
             />
