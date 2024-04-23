@@ -17,13 +17,12 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
 const jwtHandler_1 = require("./signup/jwtHandler");
 require("dotenv").config();
-const validateEmailID = (email) => __awaiter(void 0, void 0, void 0, function* () {
-    let isEmailExist = yield User_1.default.findOne({ email });
+const validateEmailID = (usernameOrEmail) => __awaiter(void 0, void 0, void 0, function* () {
+    const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
+    let isEmailExist = yield User_1.default.findOne({
+        $or: [{ email: isEmail ? usernameOrEmail : '' }, { username: usernameOrEmail }],
+    }); //About this operator (https://sprl.in/166MJbR)
     return isEmailExist;
-});
-const validateUserName = (username) => __awaiter(void 0, void 0, void 0, function* () {
-    let isUsernameExist = yield User_1.default.findOne({ username });
-    return isUsernameExist;
 });
 const encryptPassword = (password) => __awaiter(void 0, void 0, void 0, function* () {
     return yield bcrypt_1.default.hash(password, 12);
@@ -37,24 +36,14 @@ const comparePassword = (password, existingPassword) => __awaiter(void 0, void 0
 });
 const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        //validate Email ID
-        var mode = 'email';
-        if (req.body.email === null) {
-            mode = 'mobile';
-        }
-        //validate Email
-        if (!!(yield validateEmailID(req.body.email)) && mode === 'email') {
-            res.status(409).json("This email id already exist");
+        //validate Email and username
+        if (!!(yield validateEmailID(req.body.email))) {
+            res.status(409).json("Email or Username already exist");
             return;
         }
         //validate Mobile
-        if (!!(yield vaildateMobile(req.body.mobile)) && mode === 'mobile') {
+        if (!!(yield vaildateMobile(req.body.mobile))) {
             res.status(409).json("This Mobile Number already exist");
-            return;
-        }
-        //validating Username
-        if (!!(yield validateUserName(req.body.username))) {
-            res.status(422).send("The username you have entered is not valid");
             return;
         }
         //save password using bcrypt
@@ -78,7 +67,7 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
         let { email, password } = req.body;
         let userData = yield validateEmailID(email);
         if (userData === null) {
-            throw new Error("Invalid email address");
+            throw new Error("Invalid email address or User Does not exist");
         }
         if (userData.role !== role) {
             throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
@@ -94,7 +83,7 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
         }
         else {
             // Handle incorrect password
-            throw new Error("Invalid email address or password");
+            throw new Error("Incorrect password");
         }
     }
     catch (error) {
