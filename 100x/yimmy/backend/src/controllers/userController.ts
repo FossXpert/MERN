@@ -7,14 +7,14 @@ import { authenticateJWT, customRequest, generateJWT } from "./signup/jwtHandler
 
 require("dotenv").config();
 
-const validateEmailID = async (email: string): Promise<User | null> => {
-  let isEmailExist: User | null = await UserModel.findOne({ email });
+const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
+  const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
+  let isEmailExist: User | null = await UserModel.findOne({
+    $or: [{ email: isEmail? usernameOrEmail : ''}, { username: usernameOrEmail }],
+  }); //more detail about this operator()
   return isEmailExist;
 };
-const validateUserName = async (username: string): Promise<User | null> => {
-  let isUsernameExist: User | null = await UserModel.findOne({ username });
-  return isUsernameExist;
-};
+
 const encryptPassword = async (password: string): Promise<string> => {
   return await bcrypt.hash(password, 12);
 };
