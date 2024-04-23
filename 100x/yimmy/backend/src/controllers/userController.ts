@@ -7,11 +7,11 @@ import { authenticateJWT, customRequest, generateJWT } from "./signup/jwtHandler
 
 require("dotenv").config();
 
-const validateEmailID = async (email: string): Promise<User | null> => {
-  const isEmail = /\S+@\S+\.\S+/.test(email);
+const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
+  const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
   let isEmailExist: User | null = await UserModel.findOne({
-    $or: [{ email: isEmail? email : ''}, { username: email }],
-  }); //about this operator(https://sprl.in/166MJbR)
+    $or: [{ email: isEmail? usernameOrEmail : ''}, { username: usernameOrEmail }],
+  }); //About this operator (https://sprl.in/166MJbR)
   return isEmailExist;
 };
 const encryptPassword = async (password: string): Promise<string> => {
@@ -63,7 +63,7 @@ export const userLogin = async (req: Request, role: string, res: Response) => {
     let { email, password } = req.body;
     let userData = await validateEmailID(email);
     if (userData === null) {
-      throw new Error("Invalid email address");
+      throw new Error("Invalid email address or User Does not exist");
     }
     if (userData.role !== role) {
       throw new Error(
@@ -80,7 +80,7 @@ export const userLogin = async (req: Request, role: string, res: Response) => {
       });
     } else {
       // Handle incorrect password
-      throw new Error("Invalid email address or password");
+      throw new Error("Incorrect password");
     }
   } catch (error: any) {
     return res.status(500).json({
