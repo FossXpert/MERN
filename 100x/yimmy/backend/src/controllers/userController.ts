@@ -7,14 +7,13 @@ import { authenticateJWT, customRequest, generateJWT } from "./signup/jwtHandler
 
 require("dotenv").config();
 
-const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
-  const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
+const validateEmailID = async (email: string): Promise<User | null> => {
+  const isEmail = /\S+@\S+\.\S+/.test(email);
   let isEmailExist: User | null = await UserModel.findOne({
-    $or: [{ email: isEmail? usernameOrEmail : ''}, { username: usernameOrEmail }],
-  }); //more detail about this operator()
+    $or: [{ email: isEmail? email : ''}, { username: email }],
+  }); //about this operator(https://sprl.in/166MJbR)
   return isEmailExist;
 };
-
 const encryptPassword = async (password: string): Promise<string> => {
   return await bcrypt.hash(password, 12);
 };
@@ -31,26 +30,16 @@ const comparePassword = async (
 
 export const userSignup = async (req: Request, role: string, res: Response) => {
   try {
-    //validate Email ID
-    var mode = 'email';
-    if(req.body.email===null){
-        mode = 'mobile'
-    }
-    //validate Email
-    if (!!(await validateEmailID(req.body.email)) && mode==='email') {
-      res.status(409).json("This email id already exist");
+    //validate Email and username
+    if (!!(await validateEmailID(req.body.email))) {
+      res.status(409).json("Email or Username already exist");
       return;
     }
     //validate Mobile
-    if (!!(await vaildateMobile(req.body.mobile)) && mode==='mobile') {
+    if (!!(await vaildateMobile(req.body.mobile))) {
         res.status(409).json("This Mobile Number already exist");
         return;
       }
-    //validating Username
-    if (!!(await validateUserName(req.body.username))) {
-      res.status(422).send("The username you have entered is not valid");
-      return;
-    }
     //save password using bcrypt
     const password = await encryptPassword(req.body.password);
     const user = new UserModel({
