@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 const Auth0SignIn = () => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
-  // Display user details if authenticated
+  // Display user details if authenticated ok
   const userDetails = isAuthenticated ? (
     <div>
       <h2>Welcome, {user.name}</h2>
