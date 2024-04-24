@@ -1,9 +1,9 @@
 import './App.css'
-import SignInSide from './components/CustomSignIn'
+import SignIn from './views/SignIn'
 
 function App() {
   return <div>
-    <SignInSide/>
+    <SignIn/>
   </div>
 }
 
