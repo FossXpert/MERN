@@ -9,6 +9,8 @@ const Auth0SignIn = () => {
     <div>
       <h2>Welcome, {user.name}</h2>
       <p>Email: {user.email}</p>
+      <p>Address: {user?.address}</p>
+      <p>Gender: {user?.gender}</p>
       <p>Profile Picture: <img src={user.picture} alt="Profile" /></p>
     </div>
   ) : null;
