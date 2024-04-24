@@ -32,7 +32,7 @@ function Copyright(props: TypographyProps) {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+export default function CustomSignIn() {
 
   const [email,setEmail]:[string,(email:string)=>void] = useRecoilState(atomEmail);
   const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
