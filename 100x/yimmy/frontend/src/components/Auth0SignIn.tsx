@@ -5,10 +5,7 @@ const Auth0SignIn = () => {
   const { loginWithRedirect } = useAuth0();
   const {user} =  useAuth0();
   console.log(user)
-
   // Display user details if authenticated ok
-
-
   return (
     <div>
       <h2>Sign In with Auth0</h2>
