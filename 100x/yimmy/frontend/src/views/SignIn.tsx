@@ -18,7 +18,9 @@ export default function SignIn(){
                     {customSignIn ? "Show Auth0 Sign-in" : "Show Custom Sign-in"}
                 </Button>
             </div>
-            {customSignIn ? <CustomSignIn /> : <Auth0SignIn />}
+            <div>
+                {customSignIn ? <CustomSignIn /> : <Auth0SignIn />}
+            </div>
         </>
     );
 }
