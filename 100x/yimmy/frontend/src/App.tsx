@@ -6,7 +6,7 @@ function App() {
   return (
     <Auth0Provider
     domain="dev-cd616eaxtu7so5dm.us.auth0.com"
-    clientId="Taa9lZEEXS6JSSGDViJVwwtJunorSJ0D"
+    clientId="KGJKgNtQDN3DZB6EteTUwgKQbdHYGdep"
     authorizationParams={{
       redirect_uri: window.location.origin
     }}
