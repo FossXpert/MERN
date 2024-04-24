@@ -1,5 +1,5 @@
 import './App.css'
-import SignInSide from './components/Signup'
+import SignInSide from './components/AllSignup'
 
 function App() {
   return <div>

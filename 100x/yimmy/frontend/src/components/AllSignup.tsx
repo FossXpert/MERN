@@ -147,13 +147,3 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
-
-export function CustomSigninPage(){
-
-  return(
-    <>
-    
-    </>
-  )
-
-}
