@@ -1,10 +1,17 @@
+// Auth0SignIn.jsx
 
-function Auth0SignIn(){
+import { useAuth0 } from '@auth0/auth0-react';
+import { Button } from '@mui/material';
 
-    return (
-        <>
-        </>
-    )
-}
+const Auth0SignIn = () => {
+  const { loginWithRedirect } = useAuth0();
 
-export default Auth0SignIn
+  return (
+    <div>
+      <h2>Sign In with Auth0</h2>
+      <Button onClick={() => loginWithRedirect()}>Sign In</Button>
+    </div>
+  );
+};
+
+export default Auth0SignIn;
