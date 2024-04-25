@@ -10,11 +10,15 @@ export default function Home(){
     const {isAuthenticated,user,error,isLoading} = useAuth0();
     console.log("isAuthenticated",isAuthenticated)
     console.log(user)
-
     const callApi = async() =>{
         try {
             const url = "http://localhost:3001/unprotected";
-            const response =  await axios.get(url)
+            const response =  await axios.get(url);
+            if (response.status >= 200 && response.status < 300) {
+                console.log('Request successful:', response.data);
+              } else {
+                console.log('Request failed:', response.statusText);
+              }
         } catch (error) {
             console.log(error)
         }
