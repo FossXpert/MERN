@@ -8,10 +8,12 @@ export default function Home(){
     return (
         <div>
             <h1>Home</h1>
+        <div className="column">
             {isAuthenticated===false?
-            (<p><Button onClick={()=>loginWithRedirect()}>SignIn Here</Button></p>):
-            (<p><Button onClick={()=>logout()}>SignOut Here</Button></p>)
+            (<p><Button onClick={()=>loginWithRedirect()}>SignIn</Button></p>):
+            (<p><Button onClick={()=>logout()}>SignOut</Button></p>)
             }
+        </div>
         </div>
     )
 }
