@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const userController_1 = require("../controllers/userController"); // Import the userSignup function
+const jwtHandler_1 = require("../controllers/signup/jwtHandler");
 const router = express_1.default.Router();
 // Define a route for user signup
 router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -51,7 +52,7 @@ router.get('/unprotected', (req, res) => __awaiter(void 0, void 0, void 0, funct
         throw error;
     }
 }));
-router.get('/protected', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/protected', jwtHandler_1.authenticateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.status(200).json({
             message: 'Hello from Protected route!'

@@ -26,11 +26,11 @@ export default function Home(){
     const callProtectedApi = async() => {
         try {
             const url = "http://localhost:3001/user/protected";
-            const token =  null;
+            const token = await getAccessTokenSilently();
             console.log("Token : ",token); 
             const response =  await axios.get(url,({
                 headers : {
-                    Authorization : `Bearer ${token}`
+                    authorization : `Bearer ${token}`
                 }
             }));
             if (response.status >= 200 && response.status < 300) {
