@@ -17,7 +17,11 @@ export default function Home(){
             (<Logout/>)
             }
         </div>
-        
+        {isAuthenticated && 
+            <div className="column">
+                <h1>Welcome {<Profile/>}</h1>
+            </div>
+        }
         </div>
     )
 }
