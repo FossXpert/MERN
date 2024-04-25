@@ -8,7 +8,7 @@ export default function Profile() {
   return (
     <div>
         {isAuthenticated && (
-        <List>{user?.name} {user?.email} {user?.picture}</List>)}
+        <List>{user?.name} {user?.email} {<img src={user?.picture}/>}</List>)}
     </div>
     
   )

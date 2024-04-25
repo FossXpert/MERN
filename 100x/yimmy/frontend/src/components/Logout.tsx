@@ -11,7 +11,7 @@ export default function Logout() {
         {isAuthenticated && 
         <div>
             <h1>Logout</h1>
-            <Button onClick={()=>logout()}></Button>
+            <Button onClick={()=>logout()}>Logout</Button>
         </div>
         }
     </div>

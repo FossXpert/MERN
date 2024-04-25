@@ -8,10 +8,10 @@ export default function LogIn() {
 
   return (
     <div>
-        {isAuthenticated && 
+        {isAuthenticated==false && 
         <div>
             <h1>Login</h1>
-            <Button onClick={()=>loginWithRedirect()}></Button>
+            <Button onClick={()=>loginWithRedirect()}>Login</Button>
         </div>
         }
     </div>
