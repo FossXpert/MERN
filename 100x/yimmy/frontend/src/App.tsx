@@ -1,4 +1,5 @@
 import { Auth0Provider } from '@auth0/auth0-react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SignIn from './views/SignIn';
 
@@ -11,9 +12,13 @@ function App() {
       redirect_uri: window.location.origin
     }}
   >
-      <div>
-        <SignIn />
-      </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path="/signin" element={<SignIn />} />
+      </Routes>
+    </Router>
+
     </Auth0Provider>
   );
 }
