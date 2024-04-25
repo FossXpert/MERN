@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "../components/Login";
 import Logout from "../components/Logout";
 import Profile from "../components/Profile";
-
+import { List } from "@mui/material";
 
 export default function Home(){
     const {isAuthenticated,user} = useAuth0();
@@ -19,7 +19,7 @@ export default function Home(){
         </div>
         {isAuthenticated && 
             <div className="column">
-                <h1>Welcome {<Profile/>}</h1>
+                <List>Welcome {<Profile/>}</List>
             </div>
         }
         </div>
