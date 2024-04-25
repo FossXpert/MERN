@@ -8,7 +8,9 @@ export default function Profile() {
   return (
     <div>
         {isAuthenticated && (
-            <pre style={}
+            <pre style={{textAlign: 'start'}}>
+                {JSON.stringify(user,null,2)}
+            </pre>
         )}
     </div>
     
