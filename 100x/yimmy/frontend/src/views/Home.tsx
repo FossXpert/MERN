@@ -12,7 +12,7 @@ export default function Home(){
     console.log(user)
     const callApi = async() =>{
         try {
-            const url = "http://localhost:3001/unprotected";
+            const url = "http://localhost:3001/user/unprotected";
             const response =  await axios.get(url);
             if (response.status >= 200 && response.status < 300) {
                 console.log('Request successful:', response.data);
@@ -25,8 +25,9 @@ export default function Home(){
     }
     const callProtectedApi = async() => {
         try {
-            const url = "http://localhost:3001/protected";
-            const token = null;
+            const url = "http://localhost:3001/user/protected";
+            const token =  null;
+            console.log("Token : ",token); 
             const response =  await axios.get(url,({
                 headers : {
                     Authorization : `Bearer ${token}`
