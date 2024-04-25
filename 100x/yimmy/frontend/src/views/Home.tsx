@@ -23,13 +23,31 @@ export default function Home(){
             console.log(error)
         }
     }
+    const callProtectedApi = async() => {
+        try {
+            const url = "http://localhost:3001/protected";
+            const token = null;
+            const response =  await axios.get(url,({
+                headers : {
+                    Authorization : `Bearer ${token}`
+                }
+            }));
+            if (response.status >= 200 && response.status < 300) {
+                console.log('Request successful:', response.data);
+              } else {
+                console.log('Request failed:', response.statusText);
+              }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <main className="column">
             <h1>Auth0 Login</h1>
             <ul>
-                <li><Button>Protected Route</Button></li>
-                <li><Button>Unprotected Route</Button></li>
+                <li><Button onClick={()=>callProtectedApi()}>Protected Route</Button></li>
+                <li><Button onClick={()=>callApi()}>Unprotected Route</Button></li>
             </ul>
             {error && <p>Authentication Error Mate</p>}
             {!error && isLoading && <p> Loading...</p>}
