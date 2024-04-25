@@ -12,8 +12,6 @@ export default function Home(){
             (<p><Button onClick={()=>loginWithRedirect()}>SignIn Here</Button></p>):
             (<p><Button onClick={()=>logout()}>SignOut Here</Button></p>)
             }
-            
-            
         </div>
     )
 }
