@@ -13,8 +13,8 @@ export default function Home(){
 
     const callApi = async() =>{
         try {
-            const url = 
-            const response =  await axios.get("")
+            const url = "http://localhost:3001/unprotected";
+            const response =  await axios.get(url)
         } catch (error) {
             console.log(error)
         }
