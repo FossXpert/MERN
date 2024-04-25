@@ -8,7 +8,8 @@ export default function Profile() {
   return (
     <div>
         {isAuthenticated && (
-        <List>{user?.name} {user?.email} {<img src={user?.picture}/>}</List>)}
+            <pre style={}
+        )}
     </div>
     
   )
