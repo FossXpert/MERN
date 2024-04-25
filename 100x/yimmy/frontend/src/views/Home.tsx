@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 export default function Home(){
-    const {isAuthenticated,user,error,isLoading} = useAuth0();
+    const {isAuthenticated,user,error,isLoading,getAccessTokenSilently} = useAuth0();
     console.log("isAuthenticated",isAuthenticated)
     console.log(user)
     const callApi = async() =>{
