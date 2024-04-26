@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const userController_1 = require("../controllers/userController"); // Import the userSignup function
 const router = express_1.default.Router();
-const __1 = require("..");
 // Define a route for user signup
 router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -52,7 +51,7 @@ router.get('/unprotected', (req, res) => __awaiter(void 0, void 0, void 0, funct
         throw error;
     }
 }));
-router.get('/protected', __1.jwtCheck, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/protected', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const payload = req.user;
         console.log("Payload + ", payload);

@@ -31,7 +31,6 @@ export default function Home(){
           const response = await axios.get(url, {
             headers: {
               Authorization: `Bearer ${token}`,
-              'content-type': 'application/json'
             },
           });
           if (response.status >= 200 && response.status < 300) {
@@ -39,8 +38,11 @@ export default function Home(){
           } else {
             console.log('Request failed : ', response.statusText);
           }
-        } catch (error) {
-          console.log(error)
+        } catch (error:unknown){
+            console.error('Error in protected route:', error);
+        // Check if error has a message property before accessing it
+        const errorMessage = (error as Error).message || 'Unknown error';
+        console.log(errorMessage)
         }
       }
 

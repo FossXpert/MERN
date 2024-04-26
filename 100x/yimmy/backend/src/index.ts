@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //for oauth
-export const jwtCheck = auth({
+const jwtCheck = auth({
     audience: 'This is a unique Identifier',
     issuerBaseURL: 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
     tokenSigningAlg: 'RS256'
@@ -35,6 +35,7 @@ mongoose.connection.on("disconnected", () => {
 mongoose.connection.on("error", (err: Error) => {
   console.log(`mongoose Error: ${err}`);
 });
+app.use(jwtCheck)
 app.use("/user", userRoutes);
 app.listen(port, host, () => {
     console.log(`Backend is running on PORT : ${port}`);
