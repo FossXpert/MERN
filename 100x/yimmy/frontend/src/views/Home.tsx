@@ -30,7 +30,7 @@ export default function Home(){
             console.log("Token : ",token); 
             const response =  await axios.get(url,({
                 headers : {
-                    authorization : `Bearer ${token}`
+                    Authorization : `Bearer ${token}`
                 }
             }));
             if (response.status >= 200 && response.status < 300) {
