@@ -23,25 +23,25 @@ export default function Home(){
             console.log(error)
         }
     }
-    const callProtectedApi = async() => {
+    const callProtectedApi = async () => {
         try {
-            const url = "http://localhost:3001/user/protected";
-            const token = await getAccessTokenSilently();
-            console.log("Token : ",token); 
-            const response =  await axios.get(url,({
-                headers : {
-                    Authorization : `Bearer ${token}`
-                }
-            }));
-            if (response.status >= 200 && response.status < 300) {
-                console.log('Request successful:', response.data);
-              } else {
-                console.log('Request failed:', response.statusText);
-              }
+          const url = "http://localhost:3001/user/protected";
+          const token = await getAccessTokenSilently();
+          console.log("Token : ", token);
+          const response = await axios.get(url, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (response.status >= 200 && response.status < 300) {
+            console.log('Request successful : ', response.data);
+          } else {
+            console.log('Request failed : ', response.statusText);
+          }
         } catch (error) {
-            console.log(error)
+          console.log(error)
         }
-    }
+      }
 
     return (
         <main className="column">
