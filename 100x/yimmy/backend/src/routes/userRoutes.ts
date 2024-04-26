@@ -48,7 +48,7 @@ router.get('/unprotected',async(req:Request,res:Response)=>{
     }
 })
 
-router.get('/protected',async(req:Request,res:Response)=>{
+router.post('/protected',async(req:Request,res:Response)=>{
     try {
         const payload = req.user;
         console.log("Payload + ",payload);
