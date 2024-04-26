@@ -9,8 +9,10 @@ function App() {
     domain="dev-cd616eaxtu7so5dm.us.auth0.com"
     clientId="KGJKgNtQDN3DZB6EteTUwgKQbdHYGdep"
     authorizationParams={{
-      redirect_uri: window.location.origin
+      redirect_uri: window.location.origin,
+      audience : "This is a unique Identifier"
     }}
+  
   >
     <Router>
       <Routes>

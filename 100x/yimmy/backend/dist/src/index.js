@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.jwtCheck = void 0;
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
@@ -16,7 +17,7 @@ app.use(body_parser_1.default.json());
 // Enable CORS for all domains
 app.use((0, cors_1.default)());
 //for oauth
-const jwtCheck = (0, express_oauth2_jwt_bearer_1.auth)({
+exports.jwtCheck = (0, express_oauth2_jwt_bearer_1.auth)({
     audience: 'This is a unique Identifier',
     issuerBaseURL: 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
     tokenSigningAlg: 'RS256'
@@ -35,7 +36,6 @@ mongoose_1.default.connection.on("disconnected", () => {
 mongoose_1.default.connection.on("error", (err) => {
     console.log(`mongoose Error: ${err}`);
 });
-app.use(jwtCheck);
 app.use("/user", userRoutes_1.default);
 app.listen(port, host, () => {
     console.log(`Backend is running on PORT : ${port}`);

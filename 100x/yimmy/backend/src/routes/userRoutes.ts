@@ -4,6 +4,7 @@ import {userSignup,userLogin, check} from '../controllers/userController'; // Im
 import { Router } from 'express';
 const router:Router = express.Router();
 import { User } from '@auth0/auth0-react';
+import { jwtCheck } from '..';
 
 declare module 'express' {
     interface Request {
@@ -48,7 +49,7 @@ router.get('/unprotected',async(req:Request,res:Response)=>{
     }
 })
 
-router.get('/protected',async(req:Request,res:Response)=>{
+router.get('/protected',jwtCheck,async(req:Request,res:Response)=>{
     try {
         const payload = req.user;
         console.log("Payload + ",payload);
