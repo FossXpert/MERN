@@ -16,10 +16,14 @@ export const userData = async(req:Request,res:Response) => {
         if(response.status >=200 && response.status<300){
             res.status(response.status).json({
                 message : "Request Success",
-                userData : req.data
+                userData : response.data
             })
         }else{
-
+            console.log('Request failed : ', response.statusText);
+            res.status(response.status).json({
+                message:'Request failed',
+                data:response.statusText
+            })
         }
         
     } catch (error) {
