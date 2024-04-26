@@ -4,26 +4,8 @@ import {userSignup,userLogin, check} from '../controllers/userController'; // Im
 import { Router } from 'express';
 const router:Router = express.Router();
 import { User } from '@auth0/auth0-react';
-import jwt from 'express-jwt'
-import jwks, { koaJwtSecret } from 'jwks-rsa'
+import axios from 'axios';
 
-declare module 'express' {
-    interface Request {
-        user?: User; // Define the user property with the User type
-    }
-}
-
-const verifyJwt = {
-    secret : jwks.expressJwtSecret({
-        cache : true,
-
-    }),
-    audience : 'this is a unique identifier',
-    issuer : 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
-    algorithm : ['RS256']
-}
-
-// Define a route for user signup
 router.post('/signup', async (req: Request, res: Response) => {
     try {
         // Call the userSignup function
@@ -48,13 +30,29 @@ router.post('/login', async (req: Request, res: Response) => {
     }
 });
 router.get('/protected',async(req:Request,res:Response)=>{
-    try {
-        const payload = req.user;
-        console.log("Payload + ",payload);
-        res.status(200).json({
-            message: 'Hello from Protected route!'
+    try{
+        const authToken = req.headers.authorization?.split(' ')[1];
+        const response = await axios.get('https://dev-cd616eaxtu7so5dm.us.auth0.com/userinfo',{
+            headers:{
+                Authorization: `Bearer ${authToken}`
+            }
         })
+        if(response.status >=200 && response.status <300){
+            const data = await response.data;
+            console.log(data);
+            res.status(response.status).json({
+                message:'Success',
+                data:data
+            })
+        }else{
+            console.log('Request failed : ', response.statusText);
+            res.status(response.status).json({
+                message:'Request failed',
+                data:response.statusText
+            })
+        }
     }catch(error){
+        console.error('Error in protected route:', error);
         throw error
     }
 })

@@ -15,6 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const userController_1 = require("../controllers/userController"); // Import the userSignup function
 const router = express_1.default.Router();
+const axios_1 = __importDefault(require("axios"));
+// declare module 'express' {
+//     interface Request {
+//         user?: User; // Define the user property with the User type
+//     }
+// }
 // Define a route for user signup
 router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -42,14 +48,32 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 }));
 router.get('/protected', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
-        const payload = req.user;
-        console.log("Payload + ", payload);
-        res.status(200).json({
-            message: 'Hello from Protected route!'
+        const authToken = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
+        const response = yield axios_1.default.get('https://dev-cd616eaxtu7so5dm.us.auth0.com/userinfo', {
+            headers: {
+                Authorization: `Bearer ${authToken}`
+            }
         });
+        if (response.status >= 200 && response.status < 300) {
+            const data = yield response.data;
+            console.log(data);
+            res.status(response.status).json({
+                message: 'Success',
+                data: data
+            });
+        }
+        else {
+            console.log('Request failed : ', response.statusText);
+            res.status(response.status).json({
+                message: 'Request failed',
+                data: response.statusText
+            });
+        }
     }
     catch (error) {
+        console.error('Error in protected route:', error);
         throw error;
     }
 }));
