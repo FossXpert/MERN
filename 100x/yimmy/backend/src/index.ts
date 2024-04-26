@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes";
 import dotenv from 'dotenv';
 import { useAuth0 } from "@auth0/auth0-react";
-import {auth} from "express-oauth2-jwt-bearer"
+import {auth} from "express-openid-connect"
 dotenv.config();
 const app: express.Application = express();
 app.use(bodyParser.json());
@@ -13,12 +13,20 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //for oauth
-const jwtCheck = auth({
-    audience: 'This is a unique Identifier',
-    issuerBaseURL: 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
-    tokenSigningAlg: 'RS256'
-});
+// const jwtCheck = auth({
+//     audience: 'This is a unique Identifier',
+//     issuerBaseURL: 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
+//     tokenSigningAlg: 'RS256'
+// });
 
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'a long, randomly-generated string stored in env',
+  baseURL: 'http://localhost:5173',
+  clientID: '1XI8fKAovPJeWT1EXNCW4TNhaXLpVk2T',
+  issuerBaseURL: 'https://dev-cd616eaxtu7so5dm.us.auth0.com'
+};
 const port: number = parseInt(process.env.PORT || '3001', 10);
 const host : string = process.env.HOST || 'localhost';
 const connectionStringLocal: string = "mongodb://localhost:27017/";
@@ -35,7 +43,7 @@ mongoose.connection.on("disconnected", () => {
 mongoose.connection.on("error", (err: Error) => {
   console.log(`mongoose Error: ${err}`);
 });
-app.use(jwtCheck)
+app.use(auth(config))
 app.use("/user", userRoutes);
 app.listen(port, host, () => {
     console.log(`Backend is running on PORT : ${port}`);
