@@ -72,8 +72,6 @@ JWTs are commonly used for authentication and authorization in web applications,
 
 ## Q4. ID token vs Acess Token
 
-![alt text](image.png)
-
 Access tokens and ID tokens are both types of JSON Web Tokens (JWTs) used in authentication and authorization protocols like OAuth 2.0 and OpenID Connect. While they serve different purposes, they are often used together in modern authentication systems. Here's a brief overview of each:
 
 1. **Access Token**:
