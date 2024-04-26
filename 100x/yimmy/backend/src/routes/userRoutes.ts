@@ -4,11 +4,23 @@ import {userSignup,userLogin, check} from '../controllers/userController'; // Im
 import { Router } from 'express';
 const router:Router = express.Router();
 import { User } from '@auth0/auth0-react';
+import jwt from 'express-jwt'
+import jwks, { koaJwtSecret } from 'jwks-rsa'
 
 declare module 'express' {
     interface Request {
         user?: User; // Define the user property with the User type
     }
+}
+
+const verifyJwt = {
+    secret : jwks.expressJwtSecret({
+        cache : true,
+
+    }),
+    audience : 'this is a unique identifier',
+    issuer : 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
+    algorithm : ['RS256']
 }
 
 // Define a route for user signup
