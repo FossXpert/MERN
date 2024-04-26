@@ -49,4 +49,22 @@ In this example, the middleware function sets the UID in the `X-UID` header befo
 
 In summary, the choice between stateless and stateful architectures depends on factors such as scalability requirements, performance considerations, security needs, and the complexity of the application. Stateless architectures are often favored for scalability and simplicity, while stateful architectures may be preferred for applications that require maintaining user sessions and personalized experiences.
 
-## Q3. 
+## Q3. JWT Structure
+
+JWT stands for JSON Web Token. It is a compact, URL-safe means of representing claims to be transferred between two parties. The claims in a JWT are typically used to assert information about a user or other entity and can be trusted because they are digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
+
+Here are the main components of a JWT:
+
+1. **Header**: Contains metadata about the type of token and the cryptographic algorithms used to secure it. It typically looks like this:
+   ```
+   {
+     "alg": "HS256",
+     "typ": "JWT"
+   }
+   ```
+
+2. **Payload (Claims)**: Contains the actual data being transmitted, such as user information or authorization details. It can also contain custom claims defined by the application. The payload is often encoded as a JSON object and may include standard claims defined by the JWT specification, such as `iss` (issuer), `sub` (subject), `exp` (expiration time), `aud` (audience), etc.
+
+3. **Signature**: Used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way. The signature is created by encoding the header and payload, concatenating them with a period (`.`) separator, and then hashing the result using a secret key or private key. This signature is included in the JWT.
+
+JWTs are commonly used for authentication and authorization in web applications, APIs, and microservices architectures. They allow clients to authenticate themselves and access protected resources by presenting a token that encapsulates their identity and permissions. JWTs are self-contained, meaning that all the information needed for authentication and authorization is contained within the token itself, reducing the need for server-side storage and database lookups.
