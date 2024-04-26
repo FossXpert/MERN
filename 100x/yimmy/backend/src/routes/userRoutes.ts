@@ -32,15 +32,17 @@ router.post('/login', async (req: Request, res: Response) => {
 
 router.get('/unprotected',async(req:Request,res:Response)=>{
     try {
+
         res.status(200).json({
             message: 'Hello from unprotected route!'
         })
+
     }catch(error){
         throw error
     }
 })
 
-router.get('/protected',authenticateJWT,async(req:Request,res:Response)=>{
+router.get('/protected',async(req:Request,res:Response)=>{
     try {
         res.status(200).json({
             message: 'Hello from Protected route!'
