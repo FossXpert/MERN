@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import UserModel, { User } from "../models/User";
 import { NextFunction, Request, Response } from "express";
 
-import { authenticateJWT, customRequest, generateJWT } from "./signup/jwtHandler";
+import {customRequest, generateJWT } from "./signup/jwtHandler";
 
 
 require("dotenv").config();
