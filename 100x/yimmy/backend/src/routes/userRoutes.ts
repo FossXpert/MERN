@@ -29,7 +29,7 @@ router.post('/login', async (req: Request, res: Response) => {
         });
     }
 });
-router.get('/protected',async(req:Request,res:Response)=>{
+router.get('/getUserData',async(req:Request,res:Response)=>{
     try{
         const authToken = req.headers.authorization?.split(' ')[1];
         const response = await axios.get('https://dev-cd616eaxtu7so5dm.us.auth0.com/userinfo',{
