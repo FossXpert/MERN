@@ -41,16 +41,6 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
 }));
-router.get('/unprotected', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        res.status(200).json({
-            message: 'Hello from unprotected route!'
-        });
-    }
-    catch (error) {
-        throw error;
-    }
-}));
 router.get('/protected', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const payload = req.user;

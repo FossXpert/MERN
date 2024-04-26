@@ -38,7 +38,7 @@ export default function Home(){
             <h1>Auth0 Login</h1>
             <ul>
                 <li><Button onClick={()=>callProtectedApi()}>Protected Route</Button></li>
-                <li><Button onClick={()=>callApi()}>Unprotected Route</Button></li>
+                <li><Button onClick={()=>callProtectedApi()}>Protected Route</Button></li>
             </ul>
             {error && <p>Authentication Error Mate</p>}
             {!error && isLoading && <p> Loading...</p>}
