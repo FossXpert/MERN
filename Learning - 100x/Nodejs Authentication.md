@@ -68,3 +68,22 @@ Here are the main components of a JWT:
 3. **Signature**: Used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way. The signature is created by encoding the header and payload, concatenating them with a period (`.`) separator, and then hashing the result using a secret key or private key. This signature is included in the JWT.
 
 JWTs are commonly used for authentication and authorization in web applications, APIs, and microservices architectures. They allow clients to authenticate themselves and access protected resources by presenting a token that encapsulates their identity and permissions. JWTs are self-contained, meaning that all the information needed for authentication and authorization is contained within the token itself, reducing the need for server-side storage and database lookups.
+
+
+## Q4. ID token vs Acess Token
+
+Access tokens and ID tokens are both types of JSON Web Tokens (JWTs) used in authentication and authorization protocols like OAuth 2.0 and OpenID Connect. While they serve different purposes, they are often used together in modern authentication systems. Here's a brief overview of each:
+
+1. **Access Token**:
+   - Purpose: Access tokens are used to authorize access to specific resources on behalf of a user. They represent the permissions granted to an application to access those resources.
+   - Content: Access tokens typically contain information about the user, such as their ID, along with metadata about the token itself (e.g., expiration time).
+   - Usage: Access tokens are sent with each API request to access protected resources. The server validates the access token to determine whether the request is authorized.
+   - Lifespan: Access tokens are short-lived and have an expiration time. Once expired, they are no longer valid.
+
+2. **ID Token**:
+   - Purpose: ID tokens are used to authenticate users and provide information about their identity. They contain claims about the user, such as their username, email address, and other profile information.
+   - Content: ID tokens typically contain user information and metadata about the token itself, similar to access tokens.
+   - Usage: ID tokens are typically sent to the client application after the user successfully authenticates. They are used by the client application to verify the user's identity and make authorization decisions.
+   - Lifespan: ID tokens are also short-lived and have an expiration time. However, they are not used to access protected resources directly but are instead used to obtain user information.
+
+In summary, access tokens are used to access protected resources on behalf of a user, while ID tokens are used to authenticate users and provide information about their identity. They serve different purposes but are often used together in authentication flows to provide a comprehensive solution for authentication and authorization.
