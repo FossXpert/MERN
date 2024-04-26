@@ -31,6 +31,7 @@ export default function Home(){
           const response = await axios.get(url, {
             headers: {
               Authorization: `Bearer ${token}`,
+              'content-type': 'application/json'
             },
           });
           if (response.status >= 200 && response.status < 300) {
