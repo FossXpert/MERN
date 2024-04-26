@@ -51,7 +51,7 @@ router.get('/unprotected', (req, res) => __awaiter(void 0, void 0, void 0, funct
         throw error;
     }
 }));
-router.post('/protected', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/protected', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const payload = req.user;
         console.log("Payload + ", payload);
