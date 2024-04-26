@@ -53,6 +53,8 @@ router.get('/unprotected', (req, res) => __awaiter(void 0, void 0, void 0, funct
 }));
 router.get('/protected', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const payload = req.user;
+        console.log("Payload + ", payload);
         res.status(200).json({
             message: 'Hello from Protected route!'
         });

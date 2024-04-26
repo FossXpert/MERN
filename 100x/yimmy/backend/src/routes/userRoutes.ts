@@ -2,8 +2,14 @@ import express from 'express';
 import { Request, Response } from 'express';
 import {userSignup,userLogin, check} from '../controllers/userController'; // Import the userSignup function
 import { Router } from 'express';
-import { authenticateJWT } from '../controllers/signup/jwtHandler';
 const router:Router = express.Router();
+import { User } from '@auth0/auth0-react';
+
+declare module 'express' {
+    interface Request {
+        user?: User; // Define the user property with the User type
+    }
+}
 
 // Define a route for user signup
 router.post('/signup', async (req: Request, res: Response) => {
@@ -44,6 +50,8 @@ router.get('/unprotected',async(req:Request,res:Response)=>{
 
 router.get('/protected',async(req:Request,res:Response)=>{
     try {
+        const payload = req.user;
+        console.log("Payload + ",payload);
         res.status(200).json({
             message: 'Hello from Protected route!'
         })
