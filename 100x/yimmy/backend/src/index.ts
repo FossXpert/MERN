@@ -4,20 +4,14 @@ import cors from "cors";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes";
 import dotenv from 'dotenv';
-import { useAuth0 } from "@auth0/auth0-react";
-import {auth} from "express-oauth2-jwt-bearer"
 dotenv.config();
+
+
 const app: express.Application = express();
 app.use(bodyParser.json());
 // Enable CORS for all domains
 app.use(cors());
 
-//for oauth
-const jwtCheck = auth({
-    audience: 'This is a unique Identifier',
-    issuerBaseURL: 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
-    tokenSigningAlg: 'RS256'
-});
 
 const port: number = parseInt(process.env.PORT || '3001', 10);
 const host : string = process.env.HOST || 'localhost';
@@ -35,7 +29,6 @@ mongoose.connection.on("disconnected", () => {
 mongoose.connection.on("error", (err: Error) => {
   console.log(`mongoose Error: ${err}`);
 });
-app.use(jwtCheck)
 app.use("/user", userRoutes);
 app.listen(port, host, () => {
     console.log(`Backend is running on PORT : ${port}`);

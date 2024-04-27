@@ -31,3 +31,14 @@ export const userData = async(req:Request,res:Response) => {
         
     }
 }
+/*
+add these in index.ts
+//for oauth
+const jwtCheck = auth({
+    audience: 'This is a unique Identifier',
+    issuerBaseURL: 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
+    tokenSigningAlg: 'RS256'
+});
+app.use(jwtCheck)
+*/
+
