@@ -12,8 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userData = void 0;
+exports.userData = exports.login = void 0;
 const axios_1 = __importDefault(require("axios"));
+const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+});
+exports.login = login;
 const userData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
@@ -41,3 +44,13 @@ const userData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.userData = userData;
+/*
+add these in index.ts
+//for oauth
+const jwtCheck = auth({
+    audience: 'This is a unique Identifier',
+    issuerBaseURL: 'https://dev-cd616eaxtu7so5dm.us.auth0.com/',
+    tokenSigningAlg: 'RS256'
+});
+app.use(jwtCheck)
+*/
