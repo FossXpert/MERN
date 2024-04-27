@@ -1,7 +1,7 @@
 import { Auth0Provider } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Home from './views/Home';
+import Home from './components/auth0-frontend-files/Home';
 
 function App() {
   return (

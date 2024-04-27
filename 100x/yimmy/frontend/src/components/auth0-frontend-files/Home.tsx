@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import LogIn from "../components/Login";
-import Logout from "../components/Logout";
-import Profile from "../components/Profile";
+import LogIn from "./Login";
+import Logout from "./Logout";
+import Profile from "./Profile";
 import { Button } from "@mui/material";
 import axios from "axios";
 
