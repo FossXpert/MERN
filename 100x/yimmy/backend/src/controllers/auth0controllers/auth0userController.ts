@@ -2,7 +2,9 @@ import axios from "axios";
 import { Response } from "express";
 import { Request } from "express-jwt";
 
-
+export const login = async(req:Request,res:Response) => {
+    
+}
 
 export const userData = async(req:Request,res:Response) => {
     try {
@@ -12,7 +14,6 @@ export const userData = async(req:Request,res:Response) => {
                 Authorization : `Bearer ${token}`
             }
         })
-
         if(response.status >=200 && response.status<300){
             res.status(response.status).json({
                 message : "Request Success",
