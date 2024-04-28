@@ -82,3 +82,4 @@ https://code.pieces.app/blog/role-based-access-systems-in-nodejs
 "%PROGRAMFILES(X86)%\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AeaYSHD71-Dos6R_JXYmw7rYjTsgS7clBEL9jiIGMuF4CSsFVKC2ZmzN1nfVb68aMNf9oA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=%COMPUTERNAME%
 
 https://blackbox.ai/share/f0c30598-52bf-4efb-9377-52ed0e7b828e
+https://vscode.dev/profile/github/c3c5d0b0db11e5744ea93be3694c57d7
