@@ -34,7 +34,6 @@ const defaultTheme = createTheme();
 
 export default function CustomSignIn() {
 
-  const [email,setEmail]:[string,(email:string)=>void] = useRecoilState(atomEmail);
   const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
   const [role,setRole]:[string,(role:string)=>void] = useRecoilState(atomRole);
   const [remeberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
@@ -46,7 +45,6 @@ export default function CustomSignIn() {
   const checkSignin = async(): Promise<void> =>{
       try {
         const body = {
-            email,
             username,
             password,
         };
@@ -92,13 +90,13 @@ export default function CustomSignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email/Username"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
               autoFocus
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setEmail(e.target.value);
+                setUsername(e.target.value);
               }}
             />
             <TextField

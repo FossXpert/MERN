@@ -40,8 +40,7 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
         //validate Email and username
         let inputProps = zod_1.z.object({
             email: zod_1.z.string().email(),
-            password: zod_1.z.string().min(6),
-            mobile: zod_1.z.string().min(10).max(10),
+            password: zod_1.z.string().min(1),
             username: zod_1.z.string().min(3),
         });
         const parsedInput = inputProps.safeParse(req.body);
@@ -50,7 +49,6 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
         }
         const email = parsedInput.data.email;
         const username = parsedInput.data.username;
-        const mobile = parsedInput.data.mobile;
         const password = parsedInput.data.password;
         if (!!(yield validateEmailID(email))) {
             res.status(409).json("Email already exist");
@@ -61,10 +59,10 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
             return;
         }
         //validate Mobile
-        if (!!(yield vaildateMobile(mobile))) {
-            res.status(409).json("This Mobile Number already exist");
-            return;
-        }
+        // if (!!(await vaildateMobile(mobile))) {
+        //     res.status(409).json("This Mobile Number already exist");
+        //     return;
+        //   }
         //save password using bcrypt
         const encryPassword = yield encryptPassword(password);
         const user = new User_1.default({
@@ -88,31 +86,16 @@ exports.userSignup = userSignup;
 const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let inputProps = zod_1.z.object({
-            email: zod_1.z.string().email().optional(),
-            password: zod_1.z.string().min(6),
-            username: zod_1.z.string().min(3).optional(),
+            username: zod_1.z.string().min(3),
+            password: zod_1.z.string().min(1),
         });
+        console.log(req.body);
         const parsedInput = inputProps.safeParse(req.body);
         if (!parsedInput.success) {
             console.log(parsedInput.error.errors);
             return res.status(400).json(parsedInput.error.errors);
         }
-        const email = parsedInput.data.email;
-        const username = parsedInput.data.username;
-        if (!email && !username) {
-            return res.status(400).json("Please provide email or username");
-        }
-        // Find user by email or username
-        let userData;
-        if (email) {
-            userData = yield validateEmailID(email);
-        }
-        else if (username) {
-            userData = yield validateEmailID(username);
-        }
-        else {
-            throw new Error("Invalid email address or username");
-        }
+        const userData = yield validateEmailID(parsedInput.data.username);
         if (!userData) {
             return res.status(404).json("User not found");
         }

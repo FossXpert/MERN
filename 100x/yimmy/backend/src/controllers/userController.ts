@@ -36,8 +36,7 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
     let inputProps = z.object({
       email: z.string().email(),
-      password: z.string().min(3),
-      mobile: z.string().min(10).max(10),
+      password: z.string().min(1),
       username: z.string().min(3),
     });    
     const parsedInput = inputProps.safeParse(req.body);
@@ -47,7 +46,6 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
     const email = parsedInput.data.email;
     const username = parsedInput.data.username;
-    const mobile = parsedInput.data.mobile;
     const password = parsedInput.data.password;
 
     if (!!(await validateEmailID(email))) {
@@ -59,10 +57,10 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
       return;
     }
     //validate Mobile
-    if (!!(await vaildateMobile(mobile))) {
-        res.status(409).json("This Mobile Number already exist");
-        return;
-      }
+    // if (!!(await vaildateMobile(mobile))) {
+    //     res.status(409).json("This Mobile Number already exist");
+    //     return;
+    //   }
     //save password using bcrypt
     const encryPassword = await encryptPassword(password);
     const user = new UserModel({
@@ -85,36 +83,18 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 export const userLogin = async (req: Request, role: string, res: Response) => {
   try {
 
-    let inputProps = z.lazy(()=>
-      z.object({
-      email : z.string().email(),
-      password : z.string().min(3)
-    }).or(z.object({
-      username : z.string().min(3),
-      password : z.string().min(3)
-    })));
-    
+    let inputProps = z.object({
+      username: z.string().min(3),
+      password: z.string().min(1),
+    });
+
+    console.log(req.body)
     const parsedInput = inputProps.safeParse(req.body);
     if(!parsedInput.success){
       console.log(parsedInput.error.errors)
       return res.status(400).json(parsedInput.error.errors);
     }
-    const email : string | undefined= parsedInput.data.email;
-    const username : string | undefined = parsedInput.data.username;
-
-    if(!email && !username){
-      return res.status(400).json("Please provide email or username");
-    }
-
-    // Find user by email or username
-    let userData;
-    if (email) {
-      userData = await validateEmailID(email);
-    } else if (username) {
-      userData = await validateEmailID(username);
-    } else {
-      throw new Error("Invalid email address or username");
-    }
+    const userData = await validateEmailID(parsedInput.data.username);
     if(!userData){
       return res.status(404).json("User not found");
     }
