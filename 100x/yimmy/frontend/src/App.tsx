@@ -12,10 +12,9 @@ function App() {
       redirect_uri: window.location.origin,
       audience : "This is a unique Identifier"
     }}
-  
   >
     <Router>
-      <Routes>
+      <Routes> 
         <Route path='/' element={<CustomSignIn/>} />
       </Routes>
     </Router>
