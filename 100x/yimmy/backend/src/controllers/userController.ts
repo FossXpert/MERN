@@ -85,7 +85,14 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
 export const userLogin = async (req: Request, role: string, res: Response) => {
   try {
-    let { email, password } = req.body;
+    const parsedInput = inputProps.safeParse(req.body);
+    if(!parsedInput.success){
+      console.log(parsedInput.error.errors)
+      return res.status(400).json(parsedInput.error.errors);
+    }
+    let { email, password } = parsedInput.data;
+    console.log(email,password)
+
     let userData = await validateEmailID(email);
     if (userData === null) {
       throw new Error("Invalid email address or User Does not exist");
