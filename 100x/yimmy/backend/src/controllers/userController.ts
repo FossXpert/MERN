@@ -48,6 +48,8 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
     const username = parsedInput.data.username;
     const password = parsedInput.data.password;
 
+    console.log(email,username)
+
     if (!!(await validateEmailID(email))) {
       res.status(409).json("Email already exist");
       return;
@@ -87,8 +89,7 @@ export const userLogin = async (req: Request, role: string, res: Response) => {
       username: z.string().min(3),
       password: z.string().min(1),
     });
-
-    console.log(req.body)
+    
     const parsedInput = inputProps.safeParse(req.body);
     if(!parsedInput.success){
       console.log(parsedInput.error.errors)

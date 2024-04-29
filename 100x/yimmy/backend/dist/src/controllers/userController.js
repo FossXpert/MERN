@@ -50,6 +50,7 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
         const email = parsedInput.data.email;
         const username = parsedInput.data.username;
         const password = parsedInput.data.password;
+        console.log(email, username);
         if (!!(yield validateEmailID(email))) {
             res.status(409).json("Email already exist");
             return;
@@ -89,7 +90,6 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
             username: zod_1.z.string().min(3),
             password: zod_1.z.string().min(1),
         });
-        console.log(req.body);
         const parsedInput = inputProps.safeParse(req.body);
         if (!parsedInput.success) {
             console.log(parsedInput.error.errors);
