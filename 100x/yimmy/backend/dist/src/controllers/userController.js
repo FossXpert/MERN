@@ -18,12 +18,6 @@ const User_1 = __importDefault(require("../models/User"));
 const zod_1 = require("zod");
 const jwtHandler_1 = require("./signup/jwtHandler");
 require("dotenv").config();
-let inputProps = zod_1.z.object({
-    email: zod_1.z.string().email(),
-    password: zod_1.z.string().min(6),
-    mobile: zod_1.z.string().min(10).max(10),
-    username: zod_1.z.string().min(3),
-});
 const validateEmailID = (usernameOrEmail) => __awaiter(void 0, void 0, void 0, function* () {
     const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
     let isEmailExist = yield User_1.default.findOne({
@@ -44,6 +38,12 @@ const comparePassword = (password, existingPassword) => __awaiter(void 0, void 0
 const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         //validate Email and username
+        let inputProps = zod_1.z.object({
+            email: zod_1.z.string().email(),
+            password: zod_1.z.string().min(6),
+            mobile: zod_1.z.string().min(10).max(10),
+            username: zod_1.z.string().min(3),
+        });
         const parsedInput = inputProps.safeParse(req.body);
         if (!parsedInput.success) {
             return res.status(400).json(parsedInput.error.errors);
@@ -87,20 +87,40 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
 exports.userSignup = userSignup;
 const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const parsedInput = inputProps.safeParse(req.body.password);
+        let inputProps = zod_1.z.object({
+            email: zod_1.z.string().email().optional(),
+            password: zod_1.z.string().min(6),
+            username: zod_1.z.string().min(3).optional(),
+        });
+        const parsedInput = inputProps.safeParse(req.body);
         if (!parsedInput.success) {
             console.log(parsedInput.error.errors);
             return res.status(400).json(parsedInput.error.errors);
         }
-        let { email, password } = parsedInput.data;
-        console.log(email, password);
-        let userData = yield validateEmailID(email);
-        if (userData === null) {
-            throw new Error("Invalid email address or User Does not exist");
+        const email = parsedInput.data.email;
+        const username = parsedInput.data.username;
+        if (!email && !username) {
+            return res.status(400).json("Please provide email or username");
+        }
+        // Find user by email or username
+        let userData;
+        if (email) {
+            userData = yield validateEmailID(email);
+        }
+        else if (username) {
+            userData = yield validateEmailID(username);
+        }
+        else {
+            throw new Error("Invalid email address or username");
+        }
+        if (!userData) {
+            return res.status(404).json("User not found");
         }
         if (userData.role !== role) {
             throw new Error(`You are trying to access ${role}'s route with a ${userData.role}'s account`);
         }
+        //Password time
+        const password = parsedInput.data.password;
         if (yield comparePassword(password, userData.password)) {
             console.log("Userdata  :" + userData);
             let token = (0, jwtHandler_1.generateJWT)(userData);

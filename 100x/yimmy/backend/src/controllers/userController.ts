@@ -36,7 +36,7 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
     let inputProps = z.object({
       email: z.string().email(),
-      password: z.string().min(6),
+      password: z.string().min(3),
       mobile: z.string().min(10).max(10),
       username: z.string().min(3),
     });    
@@ -84,33 +84,48 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
 export const userLogin = async (req: Request, role: string, res: Response) => {
   try {
+
+    let inputProps = z.lazy(()=>
+      z.object({
+      email : z.string().email(),
+      password : z.string().min(3)
+    }).or(z.object({
+      username : z.string().min(3),
+      password : z.string().min(3)
+    })));
     
-    let inputProps = z.object({
-      email: z.string().email().optional(),
-      password: z.string().min(6),
-      username: z.string().min(3).optional(),
-    });
     const parsedInput = inputProps.safeParse(req.body);
     if(!parsedInput.success){
       console.log(parsedInput.error.errors)
       return res.status(400).json(parsedInput.error.errors);
     }
-    const email : string|undefined= parsedInput.data.email;
-    const username = parsedInput.data.username;
+    const email : string | undefined= parsedInput.data.email;
+    const username : string | undefined = parsedInput.data.username;
 
     if(!email && !username){
       return res.status(400).json("Please provide email or username");
     }
 
-    let userData = await validateEmailID(email);
-    if (userData === null) {
-      throw new Error("Invalid email address or User Does not exist");
+    // Find user by email or username
+    let userData;
+    if (email) {
+      userData = await validateEmailID(email);
+    } else if (username) {
+      userData = await validateEmailID(username);
+    } else {
+      throw new Error("Invalid email address or username");
+    }
+    if(!userData){
+      return res.status(404).json("User not found");
     }
     if (userData.role !== role) {
       throw new Error(
         `You are trying to access ${role}'s route with a ${userData.role}'s account`,
       );
     }
+
+    //Password time
+    const password = parsedInput.data.password;
     if (await comparePassword(password, userData.password)) {
       console.log("Userdata  :" + userData);
       let token = generateJWT(userData);
