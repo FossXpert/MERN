@@ -87,7 +87,7 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
 exports.userSignup = userSignup;
 const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const parsedInput = inputProps.safeParse(req.body);
+        const parsedInput = inputProps.safeParse(req.body.password);
         if (!parsedInput.success) {
             console.log(parsedInput.error.errors);
             return res.status(400).json(parsedInput.error.errors);

@@ -9,13 +9,6 @@ import { parse } from "dotenv";
 
 require("dotenv").config();
 
-let inputProps = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-  mobile: z.string().min(10).max(10),
-  username: z.string().min(3),
-})
-
 const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
   const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
   let isEmailExist: User | null = await UserModel.findOne({
@@ -41,6 +34,12 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
   try {
     //validate Email and username
 
+    let inputProps = z.object({
+      email: z.string().email(),
+      password: z.string().min(6),
+      mobile: z.string().min(10).max(10),
+      username: z.string().min(3),
+    });    
     const parsedInput = inputProps.safeParse(req.body);
     if(!parsedInput.success){
       return res.status(400).json(parsedInput.error.errors);
@@ -85,13 +84,23 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
 export const userLogin = async (req: Request, role: string, res: Response) => {
   try {
+    
+    let inputProps = z.object({
+      email: z.string().email().optional(),
+      password: z.string().min(6),
+      username: z.string().min(3).optional(),
+    });
     const parsedInput = inputProps.safeParse(req.body);
     if(!parsedInput.success){
       console.log(parsedInput.error.errors)
       return res.status(400).json(parsedInput.error.errors);
     }
-    let { email, password } = parsedInput.data;
-    console.log(email,password)
+    const email : string|undefined= parsedInput.data.email;
+    const username = parsedInput.data.username;
+
+    if(!email && !username){
+      return res.status(400).json("Please provide email or username");
+    }
 
     let userData = await validateEmailID(email);
     if (userData === null) {
