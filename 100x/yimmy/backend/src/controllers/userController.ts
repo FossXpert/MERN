@@ -1,11 +1,19 @@
 import bcrypt from "bcrypt";
 import UserModel, { User } from "../models/User";
 import { NextFunction, Request, Response } from "express";
+import {z} from "zod";
 
 import {customRequest, generateJWT } from "./signup/jwtHandler";
 
 
 require("dotenv").config();
+
+let inputProps = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+  mobile: z.string().min(10).max(10),
+  username: z.string().min(3),
+})
 
 const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
   const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
@@ -31,6 +39,13 @@ const comparePassword = async (
 export const userSignup = async (req: Request, role: string, res: Response) => {
   try {
     //validate Email and username
+
+    const parsedInput = inputProps.safeParse(req.body);
+    if(!parsedInput.success){
+      return res.status(400).json(parsedInput.error.errors);
+    }
+
+    
     if (!!(await validateEmailID(req.body.email))) {
       res.status(409).json("Email or Username already exist");
       return;
