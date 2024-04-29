@@ -4,6 +4,7 @@ import { NextFunction, Request, Response } from "express";
 import {z} from "zod";
 
 import {customRequest, generateJWT } from "./signup/jwtHandler";
+import { parse } from "dotenv";
 
 
 require("dotenv").config();
@@ -45,21 +46,26 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
       return res.status(400).json(parsedInput.error.errors);
     }
 
-    
-    if (!!(await validateEmailID(req.body.email))) {
+    const email = parsedInput.data.email;
+    const username = parsedInput.data.username;
+    const mobile = parsedInput.data.mobile;
+    const password = parsedInput.data.password;
+
+    if (!!(await validateEmailID(email))) {
       res.status(409).json("Email or Username already exist");
       return;
     }
     //validate Mobile
-    if (!!(await vaildateMobile(req.body.mobile))) {
+    if (!!(await vaildateMobile(mobile))) {
         res.status(409).json("This Mobile Number already exist");
         return;
       }
     //save password using bcrypt
-    const password = await encryptPassword(req.body.password);
+    const encryPassword = await encryptPassword(password);
     const user = new UserModel({
-      ...req.body,
-      password,
+      email,
+      username,
+      encryPassword,
       role,
     });
     await user.save();
