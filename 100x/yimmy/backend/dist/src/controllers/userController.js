@@ -15,8 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.check = exports.userLogin = exports.userSignup = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
+const zod_1 = require("zod");
 const jwtHandler_1 = require("./signup/jwtHandler");
 require("dotenv").config();
+let inputProps = zod_1.z.object({
+    email: zod_1.z.string().email(),
+    password: zod_1.z.string().min(6),
+    mobile: zod_1.z.string().min(10).max(10),
+    username: zod_1.z.string().min(3),
+});
 const validateEmailID = (usernameOrEmail) => __awaiter(void 0, void 0, void 0, function* () {
     const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
     let isEmailExist = yield User_1.default.findOne({
@@ -37,19 +44,35 @@ const comparePassword = (password, existingPassword) => __awaiter(void 0, void 0
 const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         //validate Email and username
-        if (!!(yield validateEmailID(req.body.email))) {
-            res.status(409).json("Email or Username already exist");
+        const parsedInput = inputProps.safeParse(req.body);
+        if (!parsedInput.success) {
+            return res.status(400).json(parsedInput.error.errors);
+        }
+        const email = parsedInput.data.email;
+        const username = parsedInput.data.username;
+        const mobile = parsedInput.data.mobile;
+        const password = parsedInput.data.password;
+        if (!!(yield validateEmailID(email))) {
+            res.status(409).json("Email already exist");
+            return;
+        }
+        if (!!(yield validateEmailID(username))) {
+            res.status(409).json("Username already exist");
             return;
         }
         //validate Mobile
-        if (!!(yield vaildateMobile(req.body.mobile))) {
+        if (!!(yield vaildateMobile(mobile))) {
             res.status(409).json("This Mobile Number already exist");
             return;
         }
         //save password using bcrypt
-        const password = yield encryptPassword(req.body.password);
-        const user = new User_1.default(Object.assign(Object.assign({}, req.body), { password,
-            role }));
+        const encryPassword = yield encryptPassword(password);
+        const user = new User_1.default({
+            email,
+            username,
+            encryPassword,
+            role,
+        });
         yield user.save();
         return res.status(201).json({
             message: "Hurry! now you are successfully registred. Please login.",
