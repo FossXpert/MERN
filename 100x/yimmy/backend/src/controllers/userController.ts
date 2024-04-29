@@ -52,7 +52,11 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
     const password = parsedInput.data.password;
 
     if (!!(await validateEmailID(email))) {
-      res.status(409).json("Email or Username already exist");
+      res.status(409).json("Email already exist");
+      return;
+    }
+    if(!!(await validateEmailID(username))){
+      res.status(409).json("Username already exist");
       return;
     }
     //validate Mobile
