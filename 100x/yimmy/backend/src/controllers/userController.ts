@@ -46,9 +46,6 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
     const email = parsedInput.data.email;
     const username = parsedInput.data.username;
-    const password = parsedInput.data.password;
-
-    console.log(email,username)
 
     if (!!(await validateEmailID(email))) {
       res.status(409).json("Email already exist");
@@ -64,11 +61,13 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
     //     return;
     //   }
     //save password using bcrypt
-    const encryPassword = await encryptPassword(password);
+    const input_password = parsedInput.data.password;
+    const password = await encryptPassword(input_password);
+    console.log(input_password,password)
     const user = new UserModel({
       email,
       username,
-      encryPassword,
+      password,
       role,
     });
     await user.save();
@@ -78,6 +77,7 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
   } catch (error: any) {
     return res.status(500).json({
       message: error.message,
+      message_2 : error
     });
   }
 };

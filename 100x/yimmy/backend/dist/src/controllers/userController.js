@@ -49,8 +49,6 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
         }
         const email = parsedInput.data.email;
         const username = parsedInput.data.username;
-        const password = parsedInput.data.password;
-        console.log(email, username);
         if (!!(yield validateEmailID(email))) {
             res.status(409).json("Email already exist");
             return;
@@ -65,11 +63,13 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
         //     return;
         //   }
         //save password using bcrypt
-        const encryPassword = yield encryptPassword(password);
+        const input_password = parsedInput.data.password;
+        const password = yield encryptPassword(input_password);
+        console.log(input_password, password);
         const user = new User_1.default({
             email,
             username,
-            encryPassword,
+            password,
             role,
         });
         yield user.save();
@@ -80,6 +80,7 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
     catch (error) {
         return res.status(500).json({
             message: error.message,
+            message_2: error
         });
     }
 });
