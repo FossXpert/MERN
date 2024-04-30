@@ -83,9 +83,7 @@ export default function CustomSignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          {
-            
-          }
+          {}
             <TextField
               margin="normal"
               required
