@@ -2,9 +2,10 @@ import bcrypt from "bcrypt";
 import UserModel, { User } from "../models/User";
 import { NextFunction, Request, Response } from "express";
 import {z} from "zod";
-
+import signupUser from '@rahulray8518/common'
 import {customRequest, generateJWT } from "./signup/jwtHandler";
 require("dotenv").config();
+
 
 
 const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
