@@ -7,16 +7,19 @@ import {customRequest, generateJWT } from "./signup/jwtHandler";
 require("dotenv").config();
 
 
-let inputProps = z.object({
+let signupInput = z.object({
   email: z.string().email(),
   password: z.string().min(1),
   username: z.string().min(3),
 });
 
-let inputProps1 = z.object({
+let signinInput = z.object({
   username: z.string().min(3),
   password: z.string().min(1),
 });
+
+type signupUser = z.infer<typeof signupInput>
+type signinUser = z.infer<typeof signinInput>
 
 const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
   const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
@@ -44,7 +47,7 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
     //validate Email and username
 
         
-    const parsedInput = inputProps.safeParse(req.body);
+    const parsedInput = signupInput.safeParse(req.body);
     if(!parsedInput.success){
       return res.status(400).json(parsedInput.error.errors);
     }
@@ -89,7 +92,7 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
 export const userLogin = async (req: Request, role: string, res: Response) => {
   try {
-    const parsedInput = inputProps1.safeParse(req.body);
+    const parsedInput = signinInput.safeParse(req.body);
     if(!parsedInput.success){
       console.log(parsedInput.error.errors)
       return res.status(400).json(parsedInput.error.errors);
