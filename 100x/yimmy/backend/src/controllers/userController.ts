@@ -4,10 +4,19 @@ import { NextFunction, Request, Response } from "express";
 import {z} from "zod";
 
 import {customRequest, generateJWT } from "./signup/jwtHandler";
-import { parse } from "dotenv";
-
-
 require("dotenv").config();
+
+
+let inputProps = z.object({
+  email: z.string().email(),
+  password: z.string().min(1),
+  username: z.string().min(3),
+});
+
+let inputProps1 = z.object({
+  username: z.string().min(3),
+  password: z.string().min(1),
+});
 
 const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
   const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
@@ -34,11 +43,7 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
   try {
     //validate Email and username
 
-    let inputProps = z.object({
-      email: z.string().email(),
-      password: z.string().min(1),
-      username: z.string().min(3),
-    });    
+        
     const parsedInput = inputProps.safeParse(req.body);
     if(!parsedInput.success){
       return res.status(400).json(parsedInput.error.errors);
@@ -84,13 +89,7 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
 
 export const userLogin = async (req: Request, role: string, res: Response) => {
   try {
-
-    let inputProps = z.object({
-      username: z.string().min(3),
-      password: z.string().min(1),
-    });
-    
-    const parsedInput = inputProps.safeParse(req.body);
+    const parsedInput = inputProps1.safeParse(req.body);
     if(!parsedInput.success){
       console.log(parsedInput.error.errors)
       return res.status(400).json(parsedInput.error.errors);
