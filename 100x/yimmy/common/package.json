@@ -1,7 +1,7 @@
 {
   "name": "@rahulray8518/common",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "Added support for declaration file",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
