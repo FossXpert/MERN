@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.check = exports.userLogin = exports.userSignup = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
-const zod_1 = require("zod");
+const common_1 = require("@rahulray8518/common");
 const jwtHandler_1 = require("./signup/jwtHandler");
 require("dotenv").config();
 const validateEmailID = (usernameOrEmail) => __awaiter(void 0, void 0, void 0, function* () {
@@ -38,12 +38,7 @@ const comparePassword = (password, existingPassword) => __awaiter(void 0, void 0
 const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         //validate Email and username
-        let inputProps = zod_1.z.object({
-            email: zod_1.z.string().email(),
-            password: zod_1.z.string().min(1),
-            username: zod_1.z.string().min(3),
-        });
-        const parsedInput = inputProps.safeParse(req.body);
+        const parsedInput = common_1.signupInput.safeParse(req.body);
         if (!parsedInput.success) {
             return res.status(400).json(parsedInput.error.errors);
         }
@@ -87,11 +82,7 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
 exports.userSignup = userSignup;
 const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let inputProps = zod_1.z.object({
-            username: zod_1.z.string().min(3),
-            password: zod_1.z.string().min(1),
-        });
-        const parsedInput = inputProps.safeParse(req.body);
+        const parsedInput = common_1.signinInput.safeParse(req.body);
         if (!parsedInput.success) {
             console.log(parsedInput.error.errors);
             return res.status(400).json(parsedInput.error.errors);

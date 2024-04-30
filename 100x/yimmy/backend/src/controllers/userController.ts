@@ -17,7 +17,7 @@ const validateEmailID = async (usernameOrEmail: string): Promise<User | null> =>
 };
 const encryptPassword = async (password: string): Promise<string> => {
   return await bcrypt.hash(password, 12);
-};
+}; 
 const vaildateMobile = async(mobile:string):Promise<User|null> => {
     let isMobileExist : User|null = await UserModel.findOne({mobile});
     return isMobileExist;
