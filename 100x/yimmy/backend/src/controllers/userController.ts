@@ -14,8 +14,8 @@ let signupInput = z.object({
 });
 
 let signinInput = z.object({
-  username: z.string().min(3),
-  password: z.string().min(1),
+  username: z.string().min(3).max(24),
+  password: z.string().min(1).max(128),
 });
 
 type signupUser = z.infer<typeof signupInput>
