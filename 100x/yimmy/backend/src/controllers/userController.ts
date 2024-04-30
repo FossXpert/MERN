@@ -7,20 +7,6 @@ import {customRequest, generateJWT } from "./signup/jwtHandler";
 require("dotenv").config();
 
 
-let signupInput = z.object({
-  email: z.string().email(),
-  password: z.string().min(1),
-  username: z.string().min(3),
-});
-
-let signinInput = z.object({
-  username: z.string().min(3).max(24),
-  password: z.string().min(1).max(128),
-});
-
-type signupUser = z.infer<typeof signupInput>
-type signinUser = z.infer<typeof signinInput>
-
 const validateEmailID = async (usernameOrEmail: string): Promise<User | null> => {
   const isEmail = /\S+@\S+\.\S+/.test(usernameOrEmail);
   let isEmailExist: User | null = await UserModel.findOne({
