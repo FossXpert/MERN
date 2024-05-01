@@ -9,5 +9,4 @@ cd home/MERN/100x/yimmy/backend/dist/src
  git pull origin daily-changes
  pm2 kill
  pm2 start index.js
-
 ---------------------------------------------------------------
