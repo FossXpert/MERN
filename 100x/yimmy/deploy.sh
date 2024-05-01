@@ -1,0 +1,1 @@
+ssh -t -i C:/Users/rayra/Documents/key-pair/yimmy-rahul-pc.pem ubuntu@ec2-15-207-19-241.ap-south-1.compute.amazonaws.com "sudo bash ~/deploy.sh"
