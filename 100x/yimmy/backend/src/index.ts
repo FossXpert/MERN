@@ -14,7 +14,7 @@ app.use(cors());
 
 
 const port: number = parseInt(process.env.PORT || '3001', 10);
-const host : string = process.env.HOST || 'localhost';
+// const host : string = process.env.HOST || 'localhost';
 
 const connectionStringLocal: string = "mongodb://localhost:27017/";
 const connectionString: string =
@@ -33,7 +33,7 @@ mongoose.connection.on("error", (err: Error) => {
 app.use("/user", userRoutes);
 
 
-app.listen(port, host, () => {
-    console.log(`Backend is running on PORT : ${port} and ${host}` );
+app.listen(port, () => {
+    console.log(`Backend is running on PORT : ${port}` );
   });
   
