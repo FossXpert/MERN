@@ -30,5 +30,5 @@ mongoose_1.default.connection.on("error", (err) => {
 });
 app.use("/user", userRoutes_1.default);
 app.listen(port, host, () => {
-    console.log(`Backend is running on PORT : ${port}`);
+    console.log(`Backend is running on PORT : ${port} and ${host}`);
 });
