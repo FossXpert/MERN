@@ -29,6 +29,6 @@ mongoose_1.default.connection.on("error", (err) => {
     console.log(`mongoose Error: ${err}`);
 });
 app.use("/user", userRoutes_1.default);
-app.listen(port, () => {
+app.listen(3001, () => {
     console.log(`Backend is running on PORT : ${port}`);
 });
