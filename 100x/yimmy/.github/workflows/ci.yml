@@ -16,3 +16,9 @@ on:
             - name: SSH and deploy
               env:
                 SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+              run: |
+                echo "$SSH_PRIVATE_KEY" > keyfile
+                chmod 600 keyfile
+                mkdir -p ~/.ssh
+                cp known_hosts ~/.ssh/known_hosts
+                ssh -t -i keyfile ubuntu@ec2-15-207-19-241.ap-south-1.compute.amazonaws.com "sudo bash ~/deploy.sh"
