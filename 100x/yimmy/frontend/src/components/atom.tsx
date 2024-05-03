@@ -16,3 +16,7 @@ export const atomRole = atom({
     key : 'role',
     default : 'user'
 })
+export const atomFullName = atom({
+    default: '',
+    key: 'fullname'
+})
