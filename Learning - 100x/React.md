@@ -51,4 +51,15 @@ In the above code, <> and </> act as an invisible wrapper around the children co
 
 Fragments are particularly useful when you need to return multiple elements from a component, especially when those elements don't need a parent container or when adding a parent container would interfere with the layout or styling. They're also handy when you want to avoid unnecessary wrapper elements in your component tree.
 
+
+
+## Custom type making if it not exist specially when attaching payload in request header
+
+```javascript
+export interface customRequest extends Request {
+  payload: userPayload | JwtPayload;
+}
+
+(req as customRequest).payload = decoded;
+
 ```

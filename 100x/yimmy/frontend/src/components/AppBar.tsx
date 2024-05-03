@@ -14,10 +14,10 @@ export default function ResponsiveAppBar(){
     try {
         const token = localStorage.getItem('token');
         if (token) {
-            const decodedToken:JwtPayload = jwtDecode(token);
+            const decodedToken = jwtDecode;
             username = decodedToken.username;
         }
-    } catch (error : any) {
+    } catch (error) {
         console.error('Error decoding token:', error.message);
     }
     return (

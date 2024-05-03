@@ -3,7 +3,7 @@ import UserModel, { User } from "../models/User";
 import { NextFunction, Request, Response } from "express";
 import {z} from 'zod'
 import {signupInput,signinInput} from '@rahulray8518/common'
-import {customRequest, generateJWT } from "./signup/jwtHandler";
+import {generateJWT } from "./signup/jwtHandler";
 require("dotenv").config();
 
 
@@ -121,15 +121,4 @@ export const userLogin = async (req: Request, role: string, res: Response) => {
       message: error.message,
     });
   }
-};
-
-export const check = (req: Request, res: Response) => {
-  res.send(
-    JSON.stringify({
-      header: req.headers,
-      body: req.body,
-      param: req.params,
-      payload : (req as customRequest).payload
-    }),
-  );
 };
