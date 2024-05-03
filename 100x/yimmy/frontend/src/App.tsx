@@ -2,6 +2,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import CustomSignIn from './components/CustomSignIn';
+import CustomSignup from './components/CustomSignup';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
     <Router>
       <Routes> 
         <Route path='/' element={<CustomSignIn/>} />
+        <Route path='/signup' element={<CustomSignup/>} />
+        <Route path='/signin' element={<CustomSignIn/>}/>
       </Routes>
     </Router>
 

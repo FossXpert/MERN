@@ -2,8 +2,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -33,7 +31,7 @@ function Copyright(props: TypographyProps) {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function CustomSignIn() {
+export default function CustomSignup() {
     const [email,setEmail]:[string,(email:string) => void] = useRecoilState(atomEmail);
     const [password,setPassword]:[string,(password:string)=>void] = useState("");
     const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
@@ -47,7 +45,7 @@ export default function CustomSignIn() {
             const body = {
                 email,username,password
             }
-            const response = await axios.post(`${BASE_URL}/signup`,body,{
+            const response = await axios.post(`${BASE_URL}/user/signup`,body,{
                 headers:{
                     'Content-Type': 'application/json'
                 }
@@ -78,7 +76,7 @@ export default function CustomSignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
             <TextField
               margin="normal"
