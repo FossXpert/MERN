@@ -37,8 +37,8 @@ export default function CustomSignIn() {
     const [password,setPassword]:[string,(password:string)=>void] = useState("");
     const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
 
-    const handleSubmit = async() => {
-        const 
+    const handleSubmit = async():Promise<void> => {
+        
     }
   return (
     
