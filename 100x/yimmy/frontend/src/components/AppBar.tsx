@@ -15,8 +15,9 @@ export default function ResponsiveAppBar(){
                 </Typography>
                 <Typography sx={{textAlign:'left', marginTop:'10px'}} >
                    {!isLoggedIn && (<Button color="inherit">Login</Button>)}
-                   {isLoggedIn && (<Button color="inherit">Signup</Button>)}
-                                        
+                   {!isLoggedIn && (<Button color="inherit">Signup</Button>)}
+                   {isLoggedIn && (<Button color="inherit">atomUserName</Button>)}
+                   {!isLoggedIn && (<Button color="inherit">Login</Button>)}                 
                 </Typography>
                 
             </Toolbar>
