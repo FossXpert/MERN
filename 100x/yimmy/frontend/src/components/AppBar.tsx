@@ -7,11 +7,11 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 export default function ResponsiveAppBar(){
 
     const isLoggedIn = true;
-    const username = localStorage.getItem("username")
+    const username = jwtDecode
     return (
         <AppBar position='fixed'>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                {/* why componnet ="div" https://sprl.in/s3UmCMi */}
+                {/* why component ="div" https://sprl.in/s3UmCMi */}
                 <Typography variant='h6' component="div" sx={{textAlign:'left', marginTop:'10px'}}>
                     Udemy
                 </Typography>
