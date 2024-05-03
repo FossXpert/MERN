@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import CustomSignIn from './components/CustomSignIn';
 import CustomSignup from './components/CustomSignup';
+import ShowCourses from './components/ShowCourses';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path='/' element={<CustomSignIn/>} />
         <Route path='/signup' element={<CustomSignup/>} />
         <Route path='/signin' element={<CustomSignIn/>}/>
-        <Route path="/courses" element={<ShowCourses />} />
+        <Route path="/all-courses" element={<ShowCourses />} />
       </Routes>
     </Router>
 

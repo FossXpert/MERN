@@ -16,6 +16,8 @@ import { atomRememberMe, atomRole, atomUserName } from './atom';
 import axios from 'axios';
 import { useState } from 'react';
 import { BASE_URL } from '../config';
+import { useNavigate } from 'react-router-dom';
+
 
 function Copyright(props: TypographyProps) {
   return (
@@ -39,6 +41,7 @@ export default function CustomSignIn() {
   const [role,setRole]:[string,(role:string)=>void] = useRecoilState(atomRole);
   const [remeberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
   const [password,setPassword] : [string,(password:string)=>void] = useState("")
+  const navigate = useNavigate();
   //Hi Mate
   const handleSubmit = () => {
     checkSignin();
@@ -57,7 +60,7 @@ export default function CustomSignIn() {
         });
         if (response.status >= 200 && response.status < 300) {
           console.log('Request successful:', response.data);
-         
+          navigate('/all-courses')
         } else {
           console.log('Request failed:', response.statusText);
         }

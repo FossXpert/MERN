@@ -10,7 +10,7 @@ export default function CourseCard() {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image="https://picsum.photos/id/27/367/267"
         title="green iguana"
       />
       <CardContent>
@@ -23,8 +23,8 @@ export default function CourseCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">View</Button>
+        <Button size="small">Buy</Button>
       </CardActions>
     </Card>
   );
