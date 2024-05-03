@@ -21,7 +21,6 @@ export default function ResponsiveAppBar(){
                    {isLoggedIn && (<Button color="inherit">{username}</Button>)}
                    {isLoggedIn && (<Button color="inherit">Logout</Button>)}                 
                 </Typography>
-                
             </Toolbar>
         </AppBar>
     )
