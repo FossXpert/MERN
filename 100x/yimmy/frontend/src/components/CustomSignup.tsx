@@ -11,10 +11,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import axios from 'axios';
 import { useState } from 'react';
-import { atomEmail, atomFullName, atomUserName } from './atom';
+import { atomEmail, atomUserName } from './atom';
 
 function Copyright(props: TypographyProps) {
   return (
@@ -33,13 +33,13 @@ function Copyright(props: TypographyProps) {
 const defaultTheme = createTheme();
 
 export default function CustomSignIn() {
-
-    const [fullName,setFullName]:[string,(fullName:string)=>void] = useRecoilState(atomFullName);
     const [email,setEmail]:[string,(email:string) => void] = useRecoilState(atomEmail);
     const [password,setPassword]:[string,(password:string)=>void] = useState("");
     const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
 
-
+    const handleSubmit = async() => {
+        const 
+    }
   return (
     
     <ThemeProvider theme={defaultTheme}>
@@ -63,13 +63,26 @@ export default function CustomSignIn() {
               margin="normal"
               required
               fullWidth
-              id="name"
-              label="name"
-              name="name"
-              autoComplete="name"
-              autoFocus
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setUsername(e.target.value);
+              name="email"
+              label="email"
+              type="email"
+              id="email"
+              autoComplete="email"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
+                setPassword(e.target.value)
+              }}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="username"
+              label="username"
+              type="username"
+              id="username"
+              autoComplete="username"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
+                setUsername(e.target.value)
               }}
             />
             <TextField
@@ -77,19 +90,13 @@ export default function CustomSignIn() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="password"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
                 setPassword(e.target.value)
               }}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" checked={remeberme} onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
-                setRemember(e.target.checked) //Learn here
-              }} />}
-              label="Remember me"
             />
             <Button
               type="submit"
@@ -98,7 +105,7 @@ export default function CustomSignIn() {
               sx={{ mt: 3, mb: 2 }}
               onClick={handleSubmit}
             >
-              Sign In
+              Sign Up
             </Button>
             <Grid container>
               <Grid item xs>
@@ -108,7 +115,7 @@ export default function CustomSignIn() {
               </Grid>
               <Grid item>
                 <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {"Already have an account ? Sign In"}
                 </Link>
               </Grid>
             </Grid>

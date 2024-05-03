@@ -32,8 +32,6 @@ const comparePassword = async (
 export const userSignup = async (req: Request, role: string, res: Response) => {
   try {
     //validate Email and username
-
-        
     const parsedInput = signupInput.safeParse(req.body);
     if(!parsedInput.success){
       return res.status(400).json(parsedInput.error.errors);
