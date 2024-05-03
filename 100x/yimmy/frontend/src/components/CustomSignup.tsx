@@ -33,8 +33,8 @@ const defaultTheme = createTheme();
 
 export default function CustomSignup() {
     const [email,setEmail]:[string,(email:string) => void] = useRecoilState(atomEmail);
-    const [password,setPassword]:[string,(password:string)=>void] = useState("");
-    const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
+    const [password,setPassword]:[string,(password:string) => void] = useState("");
+    const [username,setUsername]:[string,(username:string) => void] = useRecoilState(atomUserName);
 
     const handleSignup = () =>{
         doSignup();

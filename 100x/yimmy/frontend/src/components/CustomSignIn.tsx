@@ -15,6 +15,7 @@ import { useRecoilState } from 'recoil';
 import { atomEmail, atomRememberMe, atomRole, atomUserName } from './atom';
 import axios from 'axios';
 import { useState } from 'react';
+import { BASE_URL } from '../config';
 
 function Copyright(props: TypographyProps) {
   return (
@@ -48,7 +49,7 @@ export default function CustomSignIn() {
             username,
             password,
         };
-        const url = `http://localhost:3001/user/login?role=${role}`
+        const url = `${BASE_URL}/user/login?role=${role}`
         const response = await axios.post(url,body,{
           headers: {
             'Content-Type': 'application/json',

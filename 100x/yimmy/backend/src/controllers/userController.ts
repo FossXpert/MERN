@@ -64,8 +64,18 @@ export const userSignup = async (req: Request, role: string, res: Response) => {
       role,
     });
     await user.save();
+    const userData = await validateEmailID(username)
+    let token = null;
+    if(userData){
+      token = generateJWT(userData);
+    }else{
+      return res.status(500).json({
+        message : 'Error occuring in signup Controller'
+      })
+    }
     return res.status(201).json({
       message: "Hurry! now you are successfully registred. Please login.",
+      Token : token
     });
   } catch (error: any) {
     return res.status(500).json({

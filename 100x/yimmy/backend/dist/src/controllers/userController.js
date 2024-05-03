@@ -68,8 +68,19 @@ const userSignup = (req, role, res) => __awaiter(void 0, void 0, void 0, functio
             role,
         });
         yield user.save();
+        const userData = yield validateEmailID(username);
+        let token = null;
+        if (userData) {
+            token = (0, jwtHandler_1.generateJWT)(userData);
+        }
+        else {
+            return res.status(500).json({
+                message: 'Error occuring in signup Controller'
+            });
+        }
         return res.status(201).json({
             message: "Hurry! now you are successfully registred. Please login.",
+            Token: token
         });
     }
     catch (error) {
