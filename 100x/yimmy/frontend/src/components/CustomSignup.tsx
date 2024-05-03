@@ -15,6 +15,7 @@ import { useRecoilState } from 'recoil';
 import axios from 'axios';
 import { useState } from 'react';
 import { atomEmail, atomUserName } from './atom';
+import { BASE_URL } from '../config';
 
 function Copyright(props: TypographyProps) {
   return (
@@ -37,8 +38,28 @@ export default function CustomSignIn() {
     const [password,setPassword]:[string,(password:string)=>void] = useState("");
     const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
 
-    const handleSubmit = async():Promise<void> => {
-        
+    const handleSignup = () =>{
+        doSignup();
+    }
+
+    const doSignup = async():Promise<void> =>{
+        try {
+            const body = {
+                email,username,password
+            }
+            const response = await axios.post(`${BASE_URL}/signup`,body,{
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            })
+            if(response.status>=200 && response.status<300){
+                console.log('Request Passed',response.data)
+            }else{
+                console.log('Request failed:', response.statusText)
+            }
+        } catch (error) {
+            throw(console.error());
+        }
     }
   return (
     
@@ -69,7 +90,7 @@ export default function CustomSignIn() {
               id="email"
               autoComplete="email"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
-                setPassword(e.target.value)
+                setEmail(e.target.value)
               }}
             />
             <TextField
@@ -103,7 +124,7 @@ export default function CustomSignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={handleSubmit}
+              onClick={handleSignup}
             >
               Sign Up
             </Button>
