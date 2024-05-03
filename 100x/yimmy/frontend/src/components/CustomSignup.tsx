@@ -51,7 +51,8 @@ export default function CustomSignup() {
                 }
             })
             if(response.status>=200 && response.status<300){
-                console.log('Request Passed',response.data)
+                console.log('Request Passed',response.data);
+                localStorage.setItem('token',response.data.Token);
             }else{
                 console.log('Request failed:', response.statusText)
             }
