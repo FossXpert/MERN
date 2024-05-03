@@ -16,7 +16,9 @@ export {varEmail, varPassword,tokenExist}
 
 // One thing to remeber
 // 1. It does not mean u can use it as global variable, after page refresh it lost it's value. I think it's main use is to prevent passing down the state variable between the multiple .components. using atoms we can easily create a atom and pass it .
+// refer it here  https://blackbox.ai/share/8f3164fc-35f8-4b89-8227-ab61ebd3f6d9
 
+// u have to implemet some kind of localstorage technique
 ```
 
 ## To generate project structure use below command after navigating inside your project
