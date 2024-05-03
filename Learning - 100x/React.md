@@ -13,9 +13,10 @@ const tokenExist = atom({
 export {varEmail, varPassword,tokenExist} 
 // Then in other pages wherever U want to use it 
 // To get the value of tokenExist atom
-    const tokenExists = useRecoilValue(tokenExist);
-    // To set the value of tokenExist atom
-    const setTokenExist = useSetRecoilState(tokenExist);
+
+// One thing to remeber
+// 1. It does not mean u can use it as global variable, after page refresh it lost it's value. I think it's main use is to prevent passing down the state variable between the multiple .components. using atoms we can easily create a atom and pass it .
+
 ```
 
 ## To generate project structure use below command after navigating inside your project
