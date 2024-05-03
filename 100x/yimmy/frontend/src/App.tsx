@@ -19,6 +19,7 @@ function App() {
         <Route path='/' element={<CustomSignIn/>} />
         <Route path='/signup' element={<CustomSignup/>} />
         <Route path='/signin' element={<CustomSignIn/>}/>
+        <Route path="/courses" element={<ShowCourses />} />
       </Routes>
     </Router>
 
