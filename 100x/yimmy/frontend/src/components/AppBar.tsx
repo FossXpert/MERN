@@ -1,6 +1,6 @@
 import { Button, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import jwtDecode from 'jwt-decode';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -14,10 +14,10 @@ export default function ResponsiveAppBar(){
     try {
         const token = localStorage.getItem('token');
         if (token) {
-            const decodedToken = jwtDecode(token);
+            const decodedToken:JwtPayload = jwtDecode(token);
             username = decodedToken.username;
         }
-    } catch (error:any) {
+    } catch (error : any) {
         console.error('Error decoding token:', error.message);
     }
     return (

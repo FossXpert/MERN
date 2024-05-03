@@ -12,6 +12,7 @@ interface userPayload extends User {
   email: string;
   password: string;
   role: string;
+  username: string;
 }
 
 export interface customRequest extends Request {
