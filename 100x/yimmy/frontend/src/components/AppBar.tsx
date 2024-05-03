@@ -1,5 +1,6 @@
 import { Button, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
+import jwtDecode from 'jwt-decode';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -7,7 +8,18 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 export default function ResponsiveAppBar(){
 
     const isLoggedIn = true;
-    const username = jwtDecode
+    let username = '';
+
+    // Attempt to decode the token, handle errors gracefully
+    try {
+        const token = localStorage.getItem('token');
+        if (token) {
+            const decodedToken = jwtDecode(token);
+            username = decodedToken.username;
+        }
+    } catch (error:any) {
+        console.error('Error decoding token:', error.message);
+    }
     return (
         <AppBar position='fixed'>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
