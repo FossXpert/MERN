@@ -35,3 +35,14 @@ export function decodePayload(token : string | null){
     }
     return decodePayload;
 }
+
+export function getToken(){
+    if(localStorage.getItem('token')!==null){
+        return localStorage.getItem('token');
+    }else{
+        console.log("token extraction issue")
+        return null;
+    }
+}
+
+export function isl
