@@ -45,8 +45,6 @@ export function getToken(){
     }
 }
 
-export function isLoggedIn(){
-    if(getToken()===null)return false;
+function login(){
     
-
 }
