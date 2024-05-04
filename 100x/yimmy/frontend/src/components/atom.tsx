@@ -54,11 +54,13 @@ export const logout = () => {
 }
 
 export const isLoggedIn = (): boolean => {
-    //why we are not using jwt.verify - https://sprl.in/d5kxMsj
+    //why we are not using jwt.verify and using this method in client side - https://sprl.in/d5kxMsj
     const token = localStorage.getItem('token');
     if(token){
         const decodedToken = jwtDecode(token);
-        const e
+        const expTime = decodedToken * 1000;
+        
+
     }
     
 
