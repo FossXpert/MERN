@@ -30,7 +30,7 @@ export default function CustomSignup() {
 
     const doSignup = async():Promise<void> =>{
         try {
-            const body : signupUser = {// https://sprl.in/8waMaj6
+            const body : signupUser = {
                 email,username,password
             }
             const response = await axios.post(`${BASE_URL}/user/signup`,body,{

@@ -18,7 +18,6 @@ import { useState } from 'react';
 import { BASE_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 
-
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
@@ -36,13 +35,12 @@ export default function CustomSignIn() {
   const [rememberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
   const [password,setPassword] : [string,(password:string)=>void] = useState("")
   const navigate = useNavigate();
-  //Hi Mate
   const handleSubmit = () => {
     checkSignin();
   }
   const checkSignin = async(): Promise<void> =>{
       try {
-        const body : CustomSignInState = { //https://sprl.in/8waMaj6
+        const body : CustomSignInState = {
             username,
             password,
         };
