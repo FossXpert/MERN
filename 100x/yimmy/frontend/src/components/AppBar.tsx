@@ -3,8 +3,8 @@ import AppBar from '@mui/material/AppBar';
 import { signinUser } from '@rahulray8518/common';
 import { decodePayload, getToken, isLoggedIn } from './atom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const pages = ['Products', 'Pricing', 'Blog'];
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar(){
     const payload : signinUser | undefined = decodePayload(getToken());
@@ -17,10 +17,10 @@ export default function ResponsiveAppBar(){
                     Udemy
                 </Typography>
                 <Typography sx={{textAlign:'left', marginTop:'10px'}} >
-                   { && (<Button color="inherit">Login</Button>)}
-                   {!isLoggedIn && (<Button color="inherit">Signup</Button>)}
-                   {isLoggedIn && payload &&(<Button color="inherit">{payload.username}</Button>)}
-                   {isLoggedIn && (<Button color="inherit">Logout</Button>)}                 
+                   {isLoggedIn() && (<Button color="inherit">Login</Button>)}
+                   {!isLoggedIn() && (<Button color="inherit">Signup</Button>)}
+                   {isLoggedIn() && payload &&(<Button color="inherit">{payload.username}</Button>)}
+                   {isLoggedIn() && (<Button color="inherit">Logout</Button>)}                 
                 </Typography>
             </Toolbar>
         </AppBar>

@@ -1,5 +1,4 @@
 import { signinUser } from "@rahulray8518/common";
-import { decode } from "jsonwebtoken";
 import {jwtDecode } from "jwt-decode";
 import { atom } from "recoil";
 
