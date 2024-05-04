@@ -8,7 +8,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 require("dotenv").config();
 const secretKey = "Sec3t";
 const options = {
-    expiresIn: "10h",
+    expiresIn: "10s",
 };
 const createPayload = (userData) => {
     try {
