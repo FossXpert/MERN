@@ -36,7 +36,7 @@ export function decodePayload(token : string | null){
     return decodePayload;
 }
 
-export function getToken(){
+export function getToken() : string|null {
     if(localStorage.getItem('token')!==null){
         return localStorage.getItem('token');
     }else{
@@ -45,6 +45,10 @@ export function getToken(){
     }
 }
 
-function login(){
-    
+export const login = (token : string) =>{
+    localStorage.setItem('token',token);
+}
+
+export const logout = () => {
+    localStorage.removeItem('token')
 }
