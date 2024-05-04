@@ -1,11 +1,11 @@
 import ResponsiveAppBar from "./AppBar";
 
-export default function Dashboard(){
+export default function Landing(){
     return (
     <>
         <ResponsiveAppBar/> 
         <div>
-            <h3>Dashboard</h3>
+            <h3>Welcome to udemy</h3>
         </div>
     </>        
     )

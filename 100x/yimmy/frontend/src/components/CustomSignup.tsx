@@ -12,9 +12,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useRecoilState } from 'recoil';
 import axios from 'axios';
 import { useState } from 'react';
-import { atomEmail, atomUserName } from './atom';
+import { atomEmail, atomUserName, login } from './atom';
 import { BASE_URL } from '../config';
 import {signupUser} from '@rahulray8518/common'
+import { useNavigate } from 'react-router-dom';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -23,7 +24,7 @@ export default function CustomSignup() {
     const [email,setEmail]:[string,(email:string) => void] = useRecoilState(atomEmail);
     const [password,setPassword]:[string,(password:string) => void] = useState("");
     const [username,setUsername]:[string,(username:string) => void] = useRecoilState(atomUserName);
-
+    const navigate = useNavigate();
     const handleSignup = () =>{
         doSignup();
     }
@@ -40,7 +41,8 @@ export default function CustomSignup() {
             })
             if(response.status>=200 && response.status<300){
                 console.log('Request Passed',response.data);
-                localStorage.setItem('token',response.data.Token);
+                login(response.data.Token)
+                navigate('/dashboard')
             }else{
                 console.log('Request failed:', response.statusText)
             }

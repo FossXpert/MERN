@@ -2,12 +2,18 @@ import { Button, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import { signinUser } from '@rahulray8518/common';
 import { decodePayload, getToken, isLoggedIn, logout } from './atom';
+import { useNavigate } from 'react-router-dom';
 
 // const pages = ['Products', 'Pricing', 'Blog'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar(){
     const payload : signinUser | undefined = decodePayload(getToken());
+    const navigate = useNavigate();
+    const handleLogout = () => {
+         logout();
+         navigate('/');
+    }
     // Attempt to decode the token, handle errors gracefully
     return (
         <AppBar position='fixed'>
@@ -17,10 +23,10 @@ export default function ResponsiveAppBar(){
                     Udemy
                 </Typography>
                 <Typography sx={{textAlign:'left', marginTop:'10px'}} >
-                   {isLoggedIn() && (<Button color="inherit">Login</Button>)}
-                   {!isLoggedIn() && (<Button color="inherit">Signup</Button>)}
+                   {!isLoggedIn() && (<Button color="inherit" onClick={()=>(navigate('/signin'))}>SignIn</Button>)}
+                   {!isLoggedIn() && (<Button color="inherit" onClick={()=>(navigate('/signup'))}>Signup</Button>)}
                    {isLoggedIn() && payload &&(<Button color="inherit">{payload.username}</Button>)}
-                   {isLoggedIn() && (<Button color="inherit" onClick={()=>logout()}>Logout</Button>)}                 
+                   {isLoggedIn() && (<Button color="inherit" onClick={handleLogout}>Logout</Button>)}                 
                 </Typography>
             </Toolbar>
         </AppBar>
