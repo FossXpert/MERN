@@ -1,5 +1,5 @@
 import { signinUser } from "@rahulray8518/common";
-import {JwtPayload, jwtDecode } from "jwt-decode";
+import {jwtDecode } from "jwt-decode";
 import { atom } from "recoil";
 
 export const atomEmail = atom({
@@ -45,4 +45,8 @@ export function getToken(){
     }
 }
 
-export function isl
+export function isLoggedIn(){
+    if(getToken()===null)return false;
+    
+
+}

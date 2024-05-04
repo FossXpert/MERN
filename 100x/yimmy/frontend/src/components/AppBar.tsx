@@ -1,7 +1,7 @@
 import { Button, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import { signinUser } from '@rahulray8518/common';
-import { decodePayload, getToken } from './atom';
+import { decodePayload, getToken, isLoggedIn } from './atom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -17,7 +17,7 @@ export default function ResponsiveAppBar(){
                     Udemy
                 </Typography>
                 <Typography sx={{textAlign:'left', marginTop:'10px'}} >
-                   {!isLoggedIn && (<Button color="inherit">Login</Button>)}
+                   { && (<Button color="inherit">Login</Button>)}
                    {!isLoggedIn && (<Button color="inherit">Signup</Button>)}
                    {isLoggedIn && payload &&(<Button color="inherit">{payload.username}</Button>)}
                    {isLoggedIn && (<Button color="inherit">Logout</Button>)}                 
