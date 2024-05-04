@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useRecoilState } from 'recoil';
-import { atomRememberMe, atomRole, atomUserName, decodePayload, isLoggedIn } from './atom';
+import { atomRememberMe, atomRole, atomUserName, decodePayload, isLoggedIn, login } from './atom';
 import axios from 'axios';
 import { useState } from 'react';
 import { BASE_URL } from '../config';
@@ -51,10 +51,9 @@ export default function CustomSignIn() {
           },
         });
         if (response.status >= 200 && response.status < 300) {
-          isLoggedIn(true);
           console.log('Request successful:', response.data);
-          localStorage.setItem('token',response.data.Token);
-          console.log("decodePayload", decodePayload(response.data.Token))
+          console.log("decodePayload", decodePayload(response.data.Token));
+          login(response.data.Token);
           navigate('/dashboard')
         } else {
           console.log('Request failed:', response.statusText);

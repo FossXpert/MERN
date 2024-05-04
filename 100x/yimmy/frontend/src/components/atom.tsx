@@ -1,4 +1,5 @@
 import { signinUser } from "@rahulray8518/common";
+import { decode } from "jsonwebtoken";
 import {jwtDecode } from "jwt-decode";
 import { atom } from "recoil";
 
@@ -54,16 +55,23 @@ export const logout = () => {
 }
 
 export const isLoggedIn = (): boolean => {
-    //why we are not using jwt.verify and using this method in client side - https://sprl.in/d5kxMsj
     const token = localStorage.getItem('token');
-    if(token){
-        const decodedToken = jwtDecode(token);
-        const expTime = decodedToken * 1000;
-        
-
+    if (token) {
+        try {
+            const decodedToken = jwtDecode(token);
+            if(decodedToken.exp !== undefined ){
+                const expTime = decodedToken.exp * 1000;
+                const currentTime = Date.now();
+                return currentTime < expTime;
+            }else{
+                console.log("DecodedTOken.exp is undefined")
+                return false;
+            }
+        } catch (error) {
+            console.error("Error decoding token:", error);
+            return false;
+        }
+    } else {
+        return false; 
     }
-    
-
-
-    return !!token;
 }
