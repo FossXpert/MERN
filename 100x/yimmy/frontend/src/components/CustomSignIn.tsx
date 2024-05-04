@@ -30,10 +30,10 @@ interface CustomSignInState {
 
 export default function CustomSignIn() {
 
-  const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
-  const [role,setRole]:[string,(role:string)=>void] = useRecoilState(atomRole);
-  const [rememberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
-  const [password,setPassword] : [string,(password:string)=>void] = useState("")
+  const [username,setUsername] : [string,(username:string)=>void] = useRecoilState(atomUserName);
+  const [role,setRole] : [string,(role:string)=>void] = useRecoilState(atomRole);
+  const [rememberme,setRemember] : [boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
+  const [password,setPassword] : [string,(password:string)=>void] = useState("");
   const navigate = useNavigate();
   const handleSubmit = () => {
     checkSignin();
