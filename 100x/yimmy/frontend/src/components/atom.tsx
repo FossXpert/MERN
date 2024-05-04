@@ -36,7 +36,7 @@ export function decodePayload(token : string | null){
     return decodePayload;
 }
 
-export function getToken() : string|null {
+export const getToken = (): string | null =>  {
     if(localStorage.getItem('token')!==null){
         return localStorage.getItem('token');
     }else{
@@ -51,4 +51,17 @@ export const login = (token : string) =>{
 
 export const logout = () => {
     localStorage.removeItem('token')
+}
+
+export const isLoggedIn = (): boolean => {
+    //why we are not using jwt.verify - https://sprl.in/d5kxMsj
+    const token = localStorage.getItem('token');
+    if(token){
+        const decodedToken = jwtDecode(token);
+        const e
+    }
+    
+
+
+    return !!token;
 }
