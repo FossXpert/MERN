@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.check = exports.userLogin = exports.userSignup = void 0;
+exports.userLogin = exports.userSignup = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
 const common_1 = require("@rahulray8518/common");
@@ -128,12 +128,3 @@ const userLogin = (req, role, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.userLogin = userLogin;
-const check = (req, res) => {
-    res.send(JSON.stringify({
-        header: req.headers,
-        body: req.body,
-        param: req.params,
-        payload: req.payload
-    }));
-};
-exports.check = check;

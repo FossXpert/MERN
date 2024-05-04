@@ -8,8 +8,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar(){
 
-    const isLoggedIn = true;
-    const username : signinUser = 
+    const isLoggedIn = true; 
     // Attempt to decode the token, handle errors gracefully
     return (
         <AppBar position='fixed'>
