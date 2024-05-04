@@ -8,7 +8,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 export default function ResponsiveAppBar(){
 
     const isLoggedIn = true;
-    let username = '';
+    let username = ''; 
 
     // Attempt to decode the token, handle errors gracefully
     try {
