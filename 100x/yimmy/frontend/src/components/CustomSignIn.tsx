@@ -53,6 +53,7 @@ export default function CustomSignIn() {
         if (response.status >= 200 && response.status < 300) {
           console.log('Request successful:', response.data);
           localStorage.setItem('token',response.data.Token);
+          decodePayload();
           navigate('/dashboard')
         } else {
           console.log('Request failed:', response.statusText);

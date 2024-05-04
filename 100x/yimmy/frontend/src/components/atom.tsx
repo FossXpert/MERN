@@ -1,3 +1,5 @@
+import { JwtPayload } from "jsonwebtoken";
+import {jwtDecode } from "jwt-decode";
 import { atom } from "recoil";
 
 export const atomEmail = atom({
@@ -20,3 +22,10 @@ export const atomFullName = atom({
     default: '',
     key: 'fullname'
 })
+
+export function decodePayload(token : string){
+
+
+    const decodePayload : JwtPayload = jwtDecode(token);
+    if(decodePayload)
+}
