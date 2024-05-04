@@ -14,11 +14,12 @@ import axios from 'axios';
 import { useState } from 'react';
 import { atomEmail, atomUserName } from './atom';
 import { BASE_URL } from '../config';
+import {signupInput} from 
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-interface CustomSignInState{
+interface CustomSignupState{
   email : string,
   password : string,
   username : string
@@ -35,7 +36,7 @@ export default function CustomSignup() {
 
     const doSignup = async():Promise<void> =>{
         try {
-            const body : CustomSignInState= {// https://sprl.in/8waMaj6
+            const body :  = {// https://sprl.in/8waMaj6
                 email,username,password
             }
             const response = await axios.post(`${BASE_URL}/user/signup`,body,{

@@ -1,6 +1,7 @@
 import { Button, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import  {jwtDecode } from 'jwt-decode';
+import { CustomSignInState } from './CustomSignup';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -8,8 +9,6 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 export default function ResponsiveAppBar(){
 
     const isLoggedIn = true;
-    let username = ''; 
-
     // Attempt to decode the token, handle errors gracefully
     try {
         const token = localStorage.getItem('token');
