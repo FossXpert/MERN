@@ -12,22 +12,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useRecoilState } from 'recoil';
-import { atomRememberMe, atomRole, atomUserName, decodePayload, isLoggedIn, login } from './atom';
+import { atomRememberMe, atomRole, atomUserName, decodePayload,login } from './atom';
 import axios from 'axios';
 import { useState } from 'react';
 import { BASE_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
+import { signinUser } from '@rahulray8518/common';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
-
-interface CustomSignInState {
-  username : string,
-  password : string,
-  role? : string,
-  remeberme? : boolean,
-}
-
 export default function CustomSignIn() {
 
   const [username,setUsername] : [string,(username:string)=>void] = useRecoilState(atomUserName);
@@ -40,7 +33,7 @@ export default function CustomSignIn() {
   }
   const checkSignin = async(): Promise<void> =>{
       try {
-        const body : CustomSignInState = {
+        const body : signinUser = {
             username,
             password,
         };

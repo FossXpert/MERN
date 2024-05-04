@@ -1,7 +1,7 @@
 import { Button, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import { signinUser } from '@rahulray8518/common';
-import { decodePayload, getToken, isLoggedIn } from './atom';
+import { decodePayload, getToken, isLoggedIn, logout } from './atom';
 
 // const pages = ['Products', 'Pricing', 'Blog'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -20,7 +20,7 @@ export default function ResponsiveAppBar(){
                    {isLoggedIn() && (<Button color="inherit">Login</Button>)}
                    {!isLoggedIn() && (<Button color="inherit">Signup</Button>)}
                    {isLoggedIn() && payload &&(<Button color="inherit">{payload.username}</Button>)}
-                   {isLoggedIn() && (<Button color="inherit">Logout</Button>)}                 
+                   {isLoggedIn() && (<Button color="inherit" onClick={()=>logout()}>Logout</Button>)}                 
                 </Typography>
             </Toolbar>
         </AppBar>
