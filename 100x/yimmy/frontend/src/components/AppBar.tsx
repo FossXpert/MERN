@@ -1,14 +1,23 @@
 import { Button, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import { signinUser } from '@rahulray8518/common';
-import  {JwtPayload, jwtDecode } from 'jwt-decode';
+import { decodePayload } from './atom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar(){
+    const isLoggedIn = true;
+    let token=null;
+    if(localStorage.getItem('token')!==null){
+        token = localStorage.getItem('token');
+    }else{
+        console.log("token extraction issue")
+    }
+    let username : string = "";
 
-    const isLoggedIn = true; 
+
+
     // Attempt to decode the token, handle errors gracefully
     return (
         <AppBar position='fixed'>
