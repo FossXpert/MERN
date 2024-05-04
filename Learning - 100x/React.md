@@ -63,3 +63,11 @@ export interface customRequest extends Request {
 (req as customRequest).payload = decoded;
 
 ```
+
+## Zod Type Infernece
+
+It means zod can also be used to infertypes and it act as interfaces , so decalring custom interface is not required.
+for example u can see here 
+```javascript
+
+```

@@ -14,3 +14,7 @@ export const signinInput = z.object({
 export type signupUser = z.infer<typeof signupInput>
 export type signinUser = z.infer<typeof signinInput>
 
+//see here zod acting as backend verification for incoming as well it acting as type infer
+// export type signupUser = z.infer<typeof signupInput>
+// export type signinUser = z.infer<typeof signinInput>
+// This is called type infer
