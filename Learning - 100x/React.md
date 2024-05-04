@@ -68,6 +68,22 @@ export interface customRequest extends Request {
 
 It means zod can also be used to infertypes and it act as interfaces , so decalring custom interface is not required.
 for example u can see here 
+
 ```javascript
+import { z } from "zod";
+
+export const signupInput = z.object({
+    email : z.string().email(),
+    username : z.string().min(3).max(24),
+    password : z.string().min(1).max(128)
+});
+
+export const signinInput = z.object({
+    username : z.string().min(3).max(24),
+    password : z.string().min(1).max(128)
+});
+
+export type signupUser = z.infer<typeof signupInput>
+export type signinUser = z.infer<typeof signinInput>
 
 ```
