@@ -6,7 +6,7 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography, { TypographyProps } from '@mui/material/Typography';
+import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useRecoilState } from 'recoil';
@@ -15,21 +15,14 @@ import { useState } from 'react';
 import { atomEmail, atomUserName } from './atom';
 import { BASE_URL } from '../config';
 
-function Copyright(props: TypographyProps) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
+
+interface CustomSignInState{
+  email : string,
+  password : string,
+  username : string
+}
 
 export default function CustomSignup() {
     const [email,setEmail]:[string,(email:string) => void] = useRecoilState(atomEmail);
@@ -42,7 +35,7 @@ export default function CustomSignup() {
 
     const doSignup = async():Promise<void> =>{
         try {
-            const body = {
+            const body : CustomSignInState= {// https://sprl.in/8waMaj6
                 email,username,password
             }
             const response = await axios.post(`${BASE_URL}/user/signup`,body,{
@@ -140,7 +133,6 @@ export default function CustomSignup() {
               </Grid>
             </Grid>
           </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

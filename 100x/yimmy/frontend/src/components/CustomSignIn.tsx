@@ -22,12 +22,18 @@ import { useNavigate } from 'react-router-dom';
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+interface CustomSignInState {
+  username : string,
+  password : string,
+  role? : string,
+  remeberme? : boolean,
+}
 
 export default function CustomSignIn() {
 
   const [username,setUsername]:[string,(username:string)=>void] = useRecoilState(atomUserName);
   const [role,setRole]:[string,(role:string)=>void] = useRecoilState(atomRole);
-  const [remeberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
+  const [rememberme,setRemember]:[boolean,(rememberme:boolean)=>void] = useRecoilState(atomRememberMe);
   const [password,setPassword] : [string,(password:string)=>void] = useState("")
   const navigate = useNavigate();
   //Hi Mate
@@ -36,7 +42,7 @@ export default function CustomSignIn() {
   }
   const checkSignin = async(): Promise<void> =>{
       try {
-        const body = {
+        const body : CustomSignInState = { //https://sprl.in/8waMaj6
             username,
             password,
         };
@@ -104,7 +110,7 @@ export default function CustomSignIn() {
               }}
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" checked={remeberme} onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
+              control={<Checkbox value="remember" color="primary" checked={rememberme} onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{
                 setRemember(e.target.checked) //Learn here
               }} />}
               label="Remember me"
