@@ -5,7 +5,7 @@ export default function Dashboard(){
     return (
     <>
         <ResponsiveAppBar/> 
-        <div>
+        <div style={ {display: "flex", overflowX: "auto" }}>
             <h3>Dashboard</h3>
             <CourseCard/><CourseCard/><CourseCard/><CourseCard/>
             <CourseCard/><CourseCard/><CourseCard/><CourseCard/>
