@@ -22,6 +22,11 @@
 ## Installing NPM in ubuntu-Aws
 
 11. Go to this website `https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04`
-12. OR, Do what I am writing here - 
-13. Paste this command in terminal :-: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
-14. Now paste these three line cmd :-: 
+12. OR, Do what I am writing here -  `https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04#option-3-installing-node-using-the-node-version-manager`
+13. install version which is stable ((Latest LTS: Iron))
+14. Now install pm2 `npm install -g pm2`
+
+## Github CI/CD 
+15. create a deploy.sh file in root folder in ubuntu
+16. type cd and then type `vi deploy.sh`
+17. Paste these command in that 
