@@ -11,8 +11,9 @@ export default function Dashboard(){
             All Courses
         </Typography>
         <Grid container spacing={5} style={{marginTop:'20px'}}>
-        {<CourseCard/>}{<CourseCard/>}
-        {<CourseCard/>}{<CourseCard/>}
+        {<CourseCard/>}{<CourseCard/>}{<CourseCard/>}{<CourseCard/>}
+        {<CourseCard/>}{<CourseCard/>}{<CourseCard/>}{<CourseCard/>}
+        {<CourseCard/>}{<CourseCard/>}{<CourseCard/>}{<CourseCard/>}
         </Grid>
     </Container>
     </>        
