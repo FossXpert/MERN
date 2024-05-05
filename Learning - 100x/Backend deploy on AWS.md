@@ -29,4 +29,19 @@
 ## Github CI/CD 
 15. create a deploy.sh file in root folder in ubuntu
 16. type cd and then type `vi deploy.sh`
-17. Paste these command in that 
+17. Paste these command in that file
+```bash
+export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v20.12.2/bin
+
+cd home/MERN/100x/yimmy/backend/dist/src
+ git pull origin daily-changes
+ pm2 kill
+ pm2 start index.js
+```
+18. Then press Esc button and the colon (:) and the wq
+19. you have successfully created deploy.sh file
+20. Now if you type `source ./deploy.sh` all the steps written in file deploy.sh run one by one
+21. Now we have to create a folder .github/workflows inside this create ci.yml file `(https://github.com/FossXpert/MERN/blob/daily-changes/.github/workflows/ci.yml)`
+22. Now open setting and the secrets (`https://github.com/FossXpert/MERN/settings/secrets/actions`)
+23. paste the .pem key inside secrets
+24. And Bam everything Done
