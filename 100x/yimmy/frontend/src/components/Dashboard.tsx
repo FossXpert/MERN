@@ -7,7 +7,10 @@ export default function Dashboard(){
         <ResponsiveAppBar/> 
         <div>
             <h3>Dashboard</h3>
-            <CourseCard/>
+            <CourseCard/><CourseCard/><CourseCard/><CourseCard/>
+            <CourseCard/><CourseCard/><CourseCard/><CourseCard/>
+            <CourseCard/><CourseCard/><CourseCard/><CourseCard/>
+            <CourseCard/><CourseCard/><CourseCard/><CourseCard/>
         </div>
     </>        
     )
