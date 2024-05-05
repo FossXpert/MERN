@@ -41,7 +41,7 @@ cd home/MERN/100x/yimmy/backend/dist/src
 18. Then press Esc button and the colon (:) and the wq
 19. you have successfully created deploy.sh file
 20. Now if you type `source ./deploy.sh` all the steps written in file deploy.sh run one by one
-21. Now we have to create a folder .github/workflows inside this create ci.yml file `(https://github.com/FossXpert/MERN/blob/daily-changes/.github/workflows/ci.yml)`
+21. Now we have to create a folder .github/workflows inside this create ci.yml file (https://github.com/FossXpert/MERN/blob/daily-changes/.github/workflows/ci.yml)
 22. Now open setting and the secrets (https://github.com/FossXpert/MERN/settings/secrets/actions)
 23. paste the .pem key inside secrets
 24. Then Connect remotely via VS code remote and open you github repo folder and type this `ssh-keyscan ec2-url >> known_hosts`
