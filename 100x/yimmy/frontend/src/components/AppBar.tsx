@@ -19,7 +19,7 @@ export default function ResponsiveAppBar(){
         <AppBar position='fixed'>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 {/* why component ="div" https://sprl.in/s3UmCMi */}
-                <Typography variant='h6' component="div" sx={{textAlign:'left', marginTop:'10px'}}>
+                <Typography variant='h6' component="div" sx={{marginTop:'10px'}}>
                     Udemy
                 </Typography>
                 <Typography sx={{textAlign:'left', marginTop:'10px'}} >
