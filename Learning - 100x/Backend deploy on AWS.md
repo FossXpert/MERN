@@ -21,8 +21,8 @@
 
 ## Installing NPM in ubuntu-Aws
 
-11. Go to this website `https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04`
-12. OR, Do what I am writing here -  `https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04#option-3-installing-node-using-the-node-version-manager`
+11. Go to this website https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04
+12. OR, Do what I am writing here -  https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04#option-3-installing-node-using-the-node-version-manager
 13. install version which is stable ((Latest LTS: Iron))
 14. Now install pm2 `npm install -g pm2`
 
