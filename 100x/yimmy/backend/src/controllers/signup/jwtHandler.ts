@@ -13,6 +13,7 @@ interface userPayload extends User {
   password: string;
   role: string;
   username: string;
+  id : string
 }
 
 export interface customRequest extends Request {
@@ -25,6 +26,7 @@ const createPayload = (userData: User) => {
       role: userData.role,
       email: userData.email,
       username: userData.username,
+      id : userData.id
     };
     return payload;
   } catch (error) {

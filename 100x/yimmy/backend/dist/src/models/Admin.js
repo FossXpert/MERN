@@ -23,10 +23,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const uuid_1 = require("uuid");
 const mongoose_1 = __importStar(require("mongoose"));
 const adminSchema = new mongoose_1.Schema({
-    id: { type: String, default: () => (0, uuid_1.v4)(), required: true, unique: true },
+    id: { type: String, required: true, unique: true },
     username: { type: String, unique: true, required: [true, 'Username is required'] },
     password: { type: String, unique: true, required: [true, 'Password is required'],
         minLength: [6, "Password must be at least 6 characters"] },

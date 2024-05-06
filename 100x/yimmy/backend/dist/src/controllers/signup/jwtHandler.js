@@ -16,6 +16,7 @@ const createPayload = (userData) => {
             role: userData.role,
             email: userData.email,
             username: userData.username,
+            id: userData.id
         };
         return payload;
     }
