@@ -39,7 +39,8 @@ export const atomCategory = ({
     key:'category'
 })
 export const atomAdminId = ({
-    default:''
+    default:'',
+    key:'adminId'
 })
 
 export function decodePayload(token : string | null){

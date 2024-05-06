@@ -9,7 +9,7 @@ interface Admin extends Document {
 }
 
 const adminSchema: Schema<Admin> = new Schema<Admin>({
-    id:{type: String, default:  () => uuid4(),required:true,unique:true},
+    id:{type: String, required:true, unique:true},
     username: { type: String, unique:true, required: [true, 'Username is required'] },
     password: { type: String, unique:true, required: [true, 'Password is required'], 
     minLength: [6, "Password must be at least 6 characters"] },

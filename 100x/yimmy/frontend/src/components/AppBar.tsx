@@ -28,10 +28,9 @@ export default function ResponsiveAppBar(){
                 <Typography sx={{textAlign:'left', marginTop:'10px'}} >
                    {!isLoggedIn() && (<Button color="inherit" onClick={()=>(navigate('/signin'))}>SignIn</Button>)}
                    {!isLoggedIn() && (<Button color="inherit" onClick={()=>(navigate('/signup'))}>Signup</Button>)}
-                   {isLoggedIn() && (<Button onClick={handleInstructor}>Instructor</Button>)}
+                   {isLoggedIn() && (<Button color='inherit' onClick={handleInstructor}>Instructor</Button>)}
                    {isLoggedIn() && payload &&(<Button color="inherit">{payload.username}</Button>)}
-                   {isLoggedIn() && (<Button color="inherit" onClick={handleLogout}>Logout</Button>)}
-                                    
+                   {isLoggedIn() && (<Button color="inherit" onClick={handleLogout}>Logout</Button>)}      
                 </Typography>
             </Toolbar>
         </AppBar>
