@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { Button } from '@mui/material';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle } from './atom';
 const CreateCourses = () => {
 
@@ -35,18 +35,21 @@ const CreateCourses = () => {
           rows={4}
           variant="outlined"
           style={{ marginTop: '1rem' }}
+          onChange={(e : React.ChangeEvent<HTMLInputElement>) => { setDescription(e.target.value)}}
         />
         <TextField
           fullWidth
           id="price"
           label="Course Price"
           variant="outlined"
+          onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setPrice(e.target.value)}}
         />
         <TextField
           fullWidth
           id="Category"
           label="Course Title"
           variant="outlined"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {setCategory(e.target.value)}}
         />
         <Button onClick={handleCreateButton}>Create</Button>
       </Grid>
