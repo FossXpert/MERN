@@ -16,9 +16,9 @@ export const createCourse = async(req:Request,res:Response) => {
         if(!(!!isCourseExist)){
             return res.status(409).json('Course already exist')
         }
+        const id = 
         const newCourse = new CourseModel({
-            id:req.body.id,
-            name:req.body.name,
+            
         }) 
     } catch (error) {
         console.log("error in createCourse Route",error);

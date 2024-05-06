@@ -20,6 +20,7 @@ export const courseInput = z.object({
 })
 export type signupUser = z.infer<typeof signupInput>
 export type signinUser = z.infer<typeof signinInput>
+export type zodCourseDetail = z.infer<typeof courseInput>
 
 // Learning :- see here zod acting as backend verification for incoming as well it acting as type infer
 // export type signupUser = z.infer<typeof signupInput>

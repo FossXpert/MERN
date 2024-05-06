@@ -1,7 +1,7 @@
 {
   "name": "@rahulray8518/common",
-  "version": "1.0.2",
-  "description": "Added support for declaration file",
+  "version": "1.0.5",
+  "description": "Added support for CourseInput",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
