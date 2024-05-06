@@ -1,7 +1,5 @@
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import CourseCard from './CourseCard';
-
 const CreateCourses = () => {
   return (
     <Grid container spacing={2}>
@@ -23,7 +21,7 @@ const CreateCourses = () => {
         />
       </Grid>
       <Grid item xs={6} md={6}>
-      
+        
       </Grid>
     </Grid>
   );
