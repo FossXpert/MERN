@@ -1,5 +1,6 @@
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import CourseCard from './CourseCard';
 
 const CreateCourses = () => {
   return (
@@ -22,21 +23,7 @@ const CreateCourses = () => {
         />
       </Grid>
       <Grid item xs={6} md={6}>
-      <TextField
-          fullWidth
-          id="course-title"
-          label="Course Title"
-          variant="outlined"
-        />
-        <TextField
-          fullWidth
-          id="course-description"
-          label="Description"
-          multiline
-          rows={4}
-          variant="outlined"
-          style={{ marginTop: '1rem' }}
-        />
+      
       </Grid>
     </Grid>
   );
