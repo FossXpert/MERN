@@ -3,15 +3,16 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { Button } from '@mui/material';
-import { useRecoilValue } from 'recoil';
-import { atomCourseDescription, atomCoursePrice, atomCourseTitle } from './atom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle } from './atom';
 const CreateCourses = () => {
 
     const [isCourseCreated,setIsCourseCreated] = useState(false);
-    const [title,setTitle] = useRecoilValue(atomCourseTitle);
-    const [description,setDescription] = useRecoilValue(atomCourseDescription);
-    const [price,setDescription] = useRecoilValue(atomCoursePrice);
-    const []
+    const [title,setTitle]:[string,(title:string)=>void] = useRecoilState(atomCourseTitle);
+    const [description,setDescription]:[string,(description:string)=>void]= useRecoilState(atomCourseDescription);
+    const [price,setPrice]:[string,(price:string)=>void]= useRecoilState(atomCoursePrice);
+    const [category,setCategory]:[string,(category:string)=>void] = useRecoilState(atomCategory);
+    const [id,setId]:[string,(id:string)=>void] = useRecoilState(atomAdminId)
 
     const handleCreateButton = () => {
         setIsCourseCreated(true)
@@ -24,7 +25,7 @@ const CreateCourses = () => {
           id="course-title"
           label="Course Title"
           variant="outlined"
-
+          onChange={(e : React.ChangeEvent<HTMLInputElement> )=> {setTitle(e.target.value)}}
         />
         <TextField
           fullWidth

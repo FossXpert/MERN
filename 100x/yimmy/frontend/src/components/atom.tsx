@@ -22,6 +22,7 @@ export const atomFullName = atom({
     default: '',
     key: 'fullname'
 })
+//---//
 export const atomCourseTitle = atom({
     default:'',
     key:'title'
@@ -30,19 +31,19 @@ export const atomCourseDescription = atom({
     default:'',
     key: 'description'
 })
-export const atomCoursePrice = ({
-    default: 0.00,
+export const atomCoursePrice = atom({
+    default: '',
     key:'price'
 })
-export const atomCategory = ({
+export const atomCategory = atom({
     default:'code',
     key:'category'
 })
-export const atomAdminId = ({
+export const atomAdminId = atom({
     default:'',
     key:'adminId'
 })
-
+//---//
 export function decodePayload(token : string | null){
     if(token===null){
         console.log("Token is Null")
