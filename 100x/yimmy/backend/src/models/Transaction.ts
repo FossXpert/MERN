@@ -19,4 +19,5 @@ const transactionSchema : Schema<Transaction> = new Schema<Transaction>({
     paymentMethod:{type: String , enum: ['Credit Card','Debit Card','Net Banking','UPI','Wallet']}
 })
 
-export default mongoose.model<Transaction>("Transactions",transactionSchema)
+const TransactionModel =  mongoose.model<Transaction>("Transactions",transactionSchema);
+export default TransactionModel;

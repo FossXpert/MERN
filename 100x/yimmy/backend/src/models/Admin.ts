@@ -14,6 +14,5 @@ const adminSchema: Schema<Admin> = new Schema<Admin>({
     password: { type: String, unique:true, required: [true, 'Password is required'], 
     minLength: [6, "Password must be at least 6 characters"] },
 })
-export default mongoose.model<Admin>("Admin", adminSchema)
-
-// learn
+const AdminModel =  mongoose.model<Admin>("Admin", adminSchema)
+export default AdminModel;

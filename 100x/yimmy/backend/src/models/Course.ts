@@ -11,7 +11,7 @@ interface Course extends Document{
 }
 
 const courseSchema : Schema<Course> = new Schema<Course>({
-  id:{type: String, default:  () => uuid4(),required:true,unique:true},
+    id:{type: String, default:  () => uuid4(),required:true,unique:true},
     title:{ type : String , required : true },
     description:{ type : String ,required: true },
     price:{ type:Number , required:true },
@@ -22,4 +22,5 @@ const courseSchema : Schema<Course> = new Schema<Course>({
     admin_id: { type:String, required:true, ref:'Admin'}
 });
 
-export default mongoose.model<Course>('Courses',courseSchema);
+const CourseModel =  mongoose.model<Course>('Courses',courseSchema);
+export default CourseModel;
