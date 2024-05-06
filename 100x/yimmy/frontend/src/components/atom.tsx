@@ -22,6 +22,25 @@ export const atomFullName = atom({
     default: '',
     key: 'fullname'
 })
+export const atomCourseTitle = atom({
+    default:'',
+    key:'title'
+})
+export const atomCourseDescription = atom({
+    default:'',
+    key: 'description'
+})
+export const atomCoursePrice = ({
+    default: 0,
+    key:'price'
+})
+export const atomCategory = ({
+    default:'code',
+    key:'category'
+})
+export const atomAdminId = ({
+    default:''
+})
 
 export function decodePayload(token : string | null){
     if(token===null){
@@ -74,3 +93,4 @@ export const isLoggedIn = (): boolean => {
         return false; 
     }
 }
+
