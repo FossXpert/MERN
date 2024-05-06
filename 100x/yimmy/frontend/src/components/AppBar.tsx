@@ -1,4 +1,4 @@
-import { Button, Toolbar, Typography } from '@mui/material';
+import { Button, Switch, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import { signinUser } from '@rahulray8518/common';
 import { decodePayload, getToken, isLoggedIn, logout } from './atom';
@@ -14,6 +14,9 @@ export default function ResponsiveAppBar(){
          logout();
          navigate('/');
     }
+    const handleInstructor = () => {
+        navigate()
+    }
     // Attempt to decode the token, handle errors gracefully
     return (
         <AppBar position='fixed'>
@@ -25,8 +28,10 @@ export default function ResponsiveAppBar(){
                 <Typography sx={{textAlign:'left', marginTop:'10px'}} >
                    {!isLoggedIn() && (<Button color="inherit" onClick={()=>(navigate('/signin'))}>SignIn</Button>)}
                    {!isLoggedIn() && (<Button color="inherit" onClick={()=>(navigate('/signup'))}>Signup</Button>)}
+                   {isLoggedIn() && (<Button onClick={handleInstructor}>Instructor</Button>)}
                    {isLoggedIn() && payload &&(<Button color="inherit">{payload.username}</Button>)}
-                   {isLoggedIn() && (<Button color="inherit" onClick={handleLogout}>Logout</Button>)}                 
+                   {isLoggedIn() && (<Button color="inherit" onClick={handleLogout}>Logout</Button>)}
+                                    
                 </Typography>
             </Toolbar>
         </AppBar>
