@@ -42,6 +42,10 @@ const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             title, description, price, imageLink, admin_id
         });
         yield newCourse.save();
+        return res.status(200).json({
+            Message: "Saved Succesfully",
+            InputBody: newCourse
+        });
     }
     catch (error) {
         console.log("error in createCourse Route", error);

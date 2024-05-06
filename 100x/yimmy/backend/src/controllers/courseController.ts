@@ -28,6 +28,10 @@ export const createCourse = async(req:Request,res:Response) => {
             title,description,price,imageLink,admin_id
         }) 
         await newCourse.save();
+        return res.status(200).json({
+            Message : "Saved Succesfully",
+            InputBody : newCourse
+        })
     } catch (error) {
         console.log("error in createCourse Route",error);
         throw error;
