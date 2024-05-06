@@ -1,6 +1,14 @@
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import { useState } from 'react';
+import CourseCard from './CourseCard';
+import { Button } from '@mui/material';
 const CreateCourses = () => {
+
+    const [isCourseCreated,setIsCourseCreated] = useState(false);
+    const handleCreateButton = () => {
+        setIsCourseCreated(true)
+    }
   return (
     <Grid container spacing={2}>
       <Grid item xs={6} md={6}>
@@ -19,9 +27,10 @@ const CreateCourses = () => {
           variant="outlined"
           style={{ marginTop: '1rem' }}
         />
+        <Button onClick={handleCreateButton}>Create</Button>
       </Grid>
       <Grid item xs={6} md={6}>
-        
+        {isCourseCreated && <CourseCard/>}
       </Grid>
     </Grid>
   );
