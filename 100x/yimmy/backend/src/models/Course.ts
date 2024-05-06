@@ -1,7 +1,7 @@
 import mongoose,{Document,Schema} from 'mongoose'
 import {v4 as uuid4} from 'uuid'
 
-interface Course extends Document{
+export interface Course extends Document{
   id: string;
   title:string;
   description:string;
