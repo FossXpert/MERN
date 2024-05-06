@@ -22,7 +22,7 @@ export const createCourse = async(req:Request,res:Response) => {
         const description = parseInput.data?.description;
         const price = parseInput.data?.price;
         const imageLink = parseInput.data?.imageLink;
-        const admin_id = parseInput.data?.admin_id;
+        const admin_id = parseInput.data?.admin_id; 
 
         const newCourse = new CourseModel({
             title,description,price,imageLink,admin_id
