@@ -31,7 +31,7 @@ export const atomCourseDescription = atom({
     key: 'description'
 })
 export const atomCoursePrice = ({
-    default: 0,
+    default: 0.00,
     key:'price'
 })
 export const atomCategory = ({
@@ -48,7 +48,7 @@ export function decodePayload(token : string | null){
         console.log("Token is Null")
         return;
     }
-    const decodePayload : signinUser = jwtDecode(token); // https://sprl.in/lmUrltJ
+    const decodePayload : decodePayloadInterface = jwtDecode(token); // https://sprl.in/lmUrltJ
     if(decodePayload ===null){
         console.log("Token Extraction Failed")
         return;
@@ -95,3 +95,9 @@ export const isLoggedIn = (): boolean => {
     }
 }
 
+export interface decodePayloadInterface {
+    id : string,
+    username:string,
+    role:string,
+    email?: string
+}

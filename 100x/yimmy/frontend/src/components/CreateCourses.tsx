@@ -3,11 +3,16 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { Button } from '@mui/material';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
+import { atomCourseDescription, atomCoursePrice, atomCourseTitle } from './atom';
 const CreateCourses = () => {
 
     const [isCourseCreated,setIsCourseCreated] = useState(false);
-    const [title,setTitle] = useRecoilValue()
+    const [title,setTitle] = useRecoilValue(atomCourseTitle);
+    const [description,setDescription] = useRecoilValue(atomCourseDescription);
+    const [price,setDescription] = useRecoilValue(atomCoursePrice);
+    const []
+
     const handleCreateButton = () => {
         setIsCourseCreated(true)
     }

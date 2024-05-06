@@ -1,14 +1,13 @@
-import { Button, Switch, Toolbar, Typography } from '@mui/material';
+import { Button, Toolbar, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import { signinUser } from '@rahulray8518/common';
-import { decodePayload, getToken, isLoggedIn, logout } from './atom';
+import { decodePayload, decodePayloadInterface, getToken, isLoggedIn, logout } from './atom';
 import { useNavigate } from 'react-router-dom';
 
 // const pages = ['Products', 'Pricing', 'Blog'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar(){
-    const payload : signinUser | undefined = decodePayload(getToken());
+    const payload : decodePayloadInterface | undefined = decodePayload(getToken());
     const navigate = useNavigate();
     const handleLogout = () => {
          logout();
@@ -29,7 +28,7 @@ export default function ResponsiveAppBar(){
                    {!isLoggedIn() && (<Button color="inherit" onClick={()=>(navigate('/signin'))}>SignIn</Button>)}
                    {!isLoggedIn() && (<Button color="inherit" onClick={()=>(navigate('/signup'))}>Signup</Button>)}
                    {isLoggedIn() && (<Button color='inherit' onClick={handleInstructor}>Instructor</Button>)}
-                   {isLoggedIn() && payload &&(<Button color="inherit">{payload.username}</Button>)}
+                   {isLoggedIn() && payload &&(<Button color="inherit">{payload.email}</Button>)}
                    {isLoggedIn() && (<Button color="inherit" onClick={handleLogout}>Logout</Button>)}      
                 </Typography>
             </Toolbar>
