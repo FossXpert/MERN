@@ -1,12 +1,13 @@
 import { Response } from "express";
+import CourseModel from "../models/Course";
 
 
 
 export const isCourseExist = async(id:string)  => {
 
     try {
-        const courseId = id;
-        const courseDetails = await 
+        const courseDetail = await CourseModel.findOne({id});
+        return !!courseDetail;
     } catch (error) {
         console.log(error)
         throw(error)
