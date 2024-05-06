@@ -30,10 +30,12 @@ const courseSchema = new mongoose_1.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
+    imageLink: { type: String, required: true },
     category: {
         type: String,
         enum: ['Design', 'Code', 'Marketing']
     },
     admin_id: { type: String, required: true, ref: 'Admin' }
 });
-exports.default = mongoose_1.default.model('Courses', courseSchema);
+const CourseModel = mongoose_1.default.model('Courses', courseSchema);
+exports.default = CourseModel;
