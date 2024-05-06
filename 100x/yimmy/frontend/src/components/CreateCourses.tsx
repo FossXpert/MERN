@@ -1,14 +1,12 @@
-import React from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import CourseCard from './CourseCard';
 
 const CreateCourses = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={6}>
-        {/* Course Title */}
+        {<h3>Create Courses Here</h3>}
         <TextField
           fullWidth
           id="course-title"
