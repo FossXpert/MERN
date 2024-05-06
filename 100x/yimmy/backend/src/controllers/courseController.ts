@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import CourseModel, { Course } from "../models/Course";
 import { courseInput } from "@rahulray8518/common";
 
@@ -22,11 +22,12 @@ export const createCourse = async(req:Request,res:Response) => {
         const description = parseInput.data?.description;
         const price = parseInput.data?.price;
         const imageLink = parseInput.data?.imageLink;
-        const id = parseInput.data?.id
-        
+        const admin_id = parseInput.data?.admin_id;
+
         const newCourse = new CourseModel({
-            
+            title,description,price,imageLink,admin_id
         }) 
+        await newCourse.save();
     } catch (error) {
         console.log("error in createCourse Route",error);
         throw error;

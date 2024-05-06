@@ -12,7 +12,7 @@ export const signinInput = z.object({
 });
 
 export const courseInput = z.object({
-    id : z.string(),
+    admin_id : z.string(),
     title: z.string().min(3).max(160),
     description: z.string().min(3).max(500),
     imageLink : z.string(),

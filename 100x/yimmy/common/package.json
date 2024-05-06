@@ -1,6 +1,6 @@
 {
   "name": "@rahulray8518/common",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Added support for CourseInput",
   "main": "dist/index.js",
   "scripts": {
