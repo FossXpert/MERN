@@ -11,7 +11,7 @@ const CreateCourses = () => {
     const [isCourseCreated,setIsCourseCreated] = useState(false);
     const [title,setTitle]:[string,(title:string)=>void] = useRecoilState(atomCourseTitle);
     const [description,setDescription]:[string,(description:string)=>void]= useRecoilState(atomCourseDescription);
-    const [price,setPrice]:[string,(price:string)=>void]= useRecoilState(atomCoursePrice);
+    const [price,setPrice]:[number,(price:number)=>void]= useRecoilState(atomCoursePrice);
     const [category,setCategory]:[string,(category:string)=>void] = useRecoilState(atomCategory);
     const [id,setId]:[string,(id:string)=>void] = useRecoilState(atomAdminId)
 
