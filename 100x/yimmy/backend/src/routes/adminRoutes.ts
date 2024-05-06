@@ -12,3 +12,4 @@ adminRouter.post('/createcourse',async (req:Request, res: Response)=>{
         throw(error)
     }
 })
+export default adminRouter;
