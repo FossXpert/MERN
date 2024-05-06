@@ -15,7 +15,7 @@ export default function ResponsiveAppBar(){
          navigate('/');
     }
     const handleInstructor = () => {
-        navigate()
+        navigate('/createCourse')
     }
     // Attempt to decode the token, handle errors gracefully
     return (
