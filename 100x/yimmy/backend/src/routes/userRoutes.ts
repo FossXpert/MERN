@@ -29,31 +29,32 @@ router.post('/login', async (req: Request, res: Response) => {
         });
     }
 });
-router.get('/getUserData',async(req:Request,res:Response)=>{
-    try{
-        const authToken = req.headers.authorization?.split(' ')[1];
-        const response = await axios.get('https://dev-cd616eaxtu7so5dm.us.auth0.com/userinfo',{
-            headers:{
-                Authorization: `Bearer ${authToken}`
-            }
-        })
-        if(response.status >=200 && response.status <300){
-            const data = await response.data;
-            console.log(data);
-            res.status(response.status).json({
-                message:'Success',
-                data:data
-            })
-        }else{
-            console.log('Request failed : ', response.statusText);
-            res.status(response.status).json({
-                message:'Request failed',
-                data:response.statusText
-            })
-        }
-    }catch(error){
-        console.error('Error in protected route:', error);
-        throw error
-    }
-})
+//Below one used in Auth0
+// router.get('/getUserData',async(req:Request,res:Response)=>{
+//     try{
+//         const authToken = req.headers.authorization?.split(' ')[1];
+//         const response = await axios.get('https://dev-cd616eaxtu7so5dm.us.auth0.com/userinfo',{
+//             headers:{
+//                 Authorization: `Bearer ${authToken}`
+//             }
+//         })
+//         if(response.status >=200 && response.status <300){
+//             const data = await response.data;
+//             console.log(data);
+//             res.status(response.status).json({
+//                 message:'Success',
+//                 data:data
+//             })
+//         }else{
+//             console.log('Request failed : ', response.statusText);
+//             res.status(response.status).json({
+//                 message:'Request failed',
+//                 data:response.statusText
+//             })
+//         }
+//     }catch(error){
+//         console.error('Error in protected route:', error);
+//         throw error
+//     }
+// })
 export default router;

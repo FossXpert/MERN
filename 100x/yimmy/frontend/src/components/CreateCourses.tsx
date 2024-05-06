@@ -4,7 +4,8 @@ import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { Button } from '@mui/material';
 import { useRecoilState } from 'recoil';
-import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle } from './atom';
+import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle, decodePayload, decodePayloadInterface, getToken } from './atom';
+import { BASE_URL } from '../config';
 const CreateCourses = () => {
 
     const [isCourseCreated,setIsCourseCreated] = useState(false);
@@ -14,9 +15,13 @@ const CreateCourses = () => {
     const [category,setCategory]:[string,(category:string)=>void] = useRecoilState(atomCategory);
     const [id,setId]:[string,(id:string)=>void] = useRecoilState(atomAdminId)
 
+    const payload : decodePayloadInterface | undefined = decodePayload(getToken());
+
     const handleCreateButton = () => {
-        setIsCourseCreated(true)
+        setIsCourseCreated(true);
+        // const response = axios.post(`${BASE_URL}/${payload?.role}/`)
     }
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={6} md={6}>
