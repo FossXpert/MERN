@@ -87,3 +87,7 @@ export type signupUser = z.infer<typeof signupInput>
 export type signinUser = z.infer<typeof signinInput>
 
 ```
+
+## React Routing 
+React does not include built-in routing functionality, but you can use third-party routing libraries such as React Router which comes 
+from React-Router-Dom to handle routing in your applications. React Router is a popular choice for implementing routing in React applications.
