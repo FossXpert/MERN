@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 import { useRecoilState } from 'recoil';
 import {v4 as uuid4} from 'uuid'
 import axios from 'axios';
-import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle, decodePayload, decodePayloadInterface, getToken } from './atom';
+import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle, atomImageLink, decodePayload, decodePayloadInterface, getToken } from './atom';
 import { BASE_URL1 } from '../config';
 import { zodCourseDetail } from '@rahulray8518/common';
 const CreateCourses = () => {
@@ -18,14 +18,17 @@ const CreateCourses = () => {
     const [category,setCategory]:[string,(category:string) => void] = useRecoilState(atomCategory);
     const [admin_id,setAdminId]:[string,(admin_id:string) => void] = useRecoilState(atomAdminId)
     const [courseId,setCourseId]:[string,(courseId:string) => void] = useState("");
+    const [imageLink,setImageLink]:[string,(imageLink:string) => void] = useRecoilState(atomImageLink)
 
     const payload : decodePayloadInterface | undefined = decodePayload(getToken());
 
     const handleCreateButton = () => {
         setIsCourseCreated(true);
         setCourseId(uuid4());
+        payload?setAdminId(payload.id) : null;
+    
         const courseBody : zodCourseDetail = {
-            title,description,price,category,admin_id,courseId
+            title,description,price,category,admin_id,courseId,imageLink
         }
         
         const response = axios.post(`${BASE_URL1}/${payload?.role}/createcourse`,{

@@ -42,6 +42,10 @@ export const atomAdminId = atom({
     default:'',
     key:'adminId'
 })
+export const atomImageLink = atom({
+    default:"",
+    key:"image"
+})
 //---//
 export function decodePayload(token : string | null){
     if(token===null){
