@@ -13,10 +13,12 @@ export const signinInput = z.object({
 
 export const courseInput = z.object({
     admin_id : z.string(),
+    courseId : z.string(),
     title: z.string().min(3).max(160),
     description: z.string().min(3).max(500),
     imageLink : z.string(),
-    price: z.number()
+    price: z.number(),
+    category : z.string().min(1).max(20)
 })
 export type signupUser = z.infer<typeof signupInput>
 export type signinUser = z.infer<typeof signinInput>
