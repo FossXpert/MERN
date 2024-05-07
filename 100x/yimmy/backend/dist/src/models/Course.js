@@ -27,7 +27,7 @@ const mongoose_1 = __importStar(require("mongoose"));
 const uuid_1 = require("uuid");
 const courseSchema = new mongoose_1.Schema({
     id: { type: String, default: () => (0, uuid_1.v4)(), required: true, unique: true },
-    title: { type: String, required: true, unique: true },
+    title: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
     imageLink: { type: String, required: true },

@@ -91,3 +91,15 @@ export type signinUser = z.infer<typeof signinInput>
 ## React Routing 
 React does not include built-in routing functionality, but you can use third-party routing libraries such as React Router which comes 
 from React-Router-Dom to handle routing in your applications. React Router is a popular choice for implementing routing in React applications.
+
+
+## (e) => setItem(e.target.value)
+- Whenever u see this remember e.target.value return string, soto convert it in number u have to this
+
+```typescript
+ onChange={(e: React.ChangeEvent<HTMLInputElement>) => { 
+    const newValue = parseFloat(e.target.value); // Convert string to number
+    setPrice(newValue);
+ }}
+```
+

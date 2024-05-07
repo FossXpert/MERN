@@ -50,7 +50,9 @@ const CreateCourses = () => {
           id="price"
           label="Course Price"
           variant="outlined"
-          onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setPrice(e.target.value)}}
+          onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
+            const priceValue = parseFloat(e.target.value)
+            setPrice(priceValue)}}
         />
         <TextField
           fullWidth
