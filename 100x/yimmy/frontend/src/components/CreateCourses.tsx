@@ -19,14 +19,15 @@ const CreateCourses = () => {
   const [courseId, setCourseId]: [string, (courseId: string) => void] = useState("");
   const [imageLink, setImageLink]: [string, (imageLink: string) => void] = useRecoilState(atomImageLink);
 
-  const payload: decodePayloadInterface | undefined = decodePayload(getToken());
-
   const handleCreateButton = async() => {
      setIsCourseCreated(true);
-     setCourseId(uuid4());
-    if(payload !== undefined){
-         setAdminId(payload.id);
-    }
+    const newCourseId = uuid4();
+    setCourseId(newCourseId);
+    const id : string | null= localStorage.getItem('id'); 
+    if(id!==null){
+        setAdminId(id);
+    }else return;
+
 
     const courseBody: zodCourseDetail = {
       title, description, price, category, admin_id, courseId, imageLink

@@ -55,8 +55,9 @@ export function decodePayload(token : string | null){
     const decodePayload : decodePayloadInterface = jwtDecode(token); // https://sprl.in/lmUrltJ
     if(decodePayload ===null){
         console.log("Token Extraction Failed")
-        return;
+        return null;
     }
+    localStorage.setItem('id',decodePayload.id);
     return decodePayload;
 }
 
