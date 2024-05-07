@@ -21,10 +21,12 @@ const CreateCourses = () => {
 
   const payload: decodePayloadInterface | undefined = decodePayload(getToken());
 
-  const handleCreateButton = () => {
-    setIsCourseCreated(true);
-    setCourseId(uuid4());
-    payload ? setAdminId(payload.id) : null;
+  const handleCreateButton = async() => {
+     setIsCourseCreated(true);
+     setCourseId(uuid4());
+    if(payload !== undefined){
+         setAdminId(payload.id);
+    }
 
     const courseBody: zodCourseDetail = {
       title, description, price, category, admin_id, courseId, imageLink
@@ -59,7 +61,7 @@ const CreateCourses = () => {
           label="Course Price"
           variant="outlined"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setPrice(parseFloat(e.target.value))
+            setPrice(parseInt(e.target.value))
           }}
         />
         <Select
