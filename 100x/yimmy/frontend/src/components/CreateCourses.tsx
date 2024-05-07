@@ -14,7 +14,7 @@ const CreateCourses = () => {
     const [description,setDescription]:[string,(description:string) => void]= useRecoilState(atomCourseDescription);
     const [price,setPrice]:[number,(price:number) => void]= useRecoilState(atomCoursePrice);
     const [category,setCategory]:[string,(category:string) => void] = useRecoilState(atomCategory);
-    const [id,setId]:[string,(id:string) => void] = useRecoilState(atomAdminId)
+    // const [id,setId]:[string,(id:string) => void] = useRecoilState(atomAdminId)
 
     const payload : decodePayloadInterface | undefined = decodePayload(getToken());
 
