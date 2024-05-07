@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, TextField, Button, Select, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import CourseCard from './CourseCard';
@@ -19,20 +19,28 @@ const CreateCourses = () => {
   const [courseId, setCourseId]: [string, (courseId: string) => void] = useState("");
   const [imageLink, setImageLink]: [string, (imageLink: string) => void] = useRecoilState(atomImageLink);
 
-  const handleCreateButton = async() => {
-     setIsCourseCreated(true);
+  const setRemainItems = async() => {
     const newCourseId = uuid4();
     setCourseId(newCourseId);
     const id : string | null= localStorage.getItem('id'); 
     if(id!==null){
         setAdminId(id);
-    }else return;
+    }else {
+        console.log("localstorage id is null");
+        return;
+    }
+  }
+    useEffect(()=>{
+        setRemainItems();
+    },[])
 
-
+  const handleCreateButton = async() => {
+    await setRemainItems();
     const courseBody: zodCourseDetail = {
       title, description, price, category, admin_id, courseId, imageLink
     }
     console.log("CourseBody : ",courseBody)
+    setIsCourseCreated(true);
     // const response = axios.post(`${BASE_URL1}/${payload?.role}/createcourse`, courseBody);
   }
 
