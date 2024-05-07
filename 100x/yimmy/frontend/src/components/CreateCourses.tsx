@@ -72,6 +72,13 @@ const CreateCourses = () => {
           variant="outlined"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {setCategory(e.target.value)}}
         />
+        <TextField
+          fullWidth
+          id="Category"
+          label="Category"
+          variant="outlined"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {setCategory(e.target.value)}}
+        />
         <Button onClick={handleCreateButton}>Create</Button>
       </Grid>
       <Grid item xs={6} md={6}>
