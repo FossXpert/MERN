@@ -7,4 +7,19 @@
 - One thing (First learn react router, and how it can use to protect routes)
 
 ## Routing in react (Very Important)
-vvv
+## Lot of issue faced while choosing the type of onchange
+```typescript
+    <Select
+    fullWidth
+    id="Category"
+    label="Category"
+    variant="outlined"
+    value={category}
+    onChange={(e: React.ChangeEvent<{ value: string }>) => { setCategory(e.target.value) }}
+    >
+    <MenuItem value="code">Code</MenuItem>
+    <MenuItem value="design">Design</MenuItem>
+    <MenuItem value="architect">Architect</MenuItem>
+    </Select>
+```
+## 

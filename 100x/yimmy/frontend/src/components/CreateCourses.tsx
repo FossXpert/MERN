@@ -29,8 +29,8 @@ const CreateCourses = () => {
     const courseBody: zodCourseDetail = {
       title, description, price, category, admin_id, courseId, imageLink
     }
-
-    const response = axios.post(`${BASE_URL1}/${payload?.role}/createcourse`, courseBody);
+    console.log("CourseBody : ",courseBody)
+    // const response = axios.post(`${BASE_URL1}/${payload?.role}/createcourse`, courseBody);
   }
 
   return (
@@ -59,8 +59,7 @@ const CreateCourses = () => {
           label="Course Price"
           variant="outlined"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const priceValue = parseFloat(e.target.value)
-            setPrice(priceValue)
+            setPrice(parseFloat(e.target.value))
           }}
         />
         <Select
@@ -69,12 +68,21 @@ const CreateCourses = () => {
           label="Category"
           variant="outlined"
           value={category}
-          onChange={(e: React.ChangeEvent<{ value: unknown }>) => { setCategory(e.target.value as string) }}
+          onChange={(e: React.ChangeEvent<{ value: string }>) => { setCategory(e.target.value) }}
         >
           <MenuItem value="code">Code</MenuItem>
           <MenuItem value="design">Design</MenuItem>
           <MenuItem value="architect">Architect</MenuItem>
         </Select>
+        <TextField
+          fullWidth
+          id="image"
+          label="Image Link"
+          variant="outlined"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setImageLink(e.target.value)
+          }}
+        />
         <Button onClick={handleCreateButton}>Create</Button>
       </Grid>
       <Grid item xs={6} md={6}>

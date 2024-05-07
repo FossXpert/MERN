@@ -5,13 +5,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function CourseCard({props}) {
+export default function CourseCard() {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
         image="https://picsum.photos/id/27/367/267"
-        title=props.title
+        title="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
