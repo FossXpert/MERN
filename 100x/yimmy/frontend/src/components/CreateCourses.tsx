@@ -19,7 +19,7 @@ const CreateCourses = () => {
 
     const handleCreateButton = () => {
         setIsCourseCreated(true);
-        // const response = axios.post(`${BASE_URL}/${payload?.role}/`)
+        const response = axios.post(`${BASE_URL}/${payload?.role}/`)
     }
 
   return (

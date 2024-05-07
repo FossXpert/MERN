@@ -1,6 +1,5 @@
 import mongoose,{Document,Schema} from 'mongoose'
 import {v4 as uuid4} from 'uuid'
-import { string } from 'zod';
 
 export interface Course extends Document{
   id: string;
@@ -13,7 +12,7 @@ export interface Course extends Document{
 }
 
 const courseSchema : Schema<Course> = new Schema<Course>({
-    id:{type: String, default:  () => uuid4(),required:true,unique:true},
+    id:{type: String, default: () => uuid4(),required:true,unique:true},
     title:{ type : String , required : true, unique:true },
     description:{ type : String ,required: true },
     price:{ type:Number , required:true },
