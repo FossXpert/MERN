@@ -4,22 +4,25 @@ import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { Button } from '@mui/material';
 import { useRecoilState } from 'recoil';
+import axios from 'axios';
 import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle, decodePayload, decodePayloadInterface, getToken } from './atom';
-import { BASE_URL } from '../config';
+import { BASE_URL1 } from '../config';
 const CreateCourses = () => {
 
     const [isCourseCreated,setIsCourseCreated] = useState(false);
-    const [title,setTitle]:[string,(title:string)=>void] = useRecoilState(atomCourseTitle);
-    const [description,setDescription]:[string,(description:string)=>void]= useRecoilState(atomCourseDescription);
-    const [price,setPrice]:[number,(price:number)=>void]= useRecoilState(atomCoursePrice);
-    const [category,setCategory]:[string,(category:string)=>void] = useRecoilState(atomCategory);
-    const [id,setId]:[string,(id:string)=>void] = useRecoilState(atomAdminId)
+    const [title,setTitle]:[string,(title:string) => void] = useRecoilState(atomCourseTitle);
+    const [description,setDescription]:[string,(description:string) => void]= useRecoilState(atomCourseDescription);
+    const [price,setPrice]:[number,(price:number) => void]= useRecoilState(atomCoursePrice);
+    const [category,setCategory]:[string,(category:string) => void] = useRecoilState(atomCategory);
+    const [id,setId]:[string,(id:string) => void] = useRecoilState(atomAdminId)
 
     const payload : decodePayloadInterface | undefined = decodePayload(getToken());
 
     const handleCreateButton = () => {
         setIsCourseCreated(true);
-        const response = axios.post(`${BASE_URL}/${payload?.role}/`)
+        const response = axios.post(`${BASE_URL1}/${payload?.role}/createcourse`,{
+            
+        })
     }
 
   return (
