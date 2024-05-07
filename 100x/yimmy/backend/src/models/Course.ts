@@ -14,7 +14,7 @@ export interface Course extends Document{
 
 const courseSchema : Schema<Course> = new Schema<Course>({
     id:{type: String, default:  () => uuid4(),required:true,unique:true},
-    title:{ type : String , required : true },
+    title:{ type : String , required : true, unique:true },
     description:{ type : String ,required: true },
     price:{ type:Number , required:true },
     imageLink : {type : String, required : true},
