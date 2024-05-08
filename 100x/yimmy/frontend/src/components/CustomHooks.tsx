@@ -62,9 +62,16 @@ const useCourseManagementHook = () => {
         }
     }
 
-    
-
+    return {
+        courses,
+        loading,
+        createCourse,
+        updateCourse,
+        deleteCourse
+    }
 }
+
+
 
 /*
 // useCourseManagement.js
