@@ -99,9 +99,6 @@ export const isLoggedIn = (): boolean => {
         return false; 
     }
 }
-
-export const 
-
 export interface decodePayloadInterface {
     id : string,
     username:string,

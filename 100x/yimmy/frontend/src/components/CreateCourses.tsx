@@ -4,10 +4,9 @@ import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid4 } from 'uuid';
-import axios from 'axios';
 import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle, atomImageLink, decodePayload, decodePayloadInterface, getToken } from './atom';
-import { BASE_URL1 } from '../config';
 import { zodCourseDetail } from '@rahulray8518/common';
+import { useCourseManagementHook } from './CustomHooks';
 
 const CreateCourses = () => {
   const [isCourseCreated, setIsCourseCreated] = useState(false);
@@ -18,6 +17,9 @@ const CreateCourses = () => {
   const [admin_id, setAdminId]: [string, (admin_id: string) => void] = useRecoilState(atomAdminId);
   const [courseId, setCourseId]: [string, (courseId: string) => void] = useState("");
   const [imageLink, setImageLink]: [string, (imageLink: string) => void] = useRecoilState(atomImageLink);
+
+  const {courses,loading,createCourse,updateCourse,deleteCourse} = useCourseManagementHook();
+
 
   const setRemainItems = async() => {
     const newCourseId = uuid4();
@@ -40,8 +42,8 @@ const CreateCourses = () => {
       title, description, price, category, admin_id, courseId, imageLink
     }
     console.log("CourseBody : ",courseBody)
+    createCourse(courseBody);
     setIsCourseCreated(true);
-    // const response = axios.post(`${BASE_URL1}/${payload?.role}/createcourse`, courseBody);
   }
 
   return (

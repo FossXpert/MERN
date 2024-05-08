@@ -3,7 +3,7 @@ import { BACKEND_BASE_URL } from "../config";
 import axios from "axios";
 import { zodCourseDetail } from "@rahulray8518/common";
 
-const useCourseManagementHook = () => {
+export const useCourseManagementHook = () => {
     const [courses,setCourses]  = useState<zodCourseDetail[]>([]);
     const [loading,setLoading] = useState<boolean>(true);
 

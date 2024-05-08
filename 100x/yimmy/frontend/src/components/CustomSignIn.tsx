@@ -15,7 +15,7 @@ import { useRecoilState } from 'recoil';
 import { atomRememberMe, atomRole, atomUserName, decodePayload,login } from './atom';
 import axios from 'axios';
 import { useState } from 'react';
-import { BASE_URL } from '../config';
+import { BACKEND_BASE_URL, BASE_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import { signinUser } from '@rahulray8518/common';
 
@@ -37,7 +37,7 @@ export default function CustomSignIn() {
             username,
             password,
         };
-        const url = `${BASE_URL}/user/login?role=${role}`
+        const url = `${BACKEND_BASE_URL}/user/login?role=${role}`
         const response = await axios.post(url,body,{
           headers: {
             'Content-Type': 'application/json',
