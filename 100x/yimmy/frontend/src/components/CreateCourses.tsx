@@ -74,26 +74,15 @@ const CreateCourses = () => {
             setPrice(parseInt(e.target.value))
           }}
         />
-        <Select
+         <TextField
           fullWidth
-          id="Category"
-          label="Category"
+          id="category"
+          label="Categories"
+          multiline
+          rows={4}
           variant="outlined"
-          value={category}
-          onChange={(e: React.ChangeEvent<{ value: string }>) => { setCategory(e.target.value) }}
-        >
-          <MenuItem value="code">Code</MenuItem>
-          <MenuItem value="design">Design</MenuItem>
-          <MenuItem value="architect">Architect</MenuItem>
-        </Select>
-        <TextField
-          fullWidth
-          id="image"
-          label="Image Link"
-          variant="outlined"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setImageLink(e.target.value)
-          }}
+          style={{ marginTop: '1rem' }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCategory(e.target.value) }}
         />
         <Button onClick={handleCreateButton}>Create</Button>
       </Grid>
