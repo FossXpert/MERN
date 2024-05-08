@@ -9,7 +9,10 @@ import { zodCourseDetail } from '@rahulray8518/common';
 import { useCourseManagementHook } from './CustomHooks';
 
 const CreateCourses = () => {
+    
+  const {createCourse} = useCourseManagementHook();
   const [isCourseCreated, setIsCourseCreated] = useState(false);
+  
   const [title, setTitle]: [string, (title: string) => void] = useRecoilState(atomCourseTitle);
   const [description, setDescription]: [string, (description: string) => void] = useRecoilState(atomCourseDescription);
   const [price, setPrice]: [number, (price: number) => void] = useRecoilState(atomCoursePrice);
@@ -17,9 +20,6 @@ const CreateCourses = () => {
   const [admin_id, setAdminId]: [string, (admin_id: string) => void] = useRecoilState(atomAdminId);
   const [courseId, setCourseId]: [string, (courseId: string) => void] = useState("");
   const [imageLink, setImageLink]: [string, (imageLink: string) => void] = useRecoilState(atomImageLink);
-
-  const {courses,loading,createCourse,updateCourse,deleteCourse} = useCourseManagementHook();
-
 
   const setRemainItems = async() => {
     const newCourseId = uuid4();
@@ -42,7 +42,7 @@ const CreateCourses = () => {
       title, description, price, category, admin_id, courseId, imageLink
     }
     console.log("CourseBody : ",courseBody)
-    createCourse(courseBody);
+    console.log(createCourse(courseBody));
     setIsCourseCreated(true);
   }
 
