@@ -86,3 +86,8 @@ https://vscode.dev/profile/github/c3c5d0b0db11e5744ea93be3694c57d7
 
 --------------------------------------------------------------------------
 https://github.com/hkirat/Algorithmic-Resources/tree/master?tab=readme-ov-file#arrays
+
+
+cd 100x/yimmy/backend/dist/src
+cd 100x/yimmy/backend/src
+cd 100x/yimmy/frontend/src/components
