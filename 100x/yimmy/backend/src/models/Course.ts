@@ -1,18 +1,9 @@
+import { zodCourseDetail } from '@rahulray8518/common';
 import mongoose,{Document,Schema} from 'mongoose'
-import {v4 as uuid4} from 'uuid'
 
-export interface Course extends Document{
-  id: string;
-  title:string;
-  description:string;
-  price:number;
-  category:string;
-  imageLink:string;
-  admin_id : string;
-}
 
-const courseSchema : Schema<Course> = new Schema<Course>({
-    id:{type: String,required:true,unique:true},
+const courseSchema : Schema<zodCourseDetail> = new Schema<zodCourseDetail>({
+    courseId:{type: String,required:true,unique:true},
     title:{ type : String , required : true },
     description:{ type : String ,required: true },
     price:{ type:Number , required:true },
@@ -24,5 +15,5 @@ const courseSchema : Schema<Course> = new Schema<Course>({
     admin_id: { type:String, required:true, ref:'Admin'}
 });
 
-const CourseModel =  mongoose.model<Course>('Courses',courseSchema);
+const CourseModel =  mongoose.model<zodCourseDetail>('Courses',courseSchema);
 export default CourseModel;

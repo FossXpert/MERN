@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { BACKEND_BASE_URL, BASE_URL } from "../config";
+import { BACKEND_BASE_URL } from "../config";
 import axios from "axios";
 import { zodCourseDetail } from "@rahulray8518/common";
 

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import CourseModel, { Course } from "../models/Course";
-import { courseInput } from "@rahulray8518/common";
+import { courseInput, zodCourseDetail } from "@rahulray8518/common";
 
 
-export const isCourseExist = async(id:string) : Promise<Course | null> => {
+export const isCourseExist = async(id:string) : Promise<zodCourseDetail | null> => {
     try {
-        const courseDetail : Course | null = await CourseModel.findOne({id});
+        const courseDetail : zodCourseDetail | null = await CourseModel.findOne({id});
         return courseDetail;
     } catch (error) {
         console.log(error)
