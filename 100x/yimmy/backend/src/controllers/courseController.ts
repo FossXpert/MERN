@@ -27,13 +27,9 @@ export const createCourse = async(req:Request,res:Response) => {
         const imageLink = parseInput.data?.imageLink;
         const admin_id = parseInput.data?.admin_id;
         const courseId = parseInput.data?.courseId;
-        if(!(!!isCourseExist(courseId))){
+        const category = parseInput.data.category;
+        if(await isCourseExist(courseId)){
             return res.status(409).json('Course already exist')
-        }else{
-            return res.status(500).json({
-                message : "Course already exist",
-                error : "Course already exist"
-            })
         }
         const newCourse = new CourseModel({
             title,description,price,imageLink,admin_id,courseId
@@ -42,7 +38,6 @@ export const createCourse = async(req:Request,res:Response) => {
         return res.status(200).json({
             Message : "Saved Succesfully",
             InputBody : newCourse,
-            t: console.log("d")
         })
     } catch (error:any) {
         console.log("error in createCourse Route",error.message);

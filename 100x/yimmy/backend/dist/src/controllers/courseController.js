@@ -42,14 +42,8 @@ const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const imageLink = (_d = parseInput.data) === null || _d === void 0 ? void 0 : _d.imageLink;
         const admin_id = (_e = parseInput.data) === null || _e === void 0 ? void 0 : _e.admin_id;
         const courseId = (_f = parseInput.data) === null || _f === void 0 ? void 0 : _f.courseId;
-        if (!(!!(0, exports.isCourseExist)(courseId))) {
+        if (yield (0, exports.isCourseExist)(courseId)) {
             return res.status(409).json('Course already exist');
-        }
-        else {
-            return res.status(500).json({
-                message: "Course already exist",
-                error: "Course already exist"
-            });
         }
         const newCourse = new Course_1.default({
             title, description, price, imageLink, admin_id, courseId
