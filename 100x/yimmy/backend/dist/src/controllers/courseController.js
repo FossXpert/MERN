@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createCourse = exports.isCourseExist = void 0;
 const Course_1 = __importDefault(require("../models/Course"));
 const common_1 = require("@rahulray8518/common");
-const isCourseExist = (id) => __awaiter(void 0, void 0, void 0, function* () {
+const isCourseExist = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const courseDetail = yield Course_1.default.findOne({ id });
+        const courseDetail = yield Course_1.default.findOne({ courseId });
         return courseDetail;
     }
     catch (error) {
@@ -29,23 +29,36 @@ exports.isCourseExist = isCourseExist;
 const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d, _e, _f;
     try {
-        if (!(!!exports.isCourseExist)) {
-            return res.status(409).json('Course already exist');
-        }
         const parseInput = common_1.courseInput.safeParse(req.body);
+        if (!parseInput.success) {
+            return res.status(500).json({
+                message: "zod input validation failed",
+                error: parseInput.error
+            });
+        }
         const title = (_a = parseInput.data) === null || _a === void 0 ? void 0 : _a.title;
         const description = (_b = parseInput.data) === null || _b === void 0 ? void 0 : _b.description;
         const price = (_c = parseInput.data) === null || _c === void 0 ? void 0 : _c.price;
         const imageLink = (_d = parseInput.data) === null || _d === void 0 ? void 0 : _d.imageLink;
         const admin_id = (_e = parseInput.data) === null || _e === void 0 ? void 0 : _e.admin_id;
         const courseId = (_f = parseInput.data) === null || _f === void 0 ? void 0 : _f.courseId;
+        if (!(!!(0, exports.isCourseExist)(courseId))) {
+            return res.status(409).json('Course already exist');
+        }
+        else {
+            return res.status(500).json({
+                message: "Course already exist",
+                error: "Course already exist"
+            });
+        }
         const newCourse = new Course_1.default({
             title, description, price, imageLink, admin_id, courseId
         });
         yield newCourse.save();
         return res.status(200).json({
             Message: "Saved Succesfully",
-            InputBody: newCourse
+            InputBody: newCourse,
+            t: console.log("d")
         });
     }
     catch (error) {
