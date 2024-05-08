@@ -42,7 +42,6 @@ const CreateCourses = () => {
       title, description, price, category, admin_id, courseId, imageLink
     }
     console.log("CourseBody : ",courseBody)
-    console.log(createCourse(courseBody));
     setIsCourseCreated(true);
   }
 
