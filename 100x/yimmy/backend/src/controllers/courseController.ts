@@ -32,7 +32,7 @@ export const createCourse = async(req:Request,res:Response) => {
             return res.status(409).json('Course already exist')
         }
         const newCourse = new CourseModel({
-            title,description,price,imageLink,admin_id,courseId
+            title,description,price,imageLink,admin_id,courseId,category
         }) 
         await newCourse.save();
         return res.status(200).json({
