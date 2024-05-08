@@ -8,10 +8,10 @@ const useCourseManagementHook = () => {
     const [loading,setLoading] = useState<boolean>(true);
 
     useEffect(()=>{
-        fetchCourse();
+        fetchAllCourse();
     },[]);
 
-    const fetchCourse = async() => {
+    const fetchAllCourse = async() => {
         try {
             const response = await axios.get(`${BACKEND_BASE_URL}/admin/getcourses`);
             setCourses(response.data);
@@ -61,9 +61,6 @@ const useCourseManagementHook = () => {
             throw error;
         }
     }
-
-    
-
 }
 
 /*
