@@ -1,5 +1,5 @@
 import { zodCourseDetail } from '@rahulray8518/common';
-import mongoose,{Document,Schema} from 'mongoose'
+import mongoose,{Schema} from 'mongoose'
 
 
 const courseSchema : Schema<zodCourseDetail> = new Schema<zodCourseDetail>({

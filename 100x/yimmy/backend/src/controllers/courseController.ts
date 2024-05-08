@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import CourseModel, { Course } from "../models/Course";
+import CourseModel from "../models/Course";
 import { courseInput, zodCourseDetail } from "@rahulray8518/common";
 
 
@@ -22,10 +22,11 @@ export const createCourse = async(req:Request,res:Response) => {
         const description = parseInput.data?.description;
         const price = parseInput.data?.price;
         const imageLink = parseInput.data?.imageLink;
-        const admin_id = parseInput.data?.admin_id; 
+        const admin_id = parseInput.data?.admin_id;
+        const courseId = parseInput.data?.courseId;
 
         const newCourse = new CourseModel({
-            title,description,price,imageLink,admin_id
+            title,description,price,imageLink,admin_id,courseId
         }) 
         await newCourse.save();
         return res.status(200).json({
@@ -37,5 +38,3 @@ export const createCourse = async(req:Request,res:Response) => {
         throw error;
     }
 }
-
-//change to v

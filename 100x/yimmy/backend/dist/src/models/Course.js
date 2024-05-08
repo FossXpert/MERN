@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const courseSchema = new mongoose_1.Schema({
-    id: { type: String, required: true, unique: true },
+    courseId: { type: String, required: true, unique: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },

@@ -27,7 +27,7 @@ const isCourseExist = (id) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.isCourseExist = isCourseExist;
 const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f;
     try {
         if (!(!!exports.isCourseExist)) {
             return res.status(409).json('Course already exist');
@@ -38,8 +38,9 @@ const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const price = (_c = parseInput.data) === null || _c === void 0 ? void 0 : _c.price;
         const imageLink = (_d = parseInput.data) === null || _d === void 0 ? void 0 : _d.imageLink;
         const admin_id = (_e = parseInput.data) === null || _e === void 0 ? void 0 : _e.admin_id;
+        const courseId = (_f = parseInput.data) === null || _f === void 0 ? void 0 : _f.courseId;
         const newCourse = new Course_1.default({
-            title, description, price, imageLink, admin_id
+            title, description, price, imageLink, admin_id, courseId
         });
         yield newCourse.save();
         return res.status(200).json({
@@ -53,4 +54,3 @@ const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.createCourse = createCourse;
-//change to v
