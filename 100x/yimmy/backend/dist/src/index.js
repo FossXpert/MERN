@@ -15,7 +15,7 @@ const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
 // Enable CORS for all domains
 app.use((0, cors_1.default)());
-const port = parseInt(process.env.PORT || '3001', 10);
+const port = parseInt(process.env.PORT || '3004', 10);
 // const host : string = process.env.HOST || 'localhost';
 const connectionStringLocal = "mongodb://localhost:27017/";
 const connectionString = "mongodb+srv://rahulray8518:rahulray85188101@cluster0.oveeh21.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -31,6 +31,6 @@ mongoose_1.default.connection.on("error", (err) => {
 });
 app.use("/user", userRoutes_1.default);
 app.use("/admin", adminRoutes_1.default);
-app.listen(3001, () => {
+app.listen(port, () => {
     console.log(`Backend is running on PORT : ${port}`);
 });

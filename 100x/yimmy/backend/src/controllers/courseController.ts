@@ -33,8 +33,7 @@ export const createCourse = async(req:Request,res:Response) => {
             Message : "Saved Succesfully",
             InputBody : newCourse
         })
-    } catch (error) {
-        console.log("error in createCourse Route",error);
-        throw error;
+    } catch (error:any) {
+        console.log("error in createCourse Route",error.message);
     }
 }

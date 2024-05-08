@@ -49,8 +49,7 @@ const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         });
     }
     catch (error) {
-        console.log("error in createCourse Route", error);
-        throw error;
+        console.log("error in createCourse Route", error.message);
     }
 });
 exports.createCourse = createCourse;
