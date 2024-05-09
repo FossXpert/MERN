@@ -33,7 +33,7 @@ const CreateCourses = () => {
     }
   }
     useEffect(()=>{
-        // setRemainItems();
+        setRemainItems();
     },[])
 
   const handleCreateButton = async() => {
