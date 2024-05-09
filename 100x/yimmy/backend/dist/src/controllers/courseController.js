@@ -42,21 +42,22 @@ const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const imageLink = (_d = parseInput.data) === null || _d === void 0 ? void 0 : _d.imageLink;
         const admin_id = (_e = parseInput.data) === null || _e === void 0 ? void 0 : _e.admin_id;
         const courseId = (_f = parseInput.data) === null || _f === void 0 ? void 0 : _f.courseId;
+        const category = parseInput.data.category;
         if (yield (0, exports.isCourseExist)(courseId)) {
             return res.status(409).json('Course already exist');
         }
         const newCourse = new Course_1.default({
-            title, description, price, imageLink, admin_id, courseId
+            title, description, price, imageLink, admin_id, courseId, category
         });
         yield newCourse.save();
         return res.status(200).json({
             Message: "Saved Succesfully",
             InputBody: newCourse,
-            t: console.log("d")
         });
     }
     catch (error) {
         console.log("error in createCourse Route", error.message);
+        throw error;
     }
 });
 exports.createCourse = createCourse;

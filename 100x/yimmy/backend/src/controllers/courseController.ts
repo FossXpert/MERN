@@ -41,5 +41,6 @@ export const createCourse = async(req:Request,res:Response) => {
         })
     } catch (error:any) {
         console.log("error in createCourse Route",error.message);
+        throw error; 
     }
 }
