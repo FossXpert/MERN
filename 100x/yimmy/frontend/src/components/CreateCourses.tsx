@@ -15,7 +15,7 @@ const CreateCourses = () => {
   
   const [title, setTitle]: [string, (title: string) => void] = useRecoilState(atomCourseTitle);
   const [description, setDescription]: [string, (description: string) => void] = useRecoilState(atomCourseDescription);
-  const [price, setPrice]: [number, (price: number) => void] = useRecoilState(atomCoursePrice);
+  const [price, setPrice]: [string, (price: string) => void] = useRecoilState(atomCoursePrice);
   const [category, setCategory]: [string, (category: string) => void] = useRecoilState(atomCategory);
   const [admin_id, setAdminId]: [string, (admin_id: string) => void] = useRecoilState(atomAdminId);
   const [courseId, setCourseId]: [string, (courseId: string) => void] = useRecoilState(atomCourseId)
@@ -36,9 +36,11 @@ const CreateCourses = () => {
         setRemainItems();
     },[])
 
+
   const handleCreateButton = async() => {
+    const intprice = parseInt(price);
     const courseBody: zodCourseDetail = {
-      title, description, price, category, admin_id, courseId, imageLink
+      title, description, price:intprice, category, admin_id, courseId, imageLink
     }
     console.log("CourseBody : ",courseBody)
     createCourse(courseBody);
@@ -71,7 +73,7 @@ const CreateCourses = () => {
           label="Course Price"
           variant="outlined"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setPrice(parseInt(e.target.value))
+            setPrice(e.target.value)
           }}
         />
          <TextField

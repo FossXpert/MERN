@@ -31,7 +31,7 @@ export const atomCourseDescription = atom({
     key: 'description'
 })
 export const atomCoursePrice = atom({
-    default: 0,
+    default: '',
     key:'price'
 })
 export const atomCategory = atom({

@@ -104,3 +104,38 @@ from React-Router-Dom to handle routing in your applications. React Router is a 
 ```
 
 ## Learn about React custom hook on react documenetation page very well explained
+
+## About re-renders in this code
+
+```typescript
+  const [price, setPrice]: [number, (price: number) => void] = useRecoilState(atomCoursePrice);
+  const courseBody: zodCourseDetail = {
+      title, description, price, category, admin_id, courseId, imageLink
+    }
+  <TextField
+          fullWidth
+          id="price"
+          label="Course Price"
+          variant="outlined"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setPrice(parseInt(e.target.value))
+          }}
+        />
+
+```
+- U can see there in a `setPrice(parseInt(e.target.value))`, whenever you put value in textfiled in browser, it parse at the same time as you enter the numbers, that cause an infinite loop of setState. so the browser will crash.
+that why what i am doing is taking it as inpout in string and then converting it to parseInt at the time of sending request.
+
+```tsx
+  const [price, setPrice]: [string, (price: string) => void] = useRecoilState(atomCoursePrice);
+  const intprice = parseInt(price);
+  const courseBody: zodCourseDetail = {
+      title, description, price:intprice, category, admin_id, courseId, imageLink
+    }
+  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setPrice(e.target.value)
+  }}
+```
+Then that issue disaapear. but the best way I will update here.
+
+
