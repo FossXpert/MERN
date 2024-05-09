@@ -15,7 +15,7 @@ import { useRecoilState } from 'recoil';
 import { atomRememberMe, atomRole, atomUserName, decodePayload,login } from './atom';
 import axios from 'axios';
 import { useState } from 'react';
-import { BACKEND_BASE_URL, BASE_URL } from '../config';
+import { BACKEND_BASE_URL} from '../config';
 import { useNavigate } from 'react-router-dom';
 import { signinUser } from '@rahulray8518/common';
 

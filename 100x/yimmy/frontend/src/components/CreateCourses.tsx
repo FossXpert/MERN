@@ -4,7 +4,7 @@ import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid4 } from 'uuid';
-import { atomAdminId, atomCategory, atomCourseDescription, atomCoursePrice, atomCourseTitle, atomImageLink, decodePayload, decodePayloadInterface, getToken } from './atom';
+import { atomAdminId, atomCategory, atomCourseDescription, atomCourseId, atomCoursePrice, atomCourseTitle, atomImageLink, decodePayload, decodePayloadInterface, getToken } from './atom';
 import { zodCourseDetail } from '@rahulray8518/common';
 import { useCourseManagementHook } from './CustomHooks';
 
@@ -18,7 +18,7 @@ const CreateCourses = () => {
   const [price, setPrice]: [number, (price: number) => void] = useRecoilState(atomCoursePrice);
   const [category, setCategory]: [string, (category: string) => void] = useRecoilState(atomCategory);
   const [admin_id, setAdminId]: [string, (admin_id: string) => void] = useRecoilState(atomAdminId);
-  const [courseId, setCourseId]: [string, (courseId: string) => void] = useState("");
+  const [courseId, setCourseId]: [string, (courseId: string) => void] = useRecoilState(atomCourseId)
   const [imageLink, setImageLink]: [string, (imageLink: string) => void] = useRecoilState(atomImageLink);
 
   const setRemainItems = async() => {
@@ -33,15 +33,15 @@ const CreateCourses = () => {
     }
   }
     useEffect(()=>{
-        setRemainItems();
+        // setRemainItems();
     },[])
 
   const handleCreateButton = async() => {
-    await setRemainItems();
     const courseBody: zodCourseDetail = {
       title, description, price, category, admin_id, courseId, imageLink
     }
     console.log("CourseBody : ",courseBody)
+    createCourse(courseBody);
     setIsCourseCreated(true);
   }
 
@@ -79,10 +79,17 @@ const CreateCourses = () => {
           id="category"
           label="Categories"
           multiline
-          rows={4}
+          rows={2}
           variant="outlined"
           style={{ marginTop: '1rem' }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCategory(e.target.value) }}
+        />
+        <TextField
+          fullWidth
+          id="image"
+          label="Image-Link"
+          variant="outlined"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setImageLink(e.target.value) }}
         />
         <Button onClick={handleCreateButton}>Create</Button>
       </Grid>

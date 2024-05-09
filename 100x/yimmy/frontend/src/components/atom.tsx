@@ -42,6 +42,10 @@ export const atomAdminId = atom({
     default:'',
     key:'adminId'
 })
+export const atomCourseId = atom({
+    default : '',
+    key : 'courseId'
+})
 export const atomImageLink = atom({
     default:"",
     key:"image"
