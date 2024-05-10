@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { Grid, TextField, Button, Select, MenuItem } from '@mui/material';
+import { Grid, TextField, Button} from '@mui/material';
 import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid4 } from 'uuid';
-import { atomAdminId, atomCategory, atomCourseDescription, atomCourseId, atomCoursePrice, atomCourseTitle, atomImageLink, decodePayload, decodePayloadInterface, getToken } from './atom';
+import { atomAdminId, atomCategory, atomCourseDescription, atomCourseId, atomCoursePrice, 
+atomCourseTitle, atomImageLink, decodePayload, decodePayloadInterface, getToken } from './atom';
 import { zodCourseDetail } from '@rahulray8518/common';
 import { useCourseManagementHook } from './CustomHooks';
 

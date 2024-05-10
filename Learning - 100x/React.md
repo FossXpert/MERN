@@ -138,4 +138,29 @@ that why what i am doing is taking it as inpout in string and then converting it
 ```
 Then that issue disaapear. but the best way I will update here.
 
+## What is memoization ?
+- Memoization is a programming technique which attempts to increase a function’s performance by caching its previously computed results.
+- Whenever a function is called, its parameters are stored in a cache. If the function is called with the same parameters, it returns the precomputed result from the cache instead of recalculating the result.
+- Memoization is useful when a function is called multiple times with the same input, as it can help reduce the number of computations and improve performance.
+## What is useMemo ?
+- useMemo is a React hook that allows you to memoize the result of a function so that it is only recomputed when its dependencies change.
+- useMemo takes two arguments: a function and an array of dependencies. The function is only re-executed when one of the dependencies changes.
+- Please write a example of it ?
+  ```tsx
+  import React, { useMemo } from 'react';
+  const MyComponent = () => {
+    const [count, setCount] = useState(0);
+    const [count2, setCount2] = useState(0);
 
+    const memoizedValue = useMemo(() => {
+      return count + count2;
+    }, [count, count2]);
+    return (
+      <div>
+        <button onClick={() => setCount(count + 1)}>Increment count</button>
+        <button onClick={() => setCount2(count2 + 1)}>Increment count2</button>
+        <div>Memoized value: {memoizedValue}</div>
+      </div>
+    );
+  };
+  ```
