@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { Grid, TextField, Button} from '@mui/material';
+import { Grid, TextField, Button, Select, MenuItem} from '@mui/material';
 import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid4 } from 'uuid';
 import { atomAdminId, atomCategory, atomCourseDescription, atomCourseId, atomCoursePrice, 
-atomCourseTitle, atomImageLink, decodePayload, decodePayloadInterface, getToken } from './atom';
+atomCourseTitle, atomImageLink } from './atom';
 import { zodCourseDetail } from '@rahulray8518/common';
 import { useCourseManagementHook } from './CustomHooks';
 
@@ -87,6 +87,18 @@ const CreateCourses = () => {
           style={{ marginTop: '1rem' }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCategory(e.target.value) }}
         />
+        <Select
+          fullWidth
+          id="category"
+          label="Categories"
+          variant="outlined"
+          value={category}
+          onChange={(e: SelectChangeEvent<string>) => { setCategory(e.target.value) }}
+        >
+          <MenuItem value="Category 1">Category 1</MenuItem>
+          <MenuItem value="Category 2">Category 2</MenuItem>
+          <MenuItem value="Category 3">Category 3</MenuItem>
+        </Select>
         <TextField
           fullWidth
           id="image"
