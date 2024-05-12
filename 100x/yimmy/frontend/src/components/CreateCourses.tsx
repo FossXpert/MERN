@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Grid, TextField, Button, Select, MenuItem} from '@mui/material';
+import {Grid,TextField,Select,MenuItem,Button,Typography,Icon,Card,CardContent,Box} from '@mui/material';
 import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { useRecoilState } from 'recoil';
@@ -41,7 +41,8 @@ const CreateCourses = () => {
   const handleCreateButton = async() => {
     const intprice = parseInt(price);
     const courseBody: zodCourseDetail = {
-      title, description, price:intprice, category, admin_id, courseId, imageLink
+      title, description, price:intprice, 
+      category, admin_id, courseId, imageLink
     }
     console.log("CourseBody : ",courseBody)
     createCourse(courseBody);
@@ -49,14 +50,29 @@ const CreateCourses = () => {
   }
 
   return (
+
+    <Box
+      sx={{
+        backgroundColor: '#edede4', // Change this to the desired background color
+        minHeight: '80vh',
+        padding: '2rem',
+      }}
+    >
     <Grid container spacing={2}>
-      <Grid item xs={6} md={6}>
+      <Grid item xs={12} md={4}>
+        <Card>
+          <CardContent>
+            <Typography variant='h5' component='h2' sx={{ color: 'primary.main', fontWeight: 'bold', marginBottom: '1rem' }}>
+              CREATE COURSE
+            </Typography>            
         <TextField
           fullWidth
           id="course-title"
           label="Course Title"
           variant="outlined"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTitle(e.target.value) }}
+          style={{ marginBottom: '1rem' }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
+            { setTitle(e.target.value) }}
         />
         <TextField
           fullWidth
@@ -65,53 +81,51 @@ const CreateCourses = () => {
           multiline
           rows={4}
           variant="outlined"
-          style={{ marginTop: '1rem' }}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setDescription(e.target.value) }}
+          style={{ marginBottom: '1rem' }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+             { setDescription(e.target.value) }}
         />
         <TextField
           fullWidth
           id="price"
           label="Course Price"
           variant="outlined"
+          style={{ marginBottom: '1rem' }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setPrice(e.target.value)
           }}
         />
-         <TextField
-          fullWidth
-          id="category"
-          label="Categories"
-          multiline
-          rows={2}
-          variant="outlined"
-          style={{ marginTop: '1rem' }}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCategory(e.target.value) }}
-        />
         <Select
           fullWidth
           id="category"
-          label="Categories"
+          label="Categoriess"
           variant="outlined"
           value={category}
-          onChange={(e: SelectChangeEvent<string>) => { setCategory(e.target.value) }}
+          style={{ marginBottom: '1rem' }}
+          onChange={(e: SelectChangeEvent<string>) => 
+            { setCategory(e.target.value) }}
         >
-          <MenuItem value="Category 1">Category 1</MenuItem>
-          <MenuItem value="Category 2">Category 2</MenuItem>
-          <MenuItem value="Category 3">Category 3</MenuItem>
+          <MenuItem value="Code">Code</MenuItem>
+          <MenuItem value="Design">Design</MenuItem>
+          <MenuItem value="Marketing">Marketing</MenuItem>
         </Select>
         <TextField
           fullWidth
           id="image"
           label="Image-Link"
           variant="outlined"
+          style={{ marginBottom: '1rem' }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setImageLink(e.target.value) }}
         />
         <Button onClick={handleCreateButton}>Create</Button>
+        </CardContent>
+        </Card> 
       </Grid>
       <Grid item xs={6} md={6}>
         {isCourseCreated && <CourseCard />}
       </Grid>
     </Grid>
+    </Box>
   );
 };
 

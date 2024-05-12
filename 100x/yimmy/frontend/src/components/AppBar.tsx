@@ -7,14 +7,14 @@ import { useNavigate } from 'react-router-dom';
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar(){
-    const payload : decodePayloadInterface | undefined = decodePayload(getToken());
+    const payload : decodePayloadInterface | undefined |null = decodePayload(getToken());
     const navigate = useNavigate();
     const handleLogout = () => {
          logout();
          navigate('/');
     }
     const handleInstructor = () => {
-        navigate('/createCourse')
+        navigate('/createcourse')
     }
     // Attempt to decode the token, handle errors gracefully
     return (
