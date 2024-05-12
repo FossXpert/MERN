@@ -44,21 +44,22 @@ const CreateCourses = () => {
       title, description, price:intprice, 
       category, admin_id, courseId, imageLink
     }
-    console.log("CourseBody : ",courseBody)
     createCourse(courseBody);
+    console.log("CourseBody : ",courseBody)
     setIsCourseCreated(true);
   }
 
   return (
-
     <Box
       sx={{
         backgroundColor: '#edede4', // Change this to the desired background color
         minHeight: '80vh',
-        padding: '2rem',
+        minWidth: '100%',
+        paddingX: '2rem',
+        paddingY: '2rem',
       }}
     >
-    <Grid container spacing={2}>
+    <Grid container spacing={12}>
       <Grid item xs={12} md={4}>
         <Card>
           <CardContent>
@@ -121,7 +122,7 @@ const CreateCourses = () => {
         </CardContent>
         </Card> 
       </Grid>
-      <Grid item xs={6} md={6}>
+      <Grid item xs={4} md={4} style={{ marginLeft: '27rem'}}>
         {isCourseCreated && <CourseCard />}
       </Grid>
     </Grid>
