@@ -6,6 +6,7 @@ import ShowCourses from './components/ShowCourses';
 import Dashboard from './components/Dashboard';
 import Landing from './components/Landing';
 import CreateCourses from './components/CreateCourses';
+import InstructorLandingPage from './components/InstructorLandingPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/signin' element={<CustomSignIn/>}/>
         <Route path="/all-courses" element={<ShowCourses />} />
         <Route path='/dashboard' element={<Dashboard/>} />
+        <Route path='/instructor' element={<InstructorLandingPage/>}/>
         <Route path='/createcourse' element={<CreateCourses/>}/>
       </Routes>
     </Router>

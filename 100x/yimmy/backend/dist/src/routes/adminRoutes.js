@@ -24,4 +24,22 @@ adminRouter.post('/createcourse', (req, res) => __awaiter(void 0, void 0, void 0
         throw (error);
     }
 }));
+adminRouter.get('/getallcourse', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield (0, courseController_1.getAllCourse)(req, res);
+    }
+    catch (error) {
+        console.log(error.message);
+        throw error;
+    }
+}));
+adminRouter.get('/getalladmincourse', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield (0, courseController_1.getAllAdminCourses)(req, res);
+    }
+    catch (error) {
+        console.log(error.message);
+        throw error;
+    }
+}));
 exports.default = adminRouter;

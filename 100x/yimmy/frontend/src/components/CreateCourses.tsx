@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Grid,TextField,Select,MenuItem,Button,Typography,Icon,Card,CardContent,Box} from '@mui/material';
+import {Grid,TextField,Select,MenuItem,Button,Typography,Icon,Card,CardContent,Box, SelectChangeEvent} from '@mui/material';
 import { useState } from 'react';
 import CourseCard from './CourseCard';
 import { useRecoilState } from 'recoil';
@@ -35,8 +35,7 @@ const CreateCourses = () => {
   }
     useEffect(()=>{
         setRemainItems();
-    },[])
-
+    },[]);
 
   const handleCreateButton = async() => {
     const intprice = parseInt(price);
@@ -60,14 +59,14 @@ const CreateCourses = () => {
       }}
     >
     <Grid container spacing={12}>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={4}> 
         <Card>
           <CardContent>
             <Typography variant='h5' component='h2' sx={{ color: 'primary.main', fontWeight: 'bold', marginBottom: '1rem' }}>
               CREATE COURSE
             </Typography>            
         <TextField
-          fullWidth
+          fullWidth 
           id="course-title"
           label="Course Title"
           variant="outlined"
@@ -123,11 +122,20 @@ const CreateCourses = () => {
         </Card> 
       </Grid>
       <Grid item xs={4} md={4} style={{ marginLeft: '27rem'}}>
-        {isCourseCreated && <CourseCard />}
+        {isCourseCreated && 
+        <CourseCard
+        title={title}
+        description={description}
+        image={imageLink}
+        price={price}
+        onBuy={() => console.log("Buy clicked")}
+        onView={() => console.log("View clicked")}
+      />}
       </Grid>
     </Grid>
     </Box>
   );
 };
+
 
 export default CreateCourses;

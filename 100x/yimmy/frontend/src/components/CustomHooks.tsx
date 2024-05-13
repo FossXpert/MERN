@@ -5,6 +5,7 @@ import { zodCourseDetail } from "@rahulray8518/common";
 
 export const useCourseManagementHook = () => {
     const [courses,setCourses]  = useState<zodCourseDetail[]>([]);
+    const [adminCourses,setAdminCourses] = useState<zodCourseDetail[]>([]);
     const [loading,setLoading] = useState<boolean>(true);
 
     useEffect(()=>{
@@ -13,19 +14,42 @@ export const useCourseManagementHook = () => {
 
     const fetchAllCourse = async() => {
         try {
-            const response = await axios.get(`${BACKEND_BASE_URL}/admin/getcourses`);
-            setCourses(response.data);
+            const response = await axios.get(`${BACKEND_BASE_URL}/admin/getallcourse`);
+            setCourses(response.data.courses);
+            console.log(response.data.message)
             setLoading(false)
-        } catch (error) {
-            console.error("Error Fetching Courses",error);
+        } catch (error:any) {
+            console.error("Error Fetching Courses",error.message);
             setLoading(false)
         }
     };
+
+    const fetchAdminCourses = async(adminId:string) => {
+      try {
+        // console.log("adminId is ",adminId);
+        const response = await axios.get(`${BACKEND_BASE_URL}/admin/getalladmincourse`,{
+          headers:{
+            adminId : adminId
+          }
+        });
+        setAdminCourses(response.data.courses);
+        console.log(response.data.message)
+      } catch (error:any) {
+        console.log("Error Fetching admin Course",error.message)
+        throw error
+      }
+    }
 
     const createCourse = async(newCourse : zodCourseDetail) => {
         try{
             const response = await axios.post(`${BACKEND_BASE_URL}/admin/createcourse`,newCourse);
             setCourses([...courses , response.data]);
+            if(response.status >= 200 && response.status < 300){
+                console.log("Course Created Successfully")
+                alert(response.data.Message)
+            }else{
+                console.error("Error Creating Courses")
+            }
         }catch(error){
             console.error("Error Creating Courses")
             throw error;
@@ -41,7 +65,7 @@ export const useCourseManagementHook = () => {
                 }
             })
             setCourses([...courses,response.data]);
-        }catch(error){
+        }catch(error){ 
             console.error("Error updating Courses")
             throw error;
         }
@@ -62,11 +86,13 @@ export const useCourseManagementHook = () => {
         }
     }
     return {
+        adminCourses,
         courses,
         loading,
         createCourse,
         updateCourse,
-        deleteCourse
+        deleteCourse,
+        fetchAdminCourses
     }
 }
 

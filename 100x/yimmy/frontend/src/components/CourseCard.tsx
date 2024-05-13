@@ -4,27 +4,49 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
-export default function CourseCard() {
+export default function CourseCard({
+   title, description, image, price, onBuy, onView 
+  }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="https://picsum.photos/id/27/367/267"
+        image={image}
         title="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Typography gutterBottom variant="h5" component="div">
+              {title}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body2" color="text.secondary">
+              {description}
+            </Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography variant="body2" color="text.secondary">
+              Price:
+            </Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography variant="body2" color="text.secondary">
+              {price}
+            </Typography>
+          </Grid>
+        </Grid>
       </CardContent>
       <CardActions>
-        <Button size="small">View</Button>
-        <Button size="small">Buy</Button>
+        <Button size="small" onClick={onView}>
+          View
+        </Button>
+        <Button size="small" onClick={onBuy}>
+          Buy
+        </Button>
       </CardActions>
     </Card>
   );

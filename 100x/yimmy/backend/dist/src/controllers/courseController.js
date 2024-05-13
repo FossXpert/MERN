@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createCourse = exports.isCourseExist = void 0;
+exports.createCourse = exports.getAllAdminCourses = exports.getAllCourse = exports.isCourseExist = void 0;
 const Course_1 = __importDefault(require("../models/Course"));
 const common_1 = require("@rahulray8518/common");
 const isCourseExist = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
@@ -26,6 +26,42 @@ const isCourseExist = (courseId) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.isCourseExist = isCourseExist;
+const getAllCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const courses = yield Course_1.default.find({});
+        res.status(200).json({
+            message: "Course fetched Succesfully",
+            courses: courses
+        });
+    }
+    catch (error) {
+        console.log("Error in fetching Courses");
+        throw error;
+    }
+});
+exports.getAllCourse = getAllCourse;
+const getAllAdminCourses = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const adminId = req.headers.adminId;
+        console.log(adminId);
+        if (adminId === (undefined || null)) {
+            return res.status(500).json({
+                message: "Admin id is undefined or null",
+            });
+        }
+        const courses = yield Course_1.default.find({ admin_id: adminId });
+        res.status(200).json({
+            id: adminId,
+            courses: courses,
+            message: "Admin Courses is fetched Succesfully",
+        });
+    }
+    catch (error) {
+        console.log("Error in fetching Courses");
+        throw error;
+    }
+});
+exports.getAllAdminCourses = getAllAdminCourses;
 const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d, _e, _f;
     try {

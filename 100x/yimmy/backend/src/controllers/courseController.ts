@@ -12,6 +12,38 @@ export const isCourseExist = async(courseId:string) : Promise<zodCourseDetail | 
         throw(error)
     }
 }
+export const getAllCourse = async(req:Request,res:Response) => {
+    try {
+        const courses = await CourseModel.find({});
+        res.status(200).json({
+            message : "Course fetched Succesfully",
+            courses : courses
+        })
+    } catch (error) {
+        console.log("Error in fetching Courses");
+        throw error;
+    }
+}
+export const getAllAdminCourses = async(req:Request,res:Response) => {
+    try {
+        console.log(adminId);
+        if(adminId === (undefined || null)){
+            return res.status(500).json({
+                message : "Admin id is undefined or null",
+            })
+        }
+        const courses = await CourseModel.find({admin_id:adminId});
+        res.status(200).json({
+            id : adminId,
+            courses : courses,
+            message : "Admin Courses is fetched Succesfully",
+        })
+    } catch (error) {
+        console.log("Error in fetching Courses");
+        throw error;
+    }
+}
+
 export const createCourse = async(req:Request,res:Response) => {
     try {
         const parseInput = courseInput.safeParse(req.body);
