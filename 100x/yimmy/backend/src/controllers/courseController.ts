@@ -26,8 +26,10 @@ export const getAllCourse = async(req:Request,res:Response) => {
 }
 export const getAllAdminCourses = async(req:Request,res:Response) => {
     try {
+        const adminId = req.headers.adminid
         console.log(adminId);
-        if(adminId === (undefined || null)){
+        console.log(req.headers)
+        if(adminId === undefined || adminId === null){
             return res.status(500).json({
                 message : "Admin id is undefined or null",
             })

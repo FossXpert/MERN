@@ -29,7 +29,9 @@ export const useCourseManagementHook = () => {
         // console.log("adminId is ",adminId);
         const response = await axios.get(`${BACKEND_BASE_URL}/admin/getalladmincourse`,{
           headers:{
-            adminId : adminId
+            'Content-Type' : 'application/json',
+            adminid : adminId //biggest mistake i was doing is sending adminId,
+            // but headers always consider small case so send everything in small case
           }
         });
         setAdminCourses(response.data.courses);

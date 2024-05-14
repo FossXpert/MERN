@@ -42,9 +42,10 @@ const getAllCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
 exports.getAllCourse = getAllCourse;
 const getAllAdminCourses = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const adminId = req.headers.adminId;
+        const adminId = req.headers.adminid;
         console.log(adminId);
-        if (adminId === (undefined || null)) {
+        console.log(req.headers);
+        if (adminId === undefined || adminId === null) {
             return res.status(500).json({
                 message: "Admin id is undefined or null",
             });
