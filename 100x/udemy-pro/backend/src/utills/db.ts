@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const connectionString : string = process.env.MONGO_URI || '';
 
-const connectDB = async() =>{
+const connectDB = async() => {
     try {
         await mongoose.connect(connectionString);
     } catch (error:any) {
@@ -12,15 +12,15 @@ const connectDB = async() =>{
 }
 
 
-    mongoose.connection.on('connected',()=>{
+mongoose.connection.on('connected',()=>{
     console.log("MongoDB Connected")
-    })
-    mongoose.connection.on('disconnected',()=>{
-        console.log("MongoDB Disconnected")
-    })
-    mongoose.connection.on('error',()=>{
-        console.log("Error in MongoDB Connection")
-    })
+})
+mongoose.connection.on('disconnected',()=>{
+    console.log("MongoDB Disconnected")
+})
+mongoose.connection.on('error',() => {
+    console.log("Error in MongoDB Connection")
+})
 
 export default connectDB;
 

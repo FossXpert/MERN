@@ -19,7 +19,8 @@ interface iRegistrationBody{
 export const registrationUser = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
     try {
         const {name,email,password}:iRegistrationBody = req.body;
-        const isEmailExist = await userModel.find({email});
+        console.log(email)
+        const isEmailExist = await userModel.findOne({email});
         if(isEmailExist){
             return next(new ErrorHandler('Email already exists',400));
         }
@@ -35,8 +36,8 @@ export const registrationUser = catchAsyncError(async(req:Request,res:Response,n
         const data = {
             user : {
                 name:user.name,
-                activationCode
-            }
+            },
+            activationCode
         }
         const html = await ejs.renderFile(path.join(__dirname,'../mail/activationEmail.ejs'),data);
 
@@ -57,7 +58,7 @@ export const registrationUser = catchAsyncError(async(req:Request,res:Response,n
         }
 
     } catch (error:any) {
-        return next(new ErrorHandler(error.message, 400));
+        return next(new ErrorHandler(error.message,400));
     }
 })
 

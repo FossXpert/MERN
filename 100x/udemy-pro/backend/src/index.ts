@@ -5,6 +5,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 import connectDB from "./utills/db";
 import errorMiddleware from "./middleware/error";
+import userRouter from "./routes/userRoutes";
 
 app.use(express.json({limit:'50mb'}));
 app.use(cookieParser());
@@ -14,6 +15,9 @@ app.listen(process.env.PORT,()=>{
     console.log(`Server is running on port ${process.env.PORT}`);
     connectDB();
 })
+
+app.use('/api/user',userRouter);
+app.use(errorMiddleware);
 
 app.get('/',(req:Request,res:Response,next:NextFunction)=>{
     res.status(200).json({
@@ -26,5 +30,3 @@ app.all('*',(req:Request,res:Response,next:NextFunction)=>{
         message : "Invalid Route",
     })
 })
-
-app.use(errorMiddleware);
