@@ -1,6 +1,7 @@
+require('dotenv').config();
 import mongoose, { Document,Schema,Model} from "mongoose";
 import bcrypt from 'bcryptjs';
-
+import jwt, { Secret } from 'jsonwebtoken';
 
 const emailRegexPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -16,6 +17,8 @@ export interface iUser extends Document {
     isVerified: boolean;
     courses: Array<{courseId: string}>;
     comparePassword: (password: string) => Promise<boolean>;
+    signRefreshToken: () => string;
+    signAccessToken: () => string;
     createdAt: Date;
 }
 
@@ -39,16 +42,16 @@ const userSchema = new Schema<iUser>({
         type : String,
         required : [true, 'Please enter your password'],
         minlength : [6, 'Your password must be at least 6 characters long'],
-        select : false,
+        
     },
     avatar:{
         public_id:{
             type : String,
-            required : true,
+            required : false,
         },
         url:{
             type : String,
-            required : true,
+            required : false,
         }
     },
     role:{
@@ -80,5 +83,13 @@ userSchema.pre<iUser>('save', async function(next){
 userSchema.methods.comparePassword = async function(enteredPassword:string){
     return await bcrypt.compare(enteredPassword, this.password);
 };
+userSchema.methods.signAccessToken = async function(){
+    const token = jwt.sign({id:this._id},process.env.ACCESS_TOKEN as Secret)
+    return token;
+};
+
+userSchema.methods.signRefreshToken = async function(){
+    return jwt.sign({id:this._id},process.env.REFRESH_TOKEN as Secret)
+}
 
 export const userModel : Model<iUser> = mongoose.model('User', userSchema);
