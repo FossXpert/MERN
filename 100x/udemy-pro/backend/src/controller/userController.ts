@@ -145,3 +145,19 @@ export const loginUser = catchAsyncError(async(req:Request,res:Response,next:Nex
         return next(new ErrorHandler(error.message,400));
     }
 })
+
+export const logoutUser = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
+    try {
+
+        res.cookie('access_token','',{maxAge:1});
+        res.cookie('refresh_token','',{maxAge:1});
+
+        res.status(200).json({
+            success : await success(res.statusCode),
+            message : "Logged Out User Successfully",
+        })
+
+    } catch (error:any) {
+        return next(new ErrorHandler(error.message,400));
+    }
+})

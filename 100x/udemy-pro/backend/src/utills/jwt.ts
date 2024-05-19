@@ -1,5 +1,5 @@
 require('dotenv').config();
-import {Response} from 'express';
+import {Response,Request,NextFunction} from 'express';
 import { iUser } from '../models/user';
 import redis from './redis';
 
@@ -13,8 +13,8 @@ export interface iTokenOptions{
 }
 
 export const sendToken = async(user : iUser,statusCode : number,res:Response) => {
-    const accessToken =  await user.signAccessToken(); //it has effect
-    const refreshToken = await user.signRefreshToken();
+    const accessToken =  await user.signAccessToken(); // it has effect
+    const refreshToken = await user.signRefreshToken();// 
 
     console.log(accessToken,refreshToken)
 
@@ -52,4 +52,3 @@ export const sendToken = async(user : iUser,statusCode : number,res:Response) =>
         refreshToken,
     });
 }
-
