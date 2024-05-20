@@ -3,11 +3,13 @@ import ErrorHandler from "../utills/errorHandlers";
 import { catchAsyncError, success } from "../middleware/catchAsyncError";
 import { Request, Response,NextFunction } from "express";
 import { iUser, userModel} from "../models/user";
-import jwt, { Secret } from 'jsonwebtoken';
+import jwt, { Secret ,JwtPayload} from 'jsonwebtoken';
 import ejs from 'ejs';
 import path from 'path';
 import sendMail from "../utills/sendMail";
-import { sendToken } from "../utills/jwt";
+import { accessTokenOptions, refreshTokenOptions, sendToken } from "../utills/jwt";
+import redis from "../utills/redis";
+import { jwtPayloadNew } from "../middleware/auth";
 
 interface iRegistrationBody{
     name : string;
@@ -151,12 +153,48 @@ export const logoutUser = catchAsyncError(async(req:Request,res:Response,next:Ne
 
         res.cookie('access_token','',{maxAge:1});
         res.cookie('refresh_token','',{maxAge:1});
-
+        const requestUserID = (req as jwtPayloadNew).user._id
+        console.log(requestUserID)
+        await redis?.del(requestUserID);
         res.status(200).json({
             success : await success(res.statusCode),
             message : "Logged Out User Successfully",
         })
 
+    } catch (error:any) {
+        return next(new ErrorHandler(error.message,400));
+    }
+})
+
+export const updateAccessToken = catchAsyncError(async(req:Request,res:Response,next:NextFunction) =>{
+    try {
+        const refresh_token = await req.cookies.refresh_token as string;
+        const decoded = jwt.verify(refresh_token,process.env.REFRESH_TOKEN as string)  as JwtPayload;
+        
+        if(!decoded){
+            return next(new ErrorHandler("Refresh token expired or not valid",400));
+        }
+
+        const session = await redis?.get(decoded.id)
+
+        if(!session){
+            return next(new ErrorHandler("Session Expired Please Login again",400));
+        }
+
+        const user = await JSON.parse(session);
+
+        const access_token = jwt.sign({id:user._id},process.env.ACCESS_TOKEN as Secret,{expiresIn:'5m'});
+        const new_refresh_token = jwt.sign({id:user._id},process.env.REFRESH_TOKEN as Secret,{expiresIn:'3d'} )
+
+        res.cookie('access_token',access_token,accessTokenOptions);
+        res.cookie("refresh_token",new_refresh_token,refreshTokenOptions);
+
+        res.status(200).json({
+            status : await success(res.statusCode),
+            access_token : access_token,
+        })
+
+        
     } catch (error:any) {
         return next(new ErrorHandler(error.message,400));
     }
