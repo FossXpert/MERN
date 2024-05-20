@@ -1,6 +1,6 @@
 require('dotenv').config();
 import ErrorHandler from "../utills/errorHandlers";
-import { catchAsyncError, success } from "../middleware/catchAsyncError";
+import { catchAsyncError, success } from "../middlewares/catchAsyncError";
 import { Request, Response,NextFunction } from "express";
 import { iUser, userModel} from "../models/user";
 import jwt, { Secret ,JwtPayload} from 'jsonwebtoken';
@@ -9,7 +9,7 @@ import path from 'path';
 import sendMail from "../utills/sendMail";
 import { accessTokenOptions, refreshTokenOptions, sendToken } from "../utills/jwt";
 import redis from "../utills/redis";
-import { jwtPayloadNew } from "../middleware/auth";
+import { jwtPayloadNew } from "../middlewares/auth";
 
 interface iRegistrationBody{
     name : string;

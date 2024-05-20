@@ -4,7 +4,7 @@ import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 import connectDB from "./utills/db";
-import errorMiddleware from "./middleware/error";
+import errorMiddleware from "./middlewares/error";
 import userRouter from "./routes/userRoutes";
 
 app.use(express.json({limit:'50mb'}));
