@@ -40,9 +40,9 @@ const userSchema = new Schema<iUser>({
     },
     password : {
         type : String,
-        required : [true, 'Please enter your password'],
+        required : [false, 'Please enter your password'],
         minlength : [6, 'Your password must be at least 6 characters long'],
-        
+        select : false
     },
     avatar:{
         public_id:{
@@ -96,4 +96,4 @@ userSchema.methods.signRefreshToken = async function(){
     })
 }
 
-export const userModel : Model<iUser> = mongoose.model('User', userSchema);
+export const userModel : Model<iUser> = mongoose.model('udemy-user', userSchema);
