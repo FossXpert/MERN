@@ -27,7 +27,7 @@ interface iCourseData extends Document {
     suggestion: string;
     questions: iComment[];
 }
-interface iCourse extends Document {
+export interface iCourse extends Document {
     name: string;
     description?: string;
     price: number;

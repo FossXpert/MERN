@@ -7,6 +7,7 @@ import connectDB from "./utills/db";
 import errorMiddleware from "./middlewares/error";
 import userRouter from "./routes/userRoutes";
 import cloudinary from 'cloudinary';
+import { courseRouter } from "./routes/courseRoutes";
 
 app.use(express.json({limit:'50mb'}));
 app.use(cookieParser());
@@ -24,6 +25,7 @@ app.listen(process.env.PORT,()=>{
 })
 
 app.use('/api/user',userRouter);
+app.use('/api/course',courseRouter);
 app.use(errorMiddleware);
 
 app.get('/',(req:Request,res:Response,next:NextFunction)=>{
