@@ -128,21 +128,18 @@ export const loginUser = catchAsyncError(async(req:Request,res:Response,next:Nex
         if(!email || !password){
             return next(new ErrorHandler('Email or Password is Empty',400));
         }
-        console.log("c")
-        const user = await userModel.findOne({email});
         
+        const user = await userModel.findOne({email}).select("+password");
         if(!user){
             return next(new ErrorHandler('User not found',400));
         }
  
         const isPasswordMatch : boolean = await user.comparePassword(password);
-        console.log("Password is ",isPasswordMatch)
         if(!isPasswordMatch){
             return next(new ErrorHandler('Incorrect Password',400));
         };
        
         await sendToken(user,200,res);
-
     }catch(error:any){
         return next(new ErrorHandler(error.message,400));
     }

@@ -19,7 +19,6 @@ interface iCourseData extends Document {
     title: string;
     description: string;
     videoUrl: string;
-    videoThumbnail: object;
     videoSection: string;
     videoLength: number;
     videoPlayer: string;
@@ -27,6 +26,7 @@ interface iCourseData extends Document {
     suggestion: string;
     questions: iComment[];
 }
+
 export interface iCourse extends Document {
     name: string;
     description?: string;
@@ -63,7 +63,6 @@ const commentSchema = new Schema<iComment>({
 });
 const courseDataSchema = new Schema<iCourseData>({
     videoUrl: String,
-    videoThumbnail: Object,
     title: String,
     videoSection: String,
     description: String,
@@ -92,10 +91,10 @@ const courseSchema = new Schema<iCourse>({
     },
     thumbnail: {
         public_id: {
-            type: String, required: true
+            type: String
         },
         url: {
-            type: String, required: true
+            type: String
         }
     },
     tags: {
