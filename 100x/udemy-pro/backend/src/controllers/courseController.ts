@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { catchAsyncError, success } from "../middlewares/catchAsyncError";
 import ErrorHandler from "../utills/errorHandlers";
 import cloudinary from 'cloudinary';
-import courseModel, { iComment, iCourse } from "../models/course";
+import courseModel, { iComment, iCourse, iReview } from "../models/course";
 import { createCourse } from "../services/courseServices";
 import redis from "../utills/redis";
 import { jwtPayloadNew } from "../middlewares/auth";
@@ -11,6 +11,7 @@ import { JwtPayload } from "jsonwebtoken";
 import ejs from 'ejs';
 import path from 'path';
 import sendMail from "../utills/sendMail";
+import { count } from "console";
 
 
 export const uploadCourse = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
@@ -251,6 +252,60 @@ export const addAnswer = catchAsyncError(async(req:Request,res:Response,next:Nex
         })
 
     }catch (error: any) {
+        return next(new ErrorHandler(error.message, 400));
+    }
+})
+
+//Add reviews in course
+
+interface iReviewData{
+    review : string;
+    courseId : string;
+    rating : number;
+    userId : string;
+}
+
+export const addReview = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
+    try {
+        const {comment} = req.body.comment;
+
+        const user = (req as jwtPayloadNew).user;
+        const courseList = user.courses;
+        const courseId = req.params.id;
+        const isCourseExist = courseList.find(a=>a.courseId === courseId);
+        if(!isCourseExist){
+            return next(new ErrorHandler(`You Are Not Allowed to Access This Course Mate`,400));
+        }
+        const course = await courseModel.findById(courseId);
+        if(!course){
+            return next(new ErrorHandler(`Error in getting course`,400));
+        }
+        const reviewData : any = {
+            user : user,
+            rating : 5.0,
+            comment : comment
+        }
+        course.reviews.push(reviewData);
+
+        let avg = 0.0;
+        let count = 0.0;
+        course.reviews.forEach((rev:any)=>{
+            avg+=rev.rating;
+            count+=1.0;
+        })
+        course.ratings = avg/course.reviews.length;
+        await course.save();
+        const notification = {
+            title : "New Review Recieved",
+            message : `${user.name} had given review in our course : ${course.name}`
+        }
+        
+        res.status(200).json({
+            success : true,
+            course
+        });
+
+    } catch (error: any) {
         return next(new ErrorHandler(error.message, 400));
     }
 })

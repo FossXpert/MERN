@@ -7,11 +7,11 @@ export interface iComment extends Document {
     question: string;
     questionReplies?: iComment[]; // Learn Optional Chaining
 }
-interface iReview extends Document {
-    user: object;
+export interface iReview extends Document {
+    user: iUser;
     rating: number;
     comment: string;
-    commentReplies: iComment[];
+    commentReplies?: iComment[];
 }
 interface iLink extends Document {
     title: string;

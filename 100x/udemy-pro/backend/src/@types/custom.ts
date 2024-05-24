@@ -10,5 +10,6 @@ declare global {
     }
 }
 
+
 // cloudinary.js
 
