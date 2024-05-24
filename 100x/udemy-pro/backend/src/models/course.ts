@@ -1,9 +1,11 @@
-import mongoose,{Document,Schema,Model} from "mongoose";
+import mongoose,{Document,Schema,Model, ObjectId} from "mongoose";
+import { iUser } from "./user";
 
-interface iComment extends Document {
-    user: object;
-    comment: string;
-    commentReplies?: iComment[]; // Learn Optional Chaining
+
+export interface iComment extends Document {
+    user: iUser;
+    question: string;
+    questionReplies?: iComment[]; // Learn Optional Chaining
 }
 interface iReview extends Document {
     user: object;
@@ -58,8 +60,8 @@ const linkSchema = new Schema<iLink>({
 });
 const commentSchema = new Schema<iComment>({
     user: Object,
-    comment: String,
-    commentReplies: [Object],
+    question: String,
+    questionReplies: [Object],
 });
 const courseDataSchema = new Schema<iCourseData>({
     videoUrl: String,
