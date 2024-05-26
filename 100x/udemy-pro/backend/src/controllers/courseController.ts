@@ -267,7 +267,7 @@ interface iReviewData{
 
 export const addReview = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
     try {
-        const {comment} = req.body.comment;
+        const {comment} = req.body;
 
         const user = (req as jwtPayloadNew).user;
         const courseList = user.courses;
@@ -302,10 +302,48 @@ export const addReview = catchAsyncError(async(req:Request,res:Response,next:Nex
         
         res.status(200).json({
             success : true,
+            course,notification
+        });
+        
+    } catch (error: any) {
+        return next(new ErrorHandler(error.message, 400));
+    }
+})
+
+//Add reply in reviews
+
+interface iReviewReply{
+    comment : string;
+    courseId : string;
+    reviewId : string;
+}
+
+export const reviewReply = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
+    try {
+        const {comment,courseId,reviewId} = req.body as iReviewReply;
+        const user = (req as jwtPayloadNew).user;
+        const course = await courseModel.findById(courseId);
+        if(!course){
+            return next(new ErrorHandler('failed to fetch course',400));
+        }
+        const review = course.reviews.find((a:any)=> a._id.equals(reviewId));
+        if(!review){
+            return next(new ErrorHandler(`Failed to find review with review ID : ${reviewId}`,400));
+        }
+        const reviewReplyData : any = {
+            user,comment
+        }
+        if(!review.commentReplies){
+            review.commentReplies = [];
+        }
+        review.commentReplies?.push(reviewReplyData);
+        await course.save();
+        res.status(200).json({
+            success : true,
             course
         });
 
-    } catch (error: any) {
+    } catch (error:any) {
         return next(new ErrorHandler(error.message, 400));
     }
 })

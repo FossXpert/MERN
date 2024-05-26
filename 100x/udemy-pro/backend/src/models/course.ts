@@ -13,11 +13,11 @@ export interface iReview extends Document {
     comment: string;
     commentReplies?: iComment[];
 }
-interface iLink extends Document {
+export interface iLink extends Document {
     title: string;
     url: string;
 }
-interface iCourseData extends Document {
+export interface iCourseData extends Document {
     title: string;
     description: string;
     videoUrl: string;
@@ -53,6 +53,7 @@ const reviewSchema = new Schema<iReview>({
         default: 0
     },
     comment: String,
+    commentReplies : [Object]
 });
 const linkSchema = new Schema<iLink>({
     title: String,
