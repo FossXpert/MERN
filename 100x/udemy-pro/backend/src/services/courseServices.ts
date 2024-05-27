@@ -15,3 +15,13 @@ export const createCourse = catchAsyncError(async(data:iCourse,res:Response,next
         return next(new ErrorHandler(error.message,400));
     }
 })
+export const getAllCoursesService = async(res:Response,next:NextFunction)=>{
+    try {
+        const allCourses = await courseModel.find().sort({createdAt:-1});
+        res.status(200).json({
+            allCourses
+        })
+    } catch (error:any) {
+        throw error
+    }
+}

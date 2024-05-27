@@ -5,7 +5,7 @@ import orderModel, { iOrder } from "../models/order";
 import { jwtPayloadNew } from "../middlewares/auth";
 import { userModel } from "../models/user";
 import courseModel from "../models/course";
-import { newOrder } from "../services/orderServices";
+import { getAllOrdersService, newOrder } from "../services/orderServices";
 import sendMail from "../utills/sendMail";
 import notificationModel from "../models/notification";
 
@@ -68,3 +68,13 @@ export const createOrder = catchAsyncError(async(req:Request,res:Response,next:N
         return next(new ErrorHandler(error.message,400));
     }
 });
+
+//Get all orders admin ke liye
+
+export const getAllOrders = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
+    try {
+        getAllOrdersService(res,next);
+    } catch (error:any) {
+        return next(new ErrorHandler(error.message,400));
+    }
+})
