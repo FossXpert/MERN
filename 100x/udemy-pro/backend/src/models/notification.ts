@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose"
+import mongoose, { Document, Model, Mongoose, Schema} from "mongoose"
 
 
 export interface iNotification extends Document{
@@ -20,8 +20,12 @@ const notificationSchema = new Schema<iNotification>({
         type : String,
         required : true,
         default:'unread',
+    },
+    userId:{
+        type: String,
+        required:true
     }
 },{timestamps:true});
 
-const notificationModel = mongoose.model('udemy-notification',notificationSchema);
+const notificationModel :Model<iNotification>= mongoose.model('udemy-notification',notificationSchema);
 export default notificationModel;

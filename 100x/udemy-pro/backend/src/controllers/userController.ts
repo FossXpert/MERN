@@ -62,7 +62,7 @@ export const registrationUser = catchAsyncError(async(req:Request,res:Response,n
     } catch (error:any) {
         return next(new ErrorHandler(error.message,400));
     }
-})
+});
 
 export const userTokenActivation  = async(user:iRegistrationBody) => {
     const activationCode = Math.floor(100000 + Math.random() * 900000).toString();

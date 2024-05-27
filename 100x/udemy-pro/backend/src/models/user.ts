@@ -15,6 +15,7 @@ export interface iUser extends Document {
     };
     role: string;
     isVerified: boolean;
+    purchased: number;
     courses: Array<{courseId: string}>;
     comparePassword: (password: string) => Promise<boolean>;
     signRefreshToken: () => string;
@@ -38,6 +39,7 @@ const userSchema = new Schema<iUser>({
         },
         message : 'Please enter a valid email'
     },
+    purchased:{type:Number,default:0},
     password : {
         type : String,
         required : [false, 'Please enter your password'],
