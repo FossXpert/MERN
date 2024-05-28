@@ -98,4 +98,4 @@ userSchema.methods.signRefreshToken = async function(){
     })
 }
 
-export const userModel : Model<iUser> = mongoose.model('udemy-user', userSchema);
+export const userModel : Model<iUser> = mongoose.model<iUser>('udemy-user', userSchema);

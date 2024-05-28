@@ -10,6 +10,7 @@ import cloudinary from 'cloudinary';
 import { courseRouter } from "./routes/courseRoutes";
 import orderRouter from "./routes/orderRoutes";
 import notificationRouter from "./routes/notificationRouter";
+import analyticsRouter from "./routes/analyticsRouter";
 
 app.use(express.json({limit:'50mb'}));
 app.use(cookieParser());
@@ -30,11 +31,12 @@ app.use('/api/user',userRouter);
 app.use('/api/course',courseRouter);
 app.use('/api/order',orderRouter);
 app.use('/api/notification',notificationRouter);
+app.use('/api/analytics',analyticsRouter);
 app.use(errorMiddleware);
 
 app.get('/',(req:Request,res:Response,next:NextFunction)=>{
     res.status(200).json({
-        message : "Valid Route",
+        message : "Valid Empty Route",
     })
 })
 
