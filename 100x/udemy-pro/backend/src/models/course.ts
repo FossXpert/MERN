@@ -1,5 +1,6 @@
-import mongoose,{Document,Schema,Model, ObjectId} from "mongoose";
+import mongoose,{Document,Schema,Model, ObjectId, Types} from "mongoose";
 import { iUser } from "./user";
+import { iCategory } from "./category";
 
 
 export interface iComment extends Document {
@@ -44,6 +45,13 @@ export interface iCourse extends Document {
     courseData: iCourseData[];
     ratings?: number;
     purchased?: number;
+    postedBy? : {
+        userId : Types.ObjectId;
+        name : string;
+        email:string;
+    }
+    isPublished? : boolean;
+    courseCategory? : Types.ObjectId;
 }
 
 const reviewSchema = new Schema<iReview>({
@@ -121,7 +129,23 @@ const courseSchema = new Schema<iCourse>({
     purchased:{
         type:Number,
         default:0,
-    }
+    },
+    postedBy:{
+        userId:{
+            type : Types.ObjectId, ref : 'udemy-users',
+        },
+        email : String,
+        name : String
+    },
+    isPublished:{
+        type : Boolean,
+        default : true
+    },
+    courseCategory:[
+        {
+            type: Schema.Types.ObjectId,ref : 'udemy-category'
+        }
+    ]
 
 },{timestamps:true});
 const courseModel :Model<iCourse> = mongoose.model('udemy-course',courseSchema);

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { catchAsyncError, success } from "../middlewares/catchAsyncError";
 import ErrorHandler from "../utills/errorHandlers";
 import cloudinary from 'cloudinary';
-import courseModel, { iComment, iCourse, iReview } from "../models/course";
+import courseModel, { iComment, iCourse, iCourseData, iReview } from "../models/course";
 import { createCourse, getAllCoursesService } from "../services/courseServices";
 import redis from "../utills/redis";
 import { jwtPayloadNew } from "../middlewares/auth";
@@ -30,7 +30,7 @@ export const uploadCourse = catchAsyncError(async (req: Request, res: Response, 
                 url: myCloud.secure_url
             }
         }
-        createCourse(data, res, next);
+        createCourse(data,req, res, next);
     } catch (error: any) {
         return next(new ErrorHandler(error.message, 400));
     }
@@ -212,7 +212,7 @@ export const addAnswer = catchAsyncError(async(req:Request,res:Response,next:Nex
             return next(new ErrorHandler(`ContentId : ${contentId} is not valid`, 400));
         }
         
-        const courseContent = course.courseData.find((a : any) => a._id.equals(contentId));
+        const courseContent = course.courseData.find((a : iCourseData) => a._id.equals(contentId));
         console.log("courseContent : ",courseContent);
         console.log("courseData : ",course.courseData);
         if (courseContent === null || courseContent === undefined) {

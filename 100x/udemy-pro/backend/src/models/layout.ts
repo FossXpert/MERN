@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface FaqItem extends Document {
     question: string;
@@ -8,12 +8,7 @@ const faqSchema = new Schema<FaqItem>({
     question: { type: String },
     answer: { type: String },
 })
-export interface Category extends Document {
-    title: string;
-}
-const categoriesSchema = new Schema<Category>({
-    title: { type: String }
-})
+
 export interface BannerImage extends Document {
     public_id: string;
     url: string;
@@ -24,29 +19,27 @@ const bannerImageSchema = new Schema<BannerImage>({
     url: { type: String }
 })
 
-interface Layout extends Document {
+export interface Layout extends Document {
     type: string;
     faq: FaqItem[];
-    categories: Category[];
     banner: {
         image: BannerImage;
         title: string;
         subtitle: string;
     };
 }
-const layOutSchema = new Schema<Layout>({
+const layOutSchema : Schema<Layout> = new Schema<Layout>({
     type: {
         type: String
     },
     faq: [faqSchema],
-    categories: [categoriesSchema],
     banner: {
-        image: [bannerImageSchema],
+        image: bannerImageSchema,
         title: { type: String },
         subtitle: { type: String }
     },
-});
+},{timestamps:true});
 
 
-const layoutModel = mongoose.model<Layout>('udemy-Layout', layOutSchema);
+const layoutModel : Model<Layout> = mongoose.model<Layout>('udemy-Layout', layOutSchema);
 export default layoutModel;

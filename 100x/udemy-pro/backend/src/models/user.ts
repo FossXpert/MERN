@@ -1,7 +1,8 @@
 require('dotenv').config();
-import mongoose, { Document,Schema,Model} from "mongoose";
+import mongoose, { Document,Schema,Model, ObjectId, Types} from "mongoose";
 import bcrypt from 'bcryptjs';
 import jwt, { Secret } from 'jsonwebtoken';
+import { iCourse } from "./course";
 
 const emailRegexPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -21,6 +22,7 @@ export interface iUser extends Document {
     signRefreshToken: () => string;
     signAccessToken: () => string;
     createdAt: Date;
+    postedCourse? : Types.ObjectId[];
 }
 
 const userSchema = new Schema<iUser>({
@@ -69,6 +71,11 @@ const userSchema = new Schema<iUser>({
             courseId : String,
         }
     ],
+    postedCourse:[
+        {
+            type : Types.ObjectId, ref : 'udemy-course'
+        }
+    ]
 
 },{timestamps : true});
 
