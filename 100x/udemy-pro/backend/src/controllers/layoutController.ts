@@ -113,3 +113,21 @@ export const createCategory = catchAsyncError(async(req:Request,res:Response,nex
         return next(new ErrorHandler(error.message,400));
     }
 })
+
+//getLayout by type
+
+export const getLayoutByType = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
+    try {
+        const {type} = req.body;
+        const layout = await layoutModel.findOne({type:type});
+        if(!layout){
+            return next(new ErrorHandler('Falied to find Layout',400));
+        }
+        return res.status(201).json({
+            success:true,
+            layout
+        })
+    } catch (error:any) {
+        return next(new ErrorHandler(error.message,400));
+    }
+})

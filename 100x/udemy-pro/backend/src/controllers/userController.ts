@@ -183,10 +183,10 @@ export const updateAccessToken = catchAsyncError(async(req:Request,res:Response,
         const access_token = jwt.sign({id:user._id},process.env.ACCESS_TOKEN as Secret,{expiresIn:'5m'});
         const new_refresh_token = jwt.sign({id:user._id},process.env.REFRESH_TOKEN as Secret,{expiresIn:'3d'} )
 
-        
-
         res.cookie('access_token',access_token,accessTokenOptions);
         res.cookie("refresh_token",new_refresh_token,refreshTokenOptions);
+
+        await redis?.set(user._id,JSON.stringify(user),"EX",7*24*60*60);
 
         res.status(200).json({
             status : await success(res.statusCode),
