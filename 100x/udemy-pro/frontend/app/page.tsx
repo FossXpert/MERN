@@ -11,7 +11,7 @@ interface Props{
 const Page : FC<Props> = (props)=>{
   const [open,setOpen] = useState(false);
   const [activeItem,setActiveItems] = useState(0);
-  const [route,setRoute] = useState('Login')
+  const [route,setRoute] = useState('signin')
 
   return(
     <div>

@@ -1,5 +1,6 @@
 import React, { Component, FC } from 'react'
 import {Modal,Box} from '@mui/material'
+import Login from '../components/Auth/Login';
 type Props = {
     open:boolean;
     setOpen:(open:boolean)=> void;
@@ -8,7 +9,7 @@ type Props = {
     setRoute : (route:string)=>void
 }
 
-const CustomModel:FC<Props> = ({open,setOpen,activeItem,component,setRoute}) => {
+const CustomModel:FC<Props> = ({open,setOpen,activeItem,component:Component,setRoute}) => {
   return (
     <div>
       <Modal
@@ -17,8 +18,9 @@ const CustomModel:FC<Props> = ({open,setOpen,activeItem,component,setRoute}) => 
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       >
-        <Box className="absolute top-[50%] left-[50%] -translate-x-1/2 -traslate-y-1/2 w-[450px] bg-white dark:bg-slate-900 rounded-[8px] shadow p-4 outline-none">
-          <Component setOpen={setOpen} setRoute={setRoute} />
+        <Box className="absolute top-[12%] left-[50%] -translate-x-1/2 -traslate-y-1/2 w-[390px] bg-white dark:bg-slate-900 rounded-[8px] shadow p-4 outline-none">
+          <Component setRoute={setRoute}/> 
+          {/* This is whenever we have to pass component as props */}
         </Box>
       </Modal>
     </div>

@@ -6,12 +6,14 @@ import { ThemeSwitcher } from '../utills/ThemeSwitcher';
 import { HiOutlineArrowRight, HiOutlineMenuAlt3, HiOutlineUserCircle, HiOutlineX } from 'react-icons/hi';
 import CustomModel from '../utills/CustomModel';
 import Login from '../components/Auth/Login'
+import Signup from './Auth/Signup';
+import Verification from './Auth/Verification';
 type Props = {
     open: boolean;
     setOpen: (open: boolean) => void; //profile icon
     activeItem: number;
     route:string;
-    setRoute: (route:string) =>void
+    setRoute: (route:string) =>void;
 }
 
 const Header: FC<Props> = ({ activeItem, open, setOpen ,route,setRoute}) => {
@@ -87,7 +89,7 @@ const Header: FC<Props> = ({ activeItem, open, setOpen ,route,setRoute}) => {
                     )}
             </div>
             {
-                route === 'signup' && (
+                route === 'signin' && (
                     <>
                     {
                        open && (
@@ -97,7 +99,6 @@ const Header: FC<Props> = ({ activeItem, open, setOpen ,route,setRoute}) => {
                         setRoute={setRoute}
                         activeItem={activeItem}
                         component={Login}
-
                         />
                        )
                     }
@@ -105,9 +106,36 @@ const Header: FC<Props> = ({ activeItem, open, setOpen ,route,setRoute}) => {
                 )
             }
             {
-                route === 'signin' && (
+                route === 'signup' && (
                     <>
-                    
+                    {
+                       open && (
+                        <CustomModel
+                        open={open}
+                        setOpen={setOpen}
+                        setRoute={setRoute}
+                        activeItem={activeItem}
+                        component={Signup}
+                        />
+                       )
+                    }
+                    </>
+                )
+            }
+            {
+                route === 'verification' && (
+                    <>
+                    {
+                       open && (
+                        <CustomModel
+                        open={open}
+                        setOpen={setOpen}
+                        setRoute={setRoute}
+                        activeItem={activeItem}
+                        component={Verification}
+                        />
+                       )
+                    }
                     </>
                 )
             }
