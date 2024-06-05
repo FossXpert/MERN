@@ -31,7 +31,6 @@ const Verification: FC<Props> = ({ setRoute }) => {
 
 
   const verificationHandler = async () => {
-    console.log("Test 1 ");
     setInvalidError(true);
   }
 
@@ -42,7 +41,7 @@ const Verification: FC<Props> = ({ setRoute }) => {
     if (value === "" && index > 0) {
       inputRefs[index - 1].current?.focus();
     } else if (value.length === 1 && index < 3) {
-      inputRefs[index - 1].current?.focus();
+      inputRefs[index + 1].current?.focus();
     }
   }
 
@@ -58,19 +57,19 @@ const Verification: FC<Props> = ({ setRoute }) => {
         </div>
       </div>
       <br /><br />
-      <div className='1100px:w-[70%] m-auto flex items-center justify-around'>
+      <div className='1000px:w-[70%] m-auto flex items-center justify-around'>
         {Object.keys(verifyNumber).map((key, index) => (
-          <input type='text'
+          <input type='number'
             key={key}
             ref={inputRefs[index]}
-            className={`w-[65px] h-[65px] bg-transparent border-[3px] rounded-[10px] flex items-center text-black dark:text-white justify-center text-[18px] font-Poppins outline-none text-center ${invalidError ? "shake border-red-500" : "dark:border-white border-[#0000004a]"
+            className={`w-[65px] h-[65px] bg-transparent border-[3px] rounded-[10px] flex items-center text-black dark:text-white justify-center text-[18px] font-Poppins outline-none text-center
+             ${invalidError ? "shake border-red-500" : "dark:border-white border-[#0000004a]"
               }`}
             placeholder=''
             maxLength={1}
             value={verifyNumber[key as keyof verifyNumber]}
             onChange={(e) => handleInputChange(index, e.target.value)}
           />
-
         ))}
       </div><br /><br />
       <div className='w-full flex justify-center'>
