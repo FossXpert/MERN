@@ -65,7 +65,7 @@ export const registrationUser = catchAsyncError(async(req:Request,res:Response,n
 });
 
 export const userTokenActivation  = async(user:iRegistrationBody) => {
-    const activationCode = Math.floor(100000 + Math.random() * 900000).toString();
+    const activationCode = Math.floor(1000 + Math.random() * 9000).toString();
     const token = jwt.sign({
         activationCode,user
     },process.env.JWT_SECRET as Secret,{

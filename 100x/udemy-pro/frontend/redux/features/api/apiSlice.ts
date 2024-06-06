@@ -2,6 +2,7 @@ require('dotenv').config();
 import { createApi,fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
+// for calling http calls
 
 export const apiSlice = createApi({
     reducerPath:'api',

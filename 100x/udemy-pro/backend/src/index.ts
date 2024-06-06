@@ -15,7 +15,12 @@ import layoutRouter from "./routes/layoutRouter";
 
 app.use(express.json({limit:'50mb'}));
 app.use(cookieParser());
-app.use(cors());
+app.use(
+    cors({
+        origin : ["http://localhost:3000"],
+        credentials : true,
+    })
+);
 
 cloudinary.v2.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
