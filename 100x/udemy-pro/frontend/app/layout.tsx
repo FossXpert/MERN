@@ -5,6 +5,7 @@ import { ThemeProvider } from "./utills/theme-provider";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "./Provider";
 import { SessionProvider } from "next-auth/react";
+import { FC } from "react";
 
 
 const poppins = Poppins({
@@ -31,7 +32,8 @@ export default function RootLayout({
         <Providers>
           <SessionProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              {children}
+              {/* I AM DOING IT BECAUSE AFTER RELOADING THE PROFILE PIC IS COMING, TO FIX THAT ISSUE (VIDEO : 2:55:45) */}
+              <Custom>{children}</Custom> 
               <Toaster position="top-center" reverseOrder={false} />
             </ThemeProvider>
           </SessionProvider>
@@ -39,4 +41,7 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+const Custom : FC<{children: ReactNode}> = ({children}) =>{
+
 }
