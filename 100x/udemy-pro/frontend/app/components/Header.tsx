@@ -86,13 +86,14 @@ const Header: FC<Props> = ({ activeItem, open, setOpen, route, setRoute }) => {
                             </div>
                             {
                                 user ? (
-                                    <Image/>
-                                    <HiOutlineUserCircle
-                                        size={25}
-                                        // hidden 800px:block yse write karo niche
-                                        className='cursor-pointer dark:text-white text-black'
-                                        onClick={() => setOpen(true)} />
-
+                                    <Image
+                                    alt="User profile"
+                                    src={user.avatar.url}
+                                    width={30}
+                                    height={30}
+                                    className="rounded-full"
+                                    />
+                                    
                                 ) : (
                                     <HiOutlineUserCircle
                                         size={25}
