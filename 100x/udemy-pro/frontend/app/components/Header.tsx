@@ -86,7 +86,7 @@ const Header: FC<Props> = ({ activeItem, open, setOpen, route, setRoute }) => {
                             </div>
                             {
                                 user ? (
-
+                                    <Image/>
                                     <HiOutlineUserCircle
                                         size={25}
                                         // hidden 800px:block yse write karo niche
