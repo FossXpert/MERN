@@ -5,8 +5,9 @@ import { ThemeProvider } from "./utills/theme-provider";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "./Provider";
 import { SessionProvider } from "next-auth/react";
-import { FC } from "react";
-
+import { FC, ReactNode } from "react";
+import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
+import Loader from './components/Loader/Loader'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -44,4 +45,13 @@ export default function RootLayout({
 }
 const Custom : FC<{children: ReactNode}> = ({children}) =>{
 
+  const {isLoading} = useLoadUserQuery({});
+
+  return (
+    <>
+    {
+      isLoading ? <Loader/> : {children}
+    }
+    </>
+  )
 }
