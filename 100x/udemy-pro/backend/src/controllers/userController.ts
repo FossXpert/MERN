@@ -221,10 +221,11 @@ interface iSocialBody {
 export const socialAuth = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
     
     try {
-        const  {email,name,avatar,password} = req.body as iSocialBody;
+        const  {email,name,avatar} = req.body as iSocialBody;
+        console.log(email,name,avatar)
         const user = await userModel.findOne({email});
         if(!user){
-            const newUser = await userModel.create({email,name,avatar,password});
+            const newUser = await userModel.create({email,name,avatar});
             sendToken(newUser,200,res);
         }else{
             sendToken(user,200,res);

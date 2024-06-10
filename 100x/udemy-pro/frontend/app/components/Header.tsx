@@ -30,7 +30,7 @@ const Header: FC<Props> = ({ activeItem, open, setOpen, route, setRoute }) => {
     const { data } = useSession();
     const [socialAuth, { isSuccess, error }] = useSocialAuthMutation();
 
-
+    console.log(data)
     useEffect(() => {
         if (!user) {
             if (data) {
@@ -39,6 +39,12 @@ const Header: FC<Props> = ({ activeItem, open, setOpen, route, setRoute }) => {
         }
         if(isSuccess){
             toast.success("Login SuccessFull")
+        }
+        if(error){
+            if("data" in error){
+                const errorData = error as any;
+                toast.error(errorData.data.message)
+            }
         }
     }, [data, user])
     if (typeof window !== "undefined") {
