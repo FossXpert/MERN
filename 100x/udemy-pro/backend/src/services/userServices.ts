@@ -15,7 +15,7 @@ export const getUserById = async(id: string,res:Response,next: NextFunction) => 
         }
         const JsonUser = JSON.parse(user);
         return res.status(200).json({
-            success : await success(res.statusCode),JsonUser,
+            success : await success(res.statusCode),user:JsonUser,
         })
 
     } catch (error:any) {
