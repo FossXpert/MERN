@@ -19,7 +19,7 @@ const page: FC<Props> = (props) => {
     <div>
       <Protected>
           <Heading
-          title={`${user.name}`} 
+          title={`${user.name} Profile` } 
           description='E-Learning is a platform for students to learn and get help from teachers'
           keywords='Programming,MERN,Redux,Machine Learning, AI'
           />
@@ -29,7 +29,7 @@ const page: FC<Props> = (props) => {
            setOpen={setOpen} route={route} 
            setRoute={setRoute}
           />
-          <Profile/>
+          <Profile user={user}/>
       </Protected>
     </div>
   )
