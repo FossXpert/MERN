@@ -51,7 +51,7 @@ const Custom : FC<{children: ReactNode}> = ({children}) =>{
   return (
     <>
     {
-      isLoading ? <Loader/> : children
+      isLoading ? <Loader/> : <> {children}</>
     }
     </>
   )
