@@ -244,16 +244,16 @@ interface iUpdateUserInfo{
 
 export const updateUserInfo = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
     try {
-        const {email,name} = req.body as iUpdateUserInfo;
+        const {name} = req.body as iUpdateUserInfo;
         const userId = await (req as jwtPayloadNew).user._id;
         const user = await userModel.findById((req as jwtPayloadNew).user._id);
-        if(user && email){
-            const isEmailExist = await userModel.findOne({email});
-            if(isEmailExist){
-                return next(new ErrorHandler('This Email already exist , try with new email',400));
-            }
-            user.email = email;
-        }
+        // if(user && email){
+        //     const isEmailExist = await userModel.findOne({email});
+        //     if(isEmailExist){
+        //         return next(new ErrorHandler('This Email already exist , try with new email',400));
+        //     }
+        //     user.email = email;
+        // }
         if(name && user){
             user.name = name;
         }
@@ -305,7 +305,8 @@ interface iUpdateProfilePic{
 
 export const updateProfilePicture = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
     try {
-        const {avatar} = req.body as iUpdateProfilePic;
+        const {avatar} = req.body.avatar as iUpdateProfilePic;
+        console.log(avatar)
         const userId = (req as jwtPayloadNew).user._id;
         const user  = await userModel.findById(userId);
         if(!user){

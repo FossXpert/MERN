@@ -14,6 +14,7 @@ import avatar from '../../public/next.svg'
 import { useSession } from 'next-auth/react';
 import { useSocialAuthMutation } from '@/redux/features/auth/authApi';
 import toast from 'react-hot-toast';
+import avatarDefault from '../components/Profile/profile-pic.png'
 
 type Props = {
     open: boolean;
@@ -21,7 +22,7 @@ type Props = {
     activeItem: number;
     route: string;
     setRoute: (route: string) => void;
-    
+
 }
 
 const Header: FC<Props> = ({ activeItem, open, setOpen, route, setRoute }) => {
@@ -90,7 +91,7 @@ const Header: FC<Props> = ({ activeItem, open, setOpen, route, setRoute }) => {
                                     <Link href={'/profile'}>
                                     <Image
                                     alt="User profile"
-                                    src={user.avatar?.url ? user.avatar.url : "https://i.pinimg.com/736x/88/cb/ef/88cbef40ca67d482fd4558947db5c6e8.jpg"}
+                                    src={user.avatar? user.avatar.url : avatarDefault}
                                     width={30}
                                     height={30}
                                     className="rounded-full cursor-pointer"
