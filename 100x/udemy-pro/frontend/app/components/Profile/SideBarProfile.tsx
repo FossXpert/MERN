@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { FC } from 'react'
 import avatarDefault from '../profile-pic.png'
-import {RiLockPasswordLine} from 'react-icons/ri'
+import {RiAdminLine, RiLockPasswordLine} from 'react-icons/ri'
 import {SiCoursera} from 'react-icons/si'
 import { AiOutlineLogout } from 'react-icons/ai';
 
@@ -28,18 +28,30 @@ const SideBarProfile:FC<Props> = ({active,setActive,avatar,user,logOutHandler}) 
         className='pl-2 800px:block hidden font-Poppins dark:text-white text-black'
         >My Account</h5>
         </div>
+
         <div className={`w-full flex items-center px-3 py-4 cursor-pointer ${active===2 ? "dark:bg-slate-800 bg-white":"bg-transparent"}`}
         onClick={()=>setActive(2)}>
             <RiLockPasswordLine
             size={20} fill='#'/>
             <h5 className='pl-2 800px:block hidden font-Poppins dark:text-white text-black'>Change Password</h5>
         </div>
+
         <div className={`w-full flex items-center px-3 py-4 cursor-pointer ${active===3 ? "dark:bg-slate-800 bg-white":"bg-transparent"}`}
         onClick={()=>setActive(3)}>
             <SiCoursera
             size={20} fill='#'/>
             <h5 className='pl-2 800px:block hidden font-Poppins dark:text-white text-black'>Enrolled Courses</h5>
         </div>
+        {
+            user.role === 'admin' && (
+                <div className={`w-full flex items-center px-3 py-4 cursor-pointer ${active===6 ? "dark:bg-slate-800 bg-white":"bg-transparent"}`}
+                onClick={()=>setActive(6)}>
+                <RiAdminLine
+                size={20} fill='#'/>
+                <h5 className='pl-2 800px:block hidden font-Poppins dark:text-white text-black'>Admin Dashboard</h5>
+                </div>
+            )
+        }
         <div className={`w-full flex items-center px-3 py-4 cursor-pointer ${active===4 ? "dark:bg-slate-800 bg-white":"bg-transparent"}`}
         onClick={()=>logOutHandler()}>
             <AiOutlineLogout

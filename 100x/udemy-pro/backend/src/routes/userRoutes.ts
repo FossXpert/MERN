@@ -14,7 +14,7 @@ userRouter.get('/refreshtoken',updateAccessToken);
 userRouter.get('/me',isAuthenticated,getUserInfo);
 userRouter.post('/socialAuth',socialAuth);
 userRouter.put('/updateuser',isAuthenticated,updateUserInfo);
-userRouter.post('/updatepassword',isAuthenticated,updatePassword);
+userRouter.put('/updatepassword',isAuthenticated,updatePassword);
 userRouter.put('/updateprofilepic',isAuthenticated,updateProfilePicture);
 userRouter.post('/getalluser',isAuthenticated,validateUserRole('admin'),getAllUser);
 userRouter.post('/changerole',isAuthenticated,validateUserRole('admin'),updateUserRole);

@@ -5,6 +5,8 @@ import { useLogoutQuery } from '../../../redux/features/auth/authApi';
 import { signOut } from 'next-auth/react';
 import ProfileInfo from './ProfileInfo';
 import ChangePassword from './ChangePassword';
+import { redirect } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 type Props = {
     user: any;
@@ -59,6 +61,13 @@ const Profile: FC<Props> = ({ user }) => {
                 active === 2 && (
                     <div className='w-full h-full bg-transparent mt-[80px]'>
                         <ChangePassword/>
+                    </div>
+                )
+            }
+            {
+                active === 6 && (
+                    <div>
+                        {redirect('/admin')}
                     </div>
                 )
             }
