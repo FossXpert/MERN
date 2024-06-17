@@ -1,10 +1,12 @@
- 'use client'
- import React, { FC } from 'react'
+'use client'
+import React, { FC } from 'react'
 import Heading from '../utills/Heading'
 import Header from '../components/Header'
 import AdminSidebar from '../components/Admin/Sidebar/AdminSidebar'
 import AdminProtected from '../hooks/adminProtected'
- type Props = {}
+import DashboardHero from '../components/Admin/DashboardHero'
+
+type Props = {}
  
  const page:FC<Props> = (props: Props) => {
    return (
@@ -16,14 +18,16 @@ import AdminProtected from '../hooks/adminProtected'
         keywords='admin,course,coursesellingapp'/>
         
         <div className='flex h-[200vh]'>
-            <div className='1500px:w-[16%] w-1/5'>
+            <div className='1500px:w-[16%] w-1/5'
+        >
             <AdminSidebar/>
             </div>
             <div className='w-[85%]'>
-
+              <DashboardHero/>
             </div> 
         </div>
         </AdminProtected>
+        
      </div>
    )
  }

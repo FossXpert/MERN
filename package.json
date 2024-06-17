@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "react-pro": "^1.0.0",
+    "react-pro-sidebar": "^0.7.1",
     "sidebar": "^1.0.2"
   }
 }
