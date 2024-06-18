@@ -1,10 +1,9 @@
-import React from 'react'
-import {FC} from 'react'
-import CourseData from './CourseData';
+import React,{FC} from 'react';
+import CoursePlayer from './CoursePlayer';
 type Props = {
     active : number;
     setActive : (active:number) => void;
-    courseData : any
+    courseData : any;
     handleCourseCreate : any;
 }
 
@@ -13,7 +12,9 @@ const CoursePreview : FC<Props>= ({courseData,handleCourseCreate,active,setActiv
     <div className='w-[90%] m-auto py-5 mb-5'>
       <div className='w-full relative'>
         <div className='w-full mt-10'>
-          <CoursePlayer/>
+          <CoursePlayer
+          videoUrl={courseData?.demoUrl}
+          title={courseData?.title}/>
         </div>
       </div>
     </div>

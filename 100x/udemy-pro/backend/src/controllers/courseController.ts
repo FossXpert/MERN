@@ -13,7 +13,7 @@ import path from 'path';
 import sendMail from "../utills/sendMail";
 import { count } from "console";
 import notificationModel from "../models/notification";
-
+import axios from 'axios'
 
 export const uploadCourse = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -387,6 +387,25 @@ export const deleteCourseById = catchAsyncError(async(req:Request,res:Response,n
             success : true,
             message : "Course deleted SuccessFully"
         })
+    } catch (error:any) {
+        return next(new ErrorHandler(error.message,400));
+    }
+})
+
+export const generateVideoUrl = catchAsyncError(async(req:Request,res:Response,next:NextFunction) => {
+    try {
+        const {videoId} = req.body;
+        const response = await axios.post(
+            `https://dev.vdocipher.com/api/videos/${videoId}/otp`,
+            {ttl:300},
+            {
+                headers:{
+                    "Content-Type":"application/json",
+                    Authorization: `Apisecret ${process.env.VDOCIPHER_API_SECRET}`,
+                },
+            }
+        );
+        res.json(response.data)
     } catch (error:any) {
         return next(new ErrorHandler(error.message,400));
     }
