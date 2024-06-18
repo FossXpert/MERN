@@ -98,6 +98,7 @@ const CourseContent: FC<Props> = ({ courseContentData, setCourseContentData, act
         } else {
             setActiveSection(activeSection + 1);
             handleCourseSubmit();
+            setActive(active+1)
         }
     }
 

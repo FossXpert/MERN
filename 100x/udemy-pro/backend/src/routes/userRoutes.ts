@@ -9,16 +9,16 @@ const userRouter = express.Router();
 userRouter.post('/registration',registrationUser);
 userRouter.post('/verify',activateUser);
 userRouter.post('/login',loginUser);
-userRouter.get('/logout',isAuthenticated,logoutUser);
+userRouter.get('/logout',updateAccessToken,isAuthenticated,logoutUser);
 userRouter.get('/refreshtoken',updateAccessToken);
-userRouter.get('/me',isAuthenticated,getUserInfo);
+userRouter.get('/me',updateAccessToken,isAuthenticated,getUserInfo);
 userRouter.post('/socialAuth',socialAuth);
-userRouter.put('/updateuser',isAuthenticated,updateUserInfo);
-userRouter.put('/updatepassword',isAuthenticated,updatePassword);
-userRouter.put('/updateprofilepic',isAuthenticated,updateProfilePicture);
-userRouter.post('/getalluser',isAuthenticated,validateUserRole('admin'),getAllUser);
-userRouter.post('/changerole',isAuthenticated,validateUserRole('admin'),updateUserRole);
-userRouter.post('/deleteuser/:userId',isAuthenticated,validateUserRole('admin'),deleteUserById);
+userRouter.put('/updateuser',updateAccessToken,isAuthenticated,updateUserInfo);
+userRouter.put('/updatepassword',updateAccessToken,isAuthenticated,updatePassword);
+userRouter.put('/updateprofilepic',updateAccessToken,isAuthenticated,updateProfilePicture);
+userRouter.post('/getalluser',updateAccessToken,isAuthenticated,validateUserRole('admin'),getAllUser);
+userRouter.post('/changerole',updateAccessToken,isAuthenticated,validateUserRole('admin'),updateUserRole);
+userRouter.post('/deleteuser/:userId',updateAccessToken,isAuthenticated,validateUserRole('admin'),deleteUserById);
 
 
 

@@ -188,18 +188,13 @@ export const updateAccessToken = catchAsyncError(async(req:Request,res:Response,
         res.cookie("refresh_token",new_refresh_token,refreshTokenOptions);
 
         await redis?.set(user._id,JSON.stringify(user),"EX",7*24*60*60);
-
-        res.status(200).json({
-            status : await success(res.statusCode),
-            access_token : access_token,
-        })
-
+        console.log("token refreshed")
+        next();
         
     } catch (error:any) {
         return next(new ErrorHandler(error.message,400));
     }
 })
-// 
 
 export const getUserInfo = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
     try {

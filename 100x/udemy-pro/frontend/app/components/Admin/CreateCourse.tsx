@@ -1,6 +1,6 @@
 'use client'
 import Heading from '../../utills/Heading'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import AdminSidebar from './Sidebar/AdminSidebar'
 import DashboardHeader from './DashboardHeader'
 import CourseInformation from './CourseInformation'
@@ -8,9 +8,28 @@ import CourseOptions from './CourseOptions'
 import CourseData from './CourseData'
 import CourseContent from './CourseContent'
 import CoursePreview from './CoursePreview'
+import { useCreateCourseMutation } from '../../../redux/features/courses/coursesApi'
+import toast from 'react-hot-toast'
+import { redirect } from 'next/navigation'
 type Props = {}
 
 const CreateCourse: FC<Props> = () => {
+
+    const [createCourse,{isLoading,isSuccess,error}] = useCreateCourseMutation()
+
+    useEffect(()=>{
+        if(isSuccess){
+            toast.success("Course Created SuccessFully");
+            redirect("admin/all-courses")
+        }
+        if(error){
+            if("data" in error){
+                const errorData = error as any;
+                toast.error(errorData.data.message)
+            }
+        }
+    },[isLoading,isSuccess,error])
+
     const [active, setActive] = useState(0);
     const [courseInfo, setCourseInfo] = useState({
         name: "",
@@ -81,7 +100,11 @@ const CreateCourse: FC<Props> = () => {
 
     const handleCourseCreate = async (e: any) => {
         const data = courseData;
+        if(!isLoading){
+            await createCourse(data);
+        }
     }
+
 
     return (
         <div className='w-full flex min-h-screen'>
