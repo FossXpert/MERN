@@ -190,7 +190,6 @@ export const updateAccessToken = catchAsyncError(async(req:Request,res:Response,
         await redis?.set(user._id,JSON.stringify(user),"EX",7*24*60*60);
         console.log("token refreshed")
         next();
-        
     } catch (error:any) {
         return next(new ErrorHandler(error.message,400));
     }

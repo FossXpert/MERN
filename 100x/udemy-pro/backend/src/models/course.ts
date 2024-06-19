@@ -40,7 +40,7 @@ export interface iCourse extends Document {
     level: string;
     demoUrl: string;
     benefits: { title: string }[];
-    preRequisites: { title: string }[];
+    prerequisites: { title: string }[];
     reviews: iReview[];
     courseData: iCourseData[];
     ratings?: number;
@@ -119,7 +119,7 @@ const courseSchema = new Schema<iCourse>({
         required: true,
     },
     benefits: [{ title: String }],
-    preRequisites: [{ title: String }],
+    prerequisites: [{ title: String }],
     reviews: [reviewSchema],
     courseData:[courseDataSchema],
     ratings:{

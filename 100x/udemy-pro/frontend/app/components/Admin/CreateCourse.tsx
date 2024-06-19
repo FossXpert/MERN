@@ -73,7 +73,7 @@ const CreateCourse: FC<Props> = () => {
             title: courseContent.title,
             description: courseContent.description,
             videoSection: courseContent.videoSection,
-            links: courseContent.links.map((link) => ({
+            link: courseContent.links.map((link) => ({
                 title: link.title,
                 url: link.url
             })),
@@ -92,7 +92,7 @@ const CreateCourse: FC<Props> = () => {
             totalVideos: courseContentData.length,
             benefits: formattedBenefit,
             prerequisites: formattedPrerequisites,
-            courseContent: formattedCourseContent,
+            courseData: formattedCourseContent,
         }
         setCourseData(data);
         console.log("courseData is :", courseData);

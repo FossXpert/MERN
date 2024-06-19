@@ -10,7 +10,7 @@ import categoryModel, { iCategory } from '../models/category';
 export const createCourse = async(data:iCourse,req:Request,res:Response,next:NextFunction)=>{
     try {
         const course = await courseModel.create(data);
-        const categoryName : string = req.body.categoryName;
+        const categoryName : string = "AI";
         const cat = await categoryModel.findOne({categoryName:categoryName});
         const user = (req as jwtPayloadNew).user;
         const userId = user._id;

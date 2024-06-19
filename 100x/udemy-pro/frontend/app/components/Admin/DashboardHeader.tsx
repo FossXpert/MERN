@@ -1,4 +1,4 @@
-import { ThemeSwitcher } from '../../utills/ThemeSwitcher'
+ import { ThemeSwitcher } from '../../utills/ThemeSwitcher'
 import React, { FC, useState } from 'react';
 import {IoMdNotificationsOutline} from "react-icons/io"
 
