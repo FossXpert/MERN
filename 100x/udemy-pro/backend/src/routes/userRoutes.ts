@@ -16,7 +16,7 @@ userRouter.post('/socialAuth',socialAuth);
 userRouter.put('/updateuser',updateAccessToken,isAuthenticated,updateUserInfo);
 userRouter.put('/updatepassword',updateAccessToken,isAuthenticated,updatePassword);
 userRouter.put('/updateprofilepic',updateAccessToken,isAuthenticated,updateProfilePicture);
-userRouter.post('/getalluser',updateAccessToken,isAuthenticated,validateUserRole('admin'),getAllUser);
+userRouter.get('/getalluser',updateAccessToken,isAuthenticated,validateUserRole('admin'),getAllUser);
 userRouter.post('/changerole',updateAccessToken,isAuthenticated,validateUserRole('admin'),updateUserRole);
 userRouter.post('/deleteuser/:userId',updateAccessToken,isAuthenticated,validateUserRole('admin'),deleteUserById);
 

@@ -5,6 +5,7 @@ import courseModel, { iCourse } from '../models/course';
 import { jwtPayloadNew } from '../middlewares/auth';
 import { userModel } from '../models/user';
 import categoryModel, { iCategory } from '../models/category';
+import redis from '../utills/redis';
 
 
 export const createCourse = async(data:iCourse,req:Request,res:Response,next:NextFunction)=>{
@@ -34,6 +35,9 @@ export const createCourse = async(data:iCourse,req:Request,res:Response,next:Nex
             return next(new ErrorHandler('Cat Is Undefined',400));
         }
         await course.save();
+
+        const coursesMongo = await courseModel.find({}).select("-courseData.videoUrl -courseData.link -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
+        await redis?.set('courses', JSON.stringify(coursesMongo));
          res.status(201).json({
             success: await success(res.statusCode),
             course

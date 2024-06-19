@@ -1,18 +1,23 @@
 import { Box, Button } from '@mui/material';
 import { useTheme } from 'next-themes'
-import React, { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
-import { useGetAllCourseQuery } from '../../../../redux/features/courses/coursesApi';
 import Loader from '../../Loader/Loader';
 import toast from 'react-hot-toast';
 import {format} from 'timeago.js' 
-type Props = {}
+import { useGetAllUsersQuery } from '../../../../redux/features/user/userApi';
+import { MdEmail } from 'react-icons/md';
+import { styles } from '../../../styles/style';
 
-const AllCourses = (props: Props) => {
+type Props = {
+    isTeam:boolean;
+}
+
+const AllUsers:FC<Props> = ({isTeam}) => {
 
     const {theme,setTheme} = useTheme();
-    const {isLoading,data,error} = useGetAllCourseQuery({});
+    const {isLoading,data,error} = useGetAllUsersQuery({});
 
     useEffect(()=>{
         if(error){
@@ -21,15 +26,16 @@ const AllCourses = (props: Props) => {
                 toast.error(errorData.data.message)
             }
         }
-        console.log("data is : ", data);
+        console.log("data is : ", JSON.stringify(data));
     },[error]);
 
     const columns = [
         { field : "id", headerName: "ID", flex : 0.5},
-        { field : "title", headerName: "Course Title", flex : 1},
-        { field : "ratings", headerName: "Ratings", flex : 0.5},
-        { field : "purchased", headerName: "Purchased", flex : 0.5},
-        { field : "created_at", headerName: "Created At", flex : 0.5},
+        { field : "title", headerName: "Name", flex : 0.5},
+        { field : "email", headerName: "Email", flex : 0.5},
+        { field : "role", headerName: "Role", flex : 0.5},
+        { field : "courses", headerName: "Purchased Courses", flex : 0.5},
+        { field : "created_at", headerName: "Joined At", flex : 0.5},
         {
             field: "delete",
             headerName:"Delete",
@@ -46,16 +52,16 @@ const AllCourses = (props: Props) => {
             },
         },
         {
-            field: "edit",
-            headerName:"Edit",
+            field: "email",
+            headerName:"Email",
             flex: 0.2,
             renderCell : (params:any) => {
                 return (
                     <>
-                    <Button>
-                        <AiOutlineEdit
+                    <a href={`mailto:${params.row.email}`}>
+                        <MdEmail
                         className='dark:text-white text-black' size={20}/>
-                    </Button>
+                    </a>
                     </>
                 );
             },
@@ -63,18 +69,30 @@ const AllCourses = (props: Props) => {
     ];
     const rows:any = [];
 
-    {
-        data && data.Allcourses.forEach((item:any) => {
+    if(isTeam){
+        const newData = data && data.users.filter((item:any) => item.role === 'admin');
+        newData && newData.forEach((item:any) => {
             rows.push({
                 id: item._id,
                 title: item.name,
-                ratings: item.ratings,
-                purchased: item.purchased,
+                email: item.email,
+                role: item.role,
+                courses : item.courses.length,
+                created_at : format(item.createdAt)
+            })
+        });
+    }else{
+        data && data.users.forEach((item:any) => {
+            rows.push({
+                id: item._id,
+                title: item.name,
+                email: item.email,
+                role: item.role,
+                courses : item.courses.length,
                 created_at : format(item.createdAt)
             })
         });
     }
-
   return (
     <div className='mt-[120px]'>
         {
@@ -82,7 +100,12 @@ const AllCourses = (props: Props) => {
                 <Loader/>
             ) : 
             (
-            <Box m="20px">
+            <Box m="20px">x
+            <div className='w-full flex justify-end'>
+                <div className={`${styles.button1}  `}>
+
+                </div>
+            </div>
             <Box
             m="40px 0 0 0"
             height="80vh"
@@ -139,4 +162,4 @@ const AllCourses = (props: Props) => {
   )
 }
 
-export default AllCourses
+export default AllUsers

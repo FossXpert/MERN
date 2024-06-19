@@ -8,7 +8,7 @@ export const courseRouter = express.Router();
 courseRouter.post('/createcourse',updateAccessToken,isAuthenticated,validateUserRole('admin'),uploadCourse);
 courseRouter.post('/updatecourse/:id',updateAccessToken,isAuthenticated,validateUserRole('admin'),editCourse);
 courseRouter.post('/get-single-course/:id',updateAccessToken,isAuthenticated,getSingleCourse);
-courseRouter.post('/getallcourses',getAllCourses);
+courseRouter.get('/getallcourses',getAllCourses);
 courseRouter.post('/get-course-content/:id',updateAccessToken,isAuthenticated,getCourseByUser);
 courseRouter.post('/addquestion',updateAccessToken,isAuthenticated,addQuestion);
 courseRouter.post('/addanswer',updateAccessToken,isAuthenticated,addAnswer);
