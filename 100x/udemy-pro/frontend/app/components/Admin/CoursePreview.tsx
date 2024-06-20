@@ -9,9 +9,10 @@ type Props = {
     setActive : (active:number) => void;
     courseData : any;
     handleCourseCreate : any;
+    isEdit?: boolean;
 }
 
-const CoursePreview : FC<Props>= ({courseData,handleCourseCreate,active,setActive}) => {
+const CoursePreview : FC<Props>= ({isEdit,courseData,handleCourseCreate,active,setActive}) => {
   
   const discountPercentagePrice = ((courseData?.estimatedPrice - courseData?.price)/courseData?.estimatedPrice)*100;
   const discountPercentage = discountPercentagePrice.toFixed(0);
@@ -125,7 +126,9 @@ const CoursePreview : FC<Props>= ({courseData,handleCourseCreate,active,setActiv
           <div
             className={`${styles.button1}`}
             onClick={()=>handleOptions()}>
-                    Next
+            {
+              isEdit ? 'Update' : 'Create'
+            }       
           </div>
         </div>
         </div>

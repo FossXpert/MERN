@@ -6,7 +6,7 @@ import { updateAccessToken } from '../controllers/userController';
 export const courseRouter = express.Router();
 
 courseRouter.post('/createcourse',updateAccessToken,isAuthenticated,validateUserRole('admin'),uploadCourse);
-courseRouter.post('/updatecourse/:id',updateAccessToken,isAuthenticated,validateUserRole('admin'),editCourse);
+courseRouter.put('/updatecourse/:id',updateAccessToken,isAuthenticated,validateUserRole('admin'),editCourse);
 courseRouter.post('/get-single-course/:id',updateAccessToken,isAuthenticated,getSingleCourse);
 courseRouter.get('/getallcourses',getAllCourses);
 courseRouter.post('/get-course-content/:id',updateAccessToken,isAuthenticated,getCourseByUser);
@@ -14,6 +14,6 @@ courseRouter.post('/addquestion',updateAccessToken,isAuthenticated,addQuestion);
 courseRouter.post('/addanswer',updateAccessToken,isAuthenticated,addAnswer);
 courseRouter.post('/addreview/:id',updateAccessToken,isAuthenticated,addReview);
 courseRouter.post('/addreviewreply',updateAccessToken,isAuthenticated,validateUserRole('admin'),reviewReply);
-courseRouter.post('/getallcourse',updateAccessToken,isAuthenticated,validateUserRole('admin'),getAllCourse);
-courseRouter.post('/deletecoursebyid/:courseId',updateAccessToken,isAuthenticated,validateUserRole('admin'),deleteCourseById);
+courseRouter.get('/getallcourse',updateAccessToken,isAuthenticated,validateUserRole('admin'),getAllCourse);
+courseRouter.delete('/deletecoursebyid/:courseId',updateAccessToken,isAuthenticated,validateUserRole('admin'),deleteCourseById);
 courseRouter.post('/getvdocipherotp',generateVideoUrl);

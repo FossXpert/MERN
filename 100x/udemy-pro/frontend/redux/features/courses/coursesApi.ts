@@ -12,12 +12,38 @@ export const courseApi = apiSlice.injectEndpoints({
         }),
         getAllCourse : builder.query({
             query: () =>({
-                url: 'course/getallcourses',
+                url: 'course/getallcourse',
                 method: 'GET',
+                credentials: 'include' as const
+            })
+        }),
+        getSingleCourseById : builder.mutation({
+            query: (id) =>({
+                url: `course/get-single-course/${id}`,
+                method: 'GET',
+                credentials: 'include' as const
+            })
+        }),
+        deleteSingleCourse : builder.mutation({
+            query: (id) =>({
+                url: `course/deletecoursebyid/${id}`,
+                method: 'DELETE',
+                credentials: 'include' as const
+            })
+        }),
+        editSingleCourse : builder.mutation({
+            query: ({id,data}) =>({
+                url: `course/updatecourse/${id}`,
+                method: 'put',
+                body: (data),
                 credentials: 'include' as const
             })
         })
     })
 })
 
-export const {useCreateCourseMutation,useGetAllCourseQuery} = courseApi;
+export const
+    {useDeleteSingleCourseMutation,
+    useCreateCourseMutation,
+    useGetAllCourseQuery,useEditSingleCourseMutation} 
+    = courseApi;

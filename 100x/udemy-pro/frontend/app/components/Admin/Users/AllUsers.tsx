@@ -1,6 +1,6 @@
 import { Box, Button } from '@mui/material';
 import { useTheme } from 'next-themes'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect,useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import Loader from '../../Loader/Loader';
@@ -18,6 +18,7 @@ const AllUsers:FC<Props> = ({isTeam}) => {
 
     const {theme,setTheme} = useTheme();
     const {isLoading,data,error} = useGetAllUsersQuery({});
+    const [active, setActive] = useState(false);
 
     useEffect(()=>{
         if(error){
@@ -29,6 +30,7 @@ const AllUsers:FC<Props> = ({isTeam}) => {
         console.log("data is : ", JSON.stringify(data));
     },[error]);
 
+    const rows:any = [];
     const columns = [
         { field : "id", headerName: "ID", flex : 0.5},
         { field : "title", headerName: "Name", flex : 0.5},
@@ -52,22 +54,22 @@ const AllUsers:FC<Props> = ({isTeam}) => {
             },
         },
         {
-            field: "email",
-            headerName:"Email",
+            field: "sendemail",
+            headerName:"Send Email",
             flex: 0.2,
             renderCell : (params:any) => {
                 return (
                     <>
                     <a href={`mailto:${params.row.email}`}>
                         <MdEmail
-                        className='dark:text-white text-black' size={20}/>
+                        className='dark:text-white text-black mt-4' size={20}/>
                     </a>
                     </>
                 );
             },
         },
     ];
-    const rows:any = [];
+   
 
     if(isTeam){
         const newData = data && data.users.filter((item:any) => item.role === 'admin');
@@ -100,10 +102,11 @@ const AllUsers:FC<Props> = ({isTeam}) => {
                 <Loader/>
             ) : 
             (
-            <Box m="20px">x
+            <Box m="20px">
             <div className='w-full flex justify-end'>
-                <div className={`${styles.button1}  `}>
-
+                <div className={`${styles.button} !w-[170px] !h-[10px]`}
+                onClick={()=>setActive(!active)}>
+                    Add Admin
                 </div>
             </div>
             <Box

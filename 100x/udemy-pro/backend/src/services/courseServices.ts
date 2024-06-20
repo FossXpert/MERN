@@ -36,7 +36,7 @@ export const createCourse = async(data:iCourse,req:Request,res:Response,next:Nex
         }
         await course.save();
 
-        const coursesMongo = await courseModel.find({}).select("-courseData.videoUrl -courseData.link -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
+        const coursesMongo = await courseModel.find({}).select("-courseData.videoUrl -courseData.links -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
         await redis?.set('courses', JSON.stringify(coursesMongo));
          res.status(201).json({
             success: await success(res.statusCode),
@@ -48,9 +48,9 @@ export const createCourse = async(data:iCourse,req:Request,res:Response,next:Nex
 };
 export const getAllCoursesService = async(res:Response,next:NextFunction)=>{
     try {
-        const allCourses = await courseModel.find().sort({createdAt:-1});
+        const Allcourses = await courseModel.find().sort({createdAt:-1});
         res.status(200).json({
-            allCourses
+            Allcourses
         })
     } catch (error:any) {
         throw error

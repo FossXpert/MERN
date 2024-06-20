@@ -73,7 +73,7 @@ export const getSingleCourse = catchAsyncError(async (req: Request, res: Respons
             })
         } else {
 
-            const courseMongo = await courseModel.findById(req.params.id).select("-courseData.videoUrl -courseData.link -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
+            const courseMongo = await courseModel.findById(req.params.id).select("-courseData.videoUrl -courseData.links -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
             if (!courseMongo) {
                 return next(new ErrorHandler('Failed to fetch single course', 400));
             }
@@ -99,7 +99,7 @@ export const getAllCourses = catchAsyncError(async (req: Request, res: Response,
             })
         }
         else {
-            const coursesMongo = await courseModel.find({}).select("-courseData.videoUrl -courseData.link -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
+            const coursesMongo = await courseModel.find({}).select("-courseData.videoUrl -courseData.links -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
             if (!coursesMongo) {
                 return next(new ErrorHandler('Failed to fetch all course', 400));
             }
@@ -381,7 +381,8 @@ export const deleteCourseById = catchAsyncError(async(req:Request,res:Response,n
             return next(new ErrorHandler('Course not found',400));
         }
         await course.deleteOne({courseId});
-        await redis?.del(courseId);
+        const coursesMongo = await courseModel.find({}).select("-courseData.videoUrl -courseData.links -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
+        await redis?.set('courses', JSON.stringify(coursesMongo));        
         return res.status(200).json({
             success : true,
             message : "Course deleted SuccessFully"
