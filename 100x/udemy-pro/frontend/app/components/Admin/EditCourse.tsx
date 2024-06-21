@@ -26,7 +26,12 @@ const EditCourse: FC<Props> = ({id}) => {
             toast.success("Course Updated Successfully");
             redirect("/admin/courses")
         }
-        if(error)
+        if(error){
+            if('data' in error){
+                const errorMessage = error as any;
+                toast.error(errorMessage.data.message);
+            }
+        }
     })
     useEffect(()=>{
         if(editCourseData){
@@ -115,7 +120,7 @@ const EditCourse: FC<Props> = ({id}) => {
 
     const handleCourseCreate = async (e: any) => {
         const data = courseData;
-        await editCourseData(data)
+        await editSingleCourse({id:editCourseData._id,data})
         console.log("New Course Data is : ",data);
     }
 

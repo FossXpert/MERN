@@ -7,5 +7,5 @@ const layoutRouter = express.Router();
 layoutRouter.post('/createlayout',updateAccessToken,isAuthenticated,validateUserRole('admin'),createLayout);
 layoutRouter.post('/createcategory',updateAccessToken,isAuthenticated,validateUserRole('admin'),createCategory);
 layoutRouter.post('/editlayout',updateAccessToken,isAuthenticated,validateUserRole('admin'),editLayout);
-layoutRouter.post('/getlayoutbytype',updateAccessToken,isAuthenticated,validateUserRole('admin'),getLayoutByType);
+layoutRouter.get('/getlayoutbytype/:type',updateAccessToken,isAuthenticated,validateUserRole('admin'),getLayoutByType);
 export default layoutRouter;

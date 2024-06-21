@@ -15,20 +15,31 @@ type Props = {
 
 const CourseData : FC<Props> = ({benefits,setBenefits,prerequisites,setPrerequisites,active,setActive}) => {
   
-        const handleBenefitChange = (index:number,value:any) => {
-            const updateBenefits = [...benefits];
-            updateBenefits[index].title = value;
-            setBenefits(updateBenefits)
+        const handleBenefitChange = (index: number, value: any) => {
+            const updateBenefits = benefits.map((benefit, i) => {
+            if (i === index) {
+                return {...benefit, title: value };
+            }
+            return benefit;
+            });
+            setBenefits(updateBenefits);
         }
-
+        
         const handleAddBenefits = async() => {
             setBenefits([...benefits,{title:""}]);
         }
 
         const handlePrerequisites = (index:number,value:any) => {
-            const updatePrerequisites = [...prerequisites];
-            updatePrerequisites[index].title = value;
-            setPrerequisites(updatePrerequisites)
+            // const updatePrerequisites = [...prerequisites];
+            // updatePrerequisites[index].title = value;
+            // setPrerequisites(updatePrerequisites)
+            const updatePrerequisites = prerequisites.map((prerequisite,i)=>{
+                if(i===index){
+                    return {...prerequisite,title:value}
+                }
+                return prerequisite;
+            });
+            setPrerequisites(updatePrerequisites);
         }
 
         const handleAddPrerequisites = async() => {
