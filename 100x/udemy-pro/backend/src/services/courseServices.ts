@@ -4,15 +4,15 @@ import ErrorHandler from '../utills/errorHandlers';
 import courseModel, { iCourse } from '../models/course';
 import { jwtPayloadNew } from '../middlewares/auth';
 import { userModel } from '../models/user';
-import categoryModel, { iCategory } from '../models/category';
+import categoryModel from '../models/category';
 import redis from '../utills/redis';
 
 
 export const createCourse = async(data:iCourse,req:Request,res:Response,next:NextFunction)=>{
     try {
         const course = await courseModel.create(data);
-        const categoryName : string = "AI";
-        const cat = await categoryModel.findOne({categoryName:categoryName});
+        const categoryName : string = "ML";
+        const cat = await categoryModel.findOne({'categories.categoryName':categoryName});
         const user = (req as jwtPayloadNew).user;
         const userId = user._id;
         const userData = await userModel.findById(userId);
@@ -26,11 +26,12 @@ export const createCourse = async(data:iCourse,req:Request,res:Response,next:Nex
             email: userData?.email as string
         }
         if(cat){
-            console.log(cat);
             course.courseCategory = cat._id;
-            cat.containedCourses?.push(course._id);
+            const category = cat.categories.find(a=> a.categoryName === categoryName);
+            if(category){
+                category.containedCourses?.push(course._id);
+            }
             await cat.save();
-            console.log("Here")
         }else{
             return next(new ErrorHandler('Cat Is Undefined',400));
         }

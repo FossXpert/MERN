@@ -215,7 +215,7 @@ const Sidebar = () => {
             />
             <Item
               title='FAQ'
-              to='/faq'
+              to='admin/faq'
               icon={<RiEqualizer2Fill />}
               selected={selected}
               setSelected={setSelected}

@@ -167,7 +167,7 @@ export const updateAccessToken = catchAsyncError(async(req:Request,res:Response,
     try {
         const refresh_token = await req.cookies.refresh_token as string;
         console.log(req.cookies)
-        const decoded = jwt.verify(refresh_token,process.env.REFRESH_TOKEN as string)  as JwtPayload;
+        const decoded = await jwt.verify(refresh_token,process.env.REFRESH_TOKEN as string)  as JwtPayload;
         
         if(!decoded){
             return next(new ErrorHandler("Refresh token expired or not valid",400));
@@ -184,12 +184,12 @@ export const updateAccessToken = catchAsyncError(async(req:Request,res:Response,
         const access_token = jwt.sign({id:user._id},process.env.ACCESS_TOKEN as Secret,{expiresIn:'5m'});
         const new_refresh_token = jwt.sign({id:user._id},process.env.REFRESH_TOKEN as Secret,{expiresIn:'3d'} )
 
-        res.cookie('access_token',access_token,accessTokenOptions);
-        res.cookie("refresh_token",new_refresh_token,refreshTokenOptions);
+        await res.cookie('access_token',access_token,accessTokenOptions);
+        await res.cookie("refresh_token",new_refresh_token,refreshTokenOptions);
 
         await redis?.set(user._id,JSON.stringify(user),"EX",7*24*60*60);
         console.log("token refreshed")
-        next();
+        await next();
     } catch (error:any) {
         return next(new ErrorHandler(error.message,400));
     }

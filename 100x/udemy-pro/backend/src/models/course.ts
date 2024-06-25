@@ -82,7 +82,6 @@ const courseDataSchema = new Schema<iCourseData>({
     links: [linkSchema],
     suggestion: String,
     questions: [commentSchema],
-
 });
 const courseSchema = new Schema<iCourse>({
     name: {
