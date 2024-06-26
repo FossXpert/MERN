@@ -77,7 +77,7 @@ By following these guidelines, you can create well-formatted and easy-to-read Ma
 
 ## Explain all the Java SE 8 Features
 
-**1. Functional Interfaces:** : 
+**1. _Functional Interfaces_:** : 
 - Interfaces with a single abstract method.
 - Used in conjunction with lambda expressions to define the behavior of that single method.
 - Example:
@@ -87,7 +87,7 @@ By following these guidelines, you can create well-formatted and easy-to-read Ma
           int operation(int a, int b);
       }
 ```
-**2. Stream API**
+**2. _Stream API_**
 
 The Stream API in Java 8 is a powerful tool for processing collections of data in a declarative and functional style. It provides a clean and concise way to filter, map, reduce, and perform other operations on elements within collections.
 
@@ -143,4 +143,6 @@ List<Integer> squares = numbers.stream()
 - You can use method references for cleaner code when functions or operations are already defined elsewhere.
 
 **In summary, the Stream API provides a powerful and elegant way to work with collections in Java. By understanding its core concepts and operations, you can write more expressive and efficient code.**
+
+**3. **
 
