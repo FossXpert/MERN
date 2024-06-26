@@ -81,10 +81,10 @@ By following these guidelines, you can create well-formatted and easy-to-read Ma
 - Interfaces with a single abstract method.
 - Used in conjunction with lambda expressions to define the behavior of that single method.
 - Example:
-  ```Java
+```Java
   @FunctionalInterface
 public interface MathOperation {
     int operation(int a, int b);
 }
-  ```
+```
 
