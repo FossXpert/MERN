@@ -77,5 +77,14 @@ By following these guidelines, you can create well-formatted and easy-to-read Ma
 
 ## Explain all the Java SE 8 Features
 
-1. ** Functional Interfaces **
+**1. Functional Interfaces:** : 
+- Interfaces with a single abstract method.
+- Used in conjunction with lambda expressions to define the behavior of that single method.
+- Example:
+  ```Java
+  @FunctionalInterface
+public interface MathOperation {
+    int operation(int a, int b);
+}
+  ```
 
