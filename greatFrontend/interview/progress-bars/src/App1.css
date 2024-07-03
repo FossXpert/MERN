@@ -1,0 +1,28 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    gap:10px;
+    flex-direction: column;
+}
+.bars{
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+}
+.bar{
+    background-color: #ccc;
+    height: 8px;
+    width: 100%;
+}
+.bar-content{
+    background-color: red;
+    height: 8px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 2s ease-in-out;
+    transition-timing-function: linear;
+}
+.bar-active{
+    transform: scaleX(1);
+}

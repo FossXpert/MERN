@@ -1,2 +1,8 @@
 {
+    "genieai.openai.generateCode-enabled": false,
+    "genieai.promptPrefix.explain-enabled": false,
+    "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true
 }
