@@ -12,12 +12,14 @@ import orderRouter from "./routes/orderRoutes";
 import notificationRouter from "./routes/notificationRouter";
 import analyticsRouter from "./routes/analyticsRouter";
 import layoutRouter from "./routes/layoutRouter";
+import { hostname } from "os";
+import { Console } from "console";
 
 app.use(express.json({limit:'50mb'}));
 app.use(cookieParser());
 app.use(
     cors({
-        origin : ["http://35.226.62.251:3000"],
+        origin : [""],
         credentials : true,
     })
 );
@@ -32,6 +34,9 @@ cloudinary.v2.config({
 app.listen(process.env.PORT,()=>{
     console.log(`Server is running on port ${process.env.PORT}`);
     connectDB();
+    console.log(hostname.name)
+    console.log(process.env.PORT)
+    console.log('http://localhost:3004')
 })
 
 app.use('/api/user',userRouter);
@@ -48,7 +53,6 @@ app.get('/',(req:Request,res:Response,next:NextFunction)=>{
         message : "Valid Empty Route",
     })
 })
-
 app.all('*',(req:Request,res:Response,next:NextFunction)=>{
     res.status(404).json({
         message : "Invalid Route",
