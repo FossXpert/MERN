@@ -2,7 +2,6 @@ require('dotenv').config();
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { userLoggedIn } from "../auth/authSlice";
 
-
 // for calling http calls
 
 export const apiSlice = createApi({
