@@ -17,10 +17,10 @@ type Props = {
 const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
 
     const handleHamburger = () => {
-        
+
     }
     const handleIologin = () => {
-        
+        setOpen
     }
     
   return (

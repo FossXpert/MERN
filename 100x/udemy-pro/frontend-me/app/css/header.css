@@ -90,3 +90,8 @@ p:hover {
     align-items: center;
     justify-content: space-around;    
 }
+.icon-1:hover{
+    cursor: pointer;
+    transition: 0.5s;
+    transform: scale(1.4);
+}

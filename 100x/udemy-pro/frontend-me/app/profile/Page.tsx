@@ -12,8 +12,13 @@ const Page = (props: Props) => {
   const {data,isLoading,error} = useLoadUserQuery({});
 
   useEffect(()=>{
-    
-  })
+    if(data){
+      console.log(data);
+    }
+    if(error){
+      throw error
+    }
+  },[data])
   
   return (
     <div>
