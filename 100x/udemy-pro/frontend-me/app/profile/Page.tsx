@@ -9,13 +9,17 @@ type Props = {
 const Page = (props: Props) => {
   const [open,setOpen] = useState(false);
   const [route,setRoute] = useState('signin');
-  const {data,isLoading,} = useLoadUserQuery({});
+  const {data,isLoading,error} = useLoadUserQuery({});
 
   useEffect(()=>{
-    
-  })
+    if(data){
+      console.log(data);
+    }
+    if(error){
+      throw error
+    }
+  },[data,error])
   
-
   return (
     <div>
       <Header
