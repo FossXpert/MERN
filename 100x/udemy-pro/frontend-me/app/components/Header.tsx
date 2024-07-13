@@ -17,10 +17,10 @@ type Props = {
 const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
 
     const handleHamburger = () => {
-
+        setOpen(false);
     }
     const handleIologin = () => {
-        setOpen
+        setOpen(true);
     }
     
   return (
@@ -58,7 +58,7 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
         </div>
         <div className='icon-1'>
             {
-                open ? <GiHamburgerMenu onClick={handleHamburger}/> : <IoLogIn onClick={handleIologin}/>
+                open ? <GiHamburgerMenu onClick={()=>handleHamburger()}/> : <IoLogIn onClick={()=>handleIologin()}/>
             }
         </div>
     </div>
