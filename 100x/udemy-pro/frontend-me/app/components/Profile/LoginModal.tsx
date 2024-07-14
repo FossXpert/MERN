@@ -19,18 +19,37 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
       <Modal open={open} onClose={handleClose}>
         <Box className="signup">
           <div className='signup-wrapper-1'>
-            <SiGnuprivacyguard className='icon1'/>
             <FaRegWindowClose className='icon2' onClick={handleClose}/>
             <h2>Sign up</h2>
           </div>
           <div className="signup-wrapper-2">
-            <label htmlFor=''>Name</label>
-            <TextField
+            <div className="text-box-label">
+            <label htmlFor=''>Email</label>
+            <input
             className='text-1'
-            label="Email"
             type='email'
             placeholder='Enter Your Email'
+            name='email'
             />
+            </div>
+            <div className="text-box-label">
+            <label htmlFor=''>Email</label>
+            <input
+            className='text-1'
+            type='email'
+            placeholder='Enter Your Email'
+            name='email'
+            />
+            </div>
+            <div className="text-box-label">
+            <label htmlFor=''>Email</label>
+            <input
+            className='text-1'
+            type='email'
+            placeholder='Enter Your Email'
+            name='email'
+            />
+            </div>
           </div>
         </Box>
       </Modal> 
