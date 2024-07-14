@@ -23,13 +23,14 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
             <h2>Sign up</h2>
           </div>
           <div className="signup-wrapper-2">
-            <div className="text-box-label">
-            <label htmlFor=''>Email</label>
+          <div className="text-box-label">
+            <label htmlFor=''> Name</label>
             <input
             className='text-1'
-            type='email'
-            placeholder='Enter Your Email'
-            name='email'
+            type='text'
+            placeholder='Enter Your Name'
+            name='name'
+            id='name'
             />
             </div>
             <div className="text-box-label">
@@ -42,12 +43,23 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
             />
             </div>
             <div className="text-box-label">
-            <label htmlFor=''>Email</label>
+            <label htmlFor=''>Password</label>
             <input
             className='text-1'
-            type='email'
-            placeholder='Enter Your Email'
-            name='email'
+            type='password'
+            placeholder='Enter Your Password'
+            name='password'
+            id='password'
+            />
+            </div>
+            <div className="text-box-label">
+            <label htmlFor=''> Confirm Password</label>
+            <input
+            className='text-1'
+            type='password'
+            placeholder='Enter Confirm Password'
+            name='cpassword'
+            id='cpassword'
             />
             </div>
           </div>
