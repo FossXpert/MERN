@@ -70,21 +70,29 @@ h2 {
     font-style: italic;
     font-size: 12px;
 }
-
+.signup-wrapper-3-big{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .signup-wrapper-3 {
     background-color: aquamarine;
     display: flex;
     width: 250px;
-    height: 60px;
+    height: 30px;
     justify-content: space-around;
     align-items: center;
+}
+p{
+    margin: 0;
 }
 
 .button {
     margin-top: 10px;
     align-items:center;
     display: flex;
-    /* background-color: beige; */
+    background-color: beige;
     justify-content: space-evenly;
     height: 44px;
     width: 270px;

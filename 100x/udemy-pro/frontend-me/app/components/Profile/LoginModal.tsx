@@ -68,11 +68,14 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
             <button type='submit' className='cancel'>Cancel</button>
             </div>
           </div>
+          <div className='signup-wrapper-3-big'>
+            <p>Or, sign in with </p>
           <div className='signup-wrapper-3'>
             <FaApple className='icon2'/>
             <FaGoogle className='icon2' />
             <FaGithub className='icon2' />
           </div>
+         </div>
         </Box>
       </Modal> 
     </div>
