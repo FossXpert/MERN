@@ -24,11 +24,12 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
             <h2>Sign up</h2>
           </div>
           <div className="signup-wrapper-2">
-            
+            <label htmlFor=''>Name</label>
+            <Typography
+            />
+              
+
           </div>
-          <Typography>
-            hi
-          </Typography>
         </Box>
       </Modal> 
     </div>
