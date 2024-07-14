@@ -55,6 +55,7 @@ h2 {
 
 .text-box-label {
     display: flex;
+    gap: 5px;
     flex-direction: column;
     padding-top: 10px;
     font-family: 'Noto sans', sans-serif;
@@ -83,6 +84,7 @@ h2 {
     font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     color: #344054;
+    margin-top: 10px;
 }
 
 .signup-wrapper-3 {

@@ -9,9 +9,12 @@ import Link from 'next/link';
 type Props = {
   open : boolean;
   setOpen : (open : boolean) => void;
+  route : string;
+  setRoute : (route:string) => void;
 }
 
-const LoginModal:FC<Props> = ({open,setOpen}) => {
+const LoginModal:FC<Props> = ({open,setOpen,route,setRoute}) => {
+
   const handleClose = () => {
     setOpen(false)
   }
@@ -19,71 +22,114 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
     <>
     <div>
       <Modal open={open} onClose={handleClose}>
-       {
-        route === 'signup'?<Box className="signup">
-        <div className='signup-wrapper-1'>
-          <FaRegWindowClose className='icon1' onClick={handleClose}/>
-          <h2>Sign up</h2>
-        </div>
-        <div className="signup-wrapper-2">
-        <div className="text-box-label">
-          <label htmlFor=''> Name</label>
-          <input
-          className='text-1'
-          type='text'
-          placeholder='Enter Your Name'
-          name='name'
-          id='name'
-          />
+        <Box>
+        { route === 'signup'&& <Box className="signup">
+          <div className='signup-wrapper-1'>
+            <FaRegWindowClose className='icon1' onClick={handleClose}/>
+            <h2>Sign up</h2>
           </div>
+          <div className="signup-wrapper-2">
           <div className="text-box-label">
-          <label htmlFor=''>Email</label>
-          <input
-          className='text-1'
-          type='email'
-          placeholder='Enter Your Email'
-          name='email'
-          />
+            <label htmlFor=''> Name</label>
+            <input
+            className='text-1'
+            type='text'
+            placeholder='Enter Your Name'
+            name='name'
+            id='name'
+            />
+            </div>
+            <div className="text-box-label">
+            <label htmlFor=''>Email</label>
+            <input
+            className='text-1'
+            type='email'
+            placeholder='Enter Your Email'
+            name='email'
+            />
+            </div>
+            <div className="text-box-label">
+            <label htmlFor=''>Password</label>
+            <input
+            className='text-1'
+            type='password'
+            placeholder='Enter Your Password'
+            name='password'
+            id='password'
+            />
+            </div>
+            <div className="text-box-label">
+            <label htmlFor=''> Confirm Password</label>
+            <input
+            className='text-1'
+            type='password'
+            placeholder='Enter Confirm Password'
+            name='cpassword'
+            id='cpassword'
+            />
+            </div>
+            <div className='button'>
+            <button type='submit' className='submit'>Confirm</button>
+            <button type='submit' className='cancel' onClick={handleClose}>Cancel</button>
+            </div>
           </div>
-          <div className="text-box-label">
-          <label htmlFor=''>Password</label>
-          <input
-          className='text-1'
-          type='password'
-          placeholder='Enter Your Password'
-          name='password'
-          id='password'
-          />
+          <div className='signup-wrapper-3-big'>
+            Or, Sign Up With
+          <div className='signup-wrapper-3'>
+            <FaApple className='icon2'/>
+            <FaGoogle className='icon2' />
+            <FaGithub className='icon2' />
           </div>
-          <div className="text-box-label">
-          <label htmlFor=''> Confirm Password</label>
-          <input
-          className='text-1'
-          type='password'
-          placeholder='Enter Confirm Password'
-          name='cpassword'
-          id='cpassword'
-          />
+          <div className='signup-wrapper-4'>
+          Sign In?
+          <Link href='#' onClick={()=>setRoute('signin')} className='link'>Click Me</Link>
           </div>
-          <div className='button'>
-          <button type='submit' className='submit'>Confirm</button>
-          <button type='submit' className='cancel' onClick={handleClose}>Cancel</button>
+         </div>
+        </Box>}
+        { route === 'signin'&& <Box className="signup">
+          <div className='signup-wrapper-1'>
+            <FaRegWindowClose className='icon1' onClick={handleClose}/>
+            <h2>Sign In</h2>
           </div>
-        </div>
-        <div className='signup-wrapper-3-big'>
-          Or, Sign Up With
-        <div className='signup-wrapper-3'>
-          <FaApple className='icon2'/>
-          <FaGoogle className='icon2' />
-          <FaGithub className='icon2' />
-        </div>
-        <div className='signup-wrapper-4'>
-        Sign In?
-        <Link href='#' className='link'>Click Me</Link>
-        </div>
-       </div>
-      </Box>:''
-       } 
+          <div className="signup-wrapper-2">
+            <div className="text-box-label">
+            <label htmlFor=''>Email</label>
+            <input
+            className='text-1'
+            type='email'
+            placeholder='Enter Your Email'
+            name='email'
+            />
+            </div>
+            <div className="text-box-label">
+            <label htmlFor=''>Password</label>
+            <input
+            className='text-1'
+            type='password'
+            placeholder='Enter Your Password'
+            name='password'
+            id='password'
+            />
+            </div>
+            <div className='button'>
+            <button type='submit' className='submit'>Confirm</button>
+            <button type='submit' className='cancel' onClick={handleClose}>Cancel</button>
+            </div>
+          </div>
+          <div className='signup-wrapper-3-big'>
+            Or, Sign In With
+          <div className='signup-wrapper-3'>
+            <FaApple className='icon2'/>
+            <FaGoogle className='icon2' />
+            <FaGithub className='icon2' />
+          </div>
+          <div className='signup-wrapper-4'>
+          Sign Up?
+          <Link href='#' onClick={()=>setRoute('signup')} className='link'>Click Me</Link>
+          </div>
+         </div>
+        </Box>}
+        </Box>
       </Modal> 
     </div>
     </>

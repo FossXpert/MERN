@@ -19,9 +19,6 @@ type Props = {
     route: string;
     setRoute: (route:string) => void;
 }
-const style = {
-    
-  };
 
 const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
 
@@ -87,7 +84,11 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
     </div>
     <div> 
         {
-          open && <LoginModal open={open} setOpen={setOpen}/>
+          open && <LoginModal
+           open={open} 
+           setOpen={setOpen}
+           route={route}
+           setRoute={setRoute}/>
         }
     </div>
     </>
