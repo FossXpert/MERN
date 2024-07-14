@@ -76,7 +76,7 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
             <FaGoogle className='icon2' />
             <FaGithub className='icon2' />
           </div>
-          <p className='account'>Already have an account? <Link>Sign In</Link></p>
+          
          </div>
         </Box>
       </Modal> 
