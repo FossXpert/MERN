@@ -1,4 +1,4 @@
-import { Box, Modal, Typography } from '@mui/material';
+import { Box, Modal, TextField, Typography } from '@mui/material';
 import React, { FC, useState } from 'react'
 import '../../css/loginModal.css'
 import { SiGnuprivacyguard } from 'react-icons/si';
@@ -25,10 +25,12 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
           </div>
           <div className="signup-wrapper-2">
             <label htmlFor=''>Name</label>
-            <Typography
+            <TextField
+            className='text-1'
+            label="Email"
+            type='email'
+            placeholder='Enter Your Email'
             />
-              
-
           </div>
         </Box>
       </Modal> 
