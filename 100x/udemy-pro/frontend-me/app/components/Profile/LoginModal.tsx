@@ -4,6 +4,7 @@ import '../../css/loginModal.css'
 import { SiGnuprivacyguard } from 'react-icons/si';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { FaApple, FaGithub, FaGoogle } from 'react-icons/fa6';
+import Link from 'next/link';
 
 type Props = {
   open : boolean;
@@ -75,6 +76,7 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
             <FaGoogle className='icon2' />
             <FaGithub className='icon2' />
           </div>
+          <p className='account'>Already have an account? <Link>Sign In</Link></p>
          </div>
         </Box>
       </Modal> 
