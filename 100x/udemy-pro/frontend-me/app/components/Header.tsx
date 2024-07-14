@@ -9,6 +9,8 @@ import { CgProfile } from 'react-icons/cg';
 import { useLoadUserQuery } from '../../redux/features/api/apiSlice';
 import { Modal } from '@mui/base/Modal';
 import { Box, Typography } from '@mui/material';
+import Profile from './Profile/Profile';
+import LoginModal from './Profile/LoginModal';
 
 
 type Props = {
@@ -17,6 +19,9 @@ type Props = {
     route: string;
     setRoute: (route:string) => void;
 }
+const style = {
+    
+  };
 
 const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
 
@@ -82,15 +87,7 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
     </div>
     <div> 
         {
-            open && (
-            <Modal open={open} onClose={()=>setOpen(false)}>
-            <Box>
-            <Typography>
-                Hi
-            </Typography>
-            </Box>
-            </Modal>
-            )
+          open && <LoginModal/>
         }
     </div>
     </>
