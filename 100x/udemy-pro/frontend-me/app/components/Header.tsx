@@ -3,11 +3,13 @@ import '../css/header.css'
 import { FaCartShopping, FaFacebook, FaInstagram, FaMagnifyingGlass, FaXTwitter } from "react-icons/fa6";
 import Image from 'next/image';
 import zoom from '../assets/zoom.png';
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { GiHamburgerMenu, GiRamProfile } from 'react-icons/gi';
 import { IoLogIn } from "react-icons/io5";
+import { CgProfile } from 'react-icons/cg';
 
 
 type Props = {
+    
     open : boolean;
     setOpen: (open:boolean) => void;
     route: string;
@@ -16,7 +18,7 @@ type Props = {
 
 const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
 
-    const handleHamburger = () => {
+    const handleProfile = () => {
         setOpen(false);
     }
     const handleIologin = () => {
@@ -24,6 +26,7 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
     }
     
   return (
+    <>
     <div className='wrapper'>
         <div className='wrapper-1'>
         <div className='wrapper-icon'>
@@ -58,12 +61,16 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
         </div>
         <div className='icon-1'>
             {
-                open ? <GiHamburgerMenu onClick={()=>handleHamburger()}/> : <IoLogIn onClick={()=>handleIologin()}/>
+                open ? <CgProfile onClick={()=>handleProfile()}/> : <IoLogIn onClick={()=>handleIologin()}/>
             }
         </div>
     </div>
         </div>    
     </div>
+    {
+        open ? 
+    }
+    </>
   )
 }
 
