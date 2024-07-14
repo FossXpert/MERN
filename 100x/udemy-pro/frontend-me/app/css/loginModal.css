@@ -16,7 +16,7 @@
     justify-content: space-evenly;
     width: 350px;
     height: 60px;
-    background-color: rgb(200, 118, 19);
+    /* background-color: rgb(200, 118, 19); */
 }
 
 .icon1 {
@@ -43,7 +43,7 @@ h2 {
     flex-direction: column;
     width: 302px;
     height: 320px;
-    background-color: bisque;
+    /* background-color: bisque; */
     padding-left: 24px;
     padding-right: 24px;
     padding-top: 5px;
@@ -74,9 +74,9 @@ h2 {
 .signup-wrapper-3 {
     background-color: aquamarine;
     display: flex;
-    width: 350px;
+    width: 250px;
     height: 60px;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -84,7 +84,7 @@ h2 {
     margin-top: 10px;
     align-items:center;
     display: flex;
-    background-color: beige;
+    /* background-color: beige; */
     justify-content: space-evenly;
     height: 44px;
     width: 270px;
@@ -112,7 +112,7 @@ h2 {
     font-family: 'Noto Sans', sans-serif;
     line-height: 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     box-shadow: 0 0 8px #e6e6e6;
 }
 .submit:hover {
@@ -121,6 +121,8 @@ h2 {
     cursor: pointer;
     animation: fadeIn 2s ease-out;
 }
+.cancel:hover{
+background-color: #ccc;}
 
 @keyframes fadeIn {
     from {background-color: #7F56D9 ;
