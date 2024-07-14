@@ -65,7 +65,7 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
             </div>
             <div className='button'>
             <button type='submit' className='submit'>Confirm</button>
-            <button type='submit' className='submit'>Cancel</button>
+            <button type='submit' className='cancel'>Cancel</button>
             </div>
           </div>
           <div className='signup-wrapper-3'>
