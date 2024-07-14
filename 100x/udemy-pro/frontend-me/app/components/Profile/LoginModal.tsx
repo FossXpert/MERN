@@ -13,7 +13,7 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
   }
   return (
     <>
-    <div className='loginModalBox'>
+    <div>
       <Modal open={open} onClose={handleClose}>
         <Box className="loginModalBox">
           <Typography>
