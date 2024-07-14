@@ -87,7 +87,7 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
     </div>
     <div> 
         {
-          open && <LoginModal/>
+          open && <LoginModal open={open} setOpen={setOpen}/>
         }
     </div>
     </>
