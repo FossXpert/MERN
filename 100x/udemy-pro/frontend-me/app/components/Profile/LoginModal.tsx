@@ -1,8 +1,9 @@
-import { Box, Modal, TextField, Typography } from '@mui/material';
+import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import React, { FC, useState } from 'react'
 import '../../css/loginModal.css'
 import { SiGnuprivacyguard } from 'react-icons/si';
 import { FaRegWindowClose } from 'react-icons/fa';
+import { FaApple, FaGithub, FaGoogle } from 'react-icons/fa6';
 
 type Props = {
   open : boolean;
@@ -19,7 +20,7 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
       <Modal open={open} onClose={handleClose}>
         <Box className="signup">
           <div className='signup-wrapper-1'>
-            <FaRegWindowClose className='icon2' onClick={handleClose}/>
+            <FaRegWindowClose className='icon1' onClick={handleClose}/>
             <h2>Sign up</h2>
           </div>
           <div className="signup-wrapper-2">
@@ -62,6 +63,15 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
             id='cpassword'
             />
             </div>
+            <div className='button'>
+            <button type='submit' className='submit'>Confirm</button>
+            <button type='submit' className='submit'>Cancel</button>
+            </div>
+          </div>
+          <div className='signup-wrapper-3'>
+            <FaApple className='icon2'/>
+            <FaGoogle className='icon2' />
+            <FaGithub className='icon2' />
           </div>
         </Box>
       </Modal> 
