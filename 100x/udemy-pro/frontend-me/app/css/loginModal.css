@@ -1,6 +1,6 @@
-.loginModalBox{
-    width: 400px;
-    height: 584px;
+.signup{
+    width: 350px;
+    height: 484px;
     border-radius: 2px;
     position: absolute;
     top: 50%;
@@ -8,4 +8,24 @@
     transform: translate(-50%,-50%);
     background-color: aliceblue;
     box-shadow: 0px 4px 8px rgba(28, 12, 196, 0.1);
+}
+.signup-wrapper-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 350px;
+    height: 140px;
+    background-color: bisque;
+}
+.icon1{
+    position: absolute;
+    left: 24px;
+    top:24px;
+}
+.icon2{
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    point
 }

@@ -1,6 +1,8 @@
 import { Box, Modal, Typography } from '@mui/material';
 import React, { FC, useState } from 'react'
 import '../../css/loginModal.css'
+import { SiGnuprivacyguard } from 'react-icons/si';
+import { FaRegWindowClose } from 'react-icons/fa';
 
 type Props = {
   open : boolean;
@@ -15,7 +17,11 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
     <>
     <div>
       <Modal open={open} onClose={handleClose}>
-        <Box className="loginModalBox">
+        <Box className="signup">
+          <div className='signup-wrapper-1'>
+            <SiGnuprivacyguard className='icon1'/>
+            <FaRegWindowClose className='icon2' onClick={handleClose}/>
+          </div>
           <Typography>
             hi
           </Typography>
