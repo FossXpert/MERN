@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import '../css/header.css'
 import { FaCartShopping, FaFacebook, FaInstagram, FaMagnifyingGlass, FaXTwitter } from "react-icons/fa6";
 import Image from 'next/image';
@@ -6,6 +6,9 @@ import zoom from '../assets/zoom.png';
 import { GiHamburgerMenu, GiRamProfile } from 'react-icons/gi';
 import { IoLogIn } from "react-icons/io5";
 import { CgProfile } from 'react-icons/cg';
+import { useLoadUserQuery } from '../../redux/features/api/apiSlice';
+import { Modal } from '@mui/base/Modal';
+import { Box, Typography } from '@mui/material';
 
 
 type Props = {
@@ -17,8 +20,18 @@ type Props = {
 
 const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
 
+    const {data,isLoading,error} = useLoadUserQuery({});
+
+    useEffect(()=>{
+        if(data){
+            console.log(data);
+        }
+        if(error){
+            throw error;
+        }
+    },[data])
+
     const handleProfile = () => {
-        setOpen(false);
     }
     const handleIologin = () => {
         setOpen(true);
@@ -60,7 +73,7 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
         </div>
         <div className='icon-1'>
             {
-                user ? <CgProfile onClick={()=>handleProfile()}/> : <IoLogIn onClick={()=>handleIologin()}/>
+                data ? <CgProfile onClick={()=>handleProfile()}/> : <IoLogIn onClick={()=>handleIologin()}/>
             }
         </div>
     </div>
@@ -68,7 +81,13 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
     </div>
     <div> 
         {
-
+            open && (
+                <Box>
+                    <Modal>
+                    <Typography></Typography>
+                </Modal>
+                </Box>
+            )
         }
     </div>
     </>
