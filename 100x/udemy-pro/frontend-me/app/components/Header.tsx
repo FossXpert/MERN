@@ -36,6 +36,7 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
     const handleIologin = () => {
         setOpen(true);
     }
+    const handleOnclose = () =>setOpen(false)
     
   return (
     <>
@@ -82,11 +83,13 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
     <div> 
         {
             open && (
-                <Box>
-                    <Modal>
-                    <Typography></Typography>
-                </Modal>
-                </Box>
+            <Modal open={open} onClose={()=>setOpen(false)}>
+            <Box>
+            <Typography>
+                Hi
+            </Typography>
+            </Box>
+            </Modal>
             )
         }
     </div>
