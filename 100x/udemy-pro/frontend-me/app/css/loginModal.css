@@ -16,7 +16,6 @@
     align-items: center;
     width: 350px;
     height: 140px;
-    background-color: bisque;
 }
 .icon1{
     position: absolute;
@@ -27,5 +26,18 @@
     position: absolute;
     right: 24px;
     top: 24px;
-    point
+    cursor: pointer;
+}
+h2{
+    color: #101828;
+    position: absolute;
+    left: 24px;
+    font-family: 'Noto sans',sans-serif;
+    font-weight: 500;
+    font-size: medium;
+    justify-content: flex-start;
+}
+.signup-wrapper-2{
+    width: 350px;
+    height: 200px;
 }

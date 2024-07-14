@@ -21,6 +21,10 @@ const LoginModal:FC<Props> = ({open,setOpen}) => {
           <div className='signup-wrapper-1'>
             <SiGnuprivacyguard className='icon1'/>
             <FaRegWindowClose className='icon2' onClick={handleClose}/>
+            <h2>Sign up</h2>
+          </div>
+          <div className="signup-wrapper-2">
+            
           </div>
           <Typography>
             hi
