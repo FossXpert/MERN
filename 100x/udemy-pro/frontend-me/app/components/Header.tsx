@@ -9,7 +9,6 @@ import { CgProfile } from 'react-icons/cg';
 
 
 type Props = {
-    
     open : boolean;
     setOpen: (open:boolean) => void;
     route: string;
@@ -61,15 +60,17 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
         </div>
         <div className='icon-1'>
             {
-                open ? <CgProfile onClick={()=>handleProfile()}/> : <IoLogIn onClick={()=>handleIologin()}/>
+                user ? <CgProfile onClick={()=>handleProfile()}/> : <IoLogIn onClick={()=>handleIologin()}/>
             }
         </div>
     </div>
         </div>    
     </div>
-    {
-        open ? 
-    }
+    <div> 
+        {
+
+        }
+    </div>
     </>
   )
 }
