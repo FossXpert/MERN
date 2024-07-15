@@ -41,7 +41,6 @@ export const sendToken = async(user : iUser,statusCode : number,res:Response) =>
         accessTokenOptions.secure = true;
         refreshTokenOptions.secure = true;
     }
-
     res.cookie('access_token',accessToken,accessTokenOptions);
     res.cookie('refresh_token',refreshToken,refreshTokenOptions);
 

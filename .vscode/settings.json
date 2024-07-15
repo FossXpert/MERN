@@ -4,5 +4,10 @@
     "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
     "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
     "IDX.aI.enableInlineCompletion": true,
-    "IDX.aI.enableCodebaseIndexing": true
+    "IDX.aI.enableCodebaseIndexing": true,
+    "cSpell.words": [
+        "Signin",
+        "Signup",
+        "Successfull"
+    ]
 }

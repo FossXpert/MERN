@@ -147,7 +147,6 @@ export const loginUser = catchAsyncError(async(req:Request,res:Response,next:Nex
 
 export const logoutUser = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
     try {
-
         res.cookie('access_token','',{maxAge:1});
         res.cookie('refresh_token','',{maxAge:1});
         const requestUserID = (req as jwtPayloadNew).user._id
@@ -168,7 +167,7 @@ export const updateAccessToken = catchAsyncError(async(req:Request,res:Response,
         const refresh_token = await req.cookies.refresh_token as string;
         console.log(req.cookies)
         const decoded = await jwt.verify(refresh_token,process.env.REFRESH_TOKEN as string)  as JwtPayload;
-        
+        console.log(`decoded: `,decoded);
         if(!decoded){
             return next(new ErrorHandler("Refresh token expired or not valid",400));
         }

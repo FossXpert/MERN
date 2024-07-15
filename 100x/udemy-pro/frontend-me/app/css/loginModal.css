@@ -55,7 +55,6 @@ h2 {
 
 .text-box-label {
     display: flex;
-    gap: 5px;
     flex-direction: column;
     padding-top: 10px;
     font-family: 'Noto sans', sans-serif;
