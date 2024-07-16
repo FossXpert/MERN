@@ -1,4 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
+
 export const authApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation({
@@ -20,9 +21,19 @@ export const authApi = apiSlice.injectEndpoints({
                 },
                 credentials : 'include' as const
             })
-        })
+        }),
+        verification : builder.mutation({
+            query : ({otp}) => ({
+                url : '',
+                method : 'POST',
+                body : {
+                    otp
+                },
+                credentials : 'include' as const
+            })
+        }),
     })
 
 })
 
-export const  {useLoginMutation,useSignupMutation} = authApi;
+export const  {useLoginMutation,useSignupMutation,useVerificationMutation} = authApi;

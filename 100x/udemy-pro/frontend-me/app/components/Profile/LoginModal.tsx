@@ -7,8 +7,12 @@ import Link from 'next/link';
 
 import { z } from 'zod';
 import { useFormik } from 'formik';
-import { useLoginMutation, useSignupMutation } from '../../../redux/features/auth/authApi';
+import { useLoginMutation, 
+  useSignupMutation, 
+  useVerificationMutation 
+} from '../../../redux/features/auth/authApi';
 import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
 type Props = {
   open: boolean;
@@ -19,8 +23,11 @@ type Props = {
 
 const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
 
+
   const [login, { data }] = useLoginMutation();
   const [signup, { isLoading, data: signupData, error }] = useSignupMutation();
+  const [verification,{isLoading : verifyLoading, data : verifyData, error: verifyError}] = useVerificationMutation();
+  const token = useSelector((state) => state.auth.token);
   // Schema validation for signup
   const signupSchema = z.object({
     name: z.string().min(1, { message: `Name must not be empty` }),
@@ -61,6 +68,7 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
         }
       } catch (error) {
         console.log(error);
+        toast.error("Error Occured");
       }
     },
   });
@@ -100,19 +108,26 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
     },
     validate: (values) =>{
       try {
-        otpSchema.parse(values.otp);
+        console.log(values)
+        otpSchema.parse(values);
         return {};
       } catch (e:any) {
-        console.log(e.errors[0].message)
-
+        console.log("In Catch");
+        console.log(e.errors[0].message);
         return e.errors[0].message
       }
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      console.log('clicked')
       console.log(values);
+      try {
+        await verification(values)
+      } catch (e:any) {
+        console.log(e.errors[0].message);
+        return e.errors[0].message;
+      }
     }
-
-  })
+  });
 
   const handleClose = () => {
     setOpen(false);
