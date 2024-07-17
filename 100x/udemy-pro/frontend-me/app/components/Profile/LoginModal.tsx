@@ -27,7 +27,7 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
   const [login, { data }] = useLoginMutation();
   const [signup, { isLoading, data: signupData, error }] = useSignupMutation();
   const [verification,{isLoading : verifyLoading, data : verifyData, error: verifyError}] = useVerificationMutation();
-  const token = useSelector((state) => state.auth.token);
+  const {token} = useSelector((state:any) => state.auth.token);
   // Schema validation for signup
   const signupSchema = z.object({
     name: z.string().min(1, { message: `Name must not be empty` }),
