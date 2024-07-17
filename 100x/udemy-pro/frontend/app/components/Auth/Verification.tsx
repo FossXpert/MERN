@@ -4,7 +4,6 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { VscWorkspaceTrusted, VscWorkspaceUntrusted } from 'react-icons/vsc'
 import { useSelector } from 'react-redux';
-import Error from 'next/error';
 
 
 type Props = {

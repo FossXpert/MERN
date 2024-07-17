@@ -104,7 +104,8 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
 
   const otpFormik = useFormik({
     initialValues: {
-      otp : ''
+      otp : '',
+      authToken : ''
     },
     validate: (values) =>{
       try {
@@ -117,11 +118,11 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
         return e.errors[0].message
       }
     },
-    onSubmit: async (values) => {
+    onSubmit: async ({otp,token}) => {
       console.log('clicked')
       console.log(values);
       try {
-        await verification(values)
+        await verification(values.otp)
       } catch (e:any) {
         console.log(e.errors[0].message);
         return e.errors[0].message;
