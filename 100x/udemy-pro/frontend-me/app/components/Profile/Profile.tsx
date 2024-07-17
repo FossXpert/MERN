@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-type Props = {}
+type Props = {
+  openProfile : boolean;
+  setOpenProfile : (openProfile : boolean) => void;
+}
 
-const Profile = (props: Props) => {
+const Profile:FC<Props> = ({openProfile,setOpenProfile}) => {
   return (
     <div>Profile</div>
   )

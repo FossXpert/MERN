@@ -1,9 +1,11 @@
 import { Box, Button, Modal, TextField, Typography } from '@mui/material';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import '../../css/loginModal.css';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { FaApple, FaGithub, FaGoogle } from 'react-icons/fa6';
 import Link from 'next/link';
+// import { useRouter } from 'next/router';
+
 
 import { z } from 'zod';
 import { useFormik } from 'formik';
@@ -13,6 +15,7 @@ import { useLoginMutation,
 } from '../../../redux/features/auth/authApi';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
+import { useLoadUserQuery } from '../../../redux/features/api/apiSlice';
 
 type Props = {
   open: boolean;
@@ -24,10 +27,59 @@ type Props = {
 const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
 
 
-  const [login, { data }] = useLoginMutation();
-  const [signup, { isLoading, data: signupData, error }] = useSignupMutation();
-  const [verification,{isLoading : verifyLoading, data : verifyData, error: verifyError}] = useVerificationMutation();
-  const {token} = useSelector((state:any) => state.auth.token);
+  const [login, { data ,isSuccess : loginSuccess,error:loginError}] = useLoginMutation();
+  const [signup, { isLoading, data: signupData, error,isSuccess }] = useSignupMutation();
+  const [verification,{isSuccess : verifySuccess, data : verifyData, error: verifyError}] = useVerificationMutation();
+  const token = useSelector((state:any) => state.auth.token);
+  const [num,setNum]=useState(true);
+  const {data:userData,isSuccess:userSuccess,error:userError} = useLoadUserQuery({});
+
+  useEffect(()=>{
+    if(isSuccess){
+      num ? toast.success("Otp sent on Email"):toast.success("Correct Otp has been sent- on Email");
+      setNum(false);
+    }
+    if(error){
+      if("data" in error){
+        const errorData = error as any;
+        toast.error(errorData.data.message);
+      }
+    }
+    if(loginSuccess){
+      toast.success("Logged In");
+      // router.push("/")
+      handleClose();
+    }
+    if(loginError){
+      if("data" in loginError){
+        const errorData = loginError as any;
+        toast.error(errorData.data.message);
+      }
+    }
+    // if(userSuccess){
+    //   toast.success("User fetched successfully");
+    // }
+    // if(userError){
+    //   if("data" in userError){
+    //     const errorData = userError as any;
+    //     toast.error(errorData.data.message);
+    //   }
+    // }
+    if(verifySuccess){
+      toast.success("Otp verified,PLease Login");
+      setRoute('signin')
+    }
+    if(verifyError){
+      if("data" in verifyError){
+        const errorData = verifyError as any;
+        toast.error(errorData.data.message);
+      }
+    }
+  },[isSuccess,error,verifySuccess,verifyError,loginSuccess,loginError]);
+
+  
+  
+  
   // Schema validation for signup
   const signupSchema = z.object({
     name: z.string().min(1, { message: `Name must not be empty` }),
@@ -43,7 +95,7 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
 
   const otpSchema = z.object({
     otp : z.string().length(4,{message : 'Otp Must be 4 Digits'}).regex(/^\d{4}$/,{message: 'Otp must contain digits only'}),
-    authToken : z.string().min(1,{message:"Token is empty"})
+    authToken : z.string()
   })
   // Formik instance for signup
   const signupFormik = useFormik({
@@ -93,12 +145,12 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
         const result = await login(values).unwrap();
         console.log('signin values', values);
         console.log('Login Successfull', result)
-        if (data) {
+        if (result) {
           toast.success("Logged In Successfully");
         }
       } catch (error: any) {
         console.log('Login failed', error)
-        toast.error(error)
+        throw error;
       }
     },
   });
@@ -106,7 +158,7 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
   const otpFormik = useFormik({
     initialValues: {
       otp : '',
-      authToken : token
+      authToken : ''
     },
     validate: (values) =>{
       try {
@@ -115,17 +167,21 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
         return {};
       } catch (e:any) {
         console.log("In Catch");
+        console.log("token is",token);
         console.log(e.errors[0].message);
+        toast.error(e.errors[0].message)
         return e.errors[0].message
       }
     },
-    onSubmit: async (values) => {
+    onSubmit: async ({otp,authToken}) => {
       console.log('clicked')
-      console.log(values);
+      // console.log(otp,authToken);
       try {
-        await verification(values)
+        authToken = token;
+        await verification({otp,authToken})
       } catch (e:any) {
         console.log(e.errors[0].message);
+        toast.error(e.errors[0].message)
         return e.errors[0].message;
       }
     }

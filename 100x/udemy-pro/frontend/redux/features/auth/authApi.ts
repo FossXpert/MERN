@@ -59,10 +59,11 @@ export const authApi = apiSlice.injectEndpoints({
                     const result = await queryFulfilled;
                     dispatch(
                         userLoggedIn({
-                            accessToken: result.data.activationToken,
+                            accessToken: result.data.accessToken,
                             user : result.data.user
                         })
                     );
+                    console.log('data is ',result.data.accessToken);
                 } catch (error: any) {
                     console.log(error);
                 }

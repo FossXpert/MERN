@@ -28,10 +28,12 @@ export const apiSlice = createApi({
                     const result = await queryFulfilled;
                     dispatch(
                         userLoggedIn({
-                            accessToken: result.data.activationToken,
+                            //wrong code that why commented
+                            // accessToken: result.data.activationToken,
                             user : result.data.user
                         })
                     );
+                    console.log("result is ",result);
                 } catch (error: any) {
                     console.log(error);
                 }

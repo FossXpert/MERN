@@ -1,4 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
+import { userLoggedIn, userRegistration } from "./authSlice";
 
 export const authApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -10,7 +11,18 @@ export const authApi = apiSlice.injectEndpoints({
                     email, password
                 },
                 credentials: 'include' as const,
-            })
+            }),
+            async onQueryStarted(args,{dispatch,queryFulfilled}){
+                try {
+                    const {data} = await queryFulfilled;
+                    userLoggedIn({
+                        accessToken : data.accessToken,
+                        user : data.user
+                    })
+                } catch (error) {
+                    
+                }
+            }
         }),
         signup: builder.mutation({
             query : ({name,email,password}) => ({
@@ -20,17 +32,28 @@ export const authApi = apiSlice.injectEndpoints({
                     name,email,password
                 },
                 credentials : 'include' as const
-            })
+            }),
+            async onQueryStarted({otp,authToken},{dispatch,queryFulfilled}){
+                try {
+                    const {data} = await queryFulfilled;
+                    dispatch(userRegistration({token : data.activationToken}));
+                    console.log("Inside RTK Query Signup: Data is equal to ",data.activationToken)
+                } catch (error) {
+                    console.log("Inside error");
+                    throw error;
+                }
+            }
         }),
         verification : builder.mutation({
-            query : ({otp}) => ({
-                url : '',
+            query : ({otp,authToken}) => ({
+                url : 'user/verify',
                 method : 'POST',
                 body : {
-                    otp
+                    authentication_token : authToken,
+                    authentication_code : otp
                 },
                 credentials : 'include' as const
-            })
+            }),
         }),
     })
 

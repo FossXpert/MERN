@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import '../css/header.css'
 import { FaCartShopping, FaFacebook, FaInstagram, FaMagnifyingGlass, FaXTwitter } from "react-icons/fa6";
 import Image from 'next/image';
@@ -11,6 +11,7 @@ import { Modal } from '@mui/base/Modal';
 import { Box, Typography } from '@mui/material';
 import Profile from './Profile/Profile';
 import LoginModal from './Profile/LoginModal';
+import toast from 'react-hot-toast';
 
 
 type Props = {
@@ -22,18 +23,24 @@ type Props = {
 
 const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
 
-    const {data,isLoading,error} = useLoadUserQuery({});
+    const {isSuccess,data,isLoading,error} = useLoadUserQuery({});
+    const [openProfile,setOpenProfile] = useState(false);
 
     useEffect(()=>{
-        if(data){
+        if(isSuccess){
             console.log(data);
+            
         }
         if(error){
-            throw error;
+            if("data" in error){
+                const errorData = error as any;
+                toast.error(errorData.data.message);
+            }
         }
-    },[data])
+    },[isSuccess,error,data]);
 
     const handleProfile = () => {
+        setOpenProfile(true);
     }
     const handleIologin = () => {
         setOpen(true);
@@ -89,6 +96,10 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
            setOpen={setOpen}
            route={route}
            setRoute={setRoute}/>
+        }
+        {
+            openProfile && <Profile
+            openProfile={openProfile}/>
         }
     </div>
     </>

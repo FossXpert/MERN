@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 import { createApi ,fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import { userLoggedIn } from "../auth/authSlice";
 
 export const apiSlice = createApi({
     reducerPath : 'api',
@@ -15,6 +16,16 @@ export const apiSlice = createApi({
                 method : 'GET',
                 credentials : 'include' as const
             }),
+            async onQueryStarted(args,{dispatch,queryFulfilled}){
+                try {
+                    const {data} = await queryFulfilled;
+                    dispatch(userLoggedIn({
+                        user : data.user,
+                    }))
+                } catch (error) {
+                    
+                }
+            }
         })
     })
 })

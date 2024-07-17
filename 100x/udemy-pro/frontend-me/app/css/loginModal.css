@@ -1,7 +1,7 @@
 .signup {
     width: 350px;
     height: 484px;
-    border-radius: 2px;
+    border-radius: 6px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -9,7 +9,7 @@
     background-color:#ccc;
     border:none;
     box-shadow: 0px 4px 8px rgba(28, 12, 196, 0.1);
-    background-image: linear-gradient(to right, #ccc, rgb(168, 183, 237));
+    /* background-image: linear-gradient(to right, #ccc, rgb(168, 183, 237)); */
 }
 .signup:focus{
     border: none;
