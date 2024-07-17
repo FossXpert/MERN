@@ -42,7 +42,8 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
   });
 
   const otpSchema = z.object({
-    otp : z.string().length(4,{message : 'Otp Must be 4 Digits'}).regex(/^\d{4}$/,{message: 'Otp must contain digits only'})
+    otp : z.string().length(4,{message : 'Otp Must be 4 Digits'}).regex(/^\d{4}$/,{message: 'Otp must contain digits only'}),
+    authToken : z.string().min(1,{message:"Token is empty"})
   })
   // Formik instance for signup
   const signupFormik = useFormik({
@@ -105,7 +106,7 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
   const otpFormik = useFormik({
     initialValues: {
       otp : '',
-      authToken : ''
+      authToken : token
     },
     validate: (values) =>{
       try {
@@ -118,11 +119,11 @@ const LoginModal: FC<Props> = ({ open, setOpen, route, setRoute }) => {
         return e.errors[0].message
       }
     },
-    onSubmit: async ({otp,token}) => {
+    onSubmit: async (values) => {
       console.log('clicked')
       console.log(values);
       try {
-        await verification(values.otp)
+        await verification(values)
       } catch (e:any) {
         console.log(e.errors[0].message);
         return e.errors[0].message;
