@@ -94,8 +94,13 @@ p:hover {
     transition: 0.5s;
     transform: scale(1.4);
 }
-
-@media (min-width :425px){
+@media (min-width:375px){
+    .wrapper{
+        max-width: 320px;
+        background-color: ;
+    }
+}
+@media (min-width :320px){
     .wrapper{
         width: 100%;
         background-color: bisque;
