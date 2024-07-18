@@ -7,7 +7,11 @@ type Props = {
 
 const Profile:FC<Props> = ({openProfile,setOpenProfile}) => {
   return (
-    <div>Profile</div>
+    <>
+    <div className="container">
+      Hello
+    </div>
+    </>
   )
 }
 
