@@ -1,20 +1,13 @@
 /* Desktop First Approach */
 
 .container{
-    max-width: 1536px;
+    max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 10px;
     padding-right: 10px;
     background-color: rgb(17, 230, 230);
     height: 100vh;
-}
-
-@media (min-width : 1536px) {
-    .container{
-        max-width: 1280px;
-    }
-    
 }
 
 @media (min-width : 1280px) {
@@ -43,7 +36,10 @@
 
 @media (min-width : 425px) {
     .container{
-        /* width: 100%; */
+        width: 100%;
+        display: flex;
+        flex: auto;
+        background-color: blanchedalmond;
     }
 }
 
