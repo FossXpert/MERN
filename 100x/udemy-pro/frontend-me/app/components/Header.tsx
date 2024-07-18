@@ -99,7 +99,8 @@ const Header:FC<Props> = ({open,setOpen,route,setRoute}) => {
         }
         {
             openProfile && <Profile
-            openProfile={openProfile}/>
+            openProfile={openProfile}
+            setOpenProfile={setOpenProfile}/>
         }
     </div>
     </>
