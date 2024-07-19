@@ -60,7 +60,7 @@ const handleIologin = () => {
         <div className='icon'>
             <FaFacebook/>
         </div>
-        </div>
+      </div>
         <div className="container2-mobile">
           <Image src={zoom} alt="" />
         </div>
