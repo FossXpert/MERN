@@ -9,5 +9,7 @@
         "Signin",
         "Signup",
         "Successfull"
-    ]
+    ],
+    "files.autoSaveDelay": 1000,
+    "files.autoSaveWhenNoErrors": true
 }

@@ -146,7 +146,9 @@ p {
     /* background-color: #3730A3; */
     background-color: #171717;
     /* cursor: pointer; */
-    animation: fadeIn 2s ease-out;
+    /* animation: fadeIn 2s ease-out; */
+    background-color: #171717;
+
 }
 
 .cancel:hover {

@@ -1,0 +1,119 @@
+.header,.container{
+    height: 80px;
+    background-color: #fff;
+    border-bottom: 2px solid #000;
+    width : 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ }
+.container{
+    border: 1px solid #dac510;
+    flex-direction: row;
+    justify-content:space-between;
+    padding-left: 1%;
+    padding-right: 1%;
+    gap: 5%;
+ 
+}
+ul{
+    margin:0;
+    padding: 0;
+}
+.container2-mobile{
+    display: none;
+}
+.container1,.container2,.container3,.container4{
+    border: 1px solid #000;
+    display: flex;
+    width : 100%;
+    height : auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+}
+.container1{
+    flex: 10%;
+}
+.container2{
+    flex: 15%;
+}
+.container3{
+    flex: 60%;
+}
+.container4{
+    flex: 15%;
+}
+.icon,.icon-1{
+    color: #171717;
+}
+.icon-ham{
+    display: none;
+}
+.icon:hover,
+.icon-1:hover{
+    color: #7F56D9;
+}
+
+@media (max-width: 768px){
+    .header,.container{
+        background-color: rgb(211, 237, 237);
+    }
+    .container{
+        gap:2%;
+    }
+    .container3{
+        flex: 50%
+    }
+}
+@media (max-width: 700px){
+    .header,.container{
+        background-color: rgb(211, 237, 237);
+    }
+    .container{
+        gap:2%;
+    }
+    .container1{
+        flex: 20%;
+    }
+    .container2{
+        display : none;
+    }
+    .container3{
+        flex: 60%;
+        font-size: 13px;
+    }
+    .container4{
+        flex: 20%;
+    }
+    .icon{
+        font-size: 13px;
+    }
+    .icon-1{
+        font-size: 13px;
+    }
+}
+@media (max-width:425px){
+    .header,.container{
+        background-color: rgb(204, 104, 178);
+    }
+    .icon-ham{
+        display:inline-flex ;
+        border-color: 1px solid #000;
+        flex:8%
+    }
+    .container2-mobile{
+        display: flex;
+        border-color:1px solid #000;
+        flex: 42%;
+    }
+    .container3{
+        display: none;
+    }
+    .container1{
+        flex:20%
+    }
+    .container4{
+        flex:30%
+    }
+}

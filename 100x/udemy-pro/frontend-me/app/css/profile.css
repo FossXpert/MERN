@@ -1,6 +1,6 @@
 /* Desktop First Approach */
 
-.container{
+/* .container{
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
@@ -8,9 +8,9 @@
     padding-right: 10px;
     background-color: rgb(17, 230, 230);
     height: 100vh;    
-}
+} */
 
-@media (min-width : 1280px) {
+/* @media (min-width : 1280px) {
     .container{
         max-width: 1024px;
     }
@@ -40,7 +40,7 @@
         background-color: blanchedalmond;
     }
 }
-
+ */
 
 
 

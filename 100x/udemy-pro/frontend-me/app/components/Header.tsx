@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import '../css/header.css'
+import '../css/header2.css'
 import { FaCartShopping, FaFacebook, FaInstagram, FaMagnifyingGlass, FaXTwitter } from "react-icons/fa6";
 import Image from 'next/image';
 import zoom from '../assets/zoom.png';

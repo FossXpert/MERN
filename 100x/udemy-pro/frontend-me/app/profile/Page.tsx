@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import { useLoadUserQuery } from '../../redux/features/api/apiSlice';
 
 type Props = {
@@ -13,7 +14,13 @@ const Page = (props: Props) => {
   
   return (
     <div>
-      <Header
+      {/* <Header
+      open={open}
+      setOpen={setOpen}
+      route={route}
+      setRoute={setRoute}
+      /> */}
+      <Header2
       open={open}
       setOpen={setOpen}
       route={route}
