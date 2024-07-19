@@ -93,7 +93,7 @@ ul{
         font-size: 13px;
     }
 }
-@media (max-width:425px){
+@media (max-width:576px){
     .header,.container{
         background-color: rgb(204, 104, 178);
     }
