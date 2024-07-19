@@ -96,6 +96,7 @@ ul{
 @media (max-width:576px){
     .header,.container{
         background-color: rgb(204, 104, 178);
+        height: 60px;
     }
     .icon,.icon-1,.icon-ham{
         font-size: 1.2rem;
@@ -105,21 +106,22 @@ ul{
         border: 1px solid #000;
         justify-content: center;
         align-items: center;
-        flex:8%
+        flex:12%;
+        font-size: 1.5rem;
     }
     .container2-mobile{
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
         border: 1px solid #000;
-        flex: 42%;
+        flex: 38%;
         width: 100%;
     }
     .container3{
         display: none;
     }
     .container1{
-        flex:20%
+        flex:20%;
+        display: none;
     }
     .container4{
         flex:30%
