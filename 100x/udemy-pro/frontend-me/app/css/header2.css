@@ -97,14 +97,21 @@ ul{
     .header,.container{
         background-color: rgb(204, 104, 178);
     }
+    .icon,.icon-1,.icon-ham{
+        font-size: 1.2rem;
+    }
     .icon-ham{
         display:inline-flex ;
-        border-color: 1px solid #000;
+        border: 1px solid #000;
+        justify-content: center;
+        align-items: center;
         flex:8%
     }
     .container2-mobile{
         display: flex;
-        border-color:1px solid #000;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #000;
         flex: 42%;
         width: 100%;
     }
