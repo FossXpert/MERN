@@ -104,9 +104,6 @@ const handleIologin = () => {
             openProfile={openProfile}
             setOpenProfile={setOpenProfile}/>
         }
-        {
-          
-        }
     </div>
     </>
   )
