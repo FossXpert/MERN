@@ -47,31 +47,31 @@ const handleIologin = () => {
     <>
     <div className="header">
       <div className="container">
-      <div className="container2">
-        <Image src={zoom} alt="" />
-      </div>
-      <div className="container1">
-        <div className='icon'>
-            <FaXTwitter/>
-        </div>
-        <div className='icon'>
-            <FaInstagram/>
-        </div>
-        <div className='icon'>
-            <FaFacebook/>
-        </div>
-      </div>
-        <div className="container2-mobile">
-          <Image src={zoom} alt="" />
-        </div>
-        <div className="container3">
-          <ul>Home</ul>
-          <ul>Course</ul>
-          <ul>About</ul>
-          <ul>Policy</ul>
-          <ul>FAQ</ul>
-        </div>
-        <div className="container4">
+          <div className="container2">
+            <Image src={zoom} alt="" />
+          </div>
+          <div className="container1">
+            <div className='icon'>
+                <FaXTwitter/>
+            </div>
+            <div className='icon'>
+                <FaInstagram/>
+            </div>
+            <div className='icon'>
+                <FaFacebook/>
+            </div>
+          </div>
+            <div className="container2-mobile">
+              <Image src={zoom} alt="" />
+            </div>
+            <div className="container3">
+              <ul>Home</ul>
+              <ul>Course</ul>
+              <ul>About</ul>
+              <ul>Policy</ul>
+              <ul>FAQ</ul>
+            </div>
+            <div className="container4">
         <div className='icon-1'>
             <IoMdSearch/>
         </div>
@@ -83,7 +83,7 @@ const handleIologin = () => {
                 data ? <CgProfile onClick={()=>handleProfile()}/> : <MdOutlineLogin onClick={()=>handleIologin()}/>
             }
         </div>
-        </div>
+            </div>
         {
           <div className='icon-ham'>
             <MdOutlineMenuOpen />
