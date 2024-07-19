@@ -86,7 +86,7 @@ const handleIologin = () => {
           </div>
           {
             <div className='icon-ham'>
-              <MdOutlineMenuOpen />
+              <MdOutlineMenuOpen className="icon-ham-icon"/>
             </div>
           }
       </div>
