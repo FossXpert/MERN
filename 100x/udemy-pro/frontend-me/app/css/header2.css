@@ -24,7 +24,7 @@ ul{
     display: none;
 }
 .container1,.container2,.container3,.container4{
-    /* border: 1px solid #000; */
+    border: 1px solid #000;
     display: flex;
     width : 100%;
     height: auto;
@@ -103,20 +103,17 @@ ul{
     }
     .icon-ham{
         display: flex;
-        /* border: 1px solid #000; */
+        border: 1px solid #000;
         justify-content: center;
         align-items: center;
         flex:12%;
         font-size: 1.5rem;
     }
-    .icon-ham-icon{
-        /* margin-top:0px; */
-    }
 
     .container2-mobile{
         display: flex;
         justify-content: flex-start;
-        /* border: 1px solid #000; */
+        border: 1px solid #000;
         flex: 38%;
         width: 100%;
     }
