@@ -10,7 +10,7 @@ const Profile:FC<Props> = ({openProfile,setOpenProfile}) => {
   return (
     <>
     <div className="container">
-      Hello
+      
     </div>
     </>
   )
