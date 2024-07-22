@@ -6,11 +6,10 @@ type Props = {
 
     sSize : string;
     isMobile : boolean;
-    user :any;
 }
 
-const SideBarProfile:FC<Props> = ({sSize,isMobile,user}) => {
-    console.log(isMobile,sSize,user);
+const SideBarProfile:FC<Props> = ({sSize,isMobile}) => {
+    console.log(isMobile,sSize);
   return (
     <>
     Screen Size : {sSize}
