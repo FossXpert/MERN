@@ -1,7 +1,7 @@
 .sidebar-container{
-    background-color:#2E2E48;
+    background-color:rgb(244, 238, 238);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 234px;
     height: 694px;
@@ -12,5 +12,7 @@
 .box{
     width:128.68px;
     height:27.74px;
-    border:1px solid #fblackff
+    border:1px solid black;
+    margin-top: 15%;
+    font
 }
