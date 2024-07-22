@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
