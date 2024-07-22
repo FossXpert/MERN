@@ -12,7 +12,7 @@ const SideBarProfile:FC<Props> = ({sSize,isMobile}) => {
   return (
     <>
     Screen Size : {sSize}
-    <div className=''>
+    <div className='sidebar-container'>
         <div className='box'>
         </div>
     </div>
