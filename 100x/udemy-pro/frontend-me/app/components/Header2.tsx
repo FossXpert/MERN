@@ -8,7 +8,7 @@ import { IoLogIn } from "react-icons/io5";
 import { useLoadUserQuery } from "../../redux/features/api/apiSlice";
 import toast from "react-hot-toast";
 import LoginModal from "./Profile/LoginModal";
-import Profile from "./Profile/Profile";
+import Profile from "./Profile/ProfileInfo";
 import { MdOutlineLogin, MdOutlineMenuOpen, MdSearch, MdShoppingCartCheckout } from "react-icons/md";
 import { IoMdSearch } from "react-icons/io";
 import useScreenSize from "../../redux/features/screenSize/hook/useScreenSize";
