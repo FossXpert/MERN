@@ -1,12 +1,14 @@
 import React from 'react'
-import '../../css/SideBarProfile'
+import '../../css/SideBarProfile.css'
 type Props = {}
 
 const SideBarProfile = (props: Props) => {
   return (
     <>
     <div className='container'>
-    Hi
+        <div className=''>
+
+        </div>
     </div>
     </>
   )
