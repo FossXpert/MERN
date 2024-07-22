@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Header2 from '../components/Header2';
 import { useLoadUserQuery } from '../../redux/features/api/apiSlice';
+import SideBarProfile from '../components/Profile/SideBarProfile';
 
 type Props = {
 }
@@ -18,6 +19,7 @@ const Page = (props: Props) => {
       route={route}
       setRoute={setRoute}
       />
+      <SideBarProfile/>
     </div>
   )
 }

@@ -4,11 +4,10 @@ import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
 type Props = {
 
-    sSize : string;
-    isMobile : boolean;
+ 
 }
 
-const SideBarProfile:FC<Props> = ({sSize,isMobile}) => {
+const SideBarProfile:FC<Props> = () => {
   return (
     <>
     <div className='sidebar-container'>
