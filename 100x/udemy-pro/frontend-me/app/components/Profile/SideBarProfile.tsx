@@ -1,11 +1,13 @@
 'use client'
-import React from 'react'
+import React, { FC } from 'react'
 import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
-type Props = {}
+type Props = {
+    sSize : string;
+    isMobile : boolean;
+}
 
-const SideBarProfile = (props: Props) => {
-    const {isMobile,sSize} = useSelector((state:any)=>state.screen);
+const SideBarProfile:FC<Props> = ({sSize,isMobile}) => {
   return (
     <>
     Screen Size : `${sSize}`

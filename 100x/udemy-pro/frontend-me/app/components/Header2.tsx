@@ -15,6 +15,7 @@ import useScreenSize from "../../redux/features/screenSize/hook/useScreenSize";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import SideBarProfile from "./Profile/SideBarProfile";
 
 type Props = {
   open: boolean;
@@ -112,16 +113,9 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
             setRoute={setRoute} />
         }
         {
-        }
-
-        {/* <div>Current screen size: {sSize}</div> */}
-        {<Link href={'profile'}>Goto Profile</Link>}
-        {
-          isMobile && (
-          <div className="mobile-modal">
-            
-          </div>
-          )
+          openProfile && <SideBarProfile
+          isMobile={isMobile}
+          sSize={sSize}/> 
         }
       </div>
     </>
