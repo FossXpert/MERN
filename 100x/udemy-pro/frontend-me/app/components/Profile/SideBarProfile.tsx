@@ -6,8 +6,8 @@ const SideBarProfile = (props: Props) => {
   return (
     <>
     <div className='container'>
-        <div className=''>
-
+        <div className='box'>
+                Hi
         </div>
     </div>
     </>
