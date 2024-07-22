@@ -1,3 +1,4 @@
+'use client'
 import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import React, { FC, useEffect, useState } from 'react';
 import '../../css/loginModal.css';

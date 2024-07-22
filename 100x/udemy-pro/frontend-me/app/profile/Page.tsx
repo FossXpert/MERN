@@ -19,7 +19,6 @@ const page:FC<Props> =({open,setOpen,route,setRoute,sSize,isMobile}) => {
   return (
     <div>
         <SideBarProfile
-      
         />
     </div>
   )
