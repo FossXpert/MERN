@@ -1,14 +1,28 @@
 'use client'
-import Image from "next/image";
-import Page from "./main/Page";
-import { Provider } from "react-redux";
-import { store } from "../redux/store";
-import { Toaster } from "react-hot-toast";
+import React, { useEffect, useState } from 'react'
+import Header2 from './components/Header2';
+import Heading from './main/Heading';
+import Hero from './main/Hero';
 
-export default function Home() {
-  return (
-    <>
-    <Page
-    </>
-  );
+type Props = {
 }
+
+const Page = (props: Props) => {
+  const [open,setOpen] = useState(false);
+  const [route,setRoute] = useState('signin');
+  
+  return (
+    <div>
+      <Heading/>
+      <Header2
+      open={open}
+      setOpen={setOpen}
+      route={route}
+      setRoute={setRoute}
+      />
+      <Hero/>
+    </div>
+  )
+}
+
+export default Page
