@@ -13,7 +13,7 @@ const Page = (props: Props) => {
   
   return (
     <div>
-      <Heading/>
+      {/* <Heading/> */}
       <Header2
       open={open}
       setOpen={setOpen}
