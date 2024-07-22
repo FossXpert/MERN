@@ -1,9 +1,16 @@
 .sidebar-container{
-    background-color: rgb(38, 220, 54);
+    background-color:#2E2E48;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 234px;
     height: 694px;
     border-radius: 30.82px;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.box{
+    width:128.68px;
+    height:27.74px;
+    border:1px solid #fblackff
 }
