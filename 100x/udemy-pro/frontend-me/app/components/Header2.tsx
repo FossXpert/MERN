@@ -113,9 +113,8 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
             setRoute={setRoute} />
         }
         {
-          openProfile && <SideBarProfile
-          isMobile={isMobile}
-          sSize={sSize}/> 
+          openProfile&& (<Link
+          href={'/profile'}></Link>)
         }
       </div>
     </>
