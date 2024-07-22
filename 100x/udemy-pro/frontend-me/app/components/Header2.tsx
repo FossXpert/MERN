@@ -93,7 +93,7 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
             </div>
             <div className='icon-1'>
               {
-                data ? (data ? <Link href={'profile'}>
+                data ? (data.user.avatar ? <Link href={'profile'}>
                     <Image width={16} height={16} src={data.user.avatar?.url} alt="No"/>
                 </Link>: <CgProfile onClick={() => handleProfile()} /> ):
                 <MdOutlineLogin onClick={() => handleIologin()} />
@@ -116,10 +116,7 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
             setRoute={setRoute} />
         }
         {
-          openProfile && (<Link
-          href={'/profile'}>
-            <Image src={data.user.avatar?.url} alt=""/>
-          </Link>)
+          
         }
       </div>
     </>
