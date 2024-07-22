@@ -13,6 +13,8 @@ import { MdOutlineLogin, MdOutlineMenuOpen, MdSearch, MdShoppingCartCheckout } f
 import { IoMdSearch } from "react-icons/io";
 import useScreenSize from "../../redux/features/screenSize/hook/useScreenSize";
 import { useSelector } from "react-redux";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Props = {
   open: boolean;
@@ -27,6 +29,8 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
   const { isSuccess, data, isLoading, error } = useLoadUserQuery({});
   const [openProfile, setOpenProfile] = useState(false);
   const { sSize, isMobile } = useSelector((state: any) => state.screen);
+  const router = useRouter();
+
   useEffect(() => {
     console.log(sSize, isMobile);
     if (isSuccess) {
@@ -45,6 +49,10 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
   }
   const handleIologin = () => {
     setOpen(true);
+  }
+
+  const handleCart = () => {
+    router.push('/profile')
   }
 
   return (
@@ -80,7 +88,7 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
               <IoMdSearch />
             </div>
             <div className='icon-1'>
-              <MdShoppingCartCheckout />
+              <MdShoppingCartCheckout onClick={()=>handleCart()} />
             </div>
             <div className='icon-1'>
               {
@@ -104,12 +112,10 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
             setRoute={setRoute} />
         }
         {
-          openProfile && <Profile
-            openProfile={openProfile}
-            setOpenProfile={setOpenProfile} />
         }
 
         {/* <div>Current screen size: {sSize}</div> */}
+        {<Link href={'/profile'}>Goto Profile</Link>}
         {
           isMobile && (
           <div className="mobile-modal">
