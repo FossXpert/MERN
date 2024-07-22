@@ -1,5 +1,5 @@
 .sidebar-container{
-    background-color:rgb(244, 238, 238);
+    background-color:white;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -12,6 +12,18 @@
 .box{
     width:128.68px;
     height:27.74px;
+    border:1px solid black;
+    margin-top: 15%;
+    font-family: 'Noto sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box1{
+    width:94px;
+    height:119px;
     border:1px solid black;
     margin-top: 15%;
     font-family: 'Noto sans', sans-serif;
