@@ -9,7 +9,7 @@
     flex-direction: column;
     border: 1px solid black;
 }
-.box{
+.sidebar-box{
     width:128.68px;
     height:27.74px;
     border:1px solid black;
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
 }
-.box1{
+.sidebar-box1{
     width:94px;
     height:119px;
     border:1px solid black;

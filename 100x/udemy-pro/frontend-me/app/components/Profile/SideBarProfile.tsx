@@ -10,8 +10,8 @@ type Props = {
 
 const SideBarProfile:FC<Props> = () => {
 
-  const {sSize} = useSelector((state:any)=>state.screen)
-
+  const {sSize} = useSelector((state:any)=>state.screen);
+  const {user} = useSelector((state:any) => state.auth)
   return (
     <>
     screen is {sSize}
@@ -20,7 +20,7 @@ const SideBarProfile:FC<Props> = () => {
           Zoom
         </div>
         <div className='sidebar-box1'>
-          <Image src={} width={59.33} height={59.33} alt=''
+          <Image src={user?.avatar} width={59.33} height={59.33} alt='No'
 />        </div>
     </div>
     </>
