@@ -16,6 +16,7 @@ const SideBarProfile:FC<Props> = () => {
     screen is {sSize}
     <div className='sidebar-container'>
         <div className='box'>
+          Zoom
         </div>
     </div>
     </>

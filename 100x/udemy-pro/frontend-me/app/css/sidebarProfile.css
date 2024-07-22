@@ -14,5 +14,10 @@
     height:27.74px;
     border:1px solid black;
     margin-top: 15%;
-    font
+    font-family: 'Noto sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
