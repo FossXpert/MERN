@@ -18,7 +18,6 @@ const Page = (props: Props) => {
       route={route}
       setRoute={setRoute}
       />
-      <Page/>
     </div>
   )
 }
