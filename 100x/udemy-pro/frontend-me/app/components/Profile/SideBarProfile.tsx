@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/SideBarProfile.css'
+import '../../css/sidebarProfile.css'
 type Props = {}
 
 const SideBarProfile = (props: Props) => {
@@ -7,7 +7,6 @@ const SideBarProfile = (props: Props) => {
     <>
     <div className='container'>
         <div className='box'>
-                Hi
         </div>
     </div>
     </>

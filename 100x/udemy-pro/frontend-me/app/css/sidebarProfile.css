@@ -1,11 +1,16 @@
 .container{
-    background-color: rgb(216, 35, 35);
+    background-color: rgb(56, 3, 3);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    flex-direction: column;
+    width: 20%;
     height: 100vh;
 }
 .box{
-
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+    width: 100px;
+    height: 30vh;
 }
