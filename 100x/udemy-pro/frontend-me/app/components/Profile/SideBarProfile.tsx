@@ -3,13 +3,14 @@ import React, { FC } from 'react'
 import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
 type Props = {
-    
+
     sSize : string;
     isMobile : boolean;
+    user :any;
 }
 
-const SideBarProfile:FC<Props> = ({sSize,isMobile}) => {
-    console.log(isMobile,sSize);
+const SideBarProfile:FC<Props> = ({sSize,isMobile,user}) => {
+    console.log(isMobile,sSize,user);
   return (
     <>
     Screen Size : {sSize}
