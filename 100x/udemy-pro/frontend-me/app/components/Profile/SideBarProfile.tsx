@@ -8,9 +8,10 @@ type Props = {
 }
 
 const SideBarProfile:FC<Props> = ({sSize,isMobile}) => {
+    console.log(isMobile,sSize);
   return (
     <>
-    Screen Size : `${sSize}`
+    Screen Size : {sSize}
     <div className='container'>
         <div className='box'>
         </div>
