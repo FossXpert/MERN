@@ -114,7 +114,9 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
         }
         {
           openProfile&& (<Link
-          href={'/profile'}></Link>)
+          href={'/profile'}>
+            {/* <Image src={data.} alt=""/> */}
+          </Link>)
         }
       </div>
     </>
