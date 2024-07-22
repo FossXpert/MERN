@@ -20,9 +20,7 @@ export default function RootLayout({
 {/* <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link> */}
     <body>
     <Toaster position="top-center" reverseOrder={false}/>
-    <Provider store={store}>
       {children}
-    </Provider>
     </body>
     </html>
   );
