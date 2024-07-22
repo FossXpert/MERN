@@ -4,18 +4,15 @@ import { FaCartShopping, FaFacebook, FaInstagram, FaMagnifyingGlass, FaXTwitter 
 import zoom from '../assets/zoom.png';
 import Image from "next/image";
 import { CgProfile } from "react-icons/cg";
-import { IoLogIn } from "react-icons/io5";
 import { useLoadUserQuery } from "../../redux/features/api/apiSlice";
 import toast from "react-hot-toast";
 import LoginModal from "./Profile/LoginModal";
-import Profile from "./Profile/ProfileInfo";
 import { MdOutlineLogin, MdOutlineMenuOpen, MdSearch, MdShoppingCartCheckout } from "react-icons/md";
 import { IoMdSearch } from "react-icons/io";
 import useScreenSize from "../../redux/features/screenSize/hook/useScreenSize";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import SideBarProfile from "./Profile/SideBarProfile";
 
 type Props = {
   open: boolean;
@@ -94,7 +91,7 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
             <div className='icon-1'>
               {
                 data ? (data.user.avatar ? <Link href={'profile'}>
-                    <Image width={16} height={16} src={data.user.avatar?.url} alt="No"/>
+                    <Image width={16} height={16} src={data.user.avatar.url} alt="No"/>
                 </Link>: <CgProfile onClick={() => handleProfile()} /> ):
                 <MdOutlineLogin onClick={() => handleIologin()} />
               }
