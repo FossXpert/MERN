@@ -9,7 +9,6 @@ type Props = {
 const Page = (props: Props) => {
   const [open,setOpen] = useState(false);
   const [route,setRoute] = useState('signin');
-  const {data,isLoading,error} = useLoadUserQuery({});
   
   return (
     <div>
