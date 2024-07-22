@@ -8,10 +8,9 @@ import { Toaster } from "react-hot-toast";
 export default function Home() {
   return (
     <>
-    <Provider store={store}>
+    
       <Page/>
       <Toaster position="top-center" reverseOrder={false}/>
-    </Provider>
     </>
   );
 }

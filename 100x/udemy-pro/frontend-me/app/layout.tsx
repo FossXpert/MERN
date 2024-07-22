@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
-    <body className={inter.className}>
+{/* <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link> */}
+    <body>
     <Toaster position="top-center" reverseOrder={false}/>
+    <Provider store={store}>
       {children}
+    </Provider>
     </body>
     </html>
   );
