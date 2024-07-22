@@ -115,7 +115,7 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
         }
 
         {/* <div>Current screen size: {sSize}</div> */}
-        {<Link href={'/profile'}>Goto Profile</Link>}
+        {<Link href={'profile'}>Goto Profile</Link>}
         {
           isMobile && (
           <div className="mobile-modal">

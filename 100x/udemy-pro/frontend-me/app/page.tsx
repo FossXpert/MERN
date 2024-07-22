@@ -1,7 +1,6 @@
 'use client'
 import Image from "next/image";
-import Header from "./components/Header";
-import Page from "./profile/Page";
+import Page from "./main/Page";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
 import { Toaster } from "react-hot-toast";

@@ -1,26 +1,15 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import Header2 from '../components/Header2';
-import { useLoadUserQuery } from '../../redux/features/api/apiSlice';
+import React from 'react'
+import Profile from '../components/Profile/Profile';
 
-type Props = {
-}
 
-const Page = (props: Props) => {
-  const [open,setOpen] = useState(false);
-  const [route,setRoute] = useState('signin');
-  const {data,isLoading,error} = useLoadUserQuery({});
-  
+
+const Page =() => {
   return (
     <div>
-      <Header2
-      open={open}
-      setOpen={setOpen}
-      route={route}
-      setRoute={setRoute}
-      />
+        hi Profile
+        <Profile/>
     </div>
   )
 }
 
-export default Page
+export default Page;
