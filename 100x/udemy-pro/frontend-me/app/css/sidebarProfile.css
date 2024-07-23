@@ -41,6 +41,8 @@
     height: auto;
     border: 1px solid black;
     margin-top: 10%;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .sidebar-options,
