@@ -46,6 +46,11 @@ ul{
 }
 .icon,.icon-1{
     color: #171717;
+    font-size: 18px;
+}
+.icon-1{
+    font-size: 20px;
+
 }
 .icon-ham{
     display: none;

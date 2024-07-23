@@ -4,8 +4,8 @@ import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
 import { MdAccountCircle, MdHome, MdLogout } from 'react-icons/md'
-import { IoBagCheck } from 'react-icons/io5'
-import { RiAdminLine, RiLockPasswordFill } from 'react-icons/ri'
+import { IoBagCheck, IoLogOut } from 'react-icons/io5'
+import { RiAdminFill, RiAdminLine, RiLockPasswordFill } from 'react-icons/ri'
 type Props = {
 
  
@@ -51,7 +51,7 @@ const SideBarProfile:FC<Props> = () => {
           {
            user?.role === 'admin' && (<div className='sidebar-options'>
               <div className='sidebar-icon-box'>
-                <RiAdminLine className='sidebar-icons'/>
+                <RiAdminFill className='sidebar-icons'/>
               </div>
             <p className='sidebar-text'>Admin Dashboard</p>
             </div>)
@@ -59,7 +59,7 @@ const SideBarProfile:FC<Props> = () => {
           {
             <div className='sidebar-options'>
               <div className='sidebar-icon-box'>
-                <MdLogout className='sidebar-icons'/>
+                <IoLogOut className='sidebar-icons'/>
               </div>
             <p className='sidebar-text'>Logout</p>
             </div>
