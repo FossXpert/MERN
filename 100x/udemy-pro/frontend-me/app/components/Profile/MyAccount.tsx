@@ -9,7 +9,10 @@ const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth)
   return (
     <div className='myaccount-container'>
-        <Image className='myaccount-image' src={user?.avatar?.url} width={64} height={64} alt='No'/>
+        <div className="image-container">
+            <Image className='myaccount-image' src={user?.avatar?.url} width={64} height={64} alt='No'/>
+        </div>
+        
     </div>
   )
 }
