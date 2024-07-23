@@ -34,13 +34,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .sidebar-box2 {
     width: 218px;
     height: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: 10%;
     flex-direction: column;
     gap: 15px;
@@ -57,23 +57,24 @@
     align-items: center;
     justify-content: flex-start;
     gap: 10%;
-    border: 2px solid rgb(187, 21, 21);
+    border: 1px #F5F5F5;
     padding: 10px;
 }
 .sidebar-text {
     font-size: 16px;
     font-weight: 500;
     font-family: 'Noto sans', sans-serif;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .sidebar-icon-box {
     font-size: 20px;
-    border: 2px solid rgb(38, 195, 98);
+    /* border: 2px solid rgb(38, 195, 98); */
 }
 .sidebar-options:hover{
     cursor: pointer;
     color: #7F56D9;
-    animation: fadeIn 1s ease-in-out;
+    background-color: #F5F5F5;
+    /* animation: fadeIn 1s ease-in-out; */
 }
 
 
