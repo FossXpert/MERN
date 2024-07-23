@@ -6,17 +6,13 @@
     margin-right: auto;
 }
 .image-container{
-    display: flex;
-    align-items: flex-end;
     width: 7rem;
     height: 7rem;
-    justify-content: flex-end;
     border: 1px solid red;
 }
 
 .myaccount-image {
-   
-    width: 7rem;
-    height: 7rem;
-    border-radius: 9999px;
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
 }
