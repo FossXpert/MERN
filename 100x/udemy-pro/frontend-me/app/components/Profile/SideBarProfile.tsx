@@ -3,7 +3,9 @@ import React, { FC } from 'react'
 import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
-import { MdAccountCircle, MdHome } from 'react-icons/md'
+import { MdAccountCircle, MdHome, MdLogout } from 'react-icons/md'
+import { IoBagCheck } from 'react-icons/io5'
+import { RiAdminLine, RiLockPasswordFill } from 'react-icons/ri'
 type Props = {
 
  
@@ -13,7 +15,6 @@ const SideBarProfile:FC<Props> = () => {
 
   const {sSize} = useSelector((state:any)=>state.screen);
   const {user} = useSelector((state:any) => state.auth);
-  const profileItems = ['My Acount','Change Password','Enrolled Courses','Admin Dashboard','Logout']
   return (
     <>
     screen is {sSize}
@@ -34,7 +35,7 @@ const SideBarProfile:FC<Props> = () => {
           {
             <div className='sidebar-options'>
               <div className='sidebar-icon-box'>
-                <MdHome className='sidebar-icons'/>
+                <IoBagCheck className='sidebar-icons'/>
               </div>
             <p className='sidebar-text'>Enrolled Courses</p>
             </div>
@@ -42,7 +43,7 @@ const SideBarProfile:FC<Props> = () => {
           {
             <div className='sidebar-options'>
               <div className='sidebar-icon-box'>
-                <MdHome className='sidebar-icons'/>
+                <RiLockPasswordFill className='sidebar-icons'/>
               </div>
             <p className='sidebar-text'>Change Password</p>
             </div>
@@ -50,7 +51,7 @@ const SideBarProfile:FC<Props> = () => {
           {
            user?.role === 'admin' && (<div className='sidebar-options'>
               <div className='sidebar-icon-box'>
-                <MdHome className='sidebar-icons'/>
+                <RiAdminLine className='sidebar-icons'/>
               </div>
             <p className='sidebar-text'>Admin Dashboard</p>
             </div>)
@@ -58,7 +59,7 @@ const SideBarProfile:FC<Props> = () => {
           {
             <div className='sidebar-options'>
               <div className='sidebar-icon-box'>
-                <MdHome className='sidebar-icons'/>
+                <MdLogout className='sidebar-icons'/>
               </div>
             <p className='sidebar-text'>Logout</p>
             </div>
