@@ -8,10 +8,12 @@
     flex-direction: column;
     border: 1px solid black;
 }
-.sidebar-box1{
+.sidebar-box1,.sidebar-box2{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.sidebar-box1{
     width:94px;
     height:119px;
     margin-top: 15%;
@@ -35,3 +37,10 @@
     border: 1px solid black;
     margin-top: 10%;
 }
+.sidebar-options{
+    border:1px solid black;
+    display: flex;
+    width: 100%;
+    
+}
+
