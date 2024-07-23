@@ -43,11 +43,14 @@
 }
 .sidebar-options{
     width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10%;
+
 }
 .sidebar-icon{
-    align-items: flex-start;
 }
 .sidebar-text{
-    
+
 }
 
