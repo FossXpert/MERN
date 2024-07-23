@@ -5,9 +5,9 @@ type Props = {}
 
 const Profile = (props: Props) => {
   return (
-    <div className='w'>
+    <div className='profile-container'>
         <SideBarProfile/>
-
+        
     </div>
   )
 }
