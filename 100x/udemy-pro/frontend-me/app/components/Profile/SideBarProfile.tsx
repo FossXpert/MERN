@@ -20,6 +20,9 @@ const SideBarProfile:FC<Props> = () => {
           <Image src={user?.avatar.url} width={59.33} height={59.33} alt='No'/>
           <p className='sidebar-box1-box'>{user.name}</p>  
         </div>
+        <div className='sidebar-box2'>
+          <p>Hi</p>
+        </div>
     </div>
     </>
   )

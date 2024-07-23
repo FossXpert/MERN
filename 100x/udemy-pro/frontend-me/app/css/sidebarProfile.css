@@ -3,7 +3,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 234px;
+    width: 254px;
     height: 694px;
     flex-direction: column;
     border: 1px solid black;
@@ -28,4 +28,10 @@
     align-items: center;
     justify-content: center;
     border:1px solid black;
+}
+.sidebar-box2{
+    width: 218px;
+    /* height: 100%; */
+    border: 1px solid black;
+    margin-top: 10%;
 }
