@@ -30,7 +30,6 @@ const MyAccount = (props: Props) => {
                 className='input-field'
                 value={user?.name}
                 name='fullname'
-
                 />
 
             </form>        

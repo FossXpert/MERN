@@ -25,3 +25,8 @@
     cursor: pointer;
 }
 
+.myaccount-text{
+    display: flex;
+    flex-direction: column;
+}
+
