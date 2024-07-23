@@ -59,6 +59,11 @@
     border: 2px solid rgb(187, 21, 21);
     padding: 10px;
 }
+.sidebar-options:hover{
+    cursor: pointer;
+    color: #7F56D9;
+    background-color: ccc;
+}
 
 .sidebar-icon-box {
     font-size: 20px;
