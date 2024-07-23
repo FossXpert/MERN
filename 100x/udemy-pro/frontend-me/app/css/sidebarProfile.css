@@ -8,30 +8,24 @@
     flex-direction: column;
     border: 1px solid black;
 }
-.sidebar-box,.sidebar-box1-box{
-    color: #09090A;
-    font-family: 'Noto sans', sans-serif;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border:1px solid black;
-}
-.sidebar-box{
-    width:128.68px;
-    height:27.74px;
-    margin-top: 15%;
-    font-size: 18px;
-}
 .sidebar-box1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width:94px;
     height:119px;
     margin-top: 15%;
     flex-direction: column;
     font-size: 18px;
     gap: 10px;
+    border: 1px solid black;
 }
 .sidebar-box1-box{
     font-weight: 500;
-
+    color: #1F1F22;
+    font-family: 'Noto sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid black;
 }
