@@ -8,7 +8,11 @@ type Props = {}
 
 const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth)
-  return (
+    
+    const handleSubmit = () => {
+
+    }
+    return (
     <div className='myaccount-container'>
         <div className="image-container">
             <Image
@@ -20,7 +24,14 @@ const MyAccount = (props: Props) => {
              </div>
         </div>
         <div className='myaccount-text'>
-            <h4>Full Name</h4>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="fullname"> Full Name</label>
+                <input type='text'
+                value={user?.name}
+                name='fullname'
+                />
+
+            </form>        
         </div>
         
     </div>
