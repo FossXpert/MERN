@@ -4,9 +4,10 @@
     justify-content: flex-start;
     align-items: center;
     width: 254px;
-    height: 694px;
+    height: 594px;
     flex-direction: column;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    box-shadow: 0 0 8px #e6e6e6;
 }
 
 .sidebar-box1,
@@ -72,6 +73,7 @@
 .sidebar-options:hover{
     cursor: pointer;
     color: #7F56D9;
+    animation: fadeIn 1s ease-in-out;
 }
 
 
