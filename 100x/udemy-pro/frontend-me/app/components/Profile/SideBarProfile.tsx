@@ -64,7 +64,6 @@ const SideBarProfile:FC<Props> = () => {
             <p className='sidebar-text'>Logout</p>
             </div>
           }
-          
         </div>
     </div>
     </>
