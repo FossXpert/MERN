@@ -17,7 +17,7 @@ const SideBarProfile:FC<Props> = () => {
   const {user} = useSelector((state:any) => state.auth);
   return (
     <>
-    screen is {sSize}
+    {/* screen is {sSize} */}
     <div className='sidebar-container'>
         <div className='sidebar-box1'>
           <Image src={user?.avatar?.url} width={59.33} height={59.33} alt='No'/>
