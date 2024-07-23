@@ -20,9 +20,8 @@ const SideBarProfile:FC<Props> = () => {
           Zoom
         </div>
         <div className='sidebar-box1'>
-          <Image src={user?.avatar} width={59.33} height={59.33} alt='No'/>
-          <h4 className='sidebar-box1-box'>{user.name}</h4>  
-          <h5>{user.email}</h5>    
+          <Image src={user?.avatar.url} width={59.33} height={59.33} alt='No'/>
+          <p className='sidebar-box1-box'>{user.name}</p>  
         </div>
     </div>
     </>
