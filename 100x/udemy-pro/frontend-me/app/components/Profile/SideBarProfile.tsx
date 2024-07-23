@@ -1,5 +1,5 @@
 'use client'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
@@ -15,6 +15,7 @@ const SideBarProfile:FC<Props> = () => {
 
   const {sSize} = useSelector((state:any)=>state.screen);
   const {user} = useSelector((state:any) => state.auth);
+  const [active,setActive] = useState(0);
   return (
     <>
     {/* screen is {sSize} */}
