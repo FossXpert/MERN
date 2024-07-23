@@ -37,10 +37,17 @@
     border: 1px solid black;
     margin-top: 10%;
 }
-.sidebar-options{
-    border:1px solid black;
+.sidebar-options,.sidebar-icon,.sidebar-text{
+    border: 1px solid black;
     display: flex;
+}
+.sidebar-options{
     width: 100%;
+}
+.sidebar-icon{
+    align-items: flex-start;
+}
+.sidebar-text{
     
 }
 

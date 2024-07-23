@@ -25,8 +25,8 @@ const SideBarProfile:FC<Props> = () => {
         <div className='sidebar-box2'>
           {
             <div className='sidebar-options'>
-            <MdAccountCircle className='sidearrr'/>
-            <p>My Account</p>
+            <MdAccountCircle className='sidebar-icons'/>
+            <p className='sidebar-text'>My Account</p>
             </div>
           }
         </div>
