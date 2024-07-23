@@ -11,7 +11,8 @@ type Props = {
 const SideBarProfile:FC<Props> = () => {
 
   const {sSize} = useSelector((state:any)=>state.screen);
-  const {user} = useSelector((state:any) => state.auth)
+  const {user} = useSelector((state:any) => state.auth);
+  const profileItems = ['My Acount','c']
   return (
     <>
     screen is {sSize}

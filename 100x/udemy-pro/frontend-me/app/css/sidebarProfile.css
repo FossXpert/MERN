@@ -31,7 +31,7 @@
 }
 .sidebar-box2{
     width: 218px;
-    /* height: 100%; */
+    height: auto;
     border: 1px solid black;
     margin-top: 10%;
 }
