@@ -19,59 +19,58 @@ const SideBarProfile:FC<Props> = () => {
   return (
     <>
     {/* screen is {sSize} */}
-    <div className='sidebar-container'>
-        <div className='sidebar-box1'>
-          <Image src={user?.avatar?.url} width={59.33} height={59.33} alt='No'/>
-          <p className='sidebar-box1-box'>{user.name}</p>  
-        </div>
-        <div className='sidebar-box2'>
-          {
-            <div className='sidebar-options'>
-              <div className='sidebar-icon-box'>
-                <MdHome className='sidebar-icons'/>
+    <div className='sidebar-main'>
+      <div className='sidebar-container'>
+          <div className='sidebar-box1'>
+            <Image src={user?.avatar?.url} width={59.33} height={59.33} alt='No'/>
+            <p className='sidebar-box1-box'>{user.name}</p>  
+          </div>
+          <div className='sidebar-box2'>
+            {
+              <div className='sidebar-options'>
+                <div className='sidebar-icon-box'>
+                  <MdHome className='sidebar-icons'/>
+                </div>
+              <p className='sidebar-text'>My Account</p>
               </div>
-            <p className='sidebar-text'>My Account</p>
-            </div>
-          }
-          {
-            <div className='sidebar-options'>
-              <div className='sidebar-icon-box'>
-                <IoBagCheck className='sidebar-icons'/>
+            }
+            {
+              <div className='sidebar-options'>
+                <div className='sidebar-icon-box'>
+                  <IoBagCheck className='sidebar-icons'/>
+                </div>
+              <p className='sidebar-text'>Enrolled Courses</p>
               </div>
-            <p className='sidebar-text'>Enrolled Courses</p>
-            </div>
-          }
-          {
-            <div className='sidebar-options'>
-              <div className='sidebar-icon-box'>
-                <RiLockPasswordFill className='sidebar-icons'/>
+            }
+            {
+              <div className='sidebar-options'>
+                <div className='sidebar-icon-box'>
+                  <RiLockPasswordFill className='sidebar-icons'/>
+                </div>
+              <p className='sidebar-text'>Change Password</p>
               </div>
-            <p className='sidebar-text'>Change Password</p>
-            </div>
-          }
-          {
-           user?.role === 'admin' && (<div className='sidebar-options'>
-              <div className='sidebar-icon-box'>
-                <RiAdminFill className='sidebar-icons'/>
+            }
+            {
+            user?.role === 'admin' && (<div className='sidebar-options'>
+                <div className='sidebar-icon-box'>
+                  <RiAdminFill className='sidebar-icons'/>
+                </div>
+              <p className='sidebar-text'>Admin Dashboard</p>
+              </div>)
+            }
+            {
+              <div className='sidebar-options'>
+                <div className='sidebar-icon-box'>
+                  <IoLogOut className='sidebar-icons'/>
+                </div>
+              <p className='sidebar-text'>Logout</p>
               </div>
-            <p className='sidebar-text'>Admin Dashboard</p>
-            </div>)
-          }
-          {
-            <div className='sidebar-options'>
-              <div className='sidebar-icon-box'>
-                <IoLogOut className='sidebar-icons'/>
-              </div>
-            <p className='sidebar-text'>Logout</p>
-            </div>
-          }
-        </div>
-    </div>
-    <div>
-      
+            }
+          </div>
+      </div>
     </div>
     </>
   )
 }
 
-export default SideBarProfile
+export default SideBarProfile;
