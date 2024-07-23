@@ -1,5 +1,5 @@
-.sidebar-container{
-    background-color:white;
+.sidebar-container {
+    background-color: white;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -8,51 +8,64 @@
     flex-direction: column;
     border: 1px solid black;
 }
-.sidebar-box1,.sidebar-box2{
+
+.sidebar-box1,
+.sidebar-box2 {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.sidebar-box1{
-    width:94px;
-    height:119px;
+
+.sidebar-box1 {
+    width: 94px;
+    height: 119px;
     margin-top: 15%;
     flex-direction: column;
     font-size: 18px;
     gap: 10px;
     border: 1px solid black;
 }
-.sidebar-box1-box{
+
+.sidebar-box1-box {
     font-weight: 500;
     color: #1F1F22;
     font-family: 'Noto sans', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    border:1px solid black;
+    border: 1px solid black;
 }
-.sidebar-box2{
+
+.sidebar-box2 {
     width: 218px;
     height: auto;
     border: 1px solid black;
     margin-top: 10%;
 }
-.sidebar-options,.sidebar-icon,.sidebar-text{
-    border: 1px solid black;
+
+.sidebar-options,
+.sidebar-icon,
+.sidebar-text {
     display: flex;
 }
-.sidebar-options{
+
+.sidebar-options {
     width: 100%;
     align-items: center;
     justify-content: flex-start;
     gap: 10%;
-}
-.sidebar-icon{
-}
-.sidebar-text{
-font-size: 16px;
-font-weight: 500;
-font-family: 'Noto sans', sans-serif;
-
+    border: 1px solid black;
+    padding: 10px;
 }
 
+.sidebar-icon {
+    font-size: 26px;
+    border: 1px solid black;
+}
+
+.sidebar-text {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Noto sans', sans-serif;
+    border: 1px solid black;
+}

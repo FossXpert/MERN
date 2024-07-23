@@ -29,6 +29,12 @@ const SideBarProfile:FC<Props> = () => {
             <p className='sidebar-text'>My Account</p>
             </div>
           }
+          {
+            <div className='sidebar-options'>
+            <MdHome className='sidebar-icons'/>
+            <p className='sidebar-text'>My Account</p>
+            </div>
+          }
         </div>
     </div>
     </>
