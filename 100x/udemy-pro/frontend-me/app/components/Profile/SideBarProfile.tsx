@@ -19,7 +19,6 @@ const SideBarProfile:FC<Props> = () => {
   return (
     <>
     {/* screen is {sSize} */}
-    <div className='sidebar-main'>
       <div className='sidebar-container'>
           <div className='sidebar-box1'>
             <Image src={user?.avatar?.url} width={59.33} height={59.33} alt='No'/>
@@ -27,7 +26,7 @@ const SideBarProfile:FC<Props> = () => {
           </div>
           <div className='sidebar-box2'>
             {
-              <div className='sidebar-options'>
+              <div className='sidebar-options' onClick={()=>setActive(1)}>
                 <div className='sidebar-icon-box'>
                   <MdHome className='sidebar-icons'/>
                 </div>
@@ -35,7 +34,7 @@ const SideBarProfile:FC<Props> = () => {
               </div>
             }
             {
-              <div className='sidebar-options'>
+              <div className='sidebar-options' onClick={()=>setActive(2)}>
                 <div className='sidebar-icon-box'>
                   <IoBagCheck className='sidebar-icons'/>
                 </div>
@@ -43,7 +42,7 @@ const SideBarProfile:FC<Props> = () => {
               </div>
             }
             {
-              <div className='sidebar-options'>
+              <div className='sidebar-options' onClick={()=>setActive(1)}>
                 <div className='sidebar-icon-box'>
                   <RiLockPasswordFill className='sidebar-icons'/>
                 </div>
@@ -68,7 +67,6 @@ const SideBarProfile:FC<Props> = () => {
             }
           </div>
       </div>
-    </div>
     </>
   )
 }
