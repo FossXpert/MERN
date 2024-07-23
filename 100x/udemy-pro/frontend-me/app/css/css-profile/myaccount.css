@@ -27,7 +27,8 @@
 
 .myaccount-text{
     display: flex;
-    padding-top: 5rem;
+    width: 120%;
+    margin-top: 3rem;
     flex-direction: column;
     border: 1px solid black;
 }

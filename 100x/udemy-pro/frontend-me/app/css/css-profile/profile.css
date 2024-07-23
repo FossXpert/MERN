@@ -10,11 +10,12 @@
     display: flex;
     width: 80%;
     height: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     justify-content: center;
 }
 .profile-container-mini{
-    width:40%;
+
+    width:100%;
     margin-top: 20px;
     box-shadow: 0 0 8px #e6e6e6;
 }
