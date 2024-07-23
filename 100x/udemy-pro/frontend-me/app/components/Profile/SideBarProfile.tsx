@@ -18,7 +18,7 @@ const SideBarProfile:FC<Props> = () => {
   const [active,setActive] = useState(0);
   return (
     <>
-    {/* screen is {sSize} */}
+    {/* screen is {active} */}
       <div className='sidebar-container'>
           <div className='sidebar-box1'>
             <Image src={user?.avatar?.url} width={59.33} height={59.33} alt='No'/>
@@ -42,7 +42,7 @@ const SideBarProfile:FC<Props> = () => {
               </div>
             }
             {
-              <div className='sidebar-options' onClick={()=>setActive(1)}>
+              <div className='sidebar-options' onClick={()=>setActive(3)}>
                 <div className='sidebar-icon-box'>
                   <RiLockPasswordFill className='sidebar-icons'/>
                 </div>
@@ -50,15 +50,15 @@ const SideBarProfile:FC<Props> = () => {
               </div>
             }
             {
-            user?.role === 'admin' && (<div className='sidebar-options'>
-                <div className='sidebar-icon-box'>
+            user?.role === 'admin' && (<div className='sidebar-options' onClick={()=>setActive(4)}>
+                <div className='sidebar-icon-box'> 
                   <RiAdminFill className='sidebar-icons'/>
                 </div>
               <p className='sidebar-text'>Admin Dashboard</p>
               </div>)
             }
             {
-              <div className='sidebar-options'>
+              <div className='sidebar-options' onClick={()=>setActive(5)}>
                 <div className='sidebar-icon-box'>
                   <IoLogOut className='sidebar-icons'/>
                 </div>
