@@ -1,10 +1,13 @@
 import React from 'react'
+import SideBarProfile from './SideBarProfile'
 
 type Props = {}
 
 const Profile = (props: Props) => {
   return (
-    <div>Profile</div>
+    <div>
+        <SideBarProfile/>
+    </div>
   )
 }
 
