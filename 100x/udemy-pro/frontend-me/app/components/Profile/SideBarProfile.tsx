@@ -67,6 +67,9 @@ const SideBarProfile:FC<Props> = () => {
           }
         </div>
     </div>
+    <div>
+      
+    </div>
     </>
   )
 }
