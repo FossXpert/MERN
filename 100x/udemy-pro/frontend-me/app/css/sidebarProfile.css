@@ -56,13 +56,13 @@
     align-items: center;
     justify-content: flex-start;
     gap: 10%;
-    border: 1px solid black;
+    border: 2px solid rgb(187, 21, 21);
     padding: 10px;
 }
 
-.sidebar-icon {
+.sidebar-icon-box {
     font-size: 26px;
-    border: 1px solid black;
+    border: 2px solid rgb(38, 195, 98);
 }
 
 .sidebar-text {

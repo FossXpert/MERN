@@ -25,7 +25,9 @@ const SideBarProfile:FC<Props> = () => {
         <div className='sidebar-box2'>
           {
             <div className='sidebar-options'>
-            <MdHome className='sidebar-icons'/>
+              <div className='sidebar-icon-box'>
+                <MdHome className='sidebar-icons'/>
+              </div>
             <p className='sidebar-text'>My Account</p>
             </div>
           }
