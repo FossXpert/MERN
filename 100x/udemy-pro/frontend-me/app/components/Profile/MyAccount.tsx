@@ -29,6 +29,7 @@ const MyAccount = (props: Props) => {
                 <input type='text'
                 value={user?.name}
                 name='fullname'
+                
                 />
 
             </form>        
