@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
-import { MdAccountCircle } from 'react-icons/md'
+import { MdAccountCircle, MdHome } from 'react-icons/md'
 type Props = {
 
  
@@ -25,7 +25,7 @@ const SideBarProfile:FC<Props> = () => {
         <div className='sidebar-box2'>
           {
             <div className='sidebar-options'>
-            <MdAccountCircle className='sidebar-icons'/>
+            <MdHome className='sidebar-icons'/>
             <p className='sidebar-text'>My Account</p>
             </div>
           }
