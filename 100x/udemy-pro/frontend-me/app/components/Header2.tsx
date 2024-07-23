@@ -7,7 +7,7 @@ import Image from "next/image";
 import { CgProfile } from "react-icons/cg";
 import { useLoadUserQuery } from "../../redux/features/api/apiSlice";
 import toast from "react-hot-toast";
-import LoginModal from "./Profile/LoginModal";
+import LoginModal from "./Auth/LoginModal";
 import { MdOutlineLogin, MdOutlineMenuOpen, MdSearch, MdShoppingCartCheckout } from "react-icons/md";
 import { IoMdSearch } from "react-icons/io";
 import useScreenSize from "../../redux/features/screenSize/hook/useScreenSize";
