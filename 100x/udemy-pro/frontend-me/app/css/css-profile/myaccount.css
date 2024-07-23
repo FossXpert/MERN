@@ -11,7 +11,7 @@
     display: flex;
     width: 7rem;
     height: 7rem;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .myaccount-image {
@@ -28,5 +28,6 @@
 .myaccount-text{
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
 }
 
