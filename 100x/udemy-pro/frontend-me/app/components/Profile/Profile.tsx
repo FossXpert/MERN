@@ -5,7 +5,6 @@ import MyAccount from './MyAccount'
 import EnrolledCourses from './EnrolledCourses'
 import ChangePassword from './ChangePassword'
 import AdminDashboard from './AdminDashboard'
-import { CiLogout } from 'react-icons/ci'
 type Props = {}
 
 const Profile = (props: Props) => {
