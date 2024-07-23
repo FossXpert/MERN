@@ -1,3 +1,7 @@
+.sidebar-main{
+    display: flex;
+    width: 20%;
+}
 .sidebar-container {
     background-color: white;
     display: flex;
@@ -8,7 +12,8 @@
     flex-direction: column;
     /* border: 1px solid black; */
     box-shadow: 0 0 8px #e6e6e6;
-    margin-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
 }
 

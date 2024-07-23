@@ -19,7 +19,8 @@ const SideBarProfile:FC<Props> = () => {
   return (
     <>
     {/* screen is {active} */}
-      <div className='sidebar-container'>
+    <div className="sidebar-main">
+    <div className='sidebar-container'>
           <div className='sidebar-box1'>
             <Image src={user?.avatar?.url} width={59.33} height={59.33} alt='No'/>
             <p className='sidebar-box1-box'>{user.name}</p>  
@@ -67,6 +68,8 @@ const SideBarProfile:FC<Props> = () => {
             }
           </div>
       </div>
+    </div>
+
     </>
   )
 }
