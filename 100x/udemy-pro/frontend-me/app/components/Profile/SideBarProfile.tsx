@@ -19,7 +19,7 @@ const SideBarProfile:FC<Props> = () => {
     screen is {sSize}
     <div className='sidebar-container'>
         <div className='sidebar-box1'>
-          <Image src={user?.avatar.url} width={59.33} height={59.33} alt='No'/>
+          <Image src={user?.avatar?.url} width={59.33} height={59.33} alt='No'/>
           <p className='sidebar-box1-box'>{user.name}</p>  
         </div>
         <div className='sidebar-box2'>
@@ -33,10 +33,29 @@ const SideBarProfile:FC<Props> = () => {
           }
           {
             <div className='sidebar-options'>
-            <MdHome className='sidebar-icons'/>
-            <p className='sidebar-text'>My Account</p>
+              <div className='sidebar-icon-box'>
+                <MdHome className='sidebar-icons'/>
+              </div>
+            <p className='sidebar-text'>Change Password</p>
             </div>
           }
+          {
+           user?.role === 'admin' && (<div className='sidebar-options'>
+              <div className='sidebar-icon-box'>
+                <MdHome className='sidebar-icons'/>
+              </div>
+            <p className='sidebar-text'>Admin Dashboard</p>
+            </div>)
+          }
+          {
+            <div className='sidebar-options'>
+              <div className='sidebar-icon-box'>
+                <MdHome className='sidebar-icons'/>
+              </div>
+            <p className='sidebar-text'>Logout</p>
+            </div>
+          }
+          
         </div>
     </div>
     </>
