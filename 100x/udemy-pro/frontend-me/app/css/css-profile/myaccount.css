@@ -1,22 +1,27 @@
 .myaccount-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: auto;
     margin-left: auto;
     margin-right: auto;
 }
-.image-container{
+
+.image-container {
     display: flex;
     width: 7rem;
     height: 7rem;
     border: 1px solid red;
 }
+
 .myaccount-image {
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
 }
+
 .camera-icon {
     position: absolute;
     cursor: pointer;
 }
+

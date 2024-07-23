@@ -19,6 +19,9 @@ const MyAccount = (props: Props) => {
                     <CiCamera />
              </div>
         </div>
+        <div className='myaccount-text'>
+            <h4>Full Name</h4>
+        </div>
         
     </div>
   )
