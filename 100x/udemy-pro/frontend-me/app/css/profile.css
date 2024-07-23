@@ -6,9 +6,12 @@
     gap: 1rem;
 }
 
-.profile-container {
+.profile-container,.profile-container-mini {
     display: flex;
     border: 2px solid black;
     width: 80%;
     height: auto;
+}
+.profile-container-mini{
+    width: auto;
 }

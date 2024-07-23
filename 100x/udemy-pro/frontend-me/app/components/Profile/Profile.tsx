@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import SideBarProfile from './SideBarProfile'
 import '../../css/profile.css'
 import MyAccount from './MyAccount'
+import EnrolledCourses from './EnrolledCourses'
+import ChangePassword from './ChangePassword'
+import AdminDashboard from './AdminDashboard'
+import { CiLogout } from 'react-icons/ci'
 type Props = {}
 
 const Profile = (props: Props) => {
@@ -12,15 +16,20 @@ const Profile = (props: Props) => {
     <div className='profile-container-main'>
     <SideBarProfile active={active} setActive={setActive}/>
     <div className='profile-container'>
-        {
-            active === 1 && <MyAccount/>
-        }
-        {
-            active === 2 && <MyAccount/>
-        }
-        {
-            active === 3 
-        }
+        <div className='profile-container-mini'>
+            {
+                active === 1 && <MyAccount/>
+            }
+            {
+                active === 2 && <EnrolledCourses/>
+            }
+            {
+                active === 3 && <ChangePassword/>
+            }
+            {
+                active === 4 && <AdminDashboard/>
+            }
+        </div>
     </div>
     </div>
     </>
