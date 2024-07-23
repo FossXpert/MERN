@@ -25,13 +25,15 @@ const MyAccount = (props: Props) => {
         </div>
         <div className='myaccount-text'>
             <form onSubmit={handleSubmit}>
+            <div className='myaccount-text-1'>
                 <label htmlFor="fullname">Full Name</label>
                 <input type='text'
                 className='input-field'
                 value={user?.name}
                 name='fullname'
                 />
-            </form>        
+            </div>
+            </form>  
         </div>
         
     </div>
