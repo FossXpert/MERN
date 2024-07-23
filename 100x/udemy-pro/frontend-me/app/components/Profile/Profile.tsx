@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import SideBarProfile from './SideBarProfile'
-import '../../css/profile.css'
+import '../../css/css-profile/profile.css'
 import MyAccount from './MyAccount'
 import EnrolledCourses from './EnrolledCourses'
 import ChangePassword from './ChangePassword'
