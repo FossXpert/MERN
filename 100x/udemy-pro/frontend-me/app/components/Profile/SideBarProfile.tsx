@@ -7,15 +7,14 @@ import { MdAccountCircle, MdHome, MdLogout } from 'react-icons/md'
 import { IoBagCheck, IoLogOut } from 'react-icons/io5'
 import { RiAdminFill, RiAdminLine, RiLockPasswordFill } from 'react-icons/ri'
 type Props = {
-
- 
+active : number;
+setActive : (active:number) => void;
 }
 
-const SideBarProfile:FC<Props> = () => {
+const SideBarProfile:FC<Props> = ({active,setActive}) => {
 
   const {sSize} = useSelector((state:any)=>state.screen);
   const {user} = useSelector((state:any) => state.auth);
-  const [active,setActive] = useState(0);
   return (
     <>
     {/* screen is {active} */}

@@ -7,14 +7,8 @@
 }
 
 .profile-container {
+    display: flex;
     border: 2px solid black;
     width: 80%;
     height: auto;
-}
-.profile-container-mini{
-    display: flex;
-    width: 100%;
-    padding: 2rem;
-    border: 1px solid black;
-    
 }
