@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import '../../css/sidebarProfile.css'
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
+import { MdAccountCircle } from 'react-icons/md'
 type Props = {
 
  
@@ -12,7 +13,7 @@ const SideBarProfile:FC<Props> = () => {
 
   const {sSize} = useSelector((state:any)=>state.screen);
   const {user} = useSelector((state:any) => state.auth);
-  const profileItems = ['My Acount','c']
+  const profileItems = ['My Acount','Change Password','Enrolled Courses','Admin Dashboard','Logout']
   return (
     <>
     screen is {sSize}
@@ -22,7 +23,9 @@ const SideBarProfile:FC<Props> = () => {
           <p className='sidebar-box1-box'>{user.name}</p>  
         </div>
         <div className='sidebar-box2'>
-          <p>Hi</p>
+          {
+            <MdAccountCircle />
+          }
         </div>
     </div>
     </>
