@@ -1,7 +1,12 @@
 .profile-container-main{
     display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid rgb(182, 22, 22);
 }
 .profile-container{
-
+border: 2px solid black;
+width: 80%;
+height: max-content;
 }

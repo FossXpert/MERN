@@ -9,7 +9,7 @@ const Profile = (props: Props) => {
     <div className='profile-container-main'>
     <SideBarProfile/>
     <div className='profile-container'>
-        hi
+        
     </div>
     </div>
     </>
