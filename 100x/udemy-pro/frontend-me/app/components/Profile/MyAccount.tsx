@@ -10,7 +10,6 @@ const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth)
     
     const handleSubmit = () => {
-
     }
     return (
     <div className='myaccount-container'>
