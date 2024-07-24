@@ -247,8 +247,11 @@ export const updateUserInfo = catchAsyncError(async(req:Request,res:Response,nex
         //     }
         //     user.email = email;
         // }
+        console.log(name)
         if(name && user){
             user.name = name;
+        }else{
+            return next(new ErrorHandler('user is null or undefined',400));
         }
         await user?.save();
         await redis?.set(userId,JSON.stringify(user));
