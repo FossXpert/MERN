@@ -70,7 +70,7 @@ export const authApi = apiSlice.injectEndpoints({
                 url : 'user/updateprofilepic',
                 method : 'PUT',
                 data : {
-                    avatar
+                    avatar: avatar
                 },
                 credentials : 'include' as const
             })
