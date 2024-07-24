@@ -14,12 +14,13 @@ const MyAccount = (props: Props) => {
     const [loadUser,setLoadUser] = useState(false)
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     const [name,setName] = useState(user && user.name);
-    const {} = useLoadUserQuery(undefined,{skip: loadUser ? false : true})
+    const {refetch} = useLoadUserQuery(undefined,{skip: false})
 
     useEffect(()=>{
         if(isSuccess){
             toast.success("updated");
             setLoadUser(true)
+            refetch();
             console.log("user is",user)
         }
         if(error){
@@ -28,7 +29,7 @@ const MyAccount = (props: Props) => {
                 toast.error(errorData.data.message);
             }
         }
-    },[isSuccess,error,user]);
+    },[isSuccess,error]);
 
     const handleSubmit = async (e:any) => {
         e.preventDefault();
