@@ -13,8 +13,14 @@ const MyAccount = (props: Props) => {
     const [name,setName] = useState(user && user.name);
 
 
-    const handleSubmit = () => {
-
+    const handleSubmit = async (e:any) => {
+        e.preventDefault();
+        try {
+            await updateUserInfo(name);
+            console.log(data)
+        } catch (error) {
+            throw error
+        }
     }
     return (
     <div className='myaccount-container'>
@@ -35,7 +41,7 @@ const MyAccount = (props: Props) => {
                 className='input-field'
                 value={name}
                 name='fullname'
-                onChange={(e) => e.target.value()}
+                onChange={(e) => setName(e.target.value)}
                 />
             </div>
             <div className='myaccount-text-1'>
