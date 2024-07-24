@@ -16,6 +16,8 @@ const MyAccount = (props: Props) => {
     const [name,setName] = useState(user && user.name);
     const {refetch} = useLoadUserQuery(undefined,{skip:false})
 
+    
+
     useEffect(()=>{
         if(isSuccess){
             refetch();

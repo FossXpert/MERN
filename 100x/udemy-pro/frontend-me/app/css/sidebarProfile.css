@@ -1,7 +1,7 @@
 .sidebar-main{
     display: flex;
     width: 320px;
-    border: 1px solid #1F1F22;
+    /* border: 1px solid #1F1F22; */
 }
 .sidebar-container {
     background-color: white;
