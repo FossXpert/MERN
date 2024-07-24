@@ -9,9 +9,9 @@
 
 .image-container {
     display: flex;
-    width: 7rem;
-    height: 7rem;
-    /* border: 1px solid red; */
+    width: 8rem;
+    height: 8rem;
+    border: 1px solid red;
     margin-top: 3rem;
 }
 
