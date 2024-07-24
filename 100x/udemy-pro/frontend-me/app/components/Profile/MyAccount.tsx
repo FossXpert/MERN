@@ -43,13 +43,14 @@ const MyAccount = (props: Props) => {
     },[isSuccess,error,pSuccess,perror]);
 
     const imageHandle = async(e:any) => {
+        toast.success("inside imagehandler")
         const fileReader = new FileReader();
         fileReader.onload =  () => {
             if(fileReader.readyState === 2){
                 const avatar = fileReader.result as String;
                 console.log(avatar);
                  updateProfilePicture({
-                    avatar
+                    avatar: avatar
                 })
             }
         };
