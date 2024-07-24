@@ -14,7 +14,7 @@ const MyAccount = (props: Props) => {
     const [loadUser,setLoadUser] = useState(false)
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     const [name,setName] = useState(user && user.name);
-    const {refetch} = useLoadUserQuery(undefined,{skip: false})
+    const {refetch} = useLoadUserQuery(undefined,{skip: loadUser? false:true})
 
     useEffect(()=>{
         if(isSuccess){
