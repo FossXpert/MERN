@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import '../../css/css-profile/myaccount.css'
 import { CiCamera } from 'react-icons/ci'
-import { useUpdateUserInfoMutation } from '../../../redux/features/auth/authApi'
+import { useUpdateProfilePictureMutation, useUpdateUserInfoMutation } from '../../../redux/features/auth/authApi'
 import toast from 'react-hot-toast'
 import { useLoadUserQuery } from '../../../redux/features/api/apiSlice'
 
@@ -16,7 +16,7 @@ const MyAccount = (props: Props) => {
     const [name,setName] = useState(user && user.name);
     const {} = useLoadUserQuery(undefined,{skip: loadUser ? false : true});
 
-    const [updateProfilePicture, {isSuccess:pSuccess,error:perror,data:pdata,isLoading:ploading}] = useUpdateUserInfoMutation();
+    const [updateProfilePicture, {isSuccess:pSuccess,error:perror,data:pdata,isLoading:ploading}] = useUpdateProfilePictureMutation();
 
 
     useEffect(()=>{
@@ -45,9 +45,9 @@ const MyAccount = (props: Props) => {
     const imageHandle = async(e:any) => {
         toast.success("inside imagehandler")
         const fileReader = new FileReader();
-        fileReader.onload =  () => {
+        fileReader.onload = () => {
             if(fileReader.readyState === 2){
-                const avatar = fileReader.result as String;
+                const avatar = fileReader.result as string;
                 console.log(avatar);
                  updateProfilePicture({
                     avatar: avatar
