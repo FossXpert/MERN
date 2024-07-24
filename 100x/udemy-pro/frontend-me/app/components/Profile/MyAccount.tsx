@@ -65,6 +65,14 @@ const MyAccount = (props: Props) => {
              className='myaccount-image' 
              src={user?.avatar?.url} 
              width={64} height={64} alt='No'/>
+             <input 
+             type='file'
+             name=''
+             id='avatar'
+             className='hidden'
+             onChange={imageHandle}
+             accept='image/png,image/jpeg,image/jpg,image/webp'
+             />
              <div className="camera-icon" onClick={() => console.log("hi")}>
                     <CiCamera />
              </div>
