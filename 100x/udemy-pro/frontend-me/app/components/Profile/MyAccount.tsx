@@ -33,6 +33,14 @@ const MyAccount = (props: Props) => {
                 name='fullname'
                 />
             </div>
+            <div className='myaccount-text-1'>
+                <label htmlFor="fullname">Full Name</label>
+                <input type='text'
+                className='input-field'
+                value={user?.name}
+                name='fullname'
+                />
+            </div>
             </form>  
         </div>
         
