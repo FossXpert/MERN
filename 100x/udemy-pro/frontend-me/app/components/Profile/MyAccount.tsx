@@ -1,9 +1,10 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import '../../css/css-profile/myaccount.css'
 import { CiCamera } from 'react-icons/ci'
 import { useUpdateUserInfoMutation } from '../../../redux/features/auth/authApi'
+import toast from 'react-hot-toast'
 
 type Props = {}
 
@@ -12,6 +13,18 @@ const MyAccount = (props: Props) => {
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     const [name,setName] = useState(user && user.name);
 
+
+    useEffect(()=>{
+        if(isSuccess){
+            toast.success("updated")
+        }
+        if(error){
+            if('data' in error){
+                const errorData = error as any;
+                toast.error(errorData.data.message);
+            }
+        }
+    },[isSuccess])
 
     const handleSubmit = async (e:any) => {
         e.preventDefault();
