@@ -8,7 +8,7 @@ type Props = {}
 
 const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth);
-    
+    const 
     
     const handleSubmit = () => {
     }
