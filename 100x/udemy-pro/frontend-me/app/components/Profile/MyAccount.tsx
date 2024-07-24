@@ -14,14 +14,13 @@ const MyAccount = (props: Props) => {
     const [loadUser,setLoadUser] = useState(false)
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     const [name,setName] = useState(user && user.name);
-    const {refetch} = useLoadUserQuery(undefined,{skip:false});
+    const {} = useLoadUserQuery(undefined,{skip: loadUser ? false : true});
 
-    const [updateProfilePicture, {isSuccess:pSuccess,error:perror,data:pdata,isLoading:ploading}] = useUpdateUserInfoMutation({});
+    const [updateProfilePicture, {isSuccess:pSuccess,error:perror,data:pdata,isLoading:ploading}] = useUpdateUserInfoMutation();
 
 
     useEffect(()=>{
         if(isSuccess){
-            refetch();
             toast.success("updated");
             setLoadUser(true)
             console.log("user is",user)
