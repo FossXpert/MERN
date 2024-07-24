@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import '../../css/css-profile/myaccount.css'
 import { CiCamera } from 'react-icons/ci'
@@ -10,7 +10,7 @@ type Props = {}
 const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth);
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
-    
+    const [name,setName] = useState(user && user.name);
 
 
     const handleSubmit = () => {
@@ -33,9 +33,9 @@ const MyAccount = (props: Props) => {
                 <label htmlFor="fullname">Full Name</label>
                 <input type='text'
                 className='input-field'
-                value={user?.name}
+                value={name}
                 name='fullname'
-                onChange={}
+                onChange={(e) => e.target.value()}
                 />
             </div>
             <div className='myaccount-text-1'>
