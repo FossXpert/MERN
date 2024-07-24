@@ -11,13 +11,15 @@ type Props = {}
 
 const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth);
+    const [loadUser,setLoadUser] = useState(false)
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     const [name,setName] = useState(user && user.name);
-    const {} = useLoadUserQuery({})
+    const {} = useLoadUserQuery(undefined,{skip: loadUser ? false : true})
 
     useEffect(()=>{
         if(isSuccess){
             toast.success("updated");
+            setLoadUser(true)
             console.log("user is",user)
         }
         if(error){
