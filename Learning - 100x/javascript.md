@@ -11,3 +11,4 @@ const fileReader = new FileReader();
             }
         };
         fileReader.readAsDataURL(e.target.files[0]);
+
