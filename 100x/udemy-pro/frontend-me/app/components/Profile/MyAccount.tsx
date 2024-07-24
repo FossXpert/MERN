@@ -34,6 +34,7 @@ const MyAccount = (props: Props) => {
     },[isSuccess,error]);
 
     const imageHandle = async() => {
+        const fileReader = new FileReader();
         
     }
 
