@@ -14,8 +14,9 @@ const MyAccount = (props: Props) => {
     const [loadUser,setLoadUser] = useState(false)
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     const [name,setName] = useState(user && user.name);
-    const {refetch} = useLoadUserQuery(undefined,{skip:false})
+    const {refetch} = useLoadUserQuery(undefined,{skip:false});
 
+    const [updateProfilePicture, {isSuccess:pSuccess,error:perror,data:pdata,isLoading:ploading}] = useUpdateUserInfoMutation({});
 
 
     useEffect(()=>{
@@ -35,12 +36,13 @@ const MyAccount = (props: Props) => {
 
     const imageHandle = async() => {
         const fileReader = new FileReader();
-        fileReader.onload = () => {
+        fileReader.onload = async () => {
             if(fileReader.readyState === 2){
                 const avatar = fileReader.result as String;
                 console.log(avatar);
-                await usePro
-
+                await updateProfilePicture({
+                    avatar
+                })
             }
         }
     }
