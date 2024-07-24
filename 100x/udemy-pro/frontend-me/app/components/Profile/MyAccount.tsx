@@ -3,14 +3,18 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import '../../css/css-profile/myaccount.css'
 import { CiCamera } from 'react-icons/ci'
+import { useUpdateUserInfoMutation } from '../../../redux/features/auth/authApi'
 
 type Props = {}
 
 const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth);
-    const 
+    const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     
+
+
     const handleSubmit = () => {
+
     }
     return (
     <div className='myaccount-container'>
@@ -31,6 +35,7 @@ const MyAccount = (props: Props) => {
                 className='input-field'
                 value={user?.name}
                 name='fullname'
+                onChange={}
                 />
             </div>
             <div className='myaccount-text-1'>
