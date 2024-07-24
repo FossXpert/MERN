@@ -5,6 +5,7 @@ import '../../css/css-profile/myaccount.css'
 import { CiCamera } from 'react-icons/ci'
 import { useUpdateUserInfoMutation } from '../../../redux/features/auth/authApi'
 import toast from 'react-hot-toast'
+import { useLoadUserQuery } from '../../../redux/features/api/apiSlice'
 
 type Props = {}
 
@@ -12,11 +13,12 @@ const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth);
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     const [name,setName] = useState(user && user.name);
-
+    const {} = useLoadUserQuery
 
     useEffect(()=>{
         if(isSuccess){
             toast.success("updated");
+            console.log("user is",user)
         }
         if(error){
             if('data' in error){
