@@ -13,7 +13,7 @@ const MyAccount = (props: Props) => {
     const {user} = useSelector((state:any) => state.auth);
     const [updateUserInfo,{isSuccess,error,data,isLoading}] = useUpdateUserInfoMutation();
     const [name,setName] = useState(user && user.name);
-    const {} = useLoadUserQuery
+    const {} = useLoadUserQuery({})
 
     useEffect(()=>{
         if(isSuccess){
@@ -26,7 +26,7 @@ const MyAccount = (props: Props) => {
                 toast.error(errorData.data.message);
             }
         }
-    },[isSuccess,error])
+    },[isSuccess,error,user]);
 
     const handleSubmit = async (e:any) => {
         e.preventDefault();
