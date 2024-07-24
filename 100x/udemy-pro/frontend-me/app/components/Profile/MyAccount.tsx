@@ -35,7 +35,11 @@ const MyAccount = (props: Props) => {
 
     const imageHandle = async() => {
         const fileReader = new FileReader();
-        
+        fileReader.onload = () => {
+            if(fileReader.readyState === 2){
+                const avatar = fileReader as String;
+            } 
+        }
     }
 
     const handleSubmit = async (e:any) => {
