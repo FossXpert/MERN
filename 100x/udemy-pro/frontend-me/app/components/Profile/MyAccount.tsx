@@ -37,8 +37,11 @@ const MyAccount = (props: Props) => {
         const fileReader = new FileReader();
         fileReader.onload = () => {
             if(fileReader.readyState === 2){
-                const avatar = fileReader as String;
-            } 
+                const avatar = fileReader.result as String;
+                console.log(avatar);
+                
+
+            }
         }
     }
 

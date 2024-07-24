@@ -64,7 +64,8 @@ export const authApi = apiSlice.injectEndpoints({
                 },
                 credentials : 'include' as const
             })
-        })
+        }),
+        
     })
 
 })
