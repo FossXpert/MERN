@@ -16,7 +16,9 @@ const MyAccount = (props: Props) => {
     const handleSubmit = async (e:any) => {
         e.preventDefault();
         try {
-            await updateUserInfo(name);
+            await updateUserInfo({
+                name : name
+            });
             console.log(data)
         } catch (error) {
             throw error
