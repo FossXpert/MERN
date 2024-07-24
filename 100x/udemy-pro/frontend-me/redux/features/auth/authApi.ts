@@ -69,7 +69,7 @@ export const authApi = apiSlice.injectEndpoints({
             query : ({avatar}) => ({
                 url : 'user/updateprofilepic',
                 method : 'PUT',
-                data : {
+                body : {
                     avatar: avatar
                 },
                 credentials : 'include' as const

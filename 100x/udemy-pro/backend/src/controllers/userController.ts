@@ -302,8 +302,9 @@ interface iUpdateProfilePic{
 export const updateProfilePicture = catchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
     try {
         
-        const {avatar} = req.body as iUpdateProfilePic;
-        console.log(avatar)
+        const {avatar} = req.body ;
+
+        console.log(req.body)
         const userId = (req as jwtPayloadNew).user._id;
         const user  = await userModel.findById(userId);
         if(!user){
