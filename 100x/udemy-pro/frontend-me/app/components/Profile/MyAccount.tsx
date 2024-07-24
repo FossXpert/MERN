@@ -43,17 +43,18 @@ const MyAccount = (props: Props) => {
         }
     },[isSuccess,error,pSuccess,perror]);
 
-    const imageHandle = async() => {
+    const imageHandle = async(e:any) => {
         const fileReader = new FileReader();
-        fileReader.onload = async () => {
+        fileReader.onload =  () => {
             if(fileReader.readyState === 2){
                 const avatar = fileReader.result as String;
                 console.log(avatar);
-                await updateProfilePicture({
+                 updateProfilePicture({
                     avatar
                 })
             }
-        }
+        };
+        fileReader.readAsDataURL(e.target.files[0]);
     }
 
     const handleSubmit = async (e:any) => {
