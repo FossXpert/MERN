@@ -50,8 +50,8 @@ const MyAccount = (props: Props) => {
                 const avatar = fileReader.result as string;
                 console.log(avatar);
                  updateProfilePicture({
-                    avatar: avatar
-                })
+                    avatar
+                 })
             }
         };
         fileReader.readAsDataURL(e.target.files[0]);
