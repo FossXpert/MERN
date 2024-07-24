@@ -7,7 +7,8 @@ import { CiCamera } from 'react-icons/ci'
 type Props = {}
 
 const MyAccount = (props: Props) => {
-    const {user} = useSelector((state:any) => state.auth)
+    const {user} = useSelector((state:any) => state.auth);
+    
     
     const handleSubmit = () => {
     }
