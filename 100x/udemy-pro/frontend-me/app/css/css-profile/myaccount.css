@@ -13,6 +13,7 @@
     height: 8rem;
     border: 1px solid red;
     margin-top: 3rem;
+    position: relative;
 }
 
 .myaccount-image {
@@ -20,7 +21,10 @@
     height: 7rem;
     border-radius: 50%;
 }
-
+.file-input{
+    position: absolute;
+    
+}
 .camera-icon {
     position: absolute;
     cursor: pointer;

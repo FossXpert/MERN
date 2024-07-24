@@ -78,7 +78,7 @@ const MyAccount = (props: Props) => {
              type='file'
              name=''
              id='avatar'
-             className=''
+             className='file-input'
              onChange={imageHandle}
              accept='image/png,image/jpeg,image/jpg,image/webp'
              />
