@@ -32,7 +32,16 @@ const MyAccount = (props: Props) => {
                 toast.error(errorData.data.message);
             }
         }
-    },[isSuccess,error]);
+        if(pSuccess){
+            toast.success("updated Profile Pic");
+        }
+        if(perror){
+            if('data' in perror){
+                const errorData = perror as any;
+                toast.error(errorData.data.message);
+            } 
+        }
+    },[isSuccess,error,pSuccess,perror]);
 
     const imageHandle = async() => {
         const fileReader = new FileReader();
@@ -69,7 +78,7 @@ const MyAccount = (props: Props) => {
              type='file'
              name=''
              id='avatar'
-             className='hidden'
+             className=''
              onChange={imageHandle}
              accept='image/png,image/jpeg,image/jpg,image/webp'
              />
