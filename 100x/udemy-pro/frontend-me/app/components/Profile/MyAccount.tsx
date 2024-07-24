@@ -39,7 +39,7 @@ const MyAccount = (props: Props) => {
             if(fileReader.readyState === 2){
                 const avatar = fileReader.result as String;
                 console.log(avatar);
-                
+                await usePro
 
             }
         }
