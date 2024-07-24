@@ -33,6 +33,7 @@ const MyAccount = (props: Props) => {
         }
         if(pSuccess){
             toast.success("updated Profile Pic");
+            setLoadUser(true);
         }
         if(perror){
             if('data' in perror){
@@ -40,7 +41,7 @@ const MyAccount = (props: Props) => {
                 toast.error(errorData.data.message);
             } 
         }
-    },[isSuccess,error,pSuccess,perror]);
+    },[isSuccess,error,pSuccess,perror,loadUser]);
 
     const imageHandle = async(e:any) => {
         toast.success("inside imagehandler")
