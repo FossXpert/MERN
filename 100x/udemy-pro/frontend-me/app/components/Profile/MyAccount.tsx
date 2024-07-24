@@ -16,7 +16,7 @@ const MyAccount = (props: Props) => {
     const [name,setName] = useState(user && user.name);
     const {refetch} = useLoadUserQuery(undefined,{skip:false})
 
-    
+
 
     useEffect(()=>{
         if(isSuccess){
@@ -32,6 +32,10 @@ const MyAccount = (props: Props) => {
             }
         }
     },[isSuccess,error]);
+
+    const imageHandle = async() => {
+        
+    }
 
     const handleSubmit = async (e:any) => {
         e.preventDefault();
