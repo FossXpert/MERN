@@ -16,7 +16,7 @@ const MyAccount = (props: Props) => {
 
     useEffect(()=>{
         if(isSuccess){
-            toast.success("updated")
+            toast.success("updated");
         }
         if(error){
             if('data' in error){
@@ -24,7 +24,7 @@ const MyAccount = (props: Props) => {
                 toast.error(errorData.data.message);
             }
         }
-    },[isSuccess])
+    },[isSuccess,error])
 
     const handleSubmit = async (e:any) => {
         e.preventDefault();
