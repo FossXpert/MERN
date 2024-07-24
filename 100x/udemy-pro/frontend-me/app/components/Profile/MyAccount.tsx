@@ -34,12 +34,18 @@ const MyAccount = (props: Props) => {
                 />
             </div>
             <div className='myaccount-text-1'>
-                <label htmlFor="email" className='text-[10px]'>Email Address</label>
+                <label htmlFor="email">Email Address</label>
                 <input type='text'
                 readOnly
                 className='input-field'
                 value={user?.email}
                 name='email'
+                />
+            </div>
+            <div className='myaccount-text-1'>
+                <input type='submit'
+                className='button-submit'
+                name='submit'
                 />
             </div>
             </form>  
