@@ -70,11 +70,7 @@ const MyAccount = (props: Props) => {
     return (
     <div className='myaccount-container'>
         <div className="image-container">
-            <Image
-             className='myaccount-image' 
-             src={user?.avatar?.url} 
-             width={64} height={64} alt='No'/>
-             <input 
+            <input 
              type='file'
              name=''
              id='avatar'
@@ -82,6 +78,10 @@ const MyAccount = (props: Props) => {
              onChange={imageHandle}
              accept='image/png,image/jpeg,image/jpg,image/webp'
              />
+            <Image
+             className='myaccount-image' 
+             src={user?.avatar?.url} 
+             width={64} height={64} alt='No'/>
              <div className="camera-icon" onClick={() => console.log("hi")}>
                     <CiCamera />
              </div>
