@@ -42,12 +42,10 @@ const MyAccount = (props: Props) => {
                 name='email'
                 />
             </div>
-            <div className='myaccount-text-1'>
                 <input type='submit'
                 className='button-global'
                 name='submit'
                 />
-            </div>
             </form>  
         </div>
     </div>

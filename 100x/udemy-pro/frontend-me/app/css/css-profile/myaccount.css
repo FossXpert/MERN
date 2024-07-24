@@ -28,14 +28,17 @@
 
 .myaccount-text{
     display: flex;
-    width: 120%;
+    width: 130%;
     margin-top: 3rem;
     flex-direction: column;
     border: 1px solid black;
+    height: max-content;
 }
 .myaccount-text-1{
     display: flex;
     width: 100%;
     flex-direction: column;
     border: 1px solid yellow;
+    gap: 0.5rem;
+
 }
