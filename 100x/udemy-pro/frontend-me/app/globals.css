@@ -19,3 +19,16 @@ html, body {
   border-color: #007bff;
   outline: none;
 }
+.button-global{
+    background-color: #7F56D9;
+    color: #FFF;
+    width: 100px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 20px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #e6e6e6;
+}

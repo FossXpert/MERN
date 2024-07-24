@@ -44,13 +44,12 @@ const MyAccount = (props: Props) => {
             </div>
             <div className='myaccount-text-1'>
                 <input type='submit'
-                className='button-submit'
+                className='button-global'
                 name='submit'
                 />
             </div>
             </form>  
         </div>
-        
     </div>
   )
 }
