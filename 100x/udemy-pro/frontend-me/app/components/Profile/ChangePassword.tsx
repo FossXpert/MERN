@@ -5,6 +5,8 @@ import '../../css/css-profile/changePassword.css'
 import '../../css/css-profile/myaccount.css'
 import { z } from 'zod';
 import { useFormik } from 'formik';
+import { useUpdatePasswordMutation } from '../../../redux/features/auth/authApi';
+import toast from 'react-hot-toast';
 
 
 type Props = {}
@@ -14,6 +16,8 @@ const ChangePassword = (props: Props) => {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [updatePassword,{data,isSuccess,error,isLoading}] = useUpdatePasswordMutation();
+    
 
     const updatePasswordSchema = z.object({
         oldPassword : z.string().min(6,{message : 'Minimum Six Characters'}).max(32,{
@@ -33,7 +37,6 @@ const ChangePassword = (props: Props) => {
             newPassword : '',
             confirmPassword : '',
         },
-
         validate : (values) => {
             try {
                 updatePasswordSchema.parse(values);
@@ -41,12 +44,12 @@ const ChangePassword = (props: Props) => {
                 return e.formErrors.fieldErrors;
             }
         },
-
         onSubmit : async(values) => {
            try {
-            
+                await updatePassword(values); 
            } catch (error) {
-            
+                console.log(error);
+                toast.error("Error Occured");
            } 
         }
     })
