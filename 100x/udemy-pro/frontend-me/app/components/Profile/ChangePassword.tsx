@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import '../../css/css-profile/changePassword.css'
 import '../../css/css-profile/myaccount.css'
+import { z } from 'zod';
 
 
 type Props = {}
@@ -12,6 +13,10 @@ const ChangePassword = (props: Props) => {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    const updatePasswordSchema = z.Schema({
+        
+    })
 
 
     return (
