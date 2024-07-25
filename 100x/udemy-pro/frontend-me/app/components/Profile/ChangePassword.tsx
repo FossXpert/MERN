@@ -26,6 +26,9 @@ const ChangePassword = (props: Props) => {
         confirmPassword : z.string().min(6,{message : 'Minimum Six Characters'}).max(32,{
             message : 'Max 32 characters '
         }),
+    }).refine((data) => data.newPassword === data.confirmPassword,{
+        message : 'Password not matched',
+        path : ['confirmPassword']
     })
 
     const updatePasswordFormik = useFormik({
