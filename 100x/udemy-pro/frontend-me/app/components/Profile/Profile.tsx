@@ -28,7 +28,7 @@ const Profile = (props: Props) => {
             }
             {
                 active === 4 && (
-                    <Link href={'/'}>Admin Dashboard</Link>
+                    <Link href={'/admin'}>Admin Dashboard</Link>
                 )
             }
         </div>
