@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import '../../css/css-profile/changePassword.css'
 import '../../css/css-profile/myaccount.css'
@@ -15,7 +15,11 @@ const ChangePassword = (props: Props) => {
     const { user } = useSelector((state: any) => state.auth);
     const [updatePassword,{data,isSuccess,error,isLoading}] = useUpdatePasswordMutation();
     
-    
+    useEffect(()=>{
+        if(isSuccess){
+            toast.success("Password changed successfully")
+        }
+    },[isSuccess]);
 
     const updatePasswordSchema = z.object({
         oldPassword : z.string().min(6,{message : 'Minimum Six Characters'}).max(32,{
