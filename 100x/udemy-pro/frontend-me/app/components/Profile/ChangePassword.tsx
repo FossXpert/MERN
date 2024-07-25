@@ -37,13 +37,17 @@ const ChangePassword = (props: Props) => {
         validate : (values) => {
             try {
                 updatePasswordSchema.parse(values);
-            } catch (error) {
+            } catch (e:any) {
                 return e.formErrors.fieldErrors;
             }
         },
 
-        onSubmit :(values) => {
+        onSubmit : async(values) => {
+           try {
             
+           } catch (error) {
+            
+           } 
         }
     })
 
