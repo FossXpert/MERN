@@ -34,8 +34,16 @@ const ChangePassword = (props: Props) => {
             confirmPassword : '',
         },
 
-        onSubmit :(values) => {
+        validate : (values) => {
+            try {
+                updatePasswordSchema.parse(values);
+            } catch (error) {
+                return e.formErrors.fieldErrors;
+            }
+        },
 
+        onSubmit :(values) => {
+            
         }
     })
 
