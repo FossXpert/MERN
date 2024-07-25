@@ -106,6 +106,10 @@ const ChangePassword = (props: Props) => {
                                 <div className='error'>{updatePasswordFormik.errors.confirmPassword}</div>
                             )}
                     </div>
+                    <input type='submit'
+                        className='button-global'
+                        name='submit'
+                    />
                     </form>
                 </div>
             </div>
