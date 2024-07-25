@@ -42,7 +42,7 @@ const ChangePassword = (props: Props) => {
             id='cpass'
             name='cpass'
             value={confirmPassword}
-            placeholder='Old Password'
+            placeholder='Confirm Password'
             onChange={(e)=>setConfirmPassword(e.target.value)}
             />
         </div>
