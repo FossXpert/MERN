@@ -16,7 +16,11 @@ const ChangePassword = (props: Props) => {
              src={user?.avatar?.url} 
              width={64} height={64} alt='No'/>
         </div>
-        <h4></h4>
+        <p>Change Password</p>
+        <div className='password-input'>
+            <label htmlFor="oldpass">Enter Old Password</label>
+            <input type='password'
+        </div>
         
     </div>
     </>
