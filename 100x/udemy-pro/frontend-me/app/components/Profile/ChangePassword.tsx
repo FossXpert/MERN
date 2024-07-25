@@ -25,7 +25,7 @@ const ChangePassword = (props: Props) => {
                 toast.error(errorData.data.message);
             }
         }
-    },[isSuccess]);
+    },[isSuccess,error]);
 
     const updatePasswordSchema = z.object({
         oldPassword : z.string().min(6,{message : 'Minimum Six Characters'}).max(32,{
@@ -123,6 +123,7 @@ const ChangePassword = (props: Props) => {
                         className='button-global'
                         name='submit'
                     />
+                    {isLoading? <div>Updating...</div> : <div></div>}
                     </form>
                 </div>
             </div>
