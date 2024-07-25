@@ -16,12 +16,13 @@ const ChangePassword = (props: Props) => {
 
     return (
         <>
-            <div className="password-container">
+            <div className="myaccount-container">
                 <div className="image-container">
                     <Image
                         className='myaccount-image'
                         src={user?.avatar?.url}
-                        width={64} height={64} alt='No' />
+                        width={64} height={64} alt='No' 
+                    />
                 </div>
                 <p>Change Password</p>
                 <div className='myaccount-text'>
@@ -54,7 +55,7 @@ const ChangePassword = (props: Props) => {
                         placeholder='Confirm Password'
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-                </div>
+                    </div>
             </div>
         </>
     )
