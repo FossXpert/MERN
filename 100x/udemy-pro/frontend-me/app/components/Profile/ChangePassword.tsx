@@ -17,14 +17,7 @@ const ChangePassword = (props: Props) => {
     return (
         <>
             <div className="myaccount-container">
-                <div className="image-container">
-                    <Image
-                        className='myaccount-image'
-                        src={user?.avatar?.url}
-                        width={64} height={64} alt='No'
-                    />
-                </div>
-                <p>Change Password</p>
+                <h1 className='font-[500]'>Change Password</h1>
                 <div className='myaccount-text'>
                     <div className='myaccount-text-1'>
                         <label htmlFor="oldpass">Old Password</label>
