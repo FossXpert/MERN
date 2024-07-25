@@ -62,10 +62,10 @@ const ChangePassword = (props: Props) => {
                 <div className='myaccount-text'>
                 <form onSubmit={updatePasswordFormik.handleSubmit}>
                     <div className='myaccount-text-1'>
-                        <label htmlFor="oldpass">Old Password</label>
-                        <input type='password'
-                            id='oldpass'
-                            name='oldpass'
+                        <label htmlFor="oldPassword">Old Password</label>
+                        <input type='text'
+                            id='oldPassword'
+                            name='oldPassword'
                             className='input-field'
                             value={updatePasswordFormik.values.oldPassword}
                             placeholder='Old Password'
@@ -77,10 +77,10 @@ const ChangePassword = (props: Props) => {
                             )}
                     </div>
                     <div className='myaccount-text-1'>
-                        <label htmlFor="newpass">New Password</label>
+                        <label htmlFor="newPassword">New Password</label>
                         <input type='password'
-                            id='newpass'
-                            name='newpass'
+                            id='newPassword'
+                            name='newPassword'
                             className='input-field'
                             value={updatePasswordFormik.values.newPassword}
                             placeholder='New Password'
@@ -92,10 +92,10 @@ const ChangePassword = (props: Props) => {
                             )}
                     </div>
                     <div className='myaccount-text-1'>
-                        <label htmlFor="cpass">Confirm Password</label>
+                        <label htmlFor="confirmPassword">Confirm Password</label>
                         <input type='password'
-                            id='cpass'
-                            name='cpass'
+                            id='confirmPassword'
+                            name='confirmPassword'
                             className='input-field'
                             value={updatePasswordFormik.values.confirmPassword}
                             placeholder='Confirm Password'
