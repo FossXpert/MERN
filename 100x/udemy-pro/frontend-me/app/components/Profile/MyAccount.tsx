@@ -108,10 +108,7 @@ const MyAccount = (props: Props) => {
                 name='email'
                 />
             </div>
-                <input type='submit'
-                className='button-global'
-                name='submit'
-                />
+                <button type='submit' className='button-global'>{isLoading? }</button>
             </form>  
         </div>
     </div>
