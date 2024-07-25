@@ -13,9 +13,6 @@ type Props = {}
 
 const ChangePassword = (props: Props) => {
     const { user } = useSelector((state: any) => state.auth);
-    const [oldPassword, setOldPassword] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [updatePassword,{data,isSuccess,error,isLoading}] = useUpdatePasswordMutation();
     
 
@@ -60,15 +57,16 @@ const ChangePassword = (props: Props) => {
             <div className="myaccount-container">
                 <h1 className='font-[500]'>Change Password</h1>
                 <div className='myaccount-text'>
+                <form onSubmit={updatePasswordFormik.handleSubmit}>
                     <div className='myaccount-text-1'>
                         <label htmlFor="oldpass">Old Password</label>
                         <input type='password'
                             id='oldpass'
                             name='oldpass'
                             className='input-field'
-                            value={oldPassword}
+                            value={updatePasswordFormik.values.oldPassword}
                             placeholder='Old Password'
-                            onChange={(e) => setOldPassword(e.target.value)}
+                            onChange={updatePasswordFormik.handleChange}
                         />
                     </div>
                     <div className='myaccount-text-1'>
@@ -77,9 +75,9 @@ const ChangePassword = (props: Props) => {
                             id='newpass'
                             name='newpass'
                             className='input-field'
-                            value={newPassword}
+                            value={updatePasswordFormik.values.newPassword}
                             placeholder='New Password'
-                            onChange={(e) => setNewPassword(e.target.value)}
+                            onChange={updatePasswordFormik.handleChange}
                         />
                     </div>
                     <div className='myaccount-text-1'>
@@ -88,11 +86,12 @@ const ChangePassword = (props: Props) => {
                             id='cpass'
                             name='cpass'
                             className='input-field'
-                            value={confirmPassword}
+                            value={updatePasswordFormik.values.confirmPassword}
                             placeholder='Confirm Password'
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            onChange={updatePasswordFormik.handleChange}
                         />
                     </div>
+                    </form>
                 </div>
             </div>
         </>
