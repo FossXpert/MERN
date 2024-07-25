@@ -71,6 +71,10 @@ const ChangePassword = (props: Props) => {
                             placeholder='Old Password'
                             onChange={updatePasswordFormik.handleChange}
                         />
+                        {updatePasswordFormik.errors.oldPassword && 
+                            updatePasswordFormik.touched.oldPassword && (
+                                <div className='error'>{updatePasswordFormik.errors.oldPassword}</div>
+                            )}
                     </div>
                     <div className='myaccount-text-1'>
                         <label htmlFor="newpass">New Password</label>
