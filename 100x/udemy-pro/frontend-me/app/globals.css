@@ -32,8 +32,12 @@ html, body {
     border-radius: 4px;
     box-shadow: 0 0 8px #e6e6e6;
 }
+.button-global:hover{
+  background-color: #1F1F22;
+}
 .button-global:disabled{
   background-color: #ccc;
+  color: #1F1F22;
 }
 .error{
   color: red;
