@@ -36,7 +36,7 @@ html, body {
   background-color: #1F1F22;
 }
 .button-global:disabled{
-  background-color: #ccc;
+  background-color: #f2e0e0;
   color: #1F1F22;
 }
 .error{
