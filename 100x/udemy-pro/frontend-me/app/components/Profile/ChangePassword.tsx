@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import '../../css/css-profile/changePassword.css'
 import '../../css/css-profile/myaccount.css'
 import { z } from 'zod';
+import { useFormik } from 'formik';
 
 
 type Props = {}
@@ -26,7 +27,17 @@ const ChangePassword = (props: Props) => {
         }),
     })
 
-    const updatePasswordFormik = 
+    const updatePasswordFormik = useFormik({
+        initialValues : {
+            oldPassword : '',
+            newPassword : '',
+            confirmPassword : '',
+        },
+
+        onSubmit :(values) => {
+
+        }
+    })
 
 
     return (
