@@ -14,8 +14,16 @@ const ChangePassword = (props: Props) => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const updatePasswordSchema = z.Schema({
-        
+    const updatePasswordSchema = z.object({
+        oldPassword : z.string().min(6,{message : 'Minimum Six Characters'}).max(32,{
+            message : 'Max 32 characters '
+        }),
+        newPassword : z.string().min(6,{message : 'Minimum Six Characters'}).max(32,{
+            message : 'Max 32 characters '
+        }), 
+        confirmPassword : z.string().min(6,{message : 'Minimum Six Characters'}).max(32,{
+            message : 'Max 32 characters '
+        }),
     })
 
 
