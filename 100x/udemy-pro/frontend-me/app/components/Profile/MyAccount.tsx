@@ -108,7 +108,7 @@ const MyAccount = (props: Props) => {
                 name='email'
                 />
             </div>
-                <button type='submit' className='button-global'>{isLoading? }</button>
+                <button type='submit' disabled={isLoading} className='button-global'>{isLoading ? <div>Updating...</div>:<div>Submit</div>}</button>
             </form>  
         </div>
     </div>

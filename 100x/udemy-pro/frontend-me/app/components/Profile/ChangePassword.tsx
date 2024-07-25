@@ -119,13 +119,8 @@ const ChangePassword = (props: Props) => {
                                 <div className='error'>{updatePasswordFormik.errors.confirmPassword}</div>
                             )}
                     </div>
-                    <input type='submit'
-                        className='button-global'
-                        name='submit'
-                
-                    />
-                    {isLoading? <div><p>Updating...</p></div> : <div></div>}
-                    </form>
+                <button type='submit' disabled={isLoading} className='button-global'>{isLoading ? <div>Updating...</div>:<div>Submit</div>}</button>
+                </form>
                 </div>
             </div>
         </>
