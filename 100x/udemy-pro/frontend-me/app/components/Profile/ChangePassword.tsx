@@ -122,8 +122,9 @@ const ChangePassword = (props: Props) => {
                     <input type='submit'
                         className='button-global'
                         name='submit'
+                        value
                     />
-                    {isLoading? <div>Updating...</div> : <div></div>}
+                    {isLoading? <div><p>Updating...</p></div> : <div></div>}
                     </form>
                 </div>
             </div>
