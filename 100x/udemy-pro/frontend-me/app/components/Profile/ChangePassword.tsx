@@ -4,7 +4,11 @@ type Props = {}
 
 const ChangePassword = (props: Props) => {
   return (
-    <div>ChangePassword</div>
+    <>
+    <div className="password-container">
+        
+    </div>
+    </>
   )
 }
 
