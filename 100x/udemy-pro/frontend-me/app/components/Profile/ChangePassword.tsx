@@ -54,7 +54,6 @@ const ChangePassword = (props: Props) => {
         }
     })
 
-
     return (
         <>
             <div className="myaccount-container">
