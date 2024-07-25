@@ -86,6 +86,10 @@ const ChangePassword = (props: Props) => {
                             placeholder='New Password'
                             onChange={updatePasswordFormik.handleChange}
                         />
+                        {updatePasswordFormik.errors.newPassword && 
+                            updatePasswordFormik.touched.newPassword && (
+                                <div className='error'>{updatePasswordFormik.errors.newPassword}</div>
+                            )}
                     </div>
                     <div className='myaccount-text-1'>
                         <label htmlFor="cpass">Confirm Password</label>
@@ -97,6 +101,10 @@ const ChangePassword = (props: Props) => {
                             placeholder='Confirm Password'
                             onChange={updatePasswordFormik.handleChange}
                         />
+                        {updatePasswordFormik.errors.confirmPassword && 
+                            updatePasswordFormik.touched.confirmPassword && (
+                                <div className='error'>{updatePasswordFormik.errors.confirmPassword}</div>
+                            )}
                     </div>
                     </form>
                 </div>
