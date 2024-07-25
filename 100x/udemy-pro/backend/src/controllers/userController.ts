@@ -274,6 +274,7 @@ interface iUpdatePassword{
 export const updatePassword = catchAsyncError(async(req:Request,res:Response,next:NextFunction) => {
     try {
         const {oldPassword,newPassword} = req.body as iUpdatePassword;
+        console.log(oldPassword,newPassword);
         const user = await userModel.findById((req as jwtPayloadNew).user._id).select("+password");
         if(!user){
             return next(new ErrorHandler('Sorry! User Not found in UpdatePassword',400));

@@ -15,6 +15,7 @@ const ChangePassword = (props: Props) => {
     const { user } = useSelector((state: any) => state.auth);
     const [updatePassword,{data,isSuccess,error,isLoading}] = useUpdatePasswordMutation();
     
+    
 
     const updatePasswordSchema = z.object({
         oldPassword : z.string().min(6,{message : 'Minimum Six Characters'}).max(32,{
@@ -46,7 +47,10 @@ const ChangePassword = (props: Props) => {
         },
         onSubmit : async(values) => {
            try {
-                await updatePassword(values); 
+                await updatePassword({
+                    oldPassword : values.oldPassword,
+                    newPassword : values.newPassword
+                }); 
            } catch (error) {
                 console.log(error);
                 toast.error("Error Occured");
