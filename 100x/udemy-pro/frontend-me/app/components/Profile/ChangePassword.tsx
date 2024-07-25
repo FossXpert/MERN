@@ -21,7 +21,7 @@ const ChangePassword = (props: Props) => {
                     <Image
                         className='myaccount-image'
                         src={user?.avatar?.url}
-                        width={64} height={64} alt='No' 
+                        width={64} height={64} alt='No'
                     />
                 </div>
                 <p>Change Password</p>
@@ -31,6 +31,7 @@ const ChangePassword = (props: Props) => {
                         <input type='password'
                             id='oldpass'
                             name='oldpass'
+                            className='input-field'
                             value={oldPassword}
                             placeholder='Old Password'
                             onChange={(e) => setOldPassword(e.target.value)}
@@ -41,21 +42,24 @@ const ChangePassword = (props: Props) => {
                         <input type='password'
                             id='newpass'
                             name='newpass'
+                            className='input-field'
                             value={newPassword}
                             placeholder='New Password'
                             onChange={(e) => setNewPassword(e.target.value)}
                         />
                     </div>
-                    <div className='myaccount-text-1'></div>
-                    <label htmlFor="cpass">Confirm Password</label>
-                    <input type='password'
-                        id='cpass'
-                        name='cpass'
-                        value={confirmPassword}
-                        placeholder='Confirm Password'
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
+                    <div className='myaccount-text-1'>
+                        <label htmlFor="cpass">Confirm Password</label>
+                        <input type='password'
+                            id='cpass'
+                            name='cpass'
+                            className='input-field'
+                            value={confirmPassword}
+                            placeholder='Confirm Password'
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
                     </div>
+                </div>
             </div>
         </>
     )
