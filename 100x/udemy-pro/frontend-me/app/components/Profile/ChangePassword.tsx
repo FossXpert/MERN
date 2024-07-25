@@ -22,8 +22,8 @@ const ChangePassword = (props: Props) => {
              width={64} height={64} alt='No'/>
         </div>
         <p>Change Password</p>
-        <div className='password-input'>
-            <label htmlFor="oldpass">Enter Old Password</label>
+        <div className='myaccount-text'>
+            <label htmlFor="oldpass">Old Password</label>
             <input type='password'
             id='oldpass'
             name='oldpass'
@@ -31,6 +31,7 @@ const ChangePassword = (props: Props) => {
             placeholder='Old Password'
             onChange={(e)=>setOldPassword(e.target.value)}
             />
+            <label htmlFor="newpass">New Password</label>
             <input type='password'
             id='newpass'
             name='newpass'
@@ -38,6 +39,7 @@ const ChangePassword = (props: Props) => {
             placeholder='New Password'
             onChange={(e)=>setNewPassword(e.target.value)}
             />
+            <label htmlFor="cpass">Confirm Password</label>
             <input type='password'
             id='cpass'
             name='cpass'
