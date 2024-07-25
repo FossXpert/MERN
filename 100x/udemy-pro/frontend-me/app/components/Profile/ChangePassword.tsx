@@ -19,6 +19,12 @@ const ChangePassword = (props: Props) => {
         if(isSuccess){
             toast.success("Password changed successfully")
         }
+        if(error){
+            if('data' in error){
+                const errorData = error as any;
+                toast.error(errorData.data.message);
+            }
+        }
     },[isSuccess]);
 
     const updatePasswordSchema = z.object({
