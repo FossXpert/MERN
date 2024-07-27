@@ -3,6 +3,7 @@ import React from 'react'
 import profileImage from '../../../assets/thumnail.png'
 import '../../../css/css-admin/adminSidebar.css'
 import { MdDashboard } from 'react-icons/md';
+import { IoIosArrowDown } from 'react-icons/io';
 type Props = {}
 
 const AdminSidebar = (props: Props) => {
@@ -23,11 +24,32 @@ const AdminSidebar = (props: Props) => {
             <div className="asmenu">
               <p className='astitle'>Main</p>
               <ul>
+                <li className='active'>
+                  <a href='#'>
+                    <MdDashboard className="icon"/>
+                    <span className='as-span-text'>Dashboard</span>
+                  </a>
+                </li>
                 <li>
                   <a href='#'>
                     <MdDashboard className="icon"/>
-                    <span className='text'>Dashboard</span>
+                    <span className='as-span-text'>Audience</span>
+                    <IoIosArrowDown className='arrow'/>
                   </a>
+                  <ul className='assub-menu'>
+                    <li>
+                      <a href='#'>
+                        <MdDashboard className="icon"/>
+                        <span className='as-span-text'>Users</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href='#'>
+                        <MdDashboard className="icon"/>
+                        <span className='as-span-text'>Subscribers</span>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>

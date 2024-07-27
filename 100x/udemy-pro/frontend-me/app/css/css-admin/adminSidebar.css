@@ -73,8 +73,17 @@ margin-bottom: 5px;
     padding: 12px 8px;
     border-radius: 8px;
 }
-.asmenu ul li:hover a{
+.asmenu ul li:hover a,
+.asmenu ul li.active a{
     color: #7F56D9;
     background-color:#f6f6f6;
     cursor: pointer;
 }
+.asmenu ul li .icon{
+    font-size: 20px;
+}
+.asmenu ul li .as-span-text{
+    flex:1;
+    border: 1px solid black;
+}
+
