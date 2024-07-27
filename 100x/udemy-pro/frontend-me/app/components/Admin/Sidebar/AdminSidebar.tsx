@@ -51,6 +51,12 @@ const AdminSidebar = (props: Props) => {
                     </li>
                   </ul>
                 </li>
+                <li className='active'>
+                  <a href='#'>
+                    <MdDashboard className="icon"/>
+                    <span className='as-span-text'>Dashboard</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
