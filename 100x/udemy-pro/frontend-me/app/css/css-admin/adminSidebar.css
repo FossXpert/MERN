@@ -87,6 +87,11 @@ margin-bottom: 5px;
     border: 1px solid black;
 }
 .asmenu .assub-menu{
+    /* display: none; */
     padding-left: 20px;
     padding-top: 5px;
+}
+.asmenu .assub-menu li a {
+    padding: 10px 8px;
+    font-size: 12px;
 }
