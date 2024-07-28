@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import profileImage from '../../../assets/thumnail.png'
 import '../../../css/css-admin/adminSidebar.css'
 import { MdDashboard } from 'react-icons/md';
-import { IoIosArrowDown } from 'react-icons/io';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 type Props = {}
 
 const AdminSidebar = (props: Props) => {
@@ -11,7 +11,7 @@ const AdminSidebar = (props: Props) => {
     const [toggle,setToggle] = useState(false);
     
     const handleToggle = () =>{
-        setToggle(true);
+        setToggle(!toggle);
     }
 
   return ( 
@@ -41,9 +41,10 @@ const AdminSidebar = (props: Props) => {
                   <a href='#'>
                     <MdDashboard className="icon"/>
                     <span className='as-span-text'>Audience</span>
-                    <IoIosArrowDown className='arrow' onClick={handleToggle} />
+                    { toggle? (<IoIosArrowUp/>):
+                        (<IoIosArrowDown className='arrow' onClick={handleToggle} />)}
                   </a>
-                  <ul className={toggle?}>
+                  <ul className={toggle ? 'assub-menu' : 'disabled'}>
                     <li>
                       <a href='#'>
                         <MdDashboard className="icon"/>
