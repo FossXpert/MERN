@@ -12,11 +12,15 @@ interface menuItems{
     menuIcon : JSX.Element;
     link : string;
     subMenu : subMenuItems[];
+    active : boolean;
+    open : boolean;
+    dropDownIcon: JSX.Element;
 }
 interface subMenuItems{
     subMenuTitle: string;
     subMenuIcon : JSX.Element;
-    link : string;
+    subMenuLink : string;
+    subMenuActive : boolean;
 }
 const AdminSidebar = (props: Props) => {
 
