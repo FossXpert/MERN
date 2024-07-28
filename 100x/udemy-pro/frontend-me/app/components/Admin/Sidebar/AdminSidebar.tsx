@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import React, { useState } from 'react'
+import { JSX } from 'react';
 import profileImage from '../../../assets/thumnail.png'
 import '../../../css/css-admin/adminSidebar.css'
 import { MdDashboard } from 'react-icons/md';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { jsx } from '@emotion/react';
 type Props = {}
 
 interface menuItems{
     menuName: string;
-    
+    menuIcon : JSX.Element;
 }
 
 const AdminSidebar = (props: Props) => {
