@@ -9,6 +9,10 @@ type Props = {}
 const AdminSidebar = (props: Props) => {
 
     const [toggle,setToggle] = useState(false);
+    
+    const handleToggle = () =>{
+        setToggle(true);
+    }
 
   return ( 
     <>
@@ -37,7 +41,7 @@ const AdminSidebar = (props: Props) => {
                   <a href='#'>
                     <MdDashboard className="icon"/>
                     <span className='as-span-text'>Audience</span>
-                    <IoIosArrowDown className='arrow' />
+                    <IoIosArrowDown className='arrow' onClick={handleToggle} />
                   </a>
                   <ul className='assub-menu'>
                     <li>
