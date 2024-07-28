@@ -63,6 +63,33 @@ const AdminSidebar = (props: Props) => {
                     <span className='as-span-text'>Post</span>
                   </a>
                 </li>
+                <li className='active'>
+                  <a href='#'>
+                    <MdDashboard className="icon"/>
+                    <span className='as-span-text'>Income</span>
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>
+                    <MdDashboard className="icon"/>
+                    <span className='as-span-text'>Audience</span>
+                    <IoIosArrowDown className='arrow'/>
+                  </a>
+                  <ul className='assub-menu'>
+                    <li>
+                      <a href='#'>
+                        <MdDashboard className="icon"/>
+                        <span className='as-span-text'>Users</span>
+                      </a>
+                    </li>
+                    <li> 
+                      <a href='#'>
+                        <MdDashboard className="icon"/>
+                        <span className='as-span-text'>Subscribers</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </div> 
           </div>
