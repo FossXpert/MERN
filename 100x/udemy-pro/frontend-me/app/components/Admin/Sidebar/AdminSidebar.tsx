@@ -81,9 +81,10 @@ const AdminSidebar = (props: Props) => {
                   <a href='#'>
                     <MdDashboard className="icon"/>
                     <span className='as-span-text'>Audience</span>
-                    <IoIosArrowDown className='arrow'/>
+                    { toggle? (<IoIosArrowUp className='arrow' onClick={handleToggle} />):
+                        (<IoIosArrowDown className='arrow' onClick={handleToggle} />)}
                   </a>
-                  <ul className='assub-menu'>
+                  <ul className={toggle ? 'assub-menu' : 'disabled'}>
                     <li>
                       <a href='#'>
                         <MdDashboard className="icon"/>
