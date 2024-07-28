@@ -99,7 +99,7 @@ const AdminSidebar = (props: Props) => {
                         <ul key={index}>
                             <li className={value.active ? 'active':'disabled'}>
                                 <a href={value.link}/>
-                                
+                                {value.menuIcon}
                             </li>
                          {value.menuTitle}
                         </ul>
