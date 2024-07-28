@@ -96,9 +96,13 @@ const AdminSidebar = (props: Props) => {
 
                 {
                     menuItems.map((value,index) => (
-                        <div key={index}>
+                        <ul key={index}>
+                            <li className={value.active ? 'active':'disabled'}>
+                                <a href={value.link}/>
+                                
+                            </li>
                          {value.menuTitle}
-                        </div>
+                        </ul>
                     ))
                 }
 
