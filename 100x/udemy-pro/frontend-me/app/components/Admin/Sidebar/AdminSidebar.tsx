@@ -6,6 +6,11 @@ import { MdDashboard } from 'react-icons/md';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 type Props = {}
 
+interface menuItems{
+    menuName: string;
+    
+}
+
 const AdminSidebar = (props: Props) => {
 
     const [toggle,setToggle] = useState(false);
@@ -14,7 +19,9 @@ const AdminSidebar = (props: Props) => {
         setToggle(!toggle);
     }
 
-    
+    const menuItems = {
+
+    }
 
   return ( 
     <>
