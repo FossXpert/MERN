@@ -93,6 +93,15 @@ const AdminSidebar = (props: Props) => {
                     <span className='as-span-text'>Dashboard</span>
                   </a>
                 </li>
+
+                {
+                    menuItems.map((value,index) => (
+                        <div key={index}>
+                         {value.menuTitle}
+                        </div>
+                    ))
+                }
+
                 <li>
                   <a href='#'>
                     <MdDashboard className="icon"/>
