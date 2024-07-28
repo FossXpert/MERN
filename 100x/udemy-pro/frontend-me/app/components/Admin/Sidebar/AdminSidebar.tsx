@@ -5,14 +5,19 @@ import profileImage from '../../../assets/thumnail.png'
 import '../../../css/css-admin/adminSidebar.css'
 import { MdDashboard } from 'react-icons/md';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { jsx } from '@emotion/react';
 type Props = {}
 
 interface menuItems{
-    menuName: string;
+    menuTitle: string;
     menuIcon : JSX.Element;
+    link : string;
+    subMenu : subMenuItems[];
 }
-
+interface subMenuItems{
+    subMenuTitle: string;
+    subMenuIcon : JSX.Element;
+    link : string;
+}
 const AdminSidebar = (props: Props) => {
 
     const [toggle,setToggle] = useState(false);
