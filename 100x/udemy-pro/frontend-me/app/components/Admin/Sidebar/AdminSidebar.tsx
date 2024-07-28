@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react'
 import profileImage from '../../../assets/thumnail.png'
 import '../../../css/css-admin/adminSidebar.css'
 import { MdDashboard } from 'react-icons/md';
@@ -7,6 +7,9 @@ import { IoIosArrowDown } from 'react-icons/io';
 type Props = {}
 
 const AdminSidebar = (props: Props) => {
+
+    const [toggle,setToggle] = useState(false);
+
   return ( 
     <>
       <div className="ascontainer">
@@ -34,7 +37,7 @@ const AdminSidebar = (props: Props) => {
                   <a href='#'>
                     <MdDashboard className="icon"/>
                     <span className='as-span-text'>Audience</span>
-                    <IoIosArrowDown className='arrow'/>
+                    <IoIosArrowDown className='arrow' />
                   </a>
                   <ul className='assub-menu'>
                     <li>
@@ -51,19 +54,19 @@ const AdminSidebar = (props: Props) => {
                     </li>
                   </ul>
                 </li>
-                <li className='active'>
+                <li className=''>
                   <a href='#'>
                     <MdDashboard className="icon"/>
                     <span className='as-span-text'>Post</span>
                   </a>
                 </li>
-                <li className='active'>
+                <li className=''>
                   <a href='#'>
                     <MdDashboard className="icon"/>
                     <span className='as-span-text'>Post</span>
                   </a>
                 </li>
-                <li className='active'>
+                <li className=''>
                   <a href='#'>
                     <MdDashboard className="icon"/>
                     <span className='as-span-text'>Income</span>
