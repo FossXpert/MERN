@@ -14,7 +14,7 @@ interface menuItems{
     subMenu : subMenuItems[];
     active : boolean;
     open : boolean;
-    dropDownIcon: JSX.Element;
+    dropDownIcon: JSX.Element; 
 }
 interface subMenuItems{
     subMenuTitle: string;
