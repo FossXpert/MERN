@@ -36,16 +36,12 @@ const AdminSidebar = (props: Props) => {
     const menuItems : MenuItems[] = [
         {
             menuTitle : 'Dashboard',
-            menuIcon  : <MdDashboard/>,
+            menuIcon  : <MdDashboard className='icon'/>,
             link : '#',
             active : true,
             open : false,
             drodDownIcon : <IoIosArrowDown/>,
             subMenu : [],
-            iconProps : {
-                className : 'icon',
-                onClick: () => console.log('Dashboard icon clicked'),
-            }
         },
         {
             menuTitle : 'Dashboard-1',
@@ -58,19 +54,19 @@ const AdminSidebar = (props: Props) => {
                 {
                     subMenuTitle : 'sub1',
                     subMenuActive : true,
-                    subMenuIcon : <MdDashboard/>,
+                    subMenuIcon : <MdDashboard className='icon'/>,
                     subMenuLink : '#',
                 },
                 {
                     subMenuTitle : 'sub2',
                     subMenuActive : true,
-                    subMenuIcon : <MdDashboard/>,
+                    subMenuIcon : <MdDashboard className='icon'/>,
                     subMenuLink : '#',
                 },
                 {
                     subMenuTitle : 'sub3',
                     subMenuActive : true,
-                    subMenuIcon : <MdDashboard/>,
+                    subMenuIcon : <MdDashboard className='icon'/>,
                     subMenuLink : '#',
                 }
             ],
@@ -105,10 +101,14 @@ const AdminSidebar = (props: Props) => {
                     menuItems.map((value,index) => (
                         <ul key={index}>
                             <li className={value.active ? 'active':'disabled'}>
-                                <a href={value.link}/>
+                                <a href={value.link}>
                                 {value.menuIcon}
+                                {<span className='as-span-text'>{value.menuTitle}</span>}
+                                </a>
+                                <ul>
+                                    
+                                </ul>
                             </li>
-                         {value.menuTitle}
                         </ul>
                     ))
                 }
