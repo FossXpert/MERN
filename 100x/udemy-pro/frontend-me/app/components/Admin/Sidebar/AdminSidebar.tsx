@@ -1,11 +1,14 @@
 import Image from 'next/image';
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { JSX } from 'react';
 import profileImage from '../../../assets/thumnail.png'
 import '../../../css/css-admin/adminSidebar.css'
 import { MdDashboard } from 'react-icons/md';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-type Props = {}
+import { useSelector } from 'react-redux';
+type Props = {
+  user : any;
+}
 
 interface MenuItems{
     menuTitle: string;
@@ -15,25 +18,15 @@ interface MenuItems{
     active : boolean;
     open : boolean;
     drodDownIcon: JSX.Element;
-    iconProps?: React.HTMLAttributes<HTMLElement>
-    dropDownIconProps?: React.HTMLAttributes<HTMLElement>;
 }
 interface SubMenuItems{
     subMenuTitle: string;
     subMenuIcon : JSX.Element;
     subMenuLink : string;
     subMenuActive : boolean;
-    iconProps?: React.HTMLAttributes<HTMLElement>
 }
-const AdminSidebar = (props: Props) => {
-
-    const [toggle,setToggle] = useState(false);
-    
-    const handleToggle = () =>{
-        setToggle(!toggle);
-    }
-
-    const menuItems : MenuItems[] = [
+const AdminSidebar:FC<Props> = ({user}) => {
+  const [menuItems,setMenuItems] = useState<MenuItems[]>([
         {
             menuTitle : 'Dashboard',
             menuIcon  : <MdDashboard className='icon'/>,
@@ -45,7 +38,7 @@ const AdminSidebar = (props: Props) => {
         },
         {
             menuTitle : 'Dashboard-1',
-            menuIcon  : <MdDashboard/>,
+            menuIcon  : <MdDashboard className='icon'/>,
             link : '#',
             active : true,
             open : false,
@@ -70,8 +63,80 @@ const AdminSidebar = (props: Props) => {
                     subMenuLink : '#',
                 }
             ],
+        },
+        {
+          menuTitle : 'Dashboard-1',
+          menuIcon  : <MdDashboard className='icon'/>,
+          link : '#',
+          active : true,
+          open : false,
+          drodDownIcon : <IoIosArrowDown/>,
+          subMenu : [
+              {
+                  subMenuTitle : 'sub1',
+                  subMenuActive : true,
+                  subMenuIcon : <MdDashboard className='icon'/>,
+                  subMenuLink : '#',
+              },
+              {
+                  subMenuTitle : 'sub2',
+                  subMenuActive : true,
+                  subMenuIcon : <MdDashboard className='icon'/>,
+                  subMenuLink : '#',
+              },
+              {
+                  subMenuTitle : 'sub3',
+                  subMenuActive : true,
+                  subMenuIcon : <MdDashboard className='icon'/>,
+                  subMenuLink : '#',
+              }
+          ],
+        },
+        {
+          menuTitle : 'Dashboard-1',
+          menuIcon  : <MdDashboard className='icon'/>,
+          link : '#',
+          active : true,
+          open : false,
+          drodDownIcon : <IoIosArrowDown/>,
+          subMenu : [
+              {
+                  subMenuTitle : 'sub1',
+                  subMenuActive : true,
+                  subMenuIcon : <MdDashboard className='icon'/>,
+                  subMenuLink : '#',
+              },
+              {
+                  subMenuTitle : 'sub2',
+                  subMenuActive : true,
+                  subMenuIcon : <MdDashboard className='icon'/>,
+                  subMenuLink : '#',
+              },
+              {
+                  subMenuTitle : 'sub3',
+                  subMenuActive : true,
+                  subMenuIcon : <MdDashboard className='icon'/>,
+                  subMenuLink : '#',
+              }
+          ],
         }
-    ]
+    ]);
+
+    // This approach allow us to open multiple dropdowns
+    const handleToggle = (index:number) =>{
+        const newMenuItems = [...menuItems];
+        newMenuItems[index].open = !newMenuItems[index].open;
+        setMenuItems(newMenuItems);
+    };
+
+    //This approach allow us to open only one dropdown
+    // const handleToggle = (index:number) => {
+    //   setMenuItems((prevMenuItems) =>
+    //     prevMenuItems.map((value,i)=>
+    //       i===index ? {...value,open : !value.open} : {...value, open : false}
+    //     ))
+    //   } 
+
 
   return ( 
     <>
@@ -79,24 +144,15 @@ const AdminSidebar = (props: Props) => {
         <div className="assidebar">
           <div className="ashead">
             <div className="asuser-image">
-              <Image width={30} src={profileImage} alt='No'/>
+              <Image width={35} src={profileImage} alt='No'/>
             </div>
             <div className="asuser-details">
-              <p className='astitle'>Web Developer</p>
-              <p className='asname'>Rahul Rai</p>
+              <p className='astitle'>Senior Admin</p>
+              <p className='asname'>{user.name}</p>
             </div>
           </div>
           <div className="asnav">
             <div className="asmenu">
-              <p className='astitle'>Main</p>
-              <ul>
-                <li className='active'>
-                  <a href='#'>
-                    <MdDashboard className="icon"/>
-                    <span className='as-span-text'>Dashboard</span>
-                  </a>
-                </li>
-
                 {
                     menuItems.map((value,index) => (
                         <ul key={index}>
@@ -104,13 +160,17 @@ const AdminSidebar = (props: Props) => {
                                 <a href={value.link}>
                                 {value.menuIcon}
                                 {<span className='as-span-text'>{value.menuTitle}</span>}
-                                {value.open ? () : ()}
+                                {value.subMenu.length>0 &&
+                                 ( value.open ?
+                                   (<IoIosArrowUp className='arrow' onClick={()=>handleToggle(index)} />)
+                                 : (<IoIosArrowDown className='arrow' onClick={()=>handleToggle(index)}/>)
+                                )}
                                 </a>
-                                <ul className='assub-menu'>
+                                <ul className={value.open ? 'assub-menu' : 'disabled'}>
                                     {
                                         value.subMenu.map((value,index)=>(
                                             <li key={index}>
-                                                <a href='#'>
+                                                <a href={value.subMenuLink}>
                                                     {value.subMenuIcon}
                                                     <span className='as-span-text'>{value.subMenuTitle}</span>
                                                 </a>
@@ -122,70 +182,6 @@ const AdminSidebar = (props: Props) => {
                         </ul>
                     ))
                 }
-
-                <li>
-                  <a href='#'>
-                    <MdDashboard className="icon"/>
-                    <span className='as-span-text'>Audience</span>
-                    { toggle? (<IoIosArrowUp className='arrow' onClick={handleToggle} />):
-                        (<IoIosArrowDown className='arrow' onClick={handleToggle} />)}
-                  </a>
-                  <ul className={toggle ? 'assub-menu' : 'disabled'}>
-                    <li>
-                      <a href='#'>
-                        <MdDashboard className="icon"/>
-                        <span className='as-span-text'>Users</span>
-                      </a>
-                    </li>
-                    <li> 
-                      <a href='#'>
-                        <MdDashboard className="icon"/>
-                        <span className='as-span-text'>Subscribers</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className=''>
-                  <a href='#'>
-                    <MdDashboard className="icon"/>
-                    <span className='as-span-text'>Post</span>
-                  </a>
-                </li>
-                <li className=''>
-                  <a href='#'>
-                    <MdDashboard className="icon"/>
-                    <span className='as-span-text'>Post</span>
-                  </a>
-                </li>
-                <li className=''>
-                  <a href='#'>
-                    <MdDashboard className="icon"/>
-                    <span className='as-span-text'>Income</span>
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <MdDashboard className="icon"/>
-                    <span className='as-span-text'>Audience</span>
-                    { toggle? (<IoIosArrowUp className='arrow' onClick={handleToggle} />):
-                        (<IoIosArrowDown className='arrow' onClick={handleToggle} />)}
-                  </a>
-                  <ul className={toggle ? 'assub-menu' : 'disabled'}>
-                    <li>
-                      <a href='#'>
-                        <MdDashboard className="icon"/>
-                        <span className='as-span-text'>Users</span>
-                      </a>
-                    </li>
-                    <li> 
-                      <a href='#'>
-                        <MdDashboard className="icon"/>
-                        <span className='as-span-text'>Subscribers</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
             </div> 
           </div>
         </div>
