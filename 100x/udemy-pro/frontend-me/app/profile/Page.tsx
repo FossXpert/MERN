@@ -1,8 +1,5 @@
 'use client'
 import React, { FC } from 'react'
-import SideBarProfile from '../components/Profile/SideBarProfile';
-import Header2 from '../components/Header2';
-import { useSelector } from 'react-redux';
 import Profile from '../components/Profile/Profile';
 
 
