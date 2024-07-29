@@ -7,7 +7,7 @@ import { MdDashboard } from 'react-icons/md';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 type Props = {
-  user : any;
+//   user : any;
 }
 
 interface MenuItems{
@@ -17,7 +17,7 @@ interface MenuItems{
     subMenu : SubMenuItems[];
     active : boolean;
     open : boolean;
-    drodDownIcon: JSX.Element;
+    dropDownIcon: JSX.Element;
 }
 interface SubMenuItems{
     subMenuTitle: string;
@@ -25,7 +25,9 @@ interface SubMenuItems{
     subMenuLink : string;
     subMenuActive : boolean;
 }
-const AdminSidebar:FC<Props> = ({user}) => {
+const AdminSidebar = () => {
+  const {user} = useSelector((state:any) => state.auth);
+
   const [menuItems,setMenuItems] = useState<MenuItems[]>([
         {
             menuTitle : 'Dashboard',
@@ -33,35 +35,29 @@ const AdminSidebar:FC<Props> = ({user}) => {
             link : '#',
             active : true,
             open : false,
-            drodDownIcon : <IoIosArrowDown/>,
+            dropDownIcon : <IoIosArrowDown/>,
             subMenu : [],
         },
         {
-            menuTitle : 'Dashboard-1',
+            menuTitle : 'Courses',
             menuIcon  : <MdDashboard className='icon'/>,
             link : '#',
             active : true,
             open : false,
-            drodDownIcon : <IoIosArrowDown/>,
+            dropDownIcon : <IoIosArrowDown/>,
             subMenu : [
                 {
-                    subMenuTitle : 'sub1',
+                    subMenuTitle : 'All Course',
                     subMenuActive : true,
                     subMenuIcon : <MdDashboard className='icon'/>,
                     subMenuLink : '#',
                 },
                 {
-                    subMenuTitle : 'sub2',
+                    subMenuTitle : 'Create Course',
                     subMenuActive : true,
                     subMenuIcon : <MdDashboard className='icon'/>,
                     subMenuLink : '#',
                 },
-                {
-                    subMenuTitle : 'sub3',
-                    subMenuActive : true,
-                    subMenuIcon : <MdDashboard className='icon'/>,
-                    subMenuLink : '#',
-                }
             ],
         },
         {
@@ -70,7 +66,7 @@ const AdminSidebar:FC<Props> = ({user}) => {
           link : '#',
           active : true,
           open : false,
-          drodDownIcon : <IoIosArrowDown/>,
+          dropDownIcon : <IoIosArrowDown/>,
           subMenu : [
               {
                   subMenuTitle : 'sub1',
@@ -98,7 +94,7 @@ const AdminSidebar:FC<Props> = ({user}) => {
           link : '#',
           active : true,
           open : false,
-          drodDownIcon : <IoIosArrowDown/>,
+          dropDownIcon : <IoIosArrowDown/>,
           subMenu : [
               {
                   subMenuTitle : 'sub1',
@@ -156,17 +152,17 @@ const AdminSidebar:FC<Props> = ({user}) => {
                 {
                     menuItems.map((value,index) => (
                         <ul key={index}>
-                            <li className={value.active ? 'active':'disabled'}>
-                                <a href={value.link}>
+                            <li className={value.active ? 'active':'disabled'} >
+                                <a href={value.link} >
                                 {value.menuIcon}
-                                {<span className='as-span-text'>{value.menuTitle}</span>}
+                                {<span className='as-span-text' onClick={()=>handleToggle(index)} >{value.menuTitle}</span>}
                                 {value.subMenu.length>0 &&
                                  ( value.open ?
                                    (<IoIosArrowUp className='arrow' onClick={()=>handleToggle(index)} />)
                                  : (<IoIosArrowDown className='arrow' onClick={()=>handleToggle(index)}/>)
                                 )}
                                 </a>
-                                <ul className={value.open ? 'assub-menu' : 'disabled'}>
+                               { value.subMenu.length >0 && <ul className={value.open ? 'assub-menu' : 'disabled'}>
                                     {
                                         value.subMenu.map((value,index)=>(
                                             <li key={index}>
@@ -177,7 +173,7 @@ const AdminSidebar:FC<Props> = ({user}) => {
                                             </li>
                                         ))
                                     }
-                                </ul>
+                                </ul>}
                             </li>
                         </ul>
                     ))

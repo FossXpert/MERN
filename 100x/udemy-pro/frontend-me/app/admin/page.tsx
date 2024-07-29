@@ -6,10 +6,9 @@ import { useSelector } from 'react-redux'
 type Props = {}
 
 const page = () => {
-  const {user} = useSelector((state:any) => state.auth);
   return (
     <div>
-      <AdminSidebar user={user}/>
+      <AdminSidebar/>
     </div>
   )
 }
