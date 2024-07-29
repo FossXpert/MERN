@@ -11,7 +11,7 @@ type Props = {
   isMobile :boolean;
   sSize : string;
 }
-const page:FC<Props> =({open,setOpen,route,setRoute,sSize,isMobile}) => {
+const page =() => {
   return (
     <div>
      <Profile/>
