@@ -15,13 +15,15 @@ interface MenuItems{
     active : boolean;
     open : boolean;
     drodDownIcon: JSX.Element;
-    iconProps? : React.HTMLAttributeAnchorTarget;
+    iconProps?: React.HTMLAttributes<HTMLElement>
+    dropDownIconProps?: React.HTMLAttributes<HTMLElement>;
 }
 interface SubMenuItems{
     subMenuTitle: string;
     subMenuIcon : JSX.Element;
     subMenuLink : string;
     subMenuActive : boolean;
+    iconProps?: React.HTMLAttributes<HTMLElement>
 }
 const AdminSidebar = (props: Props) => {
 
@@ -40,6 +42,10 @@ const AdminSidebar = (props: Props) => {
             open : false,
             drodDownIcon : <IoIosArrowDown/>,
             subMenu : [],
+            iconProps : {
+                className : 'icon',
+                onClick: () => console.log('Dashboard icon clicked'),
+            }
         },
         {
             menuTitle : 'Dashboard-1',
