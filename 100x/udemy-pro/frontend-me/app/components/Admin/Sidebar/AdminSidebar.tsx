@@ -104,7 +104,7 @@ const AdminSidebar = (props: Props) => {
                                 <a href={value.link}>
                                 {value.menuIcon}
                                 {<span className='as-span-text'>{value.menuTitle}</span>}
-                                {value.open}
+                                {value.open ? () : ()}
                                 </a>
                                 <ul className='assub-menu'>
                                     {
