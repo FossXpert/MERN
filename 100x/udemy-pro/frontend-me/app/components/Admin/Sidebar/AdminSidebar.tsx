@@ -15,6 +15,7 @@ interface MenuItems{
     active : boolean;
     open : boolean;
     drodDownIcon: JSX.Element;
+    iconProps? : React.HTMLAttributeAnchorTarget;
 }
 interface SubMenuItems{
     subMenuTitle: string;
