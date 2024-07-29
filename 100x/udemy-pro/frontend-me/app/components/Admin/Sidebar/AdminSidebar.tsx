@@ -106,7 +106,16 @@ const AdminSidebar = (props: Props) => {
                                 {<span className='as-span-text'>{value.menuTitle}</span>}
                                 </a>
                                 <ul>
-                                    
+                                    {
+                                        value.subMenu.map((value,index)=>(
+                                            <li key={index}>
+                                                <a href='#'>
+                                                    {value.subMenuIcon}
+                                                    <span className='as-span-text'>{value.subMenuTitle}</span>
+                                                </a>
+                                            </li>
+                                        ))
+                                    }
                                 </ul>
                             </li>
                         </ul>
