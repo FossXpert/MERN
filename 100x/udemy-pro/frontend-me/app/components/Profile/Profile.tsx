@@ -5,7 +5,6 @@ import '../../css/css-profile/profile.css'
 import MyAccount from './MyAccount'
 import EnrolledCourses from './EnrolledCourses'
 import ChangePassword from './ChangePassword'
-import AdminDashboard from './AdminDashboard'
 import Link from 'next/link'
 type Props = {}
 
