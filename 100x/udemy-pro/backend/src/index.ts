@@ -22,7 +22,8 @@ app.use(
         origin : [
             "http://localhost:3000",
             "http://100.93.3.137:3000",
-            "http://localhost:3001"
+            "http://localhost:3001",
+            "https://udemy-p1pe1f8p6-rahul-rays-projects.vercel.app/"
         ],
         credentials : true,
     })

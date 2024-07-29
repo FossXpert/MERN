@@ -4,15 +4,8 @@
     box-sizing: border-box;
 }
 
-.ascontainer {
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
-    background-color: #5b6677;
-}
-
 .assidebar {
-    padding: 24px;
+    padding: 2%;
     border: 1px solid black;
     background-color: #fff;
     width: 250px;
@@ -117,6 +110,11 @@
 
 .asmenu .assub-menu li a:hover {
     color: #7F56D9;
+    background-color: #fff;
+}
+.asmenu .assub-menu li a:focus {
+    color: #7F56D9;
+    background-color: #fff;
 }
 
 .disabled {

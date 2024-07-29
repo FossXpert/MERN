@@ -1,0 +1,16 @@
+.admin-container{
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+    border: 1px solid black;
+    gap: 10px;
+}
+.admin-container-mini{
+    display: flex;
+    width: 82%;
+    background-color: rgb(222, 159, 159);
+    border: 1px solid black;
+    box-shadow: 0 0 8px;
+    border-radius: 8px;
+    margin-left: 0.8rem;
+}

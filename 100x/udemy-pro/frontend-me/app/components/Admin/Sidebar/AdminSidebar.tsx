@@ -136,7 +136,7 @@ const AdminSidebar = () => {
 
   return ( 
     <>
-      <div className="ascontainer">
+      
         <div className="assidebar">
           <div className="ashead">
             <div className="asuser-image">
@@ -181,7 +181,6 @@ const AdminSidebar = () => {
             </div> 
           </div>
         </div>
-      </div>
     </>
   )
 }
