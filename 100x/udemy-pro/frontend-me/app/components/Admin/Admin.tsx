@@ -10,13 +10,15 @@ const Admin = (props: Props) => {
 
   const router = useRouter();
 
+  const renderContent = () => {
+    
+  }
+
   return (
     <div className='admin-container'>
         <AdminSidebar/>
         <div className='admin-container-mini'>
-              {
-                
-              }
+          
         </div>
     </div>
   )
