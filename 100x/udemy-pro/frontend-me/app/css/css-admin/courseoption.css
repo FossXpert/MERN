@@ -1,7 +1,7 @@
-.courseoptions{
+.courseoption{
     width: 50%;
-    height: 40px;
-    background-color: #ccc;
+    height: 250px;
+    background-color: #d91010;
     border: 1px solid black;
     display: flex;
     justify-content: center;
