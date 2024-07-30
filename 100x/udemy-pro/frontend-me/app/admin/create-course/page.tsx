@@ -1,3 +1,4 @@
+'use client'
 import CreateCourse from '../../../app/components/Admin/Courses/CreateCourse'
 import React from 'react'
 
