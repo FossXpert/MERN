@@ -180,7 +180,7 @@ const AdminSidebar = () => {
                                             {
                                                 value.subMenu.map((value, index) => (
                                                     <li key={index}>
-                                                        <a href={value.subMenuLink}>
+                                                        <a onClick={() => handleOnClick(index,value.subMenuLink)}>
                                                             {value.subMenuIcon}
                                                             <span className='as-span-text'>{value.subMenuTitle}</span>
                                                         </a>
