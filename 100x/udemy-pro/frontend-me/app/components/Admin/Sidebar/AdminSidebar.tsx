@@ -128,15 +128,12 @@ const AdminSidebar = () => {
         setMenuItems(newMenuItems);
     };
 
-    const handleOnClick = (index: number,link : string) => {
+    const handleOnClick = (index: number) => {
         setMenuItems((prevItems) =>
             prevItems.map((value, i) =>
                 i === index ? { ...value, active: true } :
                     { ...value, active: false }
             ));
-            if (link !== '#') {
-                router.push(link);
-            }
     }
 
     //This approach allow us to open only one dropdown
@@ -167,7 +164,7 @@ const AdminSidebar = () => {
                             menuItems.map((value, index) => (
                                 <ul key={index}>
                                     <li className={value.active ? 'active' : 'disabled'} >
-                                        <a onClick={() => handleOnClick(index,value.link)}>
+                                        <a onClick={() => handleOnClick(index)}>
                                             {value.menuIcon}
                                             {<span className='as-span-text' onClick={() => handleToggle(index)} >{value.menuTitle}</span>}
                                             {value.subMenu.length > 0 &&
@@ -180,7 +177,7 @@ const AdminSidebar = () => {
                                             {
                                                 value.subMenu.map((value, index) => (
                                                     <li key={index}>
-                                                        <a onClick={() => handleOnClick(index,value.subMenuLink)}>
+                                                        <a onClick={() => handleOnClick(index)}>
                                                             {value.subMenuIcon}
                                                             <span className='as-span-text'>{value.subMenuTitle}</span>
                                                         </a>
