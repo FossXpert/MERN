@@ -6,6 +6,7 @@ import '../../../css/css-admin/adminSidebar.css'
 import { MdDashboard } from 'react-icons/md';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { useSelector } from 'react-redux';
+import { FaBullseye } from 'react-icons/fa6';
 type Props = {
     //   user : any;
 }
@@ -126,7 +127,11 @@ const AdminSidebar = () => {
     };
 
     const handleOnClick = (index: number) => {
-        setMenuItems((prevItems) => prevItems)
+        setMenuItems((prevItems) =>
+            prevItems.map((value, i) =>
+                i === index ? { ...value, active: true } :
+                    { ...value, active: false }
+            ))
     }
 
     //This approach allow us to open only one dropdown
