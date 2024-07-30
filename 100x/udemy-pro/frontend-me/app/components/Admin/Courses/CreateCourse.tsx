@@ -1,10 +1,13 @@
 import React from 'react'
+import CourseOptons from './CourseOption'
 
 type Props = {}
 
 const CreateCourse = (props: Props) => {
   return (
-    <div>CreateCourse</div>
+    <div>
+      <CourseOptons/>
+    </div>
   )
 }
 
