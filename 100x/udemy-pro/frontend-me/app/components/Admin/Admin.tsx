@@ -3,16 +3,16 @@ import AdminSidebar from './Sidebar/AdminSidebar'
 
 import '../../css/css-admin/admin.css'
 import CreateCourse from './Courses/CreateCourse'
-import { useRouter } from 'next/router'
+import { useRouter ,usePathname} from 'next/navigation'
 type Props = {}
 
 const Admin = (props: Props) => {
 
-  const router = useRouter();
+  const pathName = usePathname();
 
   const renderContent = () => {
 
-    switch(router.pathname){
+    switch(pathName){
       case 'admin/create-course':
         return <CreateCourse/>
       case 'admin/dashboard':
