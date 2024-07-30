@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import {Providers} from '../redux/Providers'
-import { BrowserRouter as Router } from "react-router-dom";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,10 +18,8 @@ export default function RootLayout({
     <html lang="en">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
     <body>
-      <Router>
     <Toaster position="top-center" reverseOrder={false}/>
     <Providers>{children}</Providers>
-    </Router>
     </body>
     </html>
   );
