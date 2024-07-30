@@ -27,7 +27,7 @@ interface SubMenuItems{
 }
 const AdminSidebar = () => {
   const {user} = useSelector((state:any) => state.auth);
-
+  const [active,setActive] = useState(0);
   const [menuItems,setMenuItems] = useState<MenuItems[]>([
         {
             menuTitle : 'Dashboard',

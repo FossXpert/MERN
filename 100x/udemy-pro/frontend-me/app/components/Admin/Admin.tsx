@@ -10,7 +10,6 @@ const Admin = (props: Props) => {
     <div className='admin-container'>
         <AdminSidebar/>
         <div className='admin-container-mini'>
-          <CreateCourse/>
         </div>
     </div>
   )
