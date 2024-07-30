@@ -11,7 +11,10 @@ const Admin = (props: Props) => {
   const router = useRouter();
 
   const renderContent = () => {
-    
+
+    switch(router.pathname){
+      
+    }
   }
 
   return (
