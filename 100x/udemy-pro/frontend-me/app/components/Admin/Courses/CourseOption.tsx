@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-type Props = {}
+type Props = {
+  active : number;
+  setActive : (active : number) => void;
+}
 
-const CourseOptons = (props: Props) => {
+const CourseOptions:FC<Props> = ({active,setActive}) => {
   return (
     <div className='courseoption'>
         
@@ -10,4 +13,4 @@ const CourseOptons = (props: Props) => {
   )
 }
 
-export default CourseOptons
+export default CourseOptions
