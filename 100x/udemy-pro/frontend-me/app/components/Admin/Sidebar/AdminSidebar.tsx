@@ -7,6 +7,8 @@ import { MdDashboard } from 'react-icons/md';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 import { FaBullseye } from 'react-icons/fa6';
+import { useRouter } from 'next/router';
+
 type Props = {
     //   user : any;
 }
@@ -28,7 +30,7 @@ interface SubMenuItems {
 }
 const AdminSidebar = () => {
     const { user } = useSelector((state: any) => state.auth);
-    const [active, setActive] = useState(0);
+    const router = useRouter();
     const [menuItems, setMenuItems] = useState<MenuItems[]>([
         {
             menuTitle: 'Dashboard',
@@ -126,12 +128,15 @@ const AdminSidebar = () => {
         setMenuItems(newMenuItems);
     };
 
-    const handleOnClick = (index: number) => {
+    const handleOnClick = (index: number,link : string) => {
         setMenuItems((prevItems) =>
             prevItems.map((value, i) =>
                 i === index ? { ...value, active: true } :
                     { ...value, active: false }
-            ))
+            ));
+            if (link !== '#') {
+                router.push(link);
+            }
     }
 
     //This approach allow us to open only one dropdown
@@ -162,7 +167,7 @@ const AdminSidebar = () => {
                             menuItems.map((value, index) => (
                                 <ul key={index}>
                                     <li className={value.active ? 'active' : 'disabled'} >
-                                        <a onClick={() => handleOnClick(index)}>
+                                        <a onClick={() => handleOnClick(index,value.link)}>
                                             {value.menuIcon}
                                             {<span className='as-span-text' onClick={() => handleToggle(index)} >{value.menuTitle}</span>}
                                             {value.subMenu.length > 0 &&
