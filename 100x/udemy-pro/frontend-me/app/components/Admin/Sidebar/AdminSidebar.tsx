@@ -56,7 +56,7 @@ const AdminSidebar = () => {
                     subMenuTitle : 'Create Course',
                     subMenuActive : true,
                     subMenuIcon : <MdDashboard className='icon'/>,
-                    subMenuLink : '#',
+                    subMenuLink : 'admin/create-course',
                 },
             ],
         },
