@@ -13,7 +13,12 @@ const Admin = (props: Props) => {
   const renderContent = () => {
 
     switch(router.pathname){
-      
+      case 'admin/create-course':
+        return <CreateCourse/>
+      case 'admin/dashboard':
+        return <Admin/>
+      default : 
+        return <Admin/>
     }
   }
 
@@ -21,7 +26,7 @@ const Admin = (props: Props) => {
     <div className='admin-container'>
         <AdminSidebar/>
         <div className='admin-container-mini'>
-          
+          {renderContent()}
         </div>
     </div>
   )
