@@ -79,7 +79,7 @@ const CourseInformation:FC<Props> = ({courseInfo,setCourseInfo,active,setActive}
          </div><br/>
          <div className='mb-5'>
             <label className={`${styles.label}`}>
-              Course Desciption
+              Course Description
             </label>
            <textarea 
            className={`${styles.input} !h-min py-2`} 
