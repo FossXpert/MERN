@@ -1,35 +1,16 @@
-import React from 'react'
-import AdminSidebar from './Sidebar/AdminSidebar'
+// components/Layout/AdminLayout.js
 
-import '../../css/css-admin/admin.css'
-import CreateCourse from './Courses/CreateCourse'
-import { useRouter ,usePathname} from 'next/navigation'
-type Props = {}
+import AdminSidebar from "./Sidebar/AdminSidebar";
 
-const Admin = (props: Props) => {
-
-  const pathName = usePathname();
-
-  const renderContent = () => {
-
-    switch(pathName){
-      case 'admin/create-course':
-        return <CreateCourse/>
-      case 'admin/dashboard':
-        return <Admin/>
-      default : 
-        return <Admin/>
-    }
-  }
-
+const AdminLayout = ({ children }) => {
   return (
-    <div className='admin-container'>
-        <AdminSidebar/>
-        <div className='admin-container-mini'>
-          {renderContent()}
-        </div>
+    <div>
+      <AdminSidebar />
+      <div>
+        {children}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Admin
+export default AdminLayout;

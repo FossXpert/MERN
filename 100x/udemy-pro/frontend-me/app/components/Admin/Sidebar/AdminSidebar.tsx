@@ -8,9 +8,11 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 import { FaBullseye } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 type Props = {
-    //   user : any;
+    active : number;
+    setActive : (active:number) => void; 
 }
 
 interface MenuItems {
@@ -27,10 +29,10 @@ interface SubMenuItems {
     subMenuIcon: JSX.Element;
     subMenuLink: string;
     subMenuActive: boolean;
+    subMenuNumber : number;
 }
-const AdminSidebar = () => {
+const AdminSidebar:FC<Props> = ({active,setActive}) => {
     const { user } = useSelector((state: any) => state.auth);
-    const router = useRouter();
     const [menuItems, setMenuItems] = useState<MenuItems[]>([
         {
             menuTitle: 'Dashboard',
@@ -54,12 +56,15 @@ const AdminSidebar = () => {
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
                     subMenuLink: '#',
+                    subMenuNumber: 1,
                 },
                 {
                     subMenuTitle: 'Create Course',
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
-                    subMenuLink: 'admin/create-course',
+                    subMenuLink: '#',
+                    subMenuNumber: 2,
+
                 },
             ],
         },
@@ -76,18 +81,21 @@ const AdminSidebar = () => {
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
                     subMenuLink: '#',
+                    subMenuNumber : 3,
                 },
                 {
                     subMenuTitle: 'sub2',
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
                     subMenuLink: '#',
+                    subMenuNumber : 4,
                 },
                 {
                     subMenuTitle: 'sub3',
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
                     subMenuLink: '#',
+                    subMenuNumber : 5,
                 }
             ],
         },
@@ -104,18 +112,21 @@ const AdminSidebar = () => {
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
                     subMenuLink: '#',
+                    subMenuNumber : 0,
                 },
                 {
                     subMenuTitle: 'sub2',
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
                     subMenuLink: '#',
+                    subMenuNumber : 0,
                 },
                 {
                     subMenuTitle: 'sub3',
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
                     subMenuLink: '#',
+                    subMenuNumber : 0,
                 }
             ],
         }
@@ -128,14 +139,11 @@ const AdminSidebar = () => {
         setMenuItems(newMenuItems);
     };
 
-    const handleOnClick = (index: number) => {
-        setMenuItems((prevItems) =>
-            prevItems.map((value, i) =>
-                i === index ? { ...value, active: true } :
-                    { ...value, active: false }
-            ));
+    const handleOnClick = (index:number) => {
+
     }
 
+    // const router = useRouter()
     //This approach allow us to open only one dropdown
     // const handleToggle = (index:number) => {
     //   setMenuItems((prevMenuItems) =>
@@ -147,7 +155,6 @@ const AdminSidebar = () => {
 
     return (
         <>
-
             <div className="assidebar">
                 <div className="ashead">
                     <div className="asuser-image">
@@ -164,7 +171,7 @@ const AdminSidebar = () => {
                             menuItems.map((value, index) => (
                                 <ul key={index}>
                                     <li className={value.active ? 'active' : 'disabled'} >
-                                        <a onClick={() => handleOnClick(index)}>
+                                        <Link href={value.link}>
                                             {value.menuIcon}
                                             {<span className='as-span-text' onClick={() => handleToggle(index)} >{value.menuTitle}</span>}
                                             {value.subMenu.length > 0 &&
@@ -172,15 +179,15 @@ const AdminSidebar = () => {
                                                     (<IoIosArrowUp className='arrow' onClick={() => handleToggle(index)} />)
                                                     : (<IoIosArrowDown className='arrow' onClick={() => handleToggle(index)} />)
                                                 )}
-                                        </a>
+                                        </Link>
                                         {value.subMenu.length > 0 && <ul className={value.open ? 'assub-menu' : 'disabled'}>
                                             {
                                                 value.subMenu.map((value, index) => (
                                                     <li key={index}>
-                                                        <a onClick={() => handleOnClick(index)}>
+                                                        <Link href={value.subMenuLink} onClick={() => setActive(value.subMenuNumber)}>
                                                             {value.subMenuIcon}
                                                             <span className='as-span-text'>{value.subMenuTitle}</span>
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                 ))
                                             }
