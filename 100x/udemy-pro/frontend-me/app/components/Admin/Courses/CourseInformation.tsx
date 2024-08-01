@@ -18,8 +18,18 @@ const CourseInformation = (props: Props) => {
   const handleDragLeave = () => {
     setDragged(false)
   }
-  const handleDrop = () => {
-    console.log("handle Drop")
+  const handleDrop = (e:any) => {
+    console.log("handle Drop");
+    e.preventDefault();
+
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      if(fileReader.readyState === 2) {
+        const avatar = fileReader.result as string;
+        console.log(avatar);
+      }
+    }
+    fileReader.readAsDataURL(e.target.files[0])
   }
   return (
     <div className='course-information-container'>
@@ -100,9 +110,9 @@ const CourseInformation = (props: Props) => {
             />
             </div>
           </div>
-          <div onDrop={handleDrop} onDragOver={handleDragOver} onDragLeave={handleDragLeave} className='group-5'>
+          <div draggable={true} onDrop={handleDrop} onDragOver={handleDragOver} onDragLeave={handleDragLeave} className='group-5'>
           <input className='hidden' name='file' type='file' accept='image/*' id=''/>
-          <label  htmlFor='file'>
+          <label className={`${dragged ? "bg-blue-500" : "bg-transparent"}`} htmlFor='file'>
             <span>Drag and drop an image here</span>
           </label>
           </div>

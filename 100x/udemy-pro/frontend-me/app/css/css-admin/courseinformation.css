@@ -64,6 +64,7 @@
 
 .input-textarea-1,
 .input-textarea-2 {
+    width: 100%;
     height: min-content;
     outline: none;
     resize: none;
