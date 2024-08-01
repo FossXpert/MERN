@@ -15,15 +15,55 @@ const CourseInformation = (props: Props) => {
         <div className='form'>
           <div className='group-1'>
             <label htmlFor=''>Course Name</label>
-            <input className='input-box-1' type='text'/>
+            <input
+              className='input-box-1'
+              type='text' 
+              name='course-name' 
+              placeholder='Please Enter Course Name' 
+              required
+            />
           </div>
           <div className='group-2'>
             <label htmlFor=''>Course Description</label>
-            <textarea rows={10} cols={117} className='input-textarea-1'/>
+            <textarea 
+              name='course-description' 
+              placeholder='Please Enter Course Description' 
+              rows={10} 
+              cols={117} 
+              className='input-textarea-1'
+            />
           </div>
           <div className='group-3'>
-            <label htmlFor=''>Course Price</label>
-            <input type='text' className='input-box-1'/>
+            <div className='group-3-1'>
+              <label htmlFor=''>Course Price</label>
+              <input
+              className='input-box-1'
+              type='text' 
+              name='course-price' 
+              placeholder='Please Enter Course Price' 
+              required
+            />
+            </div>
+            <div className='group-3-2'>
+              <label htmlFor=''>Est. Price (optional)</label>
+              <input
+              className='input-box-1'
+              type='text' 
+              name='course-estimated-price' 
+              placeholder='Please Enter Estimated Course Price' 
+              required
+            />
+            </div>
+          </div>
+          <div className='group-4'>
+          <label htmlFor=''>Course Tags</label>
+            <textarea
+              name='course-description' 
+              placeholder='Please Enter Tags' 
+              rows={6} 
+              cols={117} 
+              className='input-textarea-2'
+            />
           </div>
         </div>
     </div>

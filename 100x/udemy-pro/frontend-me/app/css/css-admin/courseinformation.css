@@ -1,5 +1,5 @@
-.course-information-container{
-    display:flex;
+.course-information-container {
+    display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid rgb(170, 29, 29);
@@ -12,12 +12,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border : 1px solid green;
+    border: 1px solid green;
     width: 75%;
     height: 100%;
     padding: 0.5rem;
 }
-.input-box-1{
+
+.input-box-1 {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -26,32 +27,57 @@
     box-sizing: border-box;
     outline: none;
 }
-.input-label{
+
+.input-label {
     font-size: 1rem;
     font-weight: bold;
 }
-.group-1{
+
+.group-1 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    height: 12%;
+    height: 75px;
     gap: .5rem;
     border: 1px solid blue;
 }
-.group-2{
+
+.group-2,.group-4 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    height: 25%;
+    height: 192px;
     gap: 0.5rem;
     border: 1px solid blue;
 }
-.input-textarea-1{
+.group-4{
+    height: 153px;
+}
+
+.input-textarea-1,
+.input-textarea-2 {
     height: min-content;
     outline: none;
-    resize : none;
+    resize: none;
     box-sizing: border-box;
 }
 
+.group-3 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid blue;
+    justify-content: space-between;
+}
+
+.group-3-1,
+.group-3-2 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 75px;
+    border: 1px solid blue;
+    gap: 0.5rem;
+}
