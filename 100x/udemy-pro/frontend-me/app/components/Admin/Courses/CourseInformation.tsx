@@ -21,6 +21,10 @@ const CourseInformation = (props: Props) => {
             <label htmlFor=''>Course Description</label>
             <textarea rows={10} cols={117} className='input-textarea-1'/>
           </div>
+          <div className='group-3'>
+            <label htmlFor=''>Course Price</label>
+            <input type='text' className='input-box-1'/>
+          </div>
         </div>
     </div>
   )
