@@ -1,24 +1,25 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-type Props = {}
+type Props = {
+  active : number;
+  setActive : (active : number) => void;
+}
 
-const CourseOptions = (props: Props) => {
+const CourseOptions:FC<Props> = ({active,setActive}) => {
   return (
-    <>
-    <div className='w-full flex flex-col items-center justify-center'>
-        <h2>Course Information</h2>
-        <div className=''>
-            <label htmlFor=''>What are the benefits for the student in this course</label>
-            <input
-              className=''
-              type='text' 
-              name='course-name' 
-              placeholder='Please Enter Course Name' 
-              required
-            />
+    <div className='flex w-full h-full
+       items-center flex-col border border-solid border-blue-500'>
+      <h1 className=''>Course Options</h1>
+      {/* class for form */}
+      <div className='flex w-3/4 h-full border border-solid border-green-500'>
+        <div className='flex border border-solid border-violet-300 w-full h-[75px]
+        justify-center items-center flex-col'>
+        {/* <label className='text-[1rem]' htmlFor=''>What are the benefits for the student in this course</label> */}
+        <input type='text' placeholder='Enter benefits' className=''/>
         </div>
+      </div>
     </div>
-    </>
+   
   )
 }
 
