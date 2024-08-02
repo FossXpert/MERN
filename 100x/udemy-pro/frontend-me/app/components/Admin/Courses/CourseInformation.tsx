@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import '../../../css/css-admin/courseinformation.css'
 import { TextareaAutosize } from '@mui/material'
 
-type Props = {}
+type Props = {
+  active : number;
+  setActive : (active : number) => void;
+}
 
-const CourseInformation = (props: Props) => {
+const CourseInformation:FC<Props> = ({active,setActive}) => {
+
 
   const [dragged,setDragged]  = useState(false);
 
@@ -115,6 +119,9 @@ const CourseInformation = (props: Props) => {
           <label className={`${dragged ? "bg-blue-500" : "bg-transparent"}`} htmlFor='file'>
             <span>Drag and drop an image here</span>
           </label>
+          </div>
+          <div className='create-course-buttons'>
+            <button className='button-global' onClick={()=>setActive(2)}>Next</button>
           </div>
         </div>
     </div>
