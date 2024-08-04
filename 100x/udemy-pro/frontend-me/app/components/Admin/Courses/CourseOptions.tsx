@@ -16,9 +16,8 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
     setBenefits([...benefits , {title : ""}]);
   }
   const handleSetBenefitMinus = (index : number) => {
-
-    benefits.filter
-    setBenefits([...benefits , {title : ""}]);
+    const updatedBenefit = benefits.filter((value,i) => index !== i);
+    setBenefits(updatedBenefit);
   }
 
   return (
