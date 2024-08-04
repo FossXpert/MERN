@@ -20,9 +20,11 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
     setBenefits(updatedBenefit);
   }
   const handleBenefitChange = (value:any,index:number) =>{
-    benefits.map((valuee,i) =>{
-      i === index 
-    })
+    const updatedBenefit = benefits.map((valuee,i) =>{
+      
+      return valuee;
+    });
+    setBenefits(updatedBenefit);
   }
   return (
     <div className='flex w-full h-full
