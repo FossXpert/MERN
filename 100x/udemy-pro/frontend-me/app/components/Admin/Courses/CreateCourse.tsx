@@ -15,6 +15,7 @@ const CreateCourse = (props: Props) => {
   const benefitSchema = z.object({
     title : z.string()
   })
+
   
 
   const [benefits,setBenefits] = useState([]);
