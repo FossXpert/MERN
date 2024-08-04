@@ -9,9 +9,11 @@ type Props = {
   setActive : (active : number) => void;
   benefits : {title : string}[];
   setBenefits : (benefits : {title : string}[]) => void;
+  prerequisites : {title : string}[];
+  setPrerequisites : (prerequisites : {title : string}[]) => void;
 }
 
-const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
+const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequisites,setPrerequisites}) => {
 
   const handleSetBenefit = () => {
     setBenefits([...benefits , {title : ""}]);
@@ -27,8 +29,23 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
     setBenefits(updatedBenefit);
   }
 
+  const handleSetPrerequisites = () => {
+    setPrerequisites([...prerequisites , {title : ""}]);
+  }
+  const handleSetPrerequisitesMinus = (index : number) => {
+    const updatedPrerequisites = prerequisites.filter((value,i) => index !== i);
+    setBenefits(updatedPrerequisites);
+  }
+  const handlePrerequisitesChange = (value:any,index:number) =>{
+    const updatedBenefit = benefits.map((valuee,i) =>
+      i === index ? {...valuee, title:value}: valuee
+    );
+    setBenefits(updatedBenefit);
+  }
 
-  
+
+
+
 
   return (
     <div className='flex w-full h-full

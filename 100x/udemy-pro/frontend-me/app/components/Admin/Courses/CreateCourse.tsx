@@ -13,6 +13,7 @@ const CreateCourse = (props: Props) => {
   const [active, setActive] = useState(0);
 
   const [benefits,setBenefits] = useState([{title : ""}]);
+  const [prerequisites, setPrerequisites] = useState([{ title: "" }])
 
 
   return (
@@ -24,7 +25,8 @@ const CreateCourse = (props: Props) => {
       <div className='create-course-container-secondary'>
           {active ===1 && <CourseInformation active={active} setActive={setActive}/>}
           {active ===2 && <CourseOptions active={active} setActive={setActive} 
-            benefits={benefits} setBenefits={setBenefits}/>}
+            benefits={benefits} setBenefits={setBenefits} 
+            prerequisites={prerequisites} setPrerequisites={setPrerequisites} />}
           {active ===3 && <CourseContent/>}
           {active ===4 && <CoursePreview/>}
       </div>
