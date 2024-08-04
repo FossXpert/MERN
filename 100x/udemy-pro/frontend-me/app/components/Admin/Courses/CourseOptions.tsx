@@ -8,6 +8,10 @@ type Props = {
 }
 
 const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
+
+  const handleSetBenefit = () => {
+    setBenefits([...benefits , {title : ""}]);
+  }
   return (
     <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>
