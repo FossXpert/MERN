@@ -34,13 +34,13 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequi
   }
   const handleSetPrerequisitesMinus = (index : number) => {
     const updatedPrerequisites = prerequisites.filter((value,i) => index !== i);
-    setBenefits(updatedPrerequisites);
+    setPrerequisites(updatedPrerequisites);
   }
   const handlePrerequisitesChange = (value:any,index:number) =>{
     const updatedPrerequisites = prerequisites.map((valuee,i) =>
       i === index ? {...valuee, title:value}: valuee
     );
-    setBenefits(updatedPrerequisites);
+    setPrerequisites(updatedPrerequisites);
   }
 
 
