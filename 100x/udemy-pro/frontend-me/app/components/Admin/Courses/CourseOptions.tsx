@@ -15,7 +15,7 @@ const CourseOptions:FC<Props> = ({active,setActive}) => {
         <div className='flex border border-solid border-violet-300 w-full h-[75px]
         justify-center items-center flex-col'>
         <label className='text-[1rem]' htmlFor=''>What are the benefits for the student in this course</label>
-        <input type='text' placeholder='Enter benefits' className=''/>
+        <input type='text' placeholder='Enter benefits' className='w-full'/>
         </div>
       </div>
     </div>
