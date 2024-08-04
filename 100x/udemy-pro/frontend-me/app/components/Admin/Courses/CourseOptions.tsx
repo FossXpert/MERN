@@ -15,6 +15,7 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
   const handleSetBenefit = () => {
     setBenefits([...benefits , {title : ""}]);
   }
+
   return (
     <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>
@@ -29,8 +30,10 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
               <input key={index} value={value.title} type='text' placeholder='Enter benefits' className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
             ))
           }
+          <div className='flex pl-2 pr-2 justify-between w-full border border-solid border-green-500'>
           <FaSquarePlus onClick={handleSetBenefit}/>          
-          <FaSquareMinus onClick={handleSetBenefit}/>
+          <FaSquareMinus onClick={()=>benefits.pop()}/>
+          </div>
         </div>
       </div>
     </div>
