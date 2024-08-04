@@ -19,7 +19,11 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
     const updatedBenefit = benefits.filter((value,i) => index !== i);
     setBenefits(updatedBenefit);
   }
-
+  const handleBenefitChange = (value:any,index:number) =>{
+    benefits.map((valuee,i) =>{
+      i === index 
+    })
+  }
   return (
     <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>
@@ -32,7 +36,7 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
           {
             benefits.map((value,index) => (
               <div className='w-full flex gap-2 items-center' key={index}>
-              <input value={value.title} type='text' placeholder={`Enter Benefit : ${index+1}`} className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
+              <input value={value.title} onChange={(e)=>handleBenefitChange(e.target.value,index)} type='text' placeholder={`Enter Benefit : ${index+1}`} className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
               <FaSquareMinus onClick={()=>handleSetBenefitMinus(index)}/>
               </div>
             ))
