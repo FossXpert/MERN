@@ -6,6 +6,8 @@ type Props = {
 }
 
 const CourseOptions:FC<Props> = ({active,setActive}) => {
+
+  
   return (
     <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>
