@@ -15,7 +15,9 @@ type Props = {}
 
 const CreateCourse: FC<Props> = () => {
 
-    const [createCourse,{isLoading,isSuccess,error}] = useCreateCourseMutation()
+    const [createCourse,{isLoading,isSuccess,error}] = useCreateCourseMutation();
+    const [benefits, setBenefits] = useState([{ title: "" }]);
+    const [prerequisites, setPrerequisites] = useState([{ title: "" }]);
 
     useEffect(()=>{
         if(isSuccess){
@@ -41,9 +43,7 @@ const CreateCourse: FC<Props> = () => {
         demoUrl: "",
         thumbnail: "",
     });
-
-    const [benefits, setBenefits] = useState([{ title: "" }]);
-    const [prerequisites, setPrerequisites] = useState([{ title: "" }])
+    
     const [courseContentData, setCourseContentData] = useState([{
         videoUrl: "",
         title: "",
