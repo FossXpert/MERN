@@ -74,7 +74,7 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequi
           {
             prerequisites.map((value,index) => (
               <div className='w-full flex gap-2 items-center' key={index}>
-              <input value={value.title} onChange={(e)=>handlePrerequisitesChange(e.target.value,index)} type='text' placeholder={`Enter Benefit : ${index+1}`} className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
+              <input value={value.title} onChange={(e)=>handlePrerequisitesChange(e.target.value,index)} type='text' placeholder={`Enter Prerequisite : ${index+1}`} className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
               <FaSquareMinus onClick={()=>handleSetPrerequisitesMinus(index)}/>
               </div>
             ))
