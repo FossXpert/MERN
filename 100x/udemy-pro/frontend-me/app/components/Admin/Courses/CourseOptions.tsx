@@ -27,12 +27,15 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
           <label className='text-[1rem]' htmlFor=''>What are the benefits for the student in this course</label>
           {
             benefits.map((value,index) => (
-              <input key={index} value={value.title} type='text' placeholder='Enter benefits' className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
+              <div className='w-full flex gap-2 items-center' key={index}>
+              <input value={value.title} type='text' placeholder={`Enter Benefit : ${index+1}`} className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
+              <FaSquareMinus onClick={()=>benefits.pop()}/>
+              </div>
             ))
           }
-          <div className='flex pl-2 pr-2 justify-between w-full border border-solid border-green-500'>
+          <div className='flex justify-center w-full border border-solid border-green-500'>
           <FaSquarePlus onClick={handleSetBenefit}/>          
-          <FaSquareMinus onClick={()=>benefits.pop()}/>
+          
           </div>
         </div>
       </div>
