@@ -83,7 +83,7 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequi
           <FaSquarePlus onClick={handleSetPrerequisites}/>
           </div>
         </div>
-          <div className='flex justify-between pl-2 pr-2'>
+          <div className='flex justify-between pl-2 pr-2 mt-2'>
             <button className='button-global' onClick={()=>setActive(2)}>Next</button>
             <button className='button-global' onClick={()=>setActive(2)}>Next</button>
           </div>
