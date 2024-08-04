@@ -7,7 +7,7 @@ type Props = {
   setBenefits : (benefits : {title : string}[]) => void;
 }
 
-const CourseOptions:FC<Props> = ({active,setActive}) => {
+const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
   return (
     <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>

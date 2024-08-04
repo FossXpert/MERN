@@ -24,7 +24,7 @@ const CreateCourse = (props: Props) => {
       <div className='create-course-container-secondary'>
           {active ===1 && <CourseInformation active={active} setActive={setActive}/>}
           {active ===2 && <CourseOptions active={active} setActive={setActive} 
-          />}
+            benefits={benefits} setBenefits={setBenefits}/>}
           {active ===3 && <CourseContent/>}
           {active ===4 && <CoursePreview/>}
       </div>
