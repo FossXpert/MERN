@@ -30,7 +30,7 @@ const CreateCourse: FC<Props> = () => {
                 toast.error(errorData.data.message)
             }
         }
-    },[isLoading,isSuccess,error])
+    },[isLoading,isSuccess,error]);
 
     const [active, setActive] = useState(0);
     const [courseInfo, setCourseInfo] = useState({
