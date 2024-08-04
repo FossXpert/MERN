@@ -12,13 +12,8 @@ type Props = {}
 const CreateCourse = (props: Props) => {
   const [active, setActive] = useState(0);
 
-  const benefitSchema = z.object({
-    title : z.string()
-  })
-
+  const [benefits,setBenefits] = useState([{title : ""}]);
   
-
-  const [benefits,setBenefits] = useState([]);
 
   return (
     <>
