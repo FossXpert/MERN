@@ -3,6 +3,8 @@ import React, { FC, useState } from 'react'
 type Props = {
   active : number;
   setActive : (active : number) => void;
+  benefits : {title : string}[];
+  setBenefits : (benefits : {title : string}[]) => void;
 }
 
 const CourseOptions:FC<Props> = ({active,setActive}) => {
