@@ -15,6 +15,11 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
   const handleSetBenefit = () => {
     setBenefits([...benefits , {title : ""}]);
   }
+  const handleSetBenefitMinus = (index : number) => {
+
+    benefits.filter
+    setBenefits([...benefits , {title : ""}]);
+  }
 
   return (
     <div className='flex w-full h-full
@@ -29,7 +34,7 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
             benefits.map((value,index) => (
               <div className='w-full flex gap-2 items-center' key={index}>
               <input value={value.title} type='text' placeholder={`Enter Benefit : ${index+1}`} className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
-              <FaSquareMinus onClick={()=>benefits.pop()}/>
+              <FaSquareMinus onClick={()=>handleSetBenefitMinus(index)}/>
               </div>
             ))
           }
