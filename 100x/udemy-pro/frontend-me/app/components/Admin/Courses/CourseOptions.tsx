@@ -1,3 +1,4 @@
+import { title } from 'process';
 import React, { FC, useState } from 'react'
 import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci';
 import { FaSquareMinus, FaSquarePlus } from 'react-icons/fa6';
@@ -20,10 +21,9 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits}) => {
     setBenefits(updatedBenefit);
   }
   const handleBenefitChange = (value:any,index:number) =>{
-    const updatedBenefit = benefits.map((valuee,i) =>{
-      
-      return valuee;
-    });
+    const updatedBenefit = benefits.map((valuee,i) =>
+      i === index ? {...valuee, title:value}: valuee
+    );
     setBenefits(updatedBenefit);
   }
   return (
