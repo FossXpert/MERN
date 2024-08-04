@@ -37,10 +37,10 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequi
     setBenefits(updatedPrerequisites);
   }
   const handlePrerequisitesChange = (value:any,index:number) =>{
-    const updatedBenefit = benefits.map((valuee,i) =>
+    const updatedPrerequisites = prerequisites.map((valuee,i) =>
       i === index ? {...valuee, title:value}: valuee
     );
-    setBenefits(updatedBenefit);
+    setBenefits(updatedPrerequisites);
   }
 
 
@@ -52,7 +52,7 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequi
        items-center flex-col border border-solid border-blue-500'>
       <h1 className=''>Course Options</h1>
       {/* class for form */}
-      <div className='flex w-3/4 h-full border border-solid border-green-500'>
+      <div className='flex w-3/4 flex-col h-auto border border-solid border-green-500'>
         <div className='flex p-[0.5rem] gap-[0.5rem] border border-solid border-violet-300 w-full h-full
           justify-start items-center flex-col'>
           <label className='text-[1rem]' htmlFor=''>What are the benefits for the student in this course</label>
@@ -65,8 +65,22 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequi
             ))
           }
           <div className='flex justify-center w-full border border-solid border-green-500'>
-          <FaSquarePlus onClick={handleSetBenefit}/>          
-          
+          <FaSquarePlus onClick={handleSetBenefit}/>
+          </div>
+        </div>
+        <div className='flex p-[0.5rem] gap-[0.5rem] border border-solid border-violet-300 w-full h-full
+          justify-start items-center flex-col'>
+          <label className='text-[1rem]' htmlFor=''>What are the prerequisites for the student in this course</label>
+          {
+            prerequisites.map((value,index) => (
+              <div className='w-full flex gap-2 items-center' key={index}>
+              <input value={value.title} onChange={(e)=>handlePrerequisitesChange(e.target.value,index)} type='text' placeholder={`Enter Benefit : ${index+1}`} className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none '/>
+              <FaSquareMinus onClick={()=>handleSetPrerequisitesMinus(index)}/>
+              </div>
+            ))
+          }
+          <div className='flex justify-center w-full border border-solid border-green-500'>
+          <FaSquarePlus onClick={handleSetPrerequisites}/>
           </div>
         </div>
       </div>
