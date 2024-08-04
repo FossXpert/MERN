@@ -6,10 +6,18 @@ import CourseInformation from './CourseInformation';
 import CourseOptions from './CourseOptions';
 import CourseContent from './CourseContent';
 import CoursePreview from './CoursePreview';
+import { z } from 'zod';
 type Props = {}
 
 const CreateCourse = (props: Props) => {
   const [active, setActive] = useState(0);
+
+  const benefitSchema = z.object({
+    title : z.string()
+  })
+  
+
+  const [benefits,setBenefits] = useState([]);
 
   return (
     <>
