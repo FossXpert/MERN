@@ -5,6 +5,26 @@ import { TextareaAutosize } from '@mui/material'
 type Props = {
   active : number;
   setActive : (active : number) => void;
+  courseInfo : {
+    name : string;
+    description : string;
+    price : string;
+    estimatedPrice : string;
+    tags : string;
+    level : string;
+    demoUrl : string;
+    thumbnail : string;
+  },
+  setCourseInfo : (courseInfo : {
+    name : string;
+    description : string;
+    price : string;
+    estimatedPrice : string;
+    tags : string;
+    level : string;
+    demoUrl : string;
+    thumbnail : string;
+  }) => void;
 }
 
 const CourseInformation:FC<Props> = ({active,setActive}) => {

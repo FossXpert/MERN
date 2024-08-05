@@ -12,36 +12,54 @@ type Props = {}
 const CreateCourse = (props: Props) => {
   const [active, setActive] = useState(0);
 
-  const [benefits,setBenefits] = useState([{title : ""}]);
+  const [benefits, setBenefits] = useState([{ title: "" }]);
   const [prerequisites, setPrerequisites] = useState([{ title: "" }])
 
-  const [courseContentData,setCourseContentData] = useState([
+  const [courseInfo, setCourseInfo] = useState({
+    name: "",
+    description: "",
+    price: "",
+    estimatedPrice: "",
+    tags: "",
+    level: "",
+    demoUrl: "",
+    thumbnail: "",
+  });
+  const [courseContentData, setCourseContentData] = useState([
     {
-        videoSection: "Untitled Section",
-        courseDataInside : [{
-          videoUrl: "",
-          title: "",
-          description: "",
-        }],
-        suggestion: "",
+      videoSection: "Untitled Section",
+      courseDataInside: [{
+        videoUrl: "",
+        title: "",
+        description: "",
+      }],
+      suggestion: "",
     }
   ]);
 
+  const [courseData,setCourseData] = useState({});
+
+  const handleSubmit = () => {
+    const formattedBenefit  = benefits.map((prevBenefit)=> prevBenefit.title);
+    
+  }
   return (
     <>
-    <div className='create-course-container'>
-      <div className='coursestatus'>
-        <CourseStatusBar active={active} setActive={setActive} />
-      </div>
-      <div className='create-course-container-secondary'>
-          {active ===1 && <CourseInformation active={active} setActive={setActive}/>}
-          {active ===2 && <CourseOptions active={active} setActive={setActive} 
-            benefits={benefits} setBenefits={setBenefits} 
+      <div className='create-course-container'>
+        <div className='coursestatus'>
+          <CourseStatusBar active={active} setActive={setActive} />
+        </div>
+        <div className='create-course-container-secondary'>
+          {active === 1 && <CourseInformation active={active} setActive={setActive}
+            courseInfo={courseInfo} setCourseInfo={setCourseInfo} />}
+          {active === 2 && <CourseOptions active={active} setActive={setActive}
+            benefits={benefits} setBenefits={setBenefits}
             prerequisites={prerequisites} setPrerequisites={setPrerequisites} />}
-          {active ===3 && <CourseContent setCourseContentData={setCourseContentData} courseContentData={courseContentData} active={active} setActive={setActive}/>}
-          {active ===4 && <CoursePreview/>}
+          {active === 3 && <CourseContent setCourseContentData={setCourseContentData} courseContentData={courseContentData} 
+            active={active} setActive={setActive} />}
+          {active === 4 && <CoursePreview />}
+        </div>
       </div>
-    </div>
     </>
   )
 }

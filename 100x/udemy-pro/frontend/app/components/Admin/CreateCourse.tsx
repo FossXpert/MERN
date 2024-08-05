@@ -141,7 +141,6 @@ const CreateCourse: FC<Props> = () => {
                             handleSubmit={handleSubmit}
                         />
                     )
-
                 }
                 {
                     active === 3 && (

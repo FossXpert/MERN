@@ -14,7 +14,8 @@ type Props = {
 
 const CoursePreview : FC<Props>= ({isEdit,courseData,handleCourseCreate,active,setActive}) => {
   
-  const discountPercentagePrice = ((courseData?.estimatedPrice - courseData?.price)/courseData?.estimatedPrice)*100;
+  const discountPercentagePrice = 
+    ((courseData?.estimatedPrice - courseData?.price)/courseData?.estimatedPrice)*100;
   const discountPercentage = discountPercentagePrice.toFixed(0);
   
   const prevButton = async() =>{
