@@ -17,27 +17,15 @@ const CreateCourse = (props: Props) => {
 
   const [courseContentData,setCourseContentData] = useState([
     {
-        videoUrl: "",
-        title: "",
-        description: "",
         videoSection: "Untitled Section",
-        links: [
-            {
-                title: "",
-                url: ""
-            },
-        ],
+        courseDataInside : [{
+          videoUrl: "",
+          title: "",
+          description: "",
+        }],
         suggestion: "",
     }
-  ])
-
-  const [courseDataInside,setCourseDataInside] = useState([
-    {
-        videoUrl: "",
-        title: "",
-        description: "",
-    }
-  ])
+  ]);
 
   return (
     <>
