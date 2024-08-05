@@ -31,6 +31,14 @@ const CreateCourse = (props: Props) => {
     }
   ])
 
+  const [courseDataInside,setCourseDataInside] = useState([
+    {
+        videoUrl: "",
+        title: "",
+        description: "",
+    }
+  ])
+
   return (
     <>
     <div className='create-course-container'>
