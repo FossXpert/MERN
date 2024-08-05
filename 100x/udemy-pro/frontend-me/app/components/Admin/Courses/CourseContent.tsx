@@ -33,17 +33,23 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
     newCourseContentData[index].videoSection = value;
     setCourseContentData(newCourseContentData);
   }
-  const handleVideoSectionContentDataAdd = async(index:number) => {
-    const newContent = {
-      videoSection : "",
-      courseDataInside: [{
+  const handleVideoSectionContentDataAdd = (index:number) => {
+      const courseDataInside = {
         videoUrl : "",
         title : "",
         description : "",
-      }],
-      suggestion : ""
-    };
-    setCourseContentData([...courseContentData,newContent]);
+      }
+      const newCourseContentData = [...courseContentData];
+      newCourseContentData[index].courseDataInside.push(courseDataInside);
+      setCourseContentData(newCourseContentData);
+      console.log(courseContentData);
+  }
+  const handleVideoSectionContentDataRemove = (index:number) => {
+    courseContentData.map((prevData) => prevData.courseDataInside.map((value,i)=>{
+      if(i===index){
+        value.splice(index,1);
+      }
+    }))
   }
   return (
     <>
@@ -66,9 +72,14 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                   <MdDelete/>
                   </div>
                 </div>
-              <div className='flex flex-col w-full h-full p-2 m-2 border border-solid border-black-500 shadow-sm'>
-              <FaSquarePlus className='cursor-pointer' onClick={(e)=>handleVideoSectionContentDataAdd(index)}/>
-                <div className='flex flex-col p-2 gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
+              <div className='flex flex-col w-full h-full p-2 m-2 border border-solid border-black-500 shadow-sm'>            
+              {
+                value.courseDataInside.map((valuee,indexx) => (
+                  <div key={indexx} className='flex flex-col p-2 gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
+                    <div className='flex w-[100%] p-2 items-center h-auto flex-row border border-solid border-black-500 justify-between'>
+                    <FaSquarePlus className='cursor-pointer' onClick={()=>handleVideoSectionContentDataAdd(index)}/>
+                    <FaSquareMinus className='cursor-pointer' onClick={()=>handleVideoSectionContentDataRemove(index)}/>
+                    </div>
                     <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
                     <label className='text-[1rem]' htmlFor='title'>Video Title</label>
                     <input
@@ -94,9 +105,11 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                     value={""}
                     className='w-full box-border resize-none p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
                     </div>
-                    <FaSquarePlus className='ml-2 cursor-pointer'/>
-                    </div>
                 </div>
+                ))
+              }
+                
+              </div>
               </div>
             ))
           }
