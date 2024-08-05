@@ -12,7 +12,7 @@ const CourseContent:FC<Props> = ({active,setActive,courseContentData,setCourseCo
   return (
     <>
     <div>
-      
+      section - [video details1]
     </div>
     </>
   )
