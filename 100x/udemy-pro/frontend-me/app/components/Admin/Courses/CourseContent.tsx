@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { FaSquareMinus, FaSquarePlus } from 'react-icons/fa6';
 import { IoMdArrowDropdown, IoMdArrowDropdownCircle } from 'react-icons/io';
 import { MdDelete } from 'react-icons/md';
@@ -33,6 +33,27 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
     newCourseContentData[index].videoSection = value;
     setCourseContentData(newCourseContentData);
   }
+  const handleVideoSectionAdd = () => {
+    const newCourseContentData = [...courseContentData];
+    const courseDataInside = {
+      videoUrl : "",
+      title : "",
+      description : "",
+    }
+    newCourseContentData.push({
+      videoSection : "",
+      courseDataInside : [courseDataInside],
+      suggestion : "",
+    });
+    setCourseContentData(newCourseContentData);
+  }
+
+  const handleVideoSectionRemove = (sectionIndex : number) => {
+    const newCourseContentData = [...courseContentData];
+    newCourseContentData.splice(sectionIndex,1);
+    setCourseContentData(newCourseContentData);
+  }
+
   const handleVideoSectionContentDataAdd = (index:number) => {
       const courseDataInside = {
         videoUrl : "",
@@ -44,13 +65,13 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
       setCourseContentData(newCourseContentData);
       console.log(courseContentData);
   }
-  const handleVideoSectionContentDataRemove = (index:number) => {
-    courseContentData.map((prevData) => prevData.courseDataInside.map((value,i)=>{
-      if(i===index){
-        value.splice(index,1);
-      }
-    }))
+  const handleVideoSectionContentDataRemove = (sectionIndex : number, videoIndex:number) => {
+    const newVideoSectionContentData = [...courseContentData];
+    newVideoSectionContentData[sectionIndex].courseDataInside.splice(videoIndex,1);
+    setCourseContentData(newVideoSectionContentData)
   }
+
+
   return (
     <>
       <div className='flex w-full h-full
@@ -58,27 +79,27 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
         <h1 className=''>Course Content</h1>
         <div className='flex w-3/4 flex-col h-auto border border-solid border-green-500'>
           {
-            courseContentData.map((value,index) => (
-              <div key={index} className='flex flex-col w-full h-full p-2 m-2 border border-solid border-orange-500 shadow-sm'>
+            courseContentData.map((value,sectionIndex) => (
+              <div key={sectionIndex} className='flex flex-col w-full h-full p-2 m-2 border border-solid border-orange-500 shadow-sm'>
                 <div className='flex w-full h-full p-2 m-2 border border-solid border-black-500 shadow-sm'>
                   <input
                   type='text'
                   value={value.videoSection}
-                  onChange={(e)=>handleVideoSectionChange(index,e.target.value)}
+                  onChange={(e)=>handleVideoSectionChange(sectionIndex,e.target.value)}
                   className='w-[85%] text-xl font-semibold'/>
                   <div className='flex w-[15%] p-2 items-center h-auto flex-row border border-solid border-black-500 justify-between'>
                   <IoMdArrowDropdownCircle/>
-                  <FaSquarePlus/>
-                  <MdDelete/>
+                  <FaSquarePlus onClick={() => handleVideoSectionAdd()}/>
+                  {sectionIndex > 0 && <MdDelete onClick={()=>handleVideoSectionRemove(sectionIndex)}/>}
                   </div>
                 </div>
               <div className='flex flex-col w-full h-full p-2 m-2 border border-solid border-black-500 shadow-sm'>            
               {
-                value.courseDataInside.map((valuee,indexx) => (
-                  <div key={indexx} className='flex flex-col p-2 gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
+                value.courseDataInside.map((valuee,videoIndex) => (
+                  <div key={videoIndex} className='flex flex-col p-2 gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
                     <div className='flex w-[100%] p-2 items-center h-auto flex-row border border-solid border-black-500 justify-between'>
-                    <FaSquarePlus className='cursor-pointer' onClick={()=>handleVideoSectionContentDataAdd(index)}/>
-                    <FaSquareMinus className='cursor-pointer' onClick={()=>handleVideoSectionContentDataRemove(index)}/>
+                    <FaSquarePlus className='cursor-pointer' onClick={()=>handleVideoSectionContentDataAdd(sectionIndex)}/>
+                    {videoIndex > 0 && <FaSquareMinus className='cursor-pointer' onClick={()=>handleVideoSectionContentDataRemove(sectionIndex,videoIndex)}/>}
                     </div>
                     <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
                     <label className='text-[1rem]' htmlFor='title'>Video Title</label>
