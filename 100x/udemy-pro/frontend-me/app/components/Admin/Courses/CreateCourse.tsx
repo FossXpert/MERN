@@ -17,7 +17,7 @@ const CreateCourse = (props: Props) => {
 
   const [courseContentData,setCourseContentData] = useState([
     {
-      videoUrl: "",
+        videoUrl: "",
         title: "",
         description: "",
         videoSection: "Untitled Section",
