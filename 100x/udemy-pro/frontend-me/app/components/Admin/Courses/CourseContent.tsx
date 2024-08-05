@@ -7,25 +7,21 @@ type Props = {
   active: number;
   setActive: (active: number) => void;
   courseContentData: {
-    videoUrl: string;
-    title: string;
-    description: string;
-    videoSection: string;
-    links: {
+    videoSection : string;
+    courseDataInside : {
+      videoUrl: string;
       title: string;
-      url: string;
-    }[];
+      description: string;
+    }[],   
     suggestion: string;
   }[];
   setCourseContentData: (courseContentData: {
-    videoUrl: string;
-    title: string;
-    description: string;
-    videoSection: string;
-    links: {
+    videoSection : string;
+    courseDataInside : {
+      videoUrl: string;
       title: string;
-      url: string;
-    }[];
+      description: string;
+    }[],   
     suggestion: string;
   }[]) => void;
 };
@@ -39,12 +35,13 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
   }
   const handleVideoSectionContentDataAdd = async(index:number) => {
     const newContent = {
-      videoUrl: "",
-      title: "",
-      description: "",
-      videoSection: "",
-      links: [{ title: "", url: "" }],
-      suggestion: "",
+      videoSection : "",
+      courseDataInside: [{
+        videoUrl : "",
+        title : "",
+        description : "",
+      }],
+      suggestion : ""
     };
     setCourseContentData([...courseContentData,newContent]);
   }
@@ -77,7 +74,7 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                     <input
                     type='text' 
                     placeholder='Enter Video title'
-                    value={value.title}
+                    value={""}
                     className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
                     </div>
                     <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
@@ -85,7 +82,7 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                     <input
                     type='text' 
                     placeholder='Enter Video URL'
-                    value={value.videoUrl}
+                    value={""}
                     className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
                     </div>
                     <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
@@ -94,35 +91,12 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                     rows={5}
                     cols={50}
                     placeholder='Enter Video Description'
-                    value={value.description}
+                    value={""}
                     className='w-full box-border resize-none p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
                     </div>
-                    {/* for adding link array */}
-                    <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-yellow-500'>
-                    {
-                      value.links.map((value,index)=>(
-                      <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-violet-500 shadow-md'>
-                        <div className='flex w-full h-auto items-center justify-between pl-2 pr-2'>
-                        <label className='text-[1rem]' htmlFor='title'>Link {index+1}</label>
-                        <FaSquareMinus/>
-                        </div>
-                        <input
-                        type='text' 
-                        placeholder={`Enter Link Title`}
-                        value={value.title}
-                        className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
-                        <input
-                        type='text' 
-                        placeholder={`Enter Link URL`}
-                        value={value.url}
-                        className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
-                      </div>
-                      ))
-                    }
                     <FaSquarePlus className='ml-2 cursor-pointer'/>
                     </div>
                 </div>
-              </div>
               </div>
             ))
           }
