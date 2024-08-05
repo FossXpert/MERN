@@ -11,8 +11,8 @@ type Props = {
 const CourseContent:FC<Props> = ({active,setActive,courseContentData,setCourseContentData}) => {
   return (
     <>
-    <div>
-      section - [video details1]
+    <div className='flex w-full h-full '>
+      
     </div>
     </>
   )

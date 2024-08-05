@@ -15,6 +15,21 @@ const CreateCourse = (props: Props) => {
   const [benefits,setBenefits] = useState([{title : ""}]);
   const [prerequisites, setPrerequisites] = useState([{ title: "" }])
 
+  const [courseContentData,setCourseContentData] = useState([
+    {
+      videoUrl: "",
+        title: "",
+        description: "",
+        videoSection: "Untitled Section",
+        links: [
+            {
+                title: "",
+                url: ""
+            },
+        ],
+        suggestion: "",
+    }
+  ])
 
   return (
     <>
@@ -27,7 +42,7 @@ const CreateCourse = (props: Props) => {
           {active ===2 && <CourseOptions active={active} setActive={setActive} 
             benefits={benefits} setBenefits={setBenefits} 
             prerequisites={prerequisites} setPrerequisites={setPrerequisites} />}
-          {active ===3 && <CourseContent/>}
+          {active ===3 && <CourseContent setCourseContentData={setCourseContentData} courseContentData={courseContentData} active={active} setActive={setActive}/>}
           {active ===4 && <CoursePreview/>}
       </div>
     </div>
