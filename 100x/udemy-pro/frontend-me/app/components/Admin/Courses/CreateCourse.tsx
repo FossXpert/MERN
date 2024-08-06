@@ -44,7 +44,7 @@ const CreateCourse = (props: Props) => {
   const handleSubmit = () => {
     const formattedBenefit  = benefits.map((benefit)=> ({title : benefit.title}));
     const formattedPrerequisites = prerequisites.map((prerequisite) => ({title : prerequisite.title}))
-    
+    const formattedCourseContentData = courseContentData
   }
   return (
     <>
