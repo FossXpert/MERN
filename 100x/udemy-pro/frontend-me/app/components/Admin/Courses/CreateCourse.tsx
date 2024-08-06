@@ -78,6 +78,7 @@ const CreateCourse = (props: Props) => {
         <div className='coursestatus'>
           <CourseStatusBar active={active} setActive={setActive} />
         </div>
+        <form onSubmit={handleSubmit}>
         <div className='create-course-container-secondary'>
           {active === 1 && <CourseInformation handleSubmit={handleSubmit} active={active} setActive={setActive}
             courseInfo={courseInfo} setCourseInfo={setCourseInfo} />}
@@ -90,6 +91,7 @@ const CreateCourse = (props: Props) => {
             active={active} setActive={setActive} />}
           {active === 4 && <CoursePreview />}
         </div>
+        </form>
       </div>
     </>
   )
