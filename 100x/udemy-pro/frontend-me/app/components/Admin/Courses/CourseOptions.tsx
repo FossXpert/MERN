@@ -42,11 +42,6 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequi
     );
     setPrerequisites(updatedPrerequisites);
   }
-
-
-
-
-
   return (
     <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>

@@ -1,14 +1,13 @@
 import React, { FC } from 'react'
 
 type Props = {
-  handleSubmit : any;
 }
 
-const CoursePreview:FC<Props> = ({handleSubmit}) => {
+const CoursePreview:FC<Props> = () => {
 
   return (
     <div>
-      <button onClick={handleSubmit}>Submit</button>
+      <button>Submit</button>
     </div>
   )
 }

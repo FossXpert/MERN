@@ -56,11 +56,16 @@ const CourseInformation:FC<Props> = ({active,setActive,courseInfo,setCourseInfo}
     fileReader.readAsDataURL(e.target.files[0])
   }
 
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+    setActive(active+1);
+  }
 
   return (
+    <form onSubmit={handleSubmit}>
     <div className='course-information-container'>
         <h2>Course Information</h2>
-
+        
         <div className='form'>
           <div className='group-1'>
             <label htmlFor=''>Course Name</label>
@@ -152,10 +157,11 @@ const CourseInformation:FC<Props> = ({active,setActive,courseInfo,setCourseInfo}
           </label>
           </div>
           <div className='create-course-buttons'>
-            <button className='button-global' onClick={()=>setActive(2)}>Next</button>
+            <button type='submit' value ='next' className='button-global'>Next</button>
           </div>
         </div>
     </div>
+    </form>
   )
 }
 

@@ -4,6 +4,7 @@ import { IoMdArrowDropdown, IoMdArrowDropdownCircle } from 'react-icons/io';
 import { MdDelete } from 'react-icons/md';
 
 type Props = {
+  handleSubmit : any;
   active: number;
   setActive: (active: number) => void;
   courseContentData: {
@@ -26,7 +27,7 @@ type Props = {
   }[]) => void;
 };
 
-const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCourseContentData }) => {
+const CourseContent: FC<Props> = ({handleSubmit : handleCourseSubmit, active, setActive, courseContentData, setCourseContentData }) => {
 
   const handleVideoSectionChange = (index:number,value:string) => {
     const newCourseContentData = [...courseContentData];
@@ -87,8 +88,14 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
     setCourseContentData(newCourseContentData);
   }
 
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+    // setActive(active+1);
+  }
+
   return (
     <>
+      <form onSubmit={handleSubmit}>
       <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>
         <h1 className=''>Course Content</h1>
@@ -153,10 +160,11 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
           }
           <div className='flex justify-between pl-2 pr-2 h-[75px]'>
             <button className='button-global' onClick={()=>setActive(2)}>Prev</button>
-            <button className='button-global' onClick={()=>setActive(4)}>Next</button>
+            <button className='button-global' type='submit' value={'next'} onClick={()=>handleCourseSubmit()}>Next</button>
           </div>
         </div>
       </div>
+      </form>
     </>
   );
 };
