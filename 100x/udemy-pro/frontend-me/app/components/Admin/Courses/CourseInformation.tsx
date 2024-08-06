@@ -57,12 +57,12 @@ const CourseInformation:FC<Props> = ({handleSubmit:handleSubmit1,active,setActiv
     fileReader.readAsDataURL(e.target.files[0])
   }
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     console.log("Inside CourseInformation")
     setActive(active+1);
     console.log("CourseInfo is :",courseInfo);
-    console.log("CourseData is : ",handleSubmit1());
+    console.log("CourseData is : ",await handleSubmit1());
   }
 
   return (
