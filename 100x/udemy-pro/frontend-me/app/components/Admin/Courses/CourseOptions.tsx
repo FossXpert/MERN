@@ -79,8 +79,8 @@ const CourseOptions:FC<Props> = ({active,setActive,benefits,setBenefits,prerequi
           </div>
         </div>
           <div className='flex justify-between pl-2 pr-2 h-[75px]'>
-            <button className='button-global' onClick={()=>setActive(1)}>Prev</button>
-            <button className='button-global' onClick={()=>setActive(3)}>Next</button>
+            <button className='button-global' onClick={()=>setActive(active-1)}>Prev</button>
+            <button className='button-global' onClick={()=>setActive(active+1)}>Next</button>
           </div>
       </div>
     </div>

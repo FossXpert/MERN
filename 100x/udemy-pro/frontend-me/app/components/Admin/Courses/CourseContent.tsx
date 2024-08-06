@@ -95,7 +95,7 @@ const CourseContent: FC<Props> = ({handleSubmit : handleCourseSubmit, active, se
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
       <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>
         <h1 className=''>Course Content</h1>
@@ -164,7 +164,7 @@ const CourseContent: FC<Props> = ({handleSubmit : handleCourseSubmit, active, se
           </div>
         </div>
       </div>
-      </form>
+      {/* </form> */}
     </>
   );
 };
