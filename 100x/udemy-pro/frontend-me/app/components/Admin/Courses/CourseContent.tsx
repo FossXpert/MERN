@@ -160,7 +160,7 @@ const CourseContent: FC<Props> = ({handleSubmit : handleCourseSubmit, active, se
           }
           <div className='flex justify-between pl-2 pr-2 h-[75px]'>
             <button className='button-global' onClick={()=>setActive(2)}>Prev</button>
-            <button className='button-global' type='submit' value={'next'} onClick={()=>handleCourseSubmit()}>Next</button>
+            <button className='button-global' type='submit' value={'next'} onClick={handleCourseSubmit()}>Next</button>
           </div>
         </div>
       </div>
