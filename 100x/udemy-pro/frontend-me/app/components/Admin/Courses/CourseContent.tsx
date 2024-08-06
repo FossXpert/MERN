@@ -71,7 +71,6 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
     setCourseContentData(newVideoSectionContentData)
   }
 
-
   return (
     <>
       <div className='flex w-full h-full
@@ -106,7 +105,8 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                     <input
                     type='text' 
                     placeholder='Enter Video title'
-                    value={""}
+                    value={valuee.title}
+                    onChang={}
                     className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
                     </div>
                     <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>

@@ -27,7 +27,7 @@ type Props = {
   }) => void;
 }
 
-const CourseInformation:FC<Props> = ({active,setActive}) => {
+const CourseInformation:FC<Props> = ({active,setActive,courseInfo,setCourseInfo}) => {
 
 
   const [dragged,setDragged]  = useState(false);
@@ -55,6 +55,8 @@ const CourseInformation:FC<Props> = ({active,setActive}) => {
     }
     fileReader.readAsDataURL(e.target.files[0])
   }
+
+
   return (
     <div className='course-information-container'>
         <h2>Course Information</h2>
@@ -67,7 +69,8 @@ const CourseInformation:FC<Props> = ({active,setActive}) => {
               type='text' 
               name='course-name' 
               placeholder='Please Enter Course Name' 
-              required
+              value={courseInfo.name}
+              onChange={(e)=>setCourseInfo({...courseInfo,name:e.target.value})}
             />
           </div>
           <div className='group-2'>
@@ -77,6 +80,8 @@ const CourseInformation:FC<Props> = ({active,setActive}) => {
               placeholder='Please Enter Course Description' 
               rows={10} 
               cols={117} 
+              value={courseInfo.description}
+              onChange={(e)=>setCourseInfo({...courseInfo,description:e.target.value})}
               className='input-textarea-1'
             />
           </div>
@@ -88,7 +93,8 @@ const CourseInformation:FC<Props> = ({active,setActive}) => {
               type='text' 
               name='course-price' 
               placeholder='Please Enter Course Price' 
-              required
+              value={courseInfo.price}
+              onChange={(e)=>setCourseInfo({...courseInfo,price:e.target.value})}
             />
             </div>
             <div className='group-3-2'>
@@ -98,18 +104,21 @@ const CourseInformation:FC<Props> = ({active,setActive}) => {
               type='text' 
               name='course-estimated-price' 
               placeholder='Please Enter Estimated Course Price' 
-              required
+              value={courseInfo.estimatedPrice}
+              onChange={(e)=>setCourseInfo({...courseInfo,estimatedPrice:e.target.value})}
             />
             </div>
           </div>
           <div className='group-4'>
           <label htmlFor=''>Course Tags</label>
             <textarea
-              name='course-description' 
+              name='course-tags' 
               placeholder='Please Enter Tags' 
               rows={6} 
               cols={117} 
               className='input-textarea-2'
+              value={courseInfo.tags}
+              onChange={(e)=>setCourseInfo({...courseInfo,tags:e.target.value})}
             />
           </div>
           <div className='group-3'>
@@ -118,9 +127,10 @@ const CourseInformation:FC<Props> = ({active,setActive}) => {
               <input
               className='input-box-1'
               type='text' 
-              name='course-price' 
-              placeholder='Please Enter Course Price' 
-              required
+              name='course-level' 
+              placeholder='Enter Course Level' 
+              value={courseInfo.level}
+              onChange={(e)=>setCourseInfo({...courseInfo,level:e.target.value})}
             />
             </div>
             <div className='group-3-2'>
@@ -128,9 +138,10 @@ const CourseInformation:FC<Props> = ({active,setActive}) => {
               <input
               className='input-box-1'
               type='text' 
-              name='course-estimated-price' 
-              placeholder='Please Enter Estimated Course Price' 
-              required
+              name='course-demo-url' 
+              placeholder='Enter Demo Url' 
+              value={courseInfo.demoUrl}
+              onChange={(e)=>setCourseInfo({...courseInfo,demoUrl:e.target.value})}
             />
             </div>
           </div>

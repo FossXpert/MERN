@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-type Props = {}
+type Props = {
+  handleSubmit : any;
+}
 
-const CoursePreview = (props: Props) => {
+const CoursePreview:FC<Props> = ({handleSubmit}) => {
+
   return (
-    <div>CoursePreview</div>
+    <div>
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
   )
 }
 
