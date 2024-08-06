@@ -3,6 +3,7 @@ import '../../../css/css-admin/courseinformation.css'
 import { TextareaAutosize } from '@mui/material'
 
 type Props = {
+  handleSubmit:any
   active : number;
   setActive : (active : number) => void;
   courseInfo : {
@@ -27,7 +28,7 @@ type Props = {
   }) => void;
 }
 
-const CourseInformation:FC<Props> = ({active,setActive,courseInfo,setCourseInfo}) => {
+const CourseInformation:FC<Props> = ({handleSubmit:handleSubmit1,active,setActive,courseInfo,setCourseInfo}) => {
 
 
   const [dragged,setDragged]  = useState(false);
@@ -58,14 +59,16 @@ const CourseInformation:FC<Props> = ({active,setActive,courseInfo,setCourseInfo}
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
+    console.log("Inside CourseInformation")
     setActive(active+1);
+    console.log("CourseInfo is :",courseInfo);
+    console.log("CourseData is : ",handleSubmit1());
   }
 
   return (
     <form onSubmit={handleSubmit}>
     <div className='course-information-container'>
         <h2>Course Information</h2>
-        
         <div className='form'>
           <div className='group-1'>
             <label htmlFor=''>Course Name</label>

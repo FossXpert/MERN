@@ -68,7 +68,6 @@ const CreateCourse = (props: Props) => {
       prerequisites : formattedPrerequisites,
       courseData : formattedCourseContentData,
     }
-
     setCourseData(data);
     console.log("courseData is :", courseData);
   }
@@ -80,7 +79,7 @@ const CreateCourse = (props: Props) => {
           <CourseStatusBar active={active} setActive={setActive} />
         </div>
         <div className='create-course-container-secondary'>
-          {active === 1 && <CourseInformation active={active} setActive={setActive}
+          {active === 1 && <CourseInformation handleSubmit={handleSubmit} active={active} setActive={setActive}
             courseInfo={courseInfo} setCourseInfo={setCourseInfo} />}
           {active === 2 && <CourseOptions active={active} setActive={setActive}
             benefits={benefits} setBenefits={setBenefits}
