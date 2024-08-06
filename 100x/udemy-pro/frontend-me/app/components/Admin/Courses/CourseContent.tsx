@@ -71,6 +71,22 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
     setCourseContentData(newVideoSectionContentData)
   }
 
+  const handleVideoTitleChange = (sectionIndex: number,videoIndex : number,value:string) => {
+    const newCourseContentData = [...courseContentData];
+    newCourseContentData[sectionIndex].courseDataInside[videoIndex].title = value;
+    setCourseContentData(newCourseContentData);
+  }
+  const handleVideoUrlChange = (sectionIndex: number,videoIndex : number,value:string) => {
+    const newCourseContentData = [...courseContentData];
+    newCourseContentData[sectionIndex].courseDataInside[videoIndex].videoUrl = value;
+    setCourseContentData(newCourseContentData);
+  }
+  const handleVideoDescriptionChange = (sectionIndex: number,videoIndex : number,value:string) => {
+    const newCourseContentData = [...courseContentData];
+    newCourseContentData[sectionIndex].courseDataInside[videoIndex].description = value;
+    setCourseContentData(newCourseContentData);
+  }
+
   return (
     <>
       <div className='flex w-full h-full
@@ -106,7 +122,7 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                     type='text' 
                     placeholder='Enter Video title'
                     value={valuee.title}
-                    onChange={}
+                    onChange={(e) => handleVideoTitleChange(sectionIndex,videoIndex,e.target.value)}
                     className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
                     </div>
                     <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
@@ -114,7 +130,8 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                     <input
                     type='text' 
                     placeholder='Enter Video URL'
-                    value={""}
+                    value={valuee.videoUrl}
+                    onChange={(e) => handleVideoUrlChange(sectionIndex,videoIndex,e.target.value)}
                     className='w-full box-border p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
                     </div>
                     <div className=' flex flex-col gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
@@ -123,7 +140,8 @@ const CourseContent: FC<Props> = ({ active, setActive, courseContentData, setCou
                     rows={5}
                     cols={50}
                     placeholder='Enter Video Description'
-                    value={""}
+                    value={valuee.description}
+                    onChange={(e) => handleVideoDescriptionChange(sectionIndex,videoIndex,e.target.value)}
                     className='w-full box-border resize-none p-[0.5rem] border border-solid border-[#ccc] text-[1rem] outline-none'/>
                     </div>
                 </div>
