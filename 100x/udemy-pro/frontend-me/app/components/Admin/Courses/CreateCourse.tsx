@@ -89,7 +89,7 @@ const CreateCourse = (props: Props) => {
             setCourseContentData={setCourseContentData} 
             courseContentData={courseContentData} 
             active={active} setActive={setActive} />}
-          {active === 4 && <CoursePreview />}
+          {active === 4 && <CoursePreview handleSubmit={handleSubmit} />}
         </div>
         </form>
       </div>
