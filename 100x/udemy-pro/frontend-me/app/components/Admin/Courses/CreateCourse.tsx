@@ -39,8 +39,10 @@ const CreateCourse = (props: Props) => {
 
   const [courseData,setCourseData] = useState({});
 
+
+
   const handleSubmit = () => {
-    const formattedBenefit  = benefits.map((prevBenefit)=> prevBenefit.title);
+    const formattedBenefit  = benefits.map((benefit)=> ({title : benefit.title}));
     
   }
   return (
