@@ -60,13 +60,12 @@ const CourseInformation:FC<Props> = ({handleSubmit:handleSubmit1,active,setActiv
   const handleSubmit = async (e:any) => {
     e.preventDefault();
     console.log("Inside CourseInformation")
-    setActive(active+1);
     console.log("CourseInfo is :",courseInfo);
     console.log("CourseData is : ",await handleSubmit1());
   }
 
   return (
-    // <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
     <div className='course-information-container'>
         <h2>Course Information</h2>
         <div className='form'>
@@ -160,11 +159,11 @@ const CourseInformation:FC<Props> = ({handleSubmit:handleSubmit1,active,setActiv
           </label>
           </div>
           <div className='create-course-buttons'>
-            <button type='submit' value ='next' className='button-global' onClick={()=>setActive(active+1)}>Next</button>
+            <button type='submit' value ='next' className='button-global' onClick={()=>setActive(2)}>Next</button>
           </div>
         </div>
     </div>
-    // </form>
+    </form>
   )
 }
 

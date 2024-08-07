@@ -39,10 +39,8 @@ const CreateCourse = (props: Props) => {
 
   const [courseData,setCourseData] = useState({});
 
-
-
-  const handleSubmit = async() => {
-    const formattedBenefit  = benefits.map((benefit)=> ({title : benefit.title}));
+  const handleSubmit = () => {
+     const formattedBenefit  = benefits.map((benefit)=> ({title : benefit.title}));
     const formattedPrerequisites = prerequisites.map((prerequisite) => ({title : prerequisite.title}))
     const formattedCourseContentData = courseContentData.map((courseContent)=> ({
       videoSection : courseContent.videoSection,
@@ -69,7 +67,16 @@ const CreateCourse = (props: Props) => {
       courseData : formattedCourseContentData,
     }
     setCourseData(data);
+    console.log("formattedBenefit : ",formattedBenefit);
+    console.log("formattedPrerequisites",formattedPrerequisites);
+    console.log('formattedCourseContentData',formattedCourseContentData);
+    console.log('courseInfo',courseInfo);
+    console.log('courseData',courseData);
     console.log("courseData is :", courseData);
+  }
+
+  const createCourseFinal = async() => {
+      
   }
 
   return (
@@ -78,7 +85,6 @@ const CreateCourse = (props: Props) => {
         <div className='coursestatus'>
           <CourseStatusBar active={active} setActive={setActive} />
         </div>
-        <form onSubmit={handleSubmit}>
         <div className='create-course-container-secondary'>
           {active === 1 && <CourseInformation handleSubmit={handleSubmit} active={active} setActive={setActive}
             courseInfo={courseInfo} setCourseInfo={setCourseInfo} />}
@@ -91,7 +97,6 @@ const CreateCourse = (props: Props) => {
             active={active} setActive={setActive} />}
           {active === 4 && <CoursePreview handleSubmit={handleSubmit} />}
         </div>
-        </form>
       </div>
     </>
   )

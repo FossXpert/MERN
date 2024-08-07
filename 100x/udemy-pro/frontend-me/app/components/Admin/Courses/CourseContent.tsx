@@ -95,7 +95,7 @@ const CourseContent: FC<Props> = ({handleSubmit : handleCourseSubmit, active, se
 
   return (
     <>
-      {/* <form onSubmit={handleSubmit}> */}
+      <form onSubmit={handleSubmit}>
       <div className='flex w-full h-full
        items-center flex-col border border-solid border-blue-500'>
         <h1 className=''>Course Content</h1>
@@ -160,11 +160,11 @@ const CourseContent: FC<Props> = ({handleSubmit : handleCourseSubmit, active, se
           }
           <div className='flex justify-between pl-2 pr-2 h-[75px]'>
             <button className='button-global' onClick={()=>setActive(2)}>Prev</button>
-            <button className='button-global' type='submit' value={'next'} onClick={handleCourseSubmit()}>Next</button>
+            <button className='button-global' type='submit' value={'next'} onClick={()=>setActive(4)}>Next</button>
           </div>
         </div>
       </div>
-      {/* </form> */}
+      </form>
     </>
   );
 };
