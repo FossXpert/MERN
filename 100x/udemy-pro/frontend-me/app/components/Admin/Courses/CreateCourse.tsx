@@ -7,10 +7,13 @@ import CourseOptions from './CourseOptions';
 import CourseContent from './CourseContent';
 import CoursePreview from './CoursePreview';
 import { z } from 'zod';
+import { useCreateCourseMutation } from '../../../../redux/features/courses/courseApi';
 type Props = {}
 
 const CreateCourse = (props: Props) => {
   const [active, setActive] = useState(0);
+
+  const [createCourse, {isLoading,isSuccess,error}] = useCreateCourseMutation();
 
   const [benefits, setBenefits] = useState([{ title: "" }]);
   const [prerequisites, setPrerequisites] = useState([{ title: "" }])
@@ -73,10 +76,14 @@ const CreateCourse = (props: Props) => {
     console.log('courseInfo',courseInfo);
     console.log('courseData',courseData);
     console.log("courseData is :", courseData);
+
   }
 
   const createCourseFinal = async() => {
-      
+      if(!isLoading){
+        const result =  await createCourse(courseData);
+        console.log("result is : ",result);
+      }
   }
 
   return (
