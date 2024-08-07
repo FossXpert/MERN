@@ -1,4 +1,4 @@
-import mongoose,{Document,Schema,Model, ObjectId, Types} from "mongoose";
+import mongoose, { Document, Schema, Model, ObjectId, Types } from "mongoose";
 import { iUser } from "./user";
 import { iCategory } from "./category";
 
@@ -45,13 +45,13 @@ export interface iCourse extends Document {
     courseData: iCourseData[];
     ratings?: number;
     purchased?: number;
-    postedBy? : {
-        userId : Types.ObjectId;
-        name : string;
-        email:string;
+    postedBy?: {
+        userId: Types.ObjectId;
+        name: string;
+        email: string;
     }
-    isPublished? : boolean;
-    courseCategory? : Types.ObjectId;
+    isPublished?: boolean;
+    courseCategory?: Types.ObjectId;
 }
 
 const reviewSchema = new Schema<iReview>({
@@ -61,7 +61,7 @@ const reviewSchema = new Schema<iReview>({
         default: 0
     },
     comment: String,
-    commentReplies : [Object]
+    commentReplies: [Object]
 });
 const linkSchema = new Schema<iLink>({
     title: String,
@@ -120,32 +120,32 @@ const courseSchema = new Schema<iCourse>({
     benefits: [{ title: String }],
     prerequisites: [{ title: String }],
     reviews: [reviewSchema],
-    courseData:[courseDataSchema],
-    ratings:{
-        type:Number,
-        default:0,
+    courseData: [courseDataSchema],
+    ratings: {
+        type: Number,
+        default: 0,
     },
-    purchased:{
-        type:Number,
-        default:0,
+    purchased: {
+        type: Number,
+        default: 0,
     },
-    postedBy:{
-        userId:{
-            type : Types.ObjectId, ref : 'udemy-users',
+    postedBy: {
+        userId: {
+            type: Types.ObjectId, ref: 'udemy-users',
         },
-        email : String,
-        name : String
+        email: String,
+        name: String
     },
-    isPublished:{
-        type : Boolean,
-        default : true
+    isPublished: {
+        type: Boolean,
+        default: true
     },
-    courseCategory:[
+    courseCategory: [
         {
-            type: Schema.Types.ObjectId,ref : 'udemy-category'
+            type: Schema.Types.ObjectId, ref: 'udemy-category'
         }
     ]
 
-},{timestamps:true});
-const courseModel :Model<iCourse> = mongoose.model('udemy-course',courseSchema);
+}, { timestamps: true });
+const courseModel: Model<iCourse> = mongoose.model('udemy-course', courseSchema);
 export default courseModel;

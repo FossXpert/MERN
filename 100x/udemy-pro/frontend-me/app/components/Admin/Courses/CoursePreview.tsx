@@ -1,16 +1,20 @@
 import React, { FC } from 'react'
 
 type Props = {
-  handleSubmit : any
+  handleSubmit : any;
+  createCourseFinal : any;
 }
 
-const CoursePreview:FC<Props> = ({handleSubmit}) => {
+const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal}) => {
 
   return (
-    <div>
+    <>
+    <div className='flex'>
       <button type='submit' onClick={()=>handleSubmit()}>Submit</button>
+      <button type='submit' onClick={()=>createCourseFinal()}>Create</button>
     </div>
+    </>
   )
 }
 
-export default CoursePreview
+export default CoursePreview;
