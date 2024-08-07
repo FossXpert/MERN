@@ -9,9 +9,11 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal}) => {
 
   return (
     <>
-    <div className='flex'>
-      <button type='submit' onClick={()=>handleSubmit()}>Submit</button>
-      <button type='submit' onClick={()=>createCourseFinal()}>Create</button>
+    <button type='submit' onClick={()=>handleSubmit()}>Submit</button>
+    <button type='submit' onClick={()=>createCourseFinal()}>Create</button>
+    <div className='flex flex-col h-full w-full items-center 
+                    border border-solid border-black'>
+
     </div>
     </>
   )
