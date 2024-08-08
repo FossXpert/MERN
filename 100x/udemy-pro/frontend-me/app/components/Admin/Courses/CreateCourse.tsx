@@ -40,7 +40,32 @@ const CreateCourse = (props: Props) => {
     }
   ]);
 
-  const [courseData,setCourseData] = useState({});
+  const [courseData, setCourseData] = useState({
+    name: '',
+    description: '',
+    price: '',
+    estimatedPrice: '',
+    tags: '',
+    thumbnail: '',
+    level: '',
+    demoUrl: '',
+    totalVideos: '',
+    benefits: [{ title: '' }],
+    prerequisites: [{ title: '' }],
+    courseData: [
+      {
+        videoSection: 'Untitled Section',
+        courseDataInside: [
+          {
+            videoUrl: '',
+            title: '',
+            description: '',
+          },
+        ],
+        suggestion: '',
+      },
+    ],
+  });
 
   const handleSubmit = () => {
      const formattedBenefit  = benefits.map((benefit)=> ({title : benefit.title}));
@@ -64,7 +89,7 @@ const CreateCourse = (props: Props) => {
       thumbnail : courseInfo.thumbnail,
       level : courseInfo.level,
       demoUrl : courseInfo.demoUrl,
-      totalVideos : courseContentData.length,
+      totalVideos : courseContentData.length.toString(),
       benefits : formattedBenefit,
       prerequisites : formattedPrerequisites,
       courseData : formattedCourseContentData,
