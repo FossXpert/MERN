@@ -1,8 +1,9 @@
 import React, { FC, useState } from 'react'
 import toast from 'react-hot-toast';
-import { FaRupeeSign } from 'react-icons/fa6';
+import { FaChevronDown, FaChevronUp, FaRupeeSign } from 'react-icons/fa6';
 import { TbArrowBadgeRight } from "react-icons/tb";
 import { LuDot } from "react-icons/lu";
+import { MdOndemandVideo } from 'react-icons/md';
 
 
 type Props = {
@@ -34,10 +35,11 @@ type Props = {
 
 const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) => {
 
-  const handleReadMore = () => {
-    toast.success("Readmore");
-  }
+  const courseSectionCount = courseData.courseData.length;
+  const [courseSectionCountDropDown,setCourseSectionCountDropDown] = useState(Array(courseSectionCount).fill(false));
+  toast.success("Course Section Count : "+courseSectionCount);
 
+  const [videoSectionExtend,setVideoSectionExtend] = useState(false);
   const [isExpanded,setIsExpanded] = useState(false);
 
   const handleTextExpansion = (text:string,limit:number) => {
@@ -54,7 +56,6 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
       border border-solid border-black'>
       <h1 className=''>Course Preview</h1>
       <div className='flex w-[97%] items-center flex-col h-full border border-solid border-green-500'>
-      <div className='flex w-[97%] h-[30%] flex-col border border-solid border-green-500'></div>
       <div className='flex w-[97%] h-auto flex-col border border-solid border-green-500'>
         <div className='flex flex-col w-auto h-auto border border-solid  border-green-500'>
           <h2>{courseData.name}</h2>
@@ -94,12 +95,12 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
             </span>
           </p>
         </div>
-        <div className='flex p-2 gap-2 w-auto h-auto border border-solid  border-green-950 m-2'>
-          <div className='flex flex-col w-auto h-auto border border-solid border-yellow-500'>
-          <div className='flex flex-col w-full gap-4  border border-solid border-black'>
+        <div className='flex p-2 gap-2 justify-between w-auto h-full border border-solid  border-green-950 m-2'>
+          <div className='flex flex-col w-[100%] h-full border border-solid border-yellow-500'>
+          <div className='flex flex-col w-full h-full gap-4  border border-solid border-black'>
             <h3>Course Content</h3>
-            <div className='flex justify-between items-center w-auto border border-solid border-black'>
-              <div className='flex items-center w-auto border border-solid border-black'>
+            <div className='flex justify-between items-center w-auto h-full border border-solid border-black'>
+              <div className='flex items-center w-auto h-full border border-solid border-black'>
               <p className='text-gray-700 text-[0.9rem] p-2'>{courseData.courseData.length} sections</p>
               <LuDot/>
               <p className='text-gray-700 text-[0.9rem] p-2'>{courseData.courseData.length} sections</p>
@@ -109,11 +110,34 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
               <h4 className='p-2 border border-solid border-black text-[.9rem] pl-4 text-[#7F56D9] hover:text-blue-600'>Expand All Sections</h4>
             </div>
           </div>
-          <div className='flex w-auto h-full flex-col border border-solid border-black'>
-
+          <div className='flex w-auto h-full p-2 flex-col border border-solid border-black'>
             {courseData.courseData.map((value,index)=>(
-              <div key={index} className='flex w-auto h-full flex-col border border-solid border-black'>
-                  {value.videoSection}
+              <div key={index} className='flex flex-col w-auto h-full border border-solid border-black'>
+                  <div className='flex w-full h-full border border-solid border-black'>
+                    <div className='flex flex-col w-[72%] h-full cursor-pointer border border-solid border-red-500'>
+                      <div onClick={()=>setCourseSectionCountDropDown(prev=>({...prev,[index]:!prev[index]}))} className='flex items-center p-2 gap-2.5 w-auto cursor-pointer border border-solid border-black'>
+                      {courseSectionCountDropDown[index] ? <FaChevronUp className='text-[0.8rem] border border-solid border-black'/>:
+                       <FaChevronDown className='text-[0.8rem] border border-solid border-black'/> }
+                      <h4 className='w-[95%]'>{value.videoSection}</h4>
+                      </div>
+                    </div>                
+                    <div className='flex justify-between items-center w-[28%] border border-solid border-black'>
+                      <div className='flex items-center w-auto border border-solid border-black'>
+                      <p className='text-gray-700 text-[0.7rem] p-2'>{courseData.courseData.length} Lectures</p>
+                      <LuDot/>
+                      <p className='text-gray-700 text-[0.7rem] p-2'>{courseData.courseData.length} sections</p>
+                      </div>
+                    </div>
+                  </div>
+                  {
+                      courseSectionCountDropDown[index] &&
+                      value.courseDataInside.map((value1,index1)=>(
+                          <div key={index1} className='flex text-[0.8rem] p-2 gap-2.5 items-center w-auto h-auto border border-solid border-black'>
+                            <MdOndemandVideo/>
+                            <p>{value1.title}</p>
+                          </div>
+                      ))
+                  }
               </div>
             ))}
           </div>
