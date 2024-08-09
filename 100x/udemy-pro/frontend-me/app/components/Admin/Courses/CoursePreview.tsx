@@ -57,6 +57,19 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
       <h1 className=''>Course Preview</h1>
       <div className='flex w-[97%] items-center flex-col h-full border border-solid border-green-500'>
       <div className='flex w-[97%] h-auto flex-col border border-solid border-green-500'>
+        <div className='flex w-[100%] h-full mt-2 mb-2 flex-col border border-solid border-green-500'>
+          <h2> Why are you guys leave here ? </h2>
+          {
+            <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/SsLdQNHlcEI?si=s-MLf-3xHzQeOWCl" 
+            title="YouTube video player" 
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+            </iframe>
+          }
+        </div>
         <div className='flex flex-col w-auto h-auto border border-solid  border-green-500'>
           <h2>{courseData.name}</h2>
           <br/>
@@ -99,8 +112,8 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
           <div className='flex flex-col w-[100%] h-full border border-solid border-yellow-500'>
           <div className='flex flex-col w-full h-full gap-4  border border-solid border-black'>
             <h3>Course Content</h3>
-            <div className='flex justify-between items-center w-auto h-full border border-solid border-black'>
-              <div className='flex items-center w-auto h-full border border-solid border-black'>
+            <div className='flex justify-between items-center w-auto h-auto border border-solid border-black'>
+              <div className='flex items-center w-auto h-auto border border-solid border-black'>
               <p className='text-gray-700 text-[0.9rem] p-2'>{courseData.courseData.length} sections</p>
               <LuDot/>
               <p className='text-gray-700 text-[0.9rem] p-2'>{courseData.courseData.length} sections</p>
