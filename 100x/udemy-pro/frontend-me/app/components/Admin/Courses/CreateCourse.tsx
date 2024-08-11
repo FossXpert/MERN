@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CourseStatusBar from './CourseStatusBar'
 import '../../../css/css-admin/coursestatusbar.css'
 import '../../../css/css-admin/createcourse.css'
@@ -8,10 +8,13 @@ import CourseContent from './CourseContent';
 import CoursePreview from './CoursePreview';
 import { z } from 'zod';
 import { useCreateCourseMutation } from '../../../../redux/features/courses/courseApi';
+import toast from 'react-hot-toast';
 type Props = {}
 
 const CreateCourse = (props: Props) => {
   const [active, setActive] = useState(0);
+
+  
 
   const [createCourse, {isLoading,isSuccess,error}] = useCreateCourseMutation();
 
@@ -67,6 +70,17 @@ const CreateCourse = (props: Props) => {
     ],
   });
 
+  useEffect(()=>{
+      if(isSuccess){
+        toast.success("Course Created");
+      }
+      if(error){
+        if('data' in error){
+          const errorData = error as any;
+          toast.error(errorData.data.message);
+        }
+      }
+  },[isSuccess,error])
   const handleSubmit = () => {
      const formattedBenefit  = benefits.map((benefit)=> ({title : benefit.title}));
     const formattedPrerequisites = prerequisites.map((prerequisite) => ({title : prerequisite.title}))
@@ -128,7 +142,8 @@ const CreateCourse = (props: Props) => {
             courseContentData={courseContentData} 
             active={active} setActive={setActive} />}
           {active === 4 && <CoursePreview
-            courseData={courseData} 
+            active={active} setActive={setActive} 
+            courseData={courseData}
             handleSubmit={handleSubmit} createCourseFinal = {createCourseFinal} />}
         </div>
       </div>

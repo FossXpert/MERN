@@ -5,6 +5,7 @@ import { FaSquareMinus, FaSquarePlus } from 'react-icons/fa6';
 import { MdOutlinePlusOne, MdPlusOne } from 'react-icons/md';
 
 type Props = {
+
   active : number;
   setActive : (active : number) => void;
   benefits : {title : string}[];

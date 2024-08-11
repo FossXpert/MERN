@@ -7,6 +7,8 @@ import { MdOndemandVideo } from 'react-icons/md';
 
 
 type Props = {
+  active:number;
+  setActive : (active:number) => void;
   handleSubmit : any;
   createCourseFinal : any;
   courseData:{
@@ -33,11 +35,12 @@ type Props = {
   };
 }
 
-const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) => {
+const CoursePreview:FC<Props> = ({active,setActive,handleSubmit,createCourseFinal,courseData}) => {
 
   const courseSectionCount = courseData.courseData.length;
   const [courseSectionCountDropDown,setCourseSectionCountDropDown] = useState(Array(courseSectionCount).fill(false));
   toast.success("Course Section Count : "+courseSectionCount);
+
 
   const [videoSectionExtend,setVideoSectionExtend] = useState(false);
   const [isExpanded,setIsExpanded] = useState(false);
@@ -48,6 +51,9 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
     return text.substring(0,limit)+ '...';
   }
 
+  const [selectedVideoUrl,setSelectedVideoUrl] = useState<string>("https://www.youtube.com/embed/4VSUrwbd0Jw?si=2spqWH3AgFbb32Jq")
+  toast.success(selectedVideoUrl);
+  console.log(selectedVideoUrl)
   return (
     <>
     <button type='submit' onClick={()=>handleSubmit()}>Submit</button>
@@ -60,13 +66,14 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
         <div className='flex w-[100%] h-full mt-2 mb-2 flex-col border border-solid border-green-500'>
           <h2> Why are you guys leave here ? </h2>
           {
+            
             <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/SsLdQNHlcEI?si=s-MLf-3xHzQeOWCl" 
+            src={selectedVideoUrl} 
             title="YouTube video player" 
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
+            referrerPolicy="strict-origin-when-cross-origin" 
+            allowFullScreen>
             </iframe>
           }
         </div>
@@ -145,7 +152,7 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
                   {
                       courseSectionCountDropDown[index] &&
                       value.courseDataInside.map((value1,index1)=>(
-                          <div key={index1} className='flex text-[0.8rem] p-2 gap-2.5 items-center w-auto h-auto border border-solid border-black'>
+                          <div onClick={()=>setSelectedVideoUrl(value1.videoUrl)} key={index1} className='flex text-[0.8rem] p-2 gap-2.5 items-center w-auto h-auto border border-solid border-black'>
                             <MdOndemandVideo/>
                             <p>{value1.title}</p>
                           </div>
@@ -160,6 +167,10 @@ const CoursePreview:FC<Props> = ({handleSubmit,createCourseFinal,courseData}) =>
           </div>
         </div>
       </div>
+          <div className='flex justify-between pl-2 pr-2 w-full h-[75px]'>
+            <button className='button-global' onClick={()=>setActive(3)}>Prev</button>
+            <button className='button-global' onClick={()=>createCourseFinal()}>Create</button>
+          </div>
       </div>
     </div>
     </>
