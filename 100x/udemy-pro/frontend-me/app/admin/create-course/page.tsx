@@ -1,5 +1,6 @@
 'use client'
 
+import AdminSidebar from '@/app/components/Admin/Sidebar/AdminSidebar'
 import CreateCourse from '../../../app/components/Admin/Courses/CreateCourse'
 import React from 'react'
 
