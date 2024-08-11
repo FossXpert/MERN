@@ -1,11 +1,17 @@
+'use client'
+
+import AdminSidebar from '../../../app/components/Admin/Sidebar/AdminSidebar';
 import AllCourses from '../../components/Admin/Courses/AllCourses'
-import React from 'react'
+import React, { FC } from 'react'
+type Props = {
+  active: number;
+  setActive: (active: number) => void;
+}
 
-type Props = {}
-
-const page = (props: Props) => {
+const page:FC<Props> = ({active,setActive}) => {
   return (
-    <div>
+    <div className='flex'>
+        <AdminSidebar active={active} setActive={setActive}/>
         <AllCourses/>
     </div>
   )
