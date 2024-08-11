@@ -55,7 +55,7 @@ const AdminSidebar:FC<Props> = ({active,setActive}) => {
                     subMenuTitle: 'All Course',
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
-                    subMenuLink: '#',
+                    subMenuLink: 'admin/all-courses',
                     subMenuNumber: 1,
                 },
                 {
