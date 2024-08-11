@@ -13,9 +13,6 @@ type Props = {}
 
 const CreateCourse = (props: Props) => {
   const [active, setActive] = useState(0);
-
-  
-
   const [createCourse, {isLoading,isSuccess,error}] = useCreateCourseMutation();
 
   const [benefits, setBenefits] = useState([{ title: "" }]);

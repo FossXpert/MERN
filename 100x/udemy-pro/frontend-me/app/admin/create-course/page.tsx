@@ -1,10 +1,15 @@
+'use client'
+
+import CreateCourse from '../../../app/components/Admin/Courses/CreateCourse'
 import React from 'react'
 
 type Props = {}
 
 const page = (props: Props) => {
   return (
-    <div>page</div>
+    <div>
+        <CreateCourse/>
+    </div>
   )
 }
 
