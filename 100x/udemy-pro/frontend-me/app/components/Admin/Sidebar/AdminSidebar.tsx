@@ -62,7 +62,7 @@ const AdminSidebar:FC<Props> = ({active,setActive}) => {
                     subMenuTitle: 'Create Course',
                     subMenuActive: true,
                     subMenuIcon: <MdDashboard className='icon' />,
-                    subMenuLink: '#',
+                    subMenuLink: 'admin/create-course',
                     subMenuNumber: 2,
 
                 },
