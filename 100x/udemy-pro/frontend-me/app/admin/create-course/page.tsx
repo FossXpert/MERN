@@ -12,7 +12,7 @@ type Props = {
 const page:FC<Props> = ({active,setActive}) => {
   return (
     <div className='flex'>
-        <AdminSidebar active={active} setActive={setActive}/>
+        <AdminSidebar/>
         <CreateCourse/>
     </div>
   )

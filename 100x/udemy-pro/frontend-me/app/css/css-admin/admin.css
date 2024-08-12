@@ -27,7 +27,7 @@
     padding: 0 8%;
 }
 .admin-header-notification{
-    border: 1px solid;
+    /* border: 1px solid; */
 }
 .admin-content{
     display: flex;

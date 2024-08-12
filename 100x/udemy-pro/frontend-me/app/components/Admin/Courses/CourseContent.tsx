@@ -117,7 +117,7 @@ const CourseContent: FC<Props> = ({handleSubmit : handleCourseSubmit, active, se
                 </div>
               <div className='flex flex-col w-full h-full p-2 m-2 border border-solid border-black-500 shadow-sm'>            
               {
-                value.courseDataInside.map((valuee,videoIndex) => (
+                value.courseDataInside?.map((valuee,videoIndex) => (
                   <div key={videoIndex} className='flex flex-col p-2 gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
                     <div className='flex w-[100%] p-2 items-center h-auto flex-row border border-solid border-black-500 justify-between'>
                     <FaSquarePlus className='cursor-pointer' onClick={()=>handleVideoSectionContentDataAdd(sectionIndex)}/>

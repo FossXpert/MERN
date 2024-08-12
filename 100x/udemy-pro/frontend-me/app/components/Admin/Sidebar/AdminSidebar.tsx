@@ -10,10 +10,10 @@ import { FaBullseye } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-type Props = {
-    active : number;
-    setActive : (active:number) => void; 
-}
+// type Props = {
+//     active : number;
+//     setActive : (active:number) => void; 
+// }
 
 interface MenuItems {
     menuTitle: string;
@@ -31,7 +31,8 @@ interface SubMenuItems {
     subMenuActive: boolean;
     subMenuNumber : number;
 }
-const AdminSidebar:FC<Props> = ({active,setActive}) => {
+const AdminSidebar = () => {
+    const [active, setActive] = useState(0);
     const { user } = useSelector((state: any) => state.auth);
     const [menuItems, setMenuItems] = useState<MenuItems[]>([
         {
@@ -66,6 +67,7 @@ const AdminSidebar:FC<Props> = ({active,setActive}) => {
                     subMenuNumber: 2,
 
                 },
+                
             ],
         },
         {

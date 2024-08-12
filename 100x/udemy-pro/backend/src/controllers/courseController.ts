@@ -54,7 +54,7 @@ export const editCourse = catchAsyncError(async (req: Request, res: Response, ne
             console.log("inside 1")
         }
 
-        if(thumbnail.startsWith("https")){
+        if(thumbnail && thumbnail.startsWith("https")){
             data.thumbnail = {
                 public_id: courseData.thumbnail.public_id,
                 url: courseData.thumbnail.url

@@ -18,6 +18,11 @@ export interface iLink extends Document {
     title: string;
     url: string;
 }
+export interface courseDataInside extends Document {
+    videoUrl: string;
+    title: string;
+    description: string;
+}
 export interface iCourseData extends Document {
     title: string;
     description: string;
@@ -26,6 +31,7 @@ export interface iCourseData extends Document {
     videoLength: number;
     videoPlayer: string;
     // links: iLink[];
+    courseDataInside: courseDataInside[];
     suggestion: string;
     questions: iComment[];
 }
@@ -54,6 +60,7 @@ export interface iCourse extends Document {
     courseCategory?: Types.ObjectId;
 }
 
+
 const reviewSchema = new Schema<iReview>({
     user: Object,
     rating: {
@@ -67,6 +74,13 @@ const linkSchema = new Schema<iLink>({
     title: String,
     url: String,
 });
+
+const courseDataInsideSchema = new Schema<courseDataInside>({
+    videoUrl: String,
+    title: String,
+    description: String,
+});
+
 const commentSchema = new Schema<iComment>({
     user: Object,
     question: String,
@@ -80,6 +94,7 @@ const courseDataSchema = new Schema<iCourseData>({
     videoLength: Number,
     videoPlayer: String,
     // links: [linkSchema],
+    courseDataInside: [courseDataInsideSchema],
     suggestion: String,
     questions: [commentSchema],
 });

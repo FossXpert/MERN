@@ -15,7 +15,7 @@ const AdminLayout = () => {
   return (
     <>
     <div className="admin-container">
-      <AdminSidebar active={active} setActive={setActive} />
+      <AdminSidebar/>
       <div className='admin-container-mini'> 
         <div className='admin-header'>
           <AdminHeader/>
