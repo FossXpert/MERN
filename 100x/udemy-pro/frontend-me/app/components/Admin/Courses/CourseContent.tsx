@@ -115,7 +115,7 @@ const CourseContent: FC<Props> = ({handleSubmit : handleCourseSubmit, active, se
                   {sectionIndex > 0 && <MdDelete onClick={()=>handleVideoSectionRemove(sectionIndex)}/>}
                   </div>
                 </div>
-              <div className='flex flex-col w-full h-full p-2 m-2 {/**/} border border-solid border-black-500 shadow-sm'>            
+              <div className='flex flex-col w-full h-full p-2 m-2 border border-solid border-black-500 shadow-sm'>            
               {
                 value.courseDataInside.map((valuee,videoIndex) => (
                   <div key={videoIndex} className='flex flex-col p-2 gap-2 w-full h-auto mt-2 border border-solid border-violet-500'>
