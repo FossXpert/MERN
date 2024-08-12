@@ -2,9 +2,13 @@ import React from 'react'
 
 type Props = {}
 
+
 const AllCourses = (props: Props) => {
   return (
-    <div>AllCourses</div>
+    <>
+    <div className={``}>
+    </div>
+    </>
   )
 }
 
