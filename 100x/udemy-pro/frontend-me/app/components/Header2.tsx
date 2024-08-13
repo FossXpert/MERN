@@ -76,11 +76,11 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
             <Image src={zoom} alt="" />
           </div>
           <div className="container3">
-            <ul>Home</ul>
-            <ul>Course</ul>
-            <ul>About</ul>
-            <ul>Policy</ul>
-            <ul>FAQ</ul>
+            <ul><Link className='no-underline text-black' href={'all/courses'}>Home</Link></ul>
+            <ul><Link className='no-underline text-black' href={'all/courses'}>Course</Link></ul>
+            <ul><Link className='no-underline text-black' href={'all/courses'}>About</Link></ul>
+            <ul><Link className='no-underline text-black' href={'all/courses'}>Policy</Link></ul>
+            <ul><Link className='no-underline text-black' href={'all/courses'}>FAQ</Link></ul>
           </div>
           <div className="container4">
             <div className='icon-1'>
