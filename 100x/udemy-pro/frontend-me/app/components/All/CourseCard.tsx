@@ -21,7 +21,7 @@ const CourseCard:FC<Props> = ({name,price,estimatedPrice,tags,thumbnail,level,de
               <Image src={thumbnail} alt='text' width={250}/>
             </div>
             <div className={`flex flex-col w-full h-[125px] ${border} !border-red-500`}>
-
+              
             </div>
         </div>
     </>
