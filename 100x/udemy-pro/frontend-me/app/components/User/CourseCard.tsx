@@ -10,11 +10,13 @@ type Props = {
     demoUrl : string;
     totalVideos : string;
 }
-
+const border = 'border border-solid border-black';
 const CourseCard:FC<Props> = ({name,price,estimatedPrice,tags,thumbnail,level,demoUrl,totalVideos}) => {
   return (
     <>
-        <div className='flex'></div>
+        <div className={`flex flex-col w-[250px] h-[190px] ${border}`}>
+            
+        </div>
     </>
   )
 }
