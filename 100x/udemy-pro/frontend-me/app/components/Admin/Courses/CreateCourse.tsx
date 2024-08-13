@@ -77,7 +77,8 @@ const CreateCourse = (props: Props) => {
           toast.error(errorData.data.message);
         }
       }
-  },[isSuccess,error])
+  },[isSuccess,error]);
+  
   const handleSubmit = () => {
      const formattedBenefit  = benefits.map((benefit)=> ({title : benefit.title}));
     const formattedPrerequisites = prerequisites.map((prerequisite) => ({title : prerequisite.title}))
