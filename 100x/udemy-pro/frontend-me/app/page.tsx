@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Header2 from './components/Header2';
-import Heading from './main/Heading';
 import Hero from './main/Hero';
 
 type Props = {

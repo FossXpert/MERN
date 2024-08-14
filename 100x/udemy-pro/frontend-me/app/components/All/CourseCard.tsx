@@ -16,7 +16,7 @@ type Props = {
     demoUrl : string;
     totalVideos : string;
 }
-const border = '';
+const border = 'border border-solid border-black';
 const shadow = 'shadow-md shadow-black'
 const CourseCard:FC<Props> = ({name,price,estimatedPrice,tags,thumbnail,level,demoUrl,totalVideos}) => {
   return (

@@ -1,14 +1,24 @@
 'use client'
 
-import React from 'react'
+import React, { FC } from 'react'
 import Course from '../../components/All/Course'
 
-type Props = {}
+type Props = {
+  open : boolean;
+  setOpen : (open:boolean) => void;
+  route : string;
+  setRoute : (route:string) => void;
+}
 
-const page = (props: Props) => {
+const page:FC<Props> = ({open,setOpen,route,setRoute}) => {
   return (
     <div>
-        <Course/>
+        <Course
+          open={open}
+          setOpen={setOpen}
+          route={route}
+          setRoute={setRoute}
+        />
     </div>
   )
 }
