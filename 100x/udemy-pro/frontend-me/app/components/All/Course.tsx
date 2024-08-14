@@ -6,10 +6,20 @@ type Props = {}
 const Course = (props: Props) => {
   return (
     <>
-      <div>
-        Course
-      </div>
-      <div>
+      <div className={`flex w-auto h-auto`}>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
+        <CourseCard/>
         <CourseCard/>
       </div>
     </>
