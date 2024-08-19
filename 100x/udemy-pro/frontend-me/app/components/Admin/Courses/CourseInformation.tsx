@@ -153,7 +153,7 @@ const CourseInformation:FC<Props> = ({handleSubmit:handleSubmit1,active,setActiv
             </div>
           </div>
           <div draggable={true} onDrop={handleDrop} onDragOver={handleDragOver} onDragLeave={handleDragLeave} className='group-5'>
-          <input className='hidden' name='file' type='file' accept='image/*' id=''/>
+          <input className='' name='file' type='file' accept='image/*' id=''/>
           <label className={`${dragged ? "bg-blue-500" : "bg-transparent"}`} htmlFor='file'>
             <span>Drag and drop an image here</span>
           </label>

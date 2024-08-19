@@ -85,8 +85,7 @@ export const getSingleCourse = catchAsyncError(async (req: Request, res: Respons
                 course: JSON.parse(course)
             })
         } else {
-
-            const courseMongo = await courseModel.findById(req.params.id).select("-courseData.videoUrl -courseData.links -courseData.questions -courseData.suggestion -courseData.videoLength -courseData.videoPlayer ");
+            const courseMongo = await courseModel.findById(req.params.id);
             if (!courseMongo) {
                 return next(new ErrorHandler('Failed to fetch single course', 400));
             }

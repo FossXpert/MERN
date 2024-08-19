@@ -10,8 +10,7 @@ type Props = {
 const page:FC<Props> = () => {
   return (
     <div>
-        <Course
-        />
+        <Course/>
     </div>
   )
 }

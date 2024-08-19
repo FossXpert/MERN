@@ -64,7 +64,6 @@ const CoursePreview:FC<Props> = ({active,setActive,handleSubmit,createCourseFina
       <div className='flex w-[97%] items-center flex-col h-full border border-solid border-green-500'>
       <div className='flex w-[97%] h-auto flex-col border border-solid border-green-500'>
         <div className='flex w-[100%] h-full mt-2 mb-2 flex-col border border-solid border-green-500'>
-          <h2> Why are you guys leave here ? </h2>
           {
             
             <iframe width="560" height="315" 

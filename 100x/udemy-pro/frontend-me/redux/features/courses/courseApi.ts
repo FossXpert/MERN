@@ -1,3 +1,4 @@
+import { buildAggregatedSortingApplier } from "@mui/x-data-grid/hooks/features/sorting/gridSortingUtils";
 import { apiSlice } from "../api/apiSlice";
 
 export const courseApi = apiSlice.injectEndpoints({
@@ -31,8 +32,15 @@ export const courseApi = apiSlice.injectEndpoints({
                 method : 'PUT',
                 credentials : 'include' as const
             })
+        }),
+        getSingleCourse: builder.query({
+            query : ({id}) => ({
+                url : `course/get-single-course/${id}`,
+                method : 'GET',
+                credentials : 'include' as const
+            })
         })
     })
 })
 
-export const {useEditSingleCourseMutation,useCreateCourseMutation,useGetallcourseQuery,useDeleteSingleCourseMutation} = courseApi;
+export const {useGetSingleCourseQuery,useEditSingleCourseMutation,useCreateCourseMutation,useGetallcourseQuery,useDeleteSingleCourseMutation} = courseApi;
