@@ -8,16 +8,16 @@ import { useGetSingleCourseQuery } from '../../../redux/features/courses/courseA
 
 type Props = {
   id: string;
-  active: number;
-  setActive: (active: number) => void;
-  handleSubmit: any;
-  createCourseFinal: any;
 };
 
 const hehegreen= 'border border-solid border-green-500';
 const heheblack = 'border border-solid border-black';
 
-const CoursePreview: FC<Props> = ({ id, active, setActive, handleSubmit, createCourseFinal }) => {
+const CoursePreview: FC<Props> = ({id}) => {
+
+  
+
+
   const { refetch, data, error, isLoading } = useGetSingleCourseQuery({id}, {
     refetchOnMountOrArgChange: true,
   });
