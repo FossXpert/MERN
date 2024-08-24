@@ -15,7 +15,7 @@ const heheblack = 'border border-solid border-black';
 
 const CoursePreview: FC<Props> = ({id}) => {
 
-  
+
 
 
   const { refetch, data, error, isLoading } = useGetSingleCourseQuery({id}, {
@@ -78,7 +78,7 @@ const CoursePreview: FC<Props> = ({id}) => {
             </iframe>
           }
         </div>
-        <div className='flex flex-col w-auto h-auto hehegreen'>
+        <div className='flex flex-col w-auto h-auto border border-solid border-green-500'>
           <h2>{courseData.name}</h2>
           <div className='flex w-auto gap-2 items-center hehegreen'>
             <FaRupeeSign className='ml-2'/>
