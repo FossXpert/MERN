@@ -79,7 +79,7 @@ const CoursePreview: FC<Props> = ({id}) => {
           }
         </div>
         <div className='flex flex-col w-auto h-auto border border-solid border-green-500'>
-          <h2>{courseData.name}</h2>
+          <p>{courseData.name}</p>
           <div className='flex w-auto gap-2 items-center hehegreen'>
             <FaRupeeSign className='ml-2'/>
             <h3>{courseData.price}</h3>
