@@ -51,7 +51,7 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
   }
 
   const handleCart = () => {
-    router.push('/profile')
+    router.push('/all/cart')
   }
 
   return (
