@@ -8,4 +8,4 @@ const Cart = (props: Props) => {
   )
 }
 
-export default Cart
+export default Cart;
