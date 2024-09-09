@@ -67,7 +67,6 @@ const CoursePreview: FC<Props> = ({id}) => {
       <div className='flex w-[97%] h-auto flex-col hehegreen'>
         <div className='flex w-[100%] h-full mt-2 mb-2 flex-col hehegreen'>
           {
-            
             <iframe width="560" height="315" 
             src={selectedVideoUrl} 
             title="YouTube video player" 
