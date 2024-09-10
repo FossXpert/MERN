@@ -79,6 +79,7 @@ export const removeFromCart = catchAsyncError(async(req:Request,res:Response,nex
        
         let cart = await Cart.findOne({userId});
         
+        cart?.items.find({product: productId});
     } catch (error) {
         
     }
