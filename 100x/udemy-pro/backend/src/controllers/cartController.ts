@@ -41,6 +41,7 @@ export const addToCart = catchAsyncError(async (req: Request, res: Response, nex
             const itemIndex = cart.items.findIndex((item:any) => item.product.toString() === productId);
 
             if (itemIndex > -1) {
+                console.log("here")
                 // Product exists in the cart, update the quantity and total price
                 cart.items[itemIndex].quantity += quantity;
                 cart.items[itemIndex].totalPrice = cart.items[itemIndex].quantity * cart.items[itemIndex].price;
