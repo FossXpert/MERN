@@ -72,4 +72,4 @@ export const addToCart = catchAsyncError(async (req: Request, res: Response, nex
     }
 });
 
-export const removeFromCart = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
+export const removeFromCart = catchAsyncError(async (req: Request, res: Response, next: NextFunction) 
