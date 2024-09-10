@@ -71,3 +71,5 @@ export const addToCart = catchAsyncError(async (req: Request, res: Response, nex
         return next(new ErrorHandler(error.message, 400));
     }
 });
+
+export const removeFromCart = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
