@@ -9,7 +9,6 @@ import { jwtPayloadNew } from '../middlewares/auth';
 // Add to cart function
 export const addToCart = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
     try {
-        console.log((req as jwtPayloadNew).user);
         const userId = (req as jwtPayloadNew).user._id;  // Get user ID from the JWT 
         console.log(userId);
         const productId = req.body._id;  // Get product ID from request body
