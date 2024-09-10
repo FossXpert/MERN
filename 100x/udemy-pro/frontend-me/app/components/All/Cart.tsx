@@ -4,6 +4,7 @@ import Header2 from '../Header2'
 import { useGetallcourseQuery } from '../../../redux/features/courses/courseApi'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
+import { FaArrowLeftLong } from 'react-icons/fa6'
 
 type Props = {
 
@@ -50,8 +51,56 @@ const Cart = () => {
           <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
             <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
               alt='text' width={125} height={90} />
-            <div className='flex flex-col w-full h-auto'>
+            <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
                 <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>Title</h4>
+                <button className='mt-6 w-[65px]'>Remove</button>
+            </div>
+            <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <p>Price</p>
+            </div>
+            <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <p>Quantity</p>
+            </div>
+            <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <p>Total</p>
+            </div>
+          </div>
+          <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
+            <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
+              alt='text' width={125} height={90} />
+            <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>Title</h4>
+                <button className='mt-6 w-[65px]'>Remove</button>
+            </div>
+            <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <p>Price</p>
+            </div>
+            <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <p>Quantity</p>
+            </div>
+            <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <p>Total</p>
+            </div>
+          </div>
+          <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
+            <button className='w-[20%]'>Clear Cart</button>
+            <div className={`flex flex-col h-auto w-[80%] ${heheblack}`}>
+                <div className={`flex justify-around items-center h-[60px] w-full ${hehegreen}`}>
+                    <h4>Subtotal</h4>
+                    <h4>Price</h4>
+                </div>
+                <div className={`flex justify-end items-center h-[60px] w-auto ${heheblack}`}>
+                    <div className={`flex justify-around items-center h-[60px] w-[30%] ${hehegreen}`}>
+                        <button className='flex gap-2'>
+                          <FaArrowLeftLong/>
+                          Continue Shopping
+                        </button>
+                    </div>
+                    <div className={`flex justify-around items-center h-[60px] w-[30%] ${hehegreen}`}>
+                        <button>Checkout</button>
+                    </div>
+                </div>
+                
             </div>
           </div>
         </div>
