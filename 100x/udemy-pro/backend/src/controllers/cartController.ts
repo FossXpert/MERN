@@ -77,7 +77,8 @@ export const removeFromCart = catchAsyncError(async(req:Request,res:Response,nex
         const userId = (req as jwtPayloadNew).user._id;  // Get user ID from the JWT 
         const productId = req.body._id;  // Get product ID from request body
        
-        let cart = await Cart.find
+        let cart = await Cart.findOne({userId});
+        
     } catch (error) {
         
     }
