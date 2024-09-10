@@ -27,7 +27,7 @@ export const addToCart = catchAsyncError(async (req: Request, res: Response, nex
         // If the user has no cart, create a new one
         if (!cart) {
             cart = new Cart({
-                user: userId,
+                userId: userId,
                 items: [{
                     product: productId,
                     quantity: quantity,
