@@ -14,6 +14,7 @@ import analyticsRouter from "./routes/analyticsRouter";
 import layoutRouter from "./routes/layoutRouter";
 import { hostname } from "os";
 import { Console } from "console";
+import cartRouter from "./routes/cartRouter";
 //j
 app.use(express.json({limit:'50mb'}));
 app.use(cookieParser());
@@ -50,6 +51,7 @@ app.use('/api/order',orderRouter);
 app.use('/api/notification',notificationRouter);
 app.use('/api/analytics',analyticsRouter);
 app.use('/api/layout',layoutRouter);
+app.use('/api/cart',cartRouter);
 
 app.use(errorMiddleware);
 
