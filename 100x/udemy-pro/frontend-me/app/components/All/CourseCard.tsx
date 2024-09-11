@@ -32,11 +32,11 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
 
   const handleOnClick = () => {
     console.log("Clicked");
-    console.log(id);
+    console.log("id is : ",id);
   }
     const handleAddToCart = () =>{
       addToCart(id);
-      console.log("id is ",id)
+      console.log("data is ",data)
     }
   
   return (
