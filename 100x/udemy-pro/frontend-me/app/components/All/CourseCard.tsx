@@ -23,20 +23,22 @@ type Props = {
     level : string;
     demoUrl : string;
     totalVideos : string;
+    productId : string;
 }
 const border = '';
 const shadow = 'shadow-md shadow-black'
-const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbnail,level,demoUrl,totalVideos}) => {
+const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbnail,level,demoUrl,totalVideos,productId}) => {
   
   const [addToCart,{data,isLoading,error}] = useAddToCartMutation();
-  
+
   const handleOnClick = () => {
     console.log("Clicked");
     console.log(id);
   }
   const handleAddToCart = () =>{
-
-  }
+      addToCart(id);
+      console.log("id is ",id)
+    }
   
   return (
     <>
