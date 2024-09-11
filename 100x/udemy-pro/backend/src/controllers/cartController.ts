@@ -77,15 +77,16 @@ export const removeFromCart = catchAsyncError(async (req: Request, res: Response
         const userId = (req as jwtPayloadNew).user._id;  // Get user ID from the JWT 
         const productId = req.body._id;  // Get product ID from request body
 
+        console.log(productId);
         // Find the user's cart
-        let cart : any = await Cart.findOne({ user: userId });
+        let cart : any = await Cart.findOne({ userId: userId });
 
         if (!cart) {
             return next(new ErrorHandler("Cart not found", 404));
         }
 
         // Find the index of the item to be removed
-        const itemIndex = cart.items.findIndex((item: any) => item.product.toString() === productId);
+        const itemIndex = cart.items.findIndex((item: any) => item.product.equals(productId));
 
         if (itemIndex === -1) {
             return next(new ErrorHandler("Product not found in cart", 404));
