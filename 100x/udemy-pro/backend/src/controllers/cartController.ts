@@ -22,7 +22,7 @@ export const addToCart = catchAsyncError(async (req: Request, res: Response, nex
         }
 
         // Check if the user already has a cart
-        let cart:any = await Cart.findOne({ user: userId });
+        let cart:any = await Cart.findOne({ userId: userId });
 
         // If the user has no cart, create a new one
         if (!cart) {
@@ -38,7 +38,7 @@ export const addToCart = catchAsyncError(async (req: Request, res: Response, nex
             });
         } else {
             // If cart exists, check if product is already in the cart
-            const itemIndex = cart.items.findIndex((item:any) => console.log(item.product.toString()));
+            const itemIndex = cart.items.findIndex((item:any) => item.product.equals(productId));
 
             if (itemIndex > -1) {
                 console.log("here")
