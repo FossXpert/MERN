@@ -1,4 +1,3 @@
-import { buildAggregatedSortingApplier } from "@mui/x-data-grid/hooks/features/sorting/gridSortingUtils";
 import { apiSlice } from "../api/apiSlice";
 
 export const courseApi = apiSlice.injectEndpoints({
