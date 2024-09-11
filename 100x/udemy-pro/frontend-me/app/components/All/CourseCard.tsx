@@ -4,6 +4,7 @@ import thumbnail from '../../assets/zoom.png';
 import Rating from '@mui/material/Rating';
 import { MdOutlineFormatListNumbered } from 'react-icons/md';
 import Link from 'next/link';
+import { useAddToCartMutation } from '../../../redux/features/cart/cartApi';
 
 
 
@@ -27,9 +28,14 @@ const border = '';
 const shadow = 'shadow-md shadow-black'
 const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbnail,level,demoUrl,totalVideos}) => {
   
+  const [addToCart,{data,isLoading,error}] = useAddToCartMutation();
+  
   const handleOnClick = () => {
     console.log("Clicked");
     console.log(id);
+  }
+  const handleAddToCart = () =>{
+
   }
   
   return (
@@ -74,7 +80,7 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
                   )}
                 </div>
                 <div className='flex'>
-                  <button className='button-global !h-[1.5rem]' onClick={}>Add to Cart</button>
+                  <button className='button-global !h-[1.5rem]' onClick={()=>handleAddToCart()}>Add to Cart</button>
                 </div>
               </div>
             </div>
