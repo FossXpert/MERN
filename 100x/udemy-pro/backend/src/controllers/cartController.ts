@@ -10,9 +10,9 @@ import { jwtPayloadNew } from '../middlewares/auth';
 export const addToCart = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = (req as jwtPayloadNew).user._id;  // Get user ID from the JWT 
-        console.log(userId);
+        // console.log(userId);
         const productId = req.body._id;  // Get product ID from request body
-        console.log(productId);
+        // console.log(productId);
         const quantity = req.body.quantity || 1;  // Get quantity (default to 1 if not provided)
 
         // Find the product (assumes you're adding products from the courseModel)
@@ -38,7 +38,7 @@ export const addToCart = catchAsyncError(async (req: Request, res: Response, nex
             });
         } else {
             // If cart exists, check if product is already in the cart
-            const itemIndex = cart.items.findIndex((item:any) => item.product.toString() === productId);
+            const itemIndex = cart.items.findIndex((item:any) => console.log(item.product.toString()));
 
             if (itemIndex > -1) {
                 console.log("here")
