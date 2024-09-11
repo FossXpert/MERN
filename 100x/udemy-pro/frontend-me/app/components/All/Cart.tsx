@@ -8,13 +8,13 @@ import { FaArrowLeftLong } from 'react-icons/fa6'
 import { useAddToCartMutation } from '@/redux/features/cart/cartApi'
 
 type Props = {
-
+    productId : string;
 }
 
 const hehegreen= 'border border-solid border-green-500';
 const heheblack = 'border border-solid border-black';
 
-const Cart = () => {
+const Cart:FC<Props> = ({productId}) => {
   const [open,setOpen] = useState(false);
   const [route, setRoute] = useState('signin');
 
@@ -35,6 +35,10 @@ const Cart = () => {
       }
     }
   },[]);
+
+  const randomfunction = () => {
+    addToCart(productId);
+  }
 
   return (
     <>
