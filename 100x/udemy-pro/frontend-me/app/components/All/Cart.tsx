@@ -25,6 +25,7 @@ const Cart = () => {
       toast.success("isLoading");
     }
     if(data){
+        console.log(data);
       toast.success("Data fetched successfully");
     }
     if(error){
