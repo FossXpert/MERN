@@ -5,6 +5,7 @@ import { useGetallcourseQuery } from '../../../redux/features/courses/courseApi'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { FaArrowLeftLong } from 'react-icons/fa6'
+import { useAddToCartMutation } from '@/redux/features/cart/cartApi'
 
 type Props = {
 
@@ -17,7 +18,7 @@ const Cart = () => {
   const [open,setOpen] = useState(false);
   const [route, setRoute] = useState('signin');
 
-  const {data,error,isLoading,refetch}
+  const [addToCart,{data,error,isLoading}] = useAddToCartMutation();
 
   useEffect(()=>{
     if(isLoading){
