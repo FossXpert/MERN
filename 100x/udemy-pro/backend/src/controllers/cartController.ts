@@ -86,7 +86,7 @@ export const removeFromCart = catchAsyncError(async (req: Request, res: Response
         }
 
         // Find the index of the item to be removed
-        const itemIndex = cart.items.findIndex((item: any) => item.product.equals(productId));
+        const itemIndex = cart.items.findIndex((item: any) => item.product.equals("66ba10fbc4e5bd83a726bf2e"));
 
         if (itemIndex === -1) {
             return next(new ErrorHandler("Product not found in cart", 404));
