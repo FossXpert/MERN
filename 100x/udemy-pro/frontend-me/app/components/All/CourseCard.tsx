@@ -37,6 +37,9 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
     const handleAddToCart = () =>{
       addToCart(id);
       console.log("data is ",data)
+      if(error){
+        if(data in 'erro')
+      }
     }
   
   return (
