@@ -14,7 +14,7 @@ type Props = {
 const hehegreen= 'border border-solid border-green-500';
 const heheblack = 'border border-solid border-black';
 
-const Cart:FC<Props> = ({productId}) => {
+const Cart = () => {
   const [open,setOpen] = useState(false);
   const [route, setRoute] = useState('signin');
 
@@ -36,9 +36,7 @@ const Cart:FC<Props> = ({productId}) => {
     }
   },[]);
 
-  const randomfunction = () => {
-    addToCart(productId);
-  }
+ 
 
   return (
     <>
@@ -53,6 +51,7 @@ const Cart:FC<Props> = ({productId}) => {
           <h1 className={`flex m-0 p-0 flex-col items-center w-full h-auto ${hehegreen}`}>
             Shopping Cart
           </h1>
+          
           <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
             <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
               alt='text' width={125} height={90} />

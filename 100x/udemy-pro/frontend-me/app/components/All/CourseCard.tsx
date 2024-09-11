@@ -74,7 +74,7 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
                   )}
                 </div>
                 <div className='flex'>
-                  <button className='button-global !h-[1.5rem]'>Add to Cart</button>
+                  <button className='button-global !h-[1.5rem]' onClick={}>Add to Cart</button>
                 </div>
               </div>
             </div>
