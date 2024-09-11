@@ -72,15 +72,47 @@ export const addToCart = catchAsyncError(async (req: Request, res: Response, nex
     }
 });
 
-export const removeFromCart = catchAsyncError(async(req:Request,res:Response,next:NextFunction) => {
+export const removeFromCart = catchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = (req as jwtPayloadNew).user._id;  // Get user ID from the JWT 
         const productId = req.body._id;  // Get product ID from request body
-       
-        let cart = await Cart.findOne({userId});
-        
-        cart?.items.find({product: productId});
-    } catch (error) {
-        
+
+        // Find the user's cart
+        let cart = await Cart.findOne({ user: userId });
+
+        if (!cart) {
+            return next(new ErrorHandler("Cart not found", 404));
+        }
+
+        // Find the index of the item to be removed
+        const itemIndex = cart.items.findIndex((item: any) => item.product.toString() === productId);
+
+        if (itemIndex === -1) {
+            return next(new ErrorHandler("Product not found in cart", 404));
+        }
+
+        // Remove the item from the cart
+        cart.items.splice(itemIndex, 1);
+
+        // Recalculate the subtotal
+        cart.subTotal = cart.items.reduce((sum: any, item: any) => sum + item.totalPrice, 0);
+
+        // If no items remain in the cart, you may want to delete the cart or leave it empty
+        if (cart.items.length === 0) {
+            await cart.remove();  // Optionally remove the cart if empty
+        } else {
+            // Save the cart after removal
+            await cart.save();
+        }
+
+        // Send response
+        res.status(200).json({
+            success: true,
+            message: 'Product removed from cart',
+            cart
+        });
+    } catch (error: any) {
+        return next(new ErrorHandler(error.message, 400));
     }
-})
+});
+
