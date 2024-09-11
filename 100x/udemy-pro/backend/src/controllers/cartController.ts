@@ -78,7 +78,7 @@ export const removeFromCart = catchAsyncError(async (req: Request, res: Response
         const productId = req.body._id;  // Get product ID from request body
 
         // Find the user's cart
-        let cart = await Cart.findOne({ user: userId });
+        let cart : any = await Cart.findOne({ user: userId });
 
         if (!cart) {
             return next(new ErrorHandler("Cart not found", 404));
