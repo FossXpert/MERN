@@ -71,6 +71,6 @@ cartSchema.pre<Cart>('save', function (next) {
 });
 
 // Model Definition
-const Cart: Model<Cart> = mongoose.model<Cart>('Cart', cartSchema);
+const Cart: Model<Cart> = mongoose.model<Cart>('udemy-cart', cartSchema);
 
 export default Cart;
