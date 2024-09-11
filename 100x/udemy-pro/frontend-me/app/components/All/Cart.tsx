@@ -17,8 +17,7 @@ const Cart = () => {
   const [open,setOpen] = useState(false);
   const [route, setRoute] = useState('signin');
 
-  const {data,error,isLoading,refetch} = useGetallcourseQuery({},{refetchOnMountOrArgChange:true});
-  
+  const {data,error,isLoading,refetch}
 
   useEffect(()=>{
     if(isLoading){
