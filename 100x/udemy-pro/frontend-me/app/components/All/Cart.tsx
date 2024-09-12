@@ -18,23 +18,22 @@ const Cart = () => {
   const [open,setOpen] = useState(false);
   const [route, setRoute] = useState('signin');
 
-  const [addToCart,{data,error,isLoading}] = useAddToCartMutation();
 
-  useEffect(()=>{
-    if(isLoading){
-      toast.success("isLoading");
-    }
-    if(data){
-        console.log(data);
-      toast.success("Data fetched successfully");
-    }
-    if(error){
-      if('data' in error){
-        const errorMessage = error as any;
-        toast.error(errorMessage.data.message);
-      }
-    }
-  },[]);
+  // useEffect(()=>{
+  //   if(isLoading){
+  //     toast.success("isLoading");
+  //   }
+  //   if(data){
+  //       console.log(data);
+  //     toast.success("Data fetched successfully");
+  //   }
+  //   if(error){
+  //     if('data' in error){
+  //       const errorMessage = error as any;
+  //       toast.error(errorMessage.data.message);
+  //     }
+  //   }
+  // },[]);
 
  
 
