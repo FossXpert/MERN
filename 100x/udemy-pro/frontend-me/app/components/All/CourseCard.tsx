@@ -1,10 +1,11 @@
 import Image from 'next/image';
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import thumbnail from '../../assets/zoom.png';
 import Rating from '@mui/material/Rating';
 import { MdOutlineFormatListNumbered } from 'react-icons/md';
 import Link from 'next/link';
 import { useAddToCartMutation } from '../../../redux/features/cart/cartApi';
+import toast from 'react-hot-toast';
 
 
 
@@ -28,7 +29,14 @@ const border = '';
 const shadow = 'shadow-md shadow-black'
 const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbnail,level,demoUrl,totalVideos}) => {
   
-  const [addToCart,{data,isLoading,error}] = useAddToCartMutation();
+  const [addToCart,{data,isSuccess,isLoading,error}] = useAddToCartMutation();
+
+  useEffect(()=>{
+    if(isSuccess){
+      toast.success("Added to cart")
+    }
+    if(error)
+  },[])
 
   const handleOnClick = () => {
     console.log("Clicked");
