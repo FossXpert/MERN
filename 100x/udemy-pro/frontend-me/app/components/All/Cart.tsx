@@ -18,16 +18,22 @@ const Cart = () => {
   const [open,setOpen] = useState(false);
   const [route, setRoute] = useState('signin');
 
-  const {data,isLoading,isSuccess,error,refetch} = useGetCartStatusQuery
+  const {data,isLoading,isSuccess,error,refetch} = useGetCartStatusQuery({},{refetchOnMountOrArgChange:true});
+  const {data:courseData,isSuccess:courseSuccess,error:courseError,refetch:refetchCourse} = useGetallcourseQuery({},{refetchOnMountOrArgChange:true});
+
 
   useEffect(()=>{
     if(isLoading){
       toast.success("isLoading");
     }
-    if(data){
+    if(isSuccess){
         console.log(data);
       toast.success("Data fetched successfully");
     }
+    if(courseSuccess){
+      console.log(courseData);
+    toast.success("Course Data fetched successfully");
+  }
     if(error){
       if('data' in error){
         const errorMessage = error as any;
