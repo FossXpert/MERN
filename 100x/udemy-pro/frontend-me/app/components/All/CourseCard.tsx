@@ -35,7 +35,13 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
     if(isSuccess){
       toast.success("Added to cart")
     }
-    if(error)
+    if(error){
+      if('data' in error){
+        const errorData = error as any;
+        toast.error(errorData.message);
+      }
+    }
+    
   },[])
 
   const handleOnClick = () => {
