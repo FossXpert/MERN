@@ -69,7 +69,7 @@ const Cart = () => {
                 <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
                   alt='text' width={125} height={90} />
                 <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
-                    <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>{courseData.Allcourses.map}</h4>
+                    <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>Title</h4>
                     <button className='mt-6 w-[65px]'>Remove</button>
                 </div>
                 <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
