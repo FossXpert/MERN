@@ -3,7 +3,7 @@ import { apiSlice } from "../api/apiSlice";
 export const cartApi = apiSlice.injectEndpoints({
     endpoints : (builder) => ({
         addToCart :  builder.mutation({
-            query : (id:string) => ({
+            query : (id) => ({
                 url : 'cart/addtocart',
                 method: 'POST',
                 body : {
