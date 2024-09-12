@@ -136,7 +136,7 @@ export const getCartStatus = catchAsyncError(async(req:Request,res:Response,next
             success: true,
             cart
         });
-    } catch (error) {
-        
+    } catch (error:any) {
+        return next(new ErrorHandler(error.message, 500));
     }
 })
