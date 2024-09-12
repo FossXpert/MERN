@@ -117,3 +117,4 @@ export const removeFromCart = catchAsyncError(async (req: Request, res: Response
     }
 });
 
+export const getCartStatus = 
