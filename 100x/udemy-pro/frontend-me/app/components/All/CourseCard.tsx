@@ -35,7 +35,8 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
     console.log("id is : ",id);
   }
     const handleAddToCart = async() =>{
-      const data1 = await addToCart(id);
+      console.log(id)
+      const data1 = await addToCart({id});
       console.log("data is ",data)
       console.log("data1 is ",data1)
       if(error){
