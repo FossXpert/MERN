@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
 import CourseCard from './CourseCard'
 import Header2 from '../Header2'
-import { useGetallcourseQuery } from '../../../redux/features/courses/courseApi'
+import { useGetallcourseQuery, useGetSingleCourseQuery } from '../../../redux/features/courses/courseApi'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { FaArrowLeftLong } from 'react-icons/fa6'
-import { useAddToCartMutation } from '@/redux/features/cart/cartApi'
+import { useAddToCartMutation, useGetCartStatusQuery } from '../../../redux/features/cart/cartApi'
 
 type Props = {
     productId : string;
@@ -18,22 +18,23 @@ const Cart = () => {
   const [open,setOpen] = useState(false);
   const [route, setRoute] = useState('signin');
 
+  const {data,isLoading,isSuccess,error,refetch} = useGetCartStatusQuery
 
-  // useEffect(()=>{
-  //   if(isLoading){
-  //     toast.success("isLoading");
-  //   }
-  //   if(data){
-  //       console.log(data);
-  //     toast.success("Data fetched successfully");
-  //   }
-  //   if(error){
-  //     if('data' in error){
-  //       const errorMessage = error as any;
-  //       toast.error(errorMessage.data.message);
-  //     }
-  //   }
-  // },[]);
+  useEffect(()=>{
+    if(isLoading){
+      toast.success("isLoading");
+    }
+    if(data){
+        console.log(data);
+      toast.success("Data fetched successfully");
+    }
+    if(error){
+      if('data' in error){
+        const errorMessage = error as any;
+        toast.error(errorMessage.data.message);
+      }
+    }
+  },[]);
 
  
 
