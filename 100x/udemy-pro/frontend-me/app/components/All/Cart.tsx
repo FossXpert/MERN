@@ -64,8 +64,8 @@ const Cart = () => {
             Shopping Cart
           </h1>
           {
-            data.cart?.items.map((value : any,index:number) => {
-              <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
+            data?.cart.items.map((value : any,index:number) => (
+              <div key={index} className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
                 <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
                   alt='text' width={125} height={90} />
                 <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
@@ -82,42 +82,8 @@ const Cart = () => {
                     <p>{value.totalPrice}</p>
                 </div>
               </div>
-            })
+            ))
           }
-          {/* <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
-            <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
-              alt='text' width={125} height={90} />
-            <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
-                <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>Title</h4>
-                <button className='mt-6 w-[65px]'>Remove</button>
-            </div>
-            <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
-                <p>Price</p>
-            </div>
-            <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
-                <p>Quantity</p>
-            </div>
-            <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
-                <p>Total</p>
-            </div>
-          </div>
-          <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
-            <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
-              alt='text' width={125} height={90} />
-            <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
-                <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>Title</h4>
-                <button className='mt-6 w-[65px]'>Remove</button>
-            </div>
-            <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
-                <p>Price</p>
-            </div>
-            <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
-                <p>Quantity</p>
-            </div>
-            <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
-                <p>Total</p>
-            </div>
-          </div> */}
          
           <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
             <button className='w-[20%]'>Clear Cart</button>
