@@ -119,7 +119,23 @@ export const removeFromCart = catchAsyncError(async (req: Request, res: Response
 
 export const getCartStatus = catchAsyncError(async(req:Request,res:Response,next:NextFunction) => {
     try {
-        
+        const userId = (req as jwtPayloadNew).user._id;  // Get user ID from the JWT 
+
+        const cart = await Cart.findOne({ user: userId });
+
+        // If no cart exists, return a message
+        if (!cart) {
+            return res.status(404).json({
+                success: false,
+                message: "No cart found for this user"
+            });
+        }
+
+        // If a cart is found, return it
+        res.status(200).json({
+            success: true,
+            cart
+        });
     } catch (error) {
         
     }
