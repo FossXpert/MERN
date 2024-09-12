@@ -64,7 +64,7 @@ const Cart = () => {
             Shopping Cart
           </h1>
           {
-            data?.cart.items.map((value,item) => {
+            data?.cart.items.map((value,index) => {
               <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
                 <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
                   alt='text' width={125} height={90} />
@@ -79,7 +79,7 @@ const Cart = () => {
                     <p>{value.quantity}</p>
                 </div>
                 <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
-                    <p>Total</p>
+                    <p>{value.totalPrice}</p>
                 </div>
               </div>
             })
