@@ -29,7 +29,7 @@ const border = '';
 const shadow = 'shadow-md shadow-black'
 const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbnail,level,demoUrl,totalVideos}) => {
   
-  const [addToCart,{data,isSuccess,isLoading,error}] = useAddToCartMutation();
+  const [addToCart,{isSuccess,isLoading,error}] = useAddToCartMutation();
 
   useEffect(()=>{
     if(isSuccess){
@@ -50,8 +50,7 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
   }
     const handleAddToCart = async() =>{
       console.log(id)
-      const data1 = await addToCart({id});
-      console.log("data is ",data);
+      const data1 = await addToCart(id);
       console.log("data1 is ",data1);
       if(error){
         if('data' in error){

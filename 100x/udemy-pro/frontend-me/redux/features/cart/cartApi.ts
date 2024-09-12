@@ -7,7 +7,7 @@ export const cartApi = apiSlice.injectEndpoints({
                 url : 'cart/addtocart',
                 method: 'POST',
                 body : {
-                    id
+                    _id:id
                 },
                 credentials : 'include' as const
             })
