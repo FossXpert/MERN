@@ -28,7 +28,7 @@ const Cart = () => {
     }
     if(isSuccess){
         console.log(data);
-      toast.success("Data fetched successfully");
+        toast.success("Data fetched successfully");
     }
     if(courseSuccess){
       console.log(courseData);
@@ -37,6 +37,12 @@ const Cart = () => {
     if(error){
       if('data' in error){
         const errorMessage = error as any;
+        toast.error(errorMessage.data.message);
+      }
+    }
+    if(courseError){
+      if('data' in courseError){
+        const errorMessage = courseError as any;
         toast.error(errorMessage.data.message);
       }
     }
