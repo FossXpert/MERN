@@ -64,7 +64,7 @@ const Cart = () => {
             Shopping Cart
           </h1>
           {
-            data?.cart.items.map((value,index) => {
+            data.cart?.items.map((value : any,index:number) => {
               <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
                 <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
                   alt='text' width={125} height={90} />
@@ -84,7 +84,7 @@ const Cart = () => {
               </div>
             })
           }
-          <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
+          {/* <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
             <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
               alt='text' width={125} height={90} />
             <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
@@ -117,14 +117,14 @@ const Cart = () => {
             <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
                 <p>Total</p>
             </div>
-          </div>
+          </div> */}
          
           <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
             <button className='w-[20%]'>Clear Cart</button>
             <div className={`flex flex-col h-auto w-[80%] ${heheblack}`}>
                 <div className={`flex justify-around items-center h-[60px] w-full ${hehegreen}`}>
                     <h4>Subtotal</h4>
-                    <h4>Price</h4>
+                    <h4>{data?.cart.subTotal}</h4>
                 </div>
                 <div className={`flex justify-end items-center h-[60px] w-auto ${heheblack}`}>
                     <div className={`flex justify-around items-center h-[60px] w-[30%] ${hehegreen}`}>
