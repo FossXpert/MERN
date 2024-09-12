@@ -11,7 +11,8 @@ export const cartApi = apiSlice.injectEndpoints({
                 },
                 credentials : 'include' as const
             })
-        })
+        }),
+        remove
     })
 })
 
