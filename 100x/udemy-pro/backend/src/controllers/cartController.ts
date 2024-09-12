@@ -121,7 +121,7 @@ export const getCartStatus = catchAsyncError(async(req:Request,res:Response,next
     try {
         const userId = (req as jwtPayloadNew).user._id;  // Get user ID from the JWT 
 
-        const cart = await Cart.findOne({ user: userId });
+        const cart = await Cart.findOne({ userId: userId });
 
         // If no cart exists, return a message
         if (!cart) {
