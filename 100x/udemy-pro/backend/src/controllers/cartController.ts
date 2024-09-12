@@ -117,4 +117,10 @@ export const removeFromCart = catchAsyncError(async (req: Request, res: Response
     }
 });
 
-export const getCartStatus = 
+export const getCartStatus = catchAsyncError(async(req:Request,res:Response,next:NextFunction) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+})
