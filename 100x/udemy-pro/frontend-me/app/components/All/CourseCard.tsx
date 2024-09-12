@@ -4,7 +4,7 @@ import thumbnail from '../../assets/zoom.png';
 import Rating from '@mui/material/Rating';
 import { MdOutlineFormatListNumbered } from 'react-icons/md';
 import Link from 'next/link';
-import { useAddToCartMutation } from '../../../redux/features/cart/cartApi';
+import { useAddToCartMutation, useGetCartStatusQuery } from '../../../redux/features/cart/cartApi';
 import toast from 'react-hot-toast';
 
 
@@ -30,10 +30,12 @@ const shadow = 'shadow-md shadow-black'
 const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbnail,level,demoUrl,totalVideos}) => {
   
   const [addToCart,{isSuccess,isLoading,error}] = useAddToCartMutation();
+  const {refetch} = useGetCartStatusQuery({},{refetchOnMountOrArgChange:true});
 
   useEffect(()=>{
     if(isSuccess){
       toast.success("Added to cart")
+      refetch();
     }
     if(error){
       if('data' in error){
@@ -42,7 +44,7 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
       }
     }
 
-  },[])
+  },[isSuccess])
 
   const handleOnClick = () => {
     console.log("Clicked");

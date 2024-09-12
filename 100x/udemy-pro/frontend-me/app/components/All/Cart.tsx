@@ -5,7 +5,7 @@ import { useGetallcourseQuery, useGetSingleCourseQuery } from '../../../redux/fe
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { FaArrowLeftLong } from 'react-icons/fa6'
-import { useAddToCartMutation, useGetCartStatusQuery } from '../../../redux/features/cart/cartApi'
+import { useAddToCartMutation, useGetCartStatusQuery, useRemoveFromCartMutation } from '../../../redux/features/cart/cartApi'
 
 type Props = {
     productId : string;
@@ -20,19 +20,16 @@ const Cart = () => {
 
   const {data,isLoading,isSuccess,error,refetch} = useGetCartStatusQuery({},{refetchOnMountOrArgChange:true});
   const {data:courseData,isSuccess:courseSuccess,error:courseError,refetch:refetchCourse} = useGetallcourseQuery({},{refetchOnMountOrArgChange:true});
-
-
+  const [removeFromCart,{isSuccess:removeSuccess,error:removeError}] = useRemoveFromCartMutation();
   useEffect(()=>{
-    if(isLoading){
-      toast.success("isLoading");
-    }
     if(isSuccess){
         console.log(data);
-        toast.success("Data fetched successfully");
+        toast.success("Cart Items fetched successfully");
     }
     if(courseSuccess){
+      refetch();
       console.log(courseData);
-    toast.success("Course Data fetched successfully");
+      // toast.success("Course Data fetched successfully");
   }
     if(error){
       if('data' in error){
@@ -46,8 +43,24 @@ const Cart = () => {
         toast.error(errorMessage.data.message);
       }
     }
-  },[]);
 
+    if(removeSuccess){
+      refetch();
+      toast.success("Item removed from cart");
+    }
+    if(removeError){
+      if('data' in removeError){
+        const errorMessage = removeError as any;
+        toast.error(errorMessage.data.message);
+      }
+    }
+  },[isSuccess,courseSuccess,removeSuccess]);
+
+
+  const handleRemoveItem = async(productId:any) => {
+    console.log(productId);
+    const data1 = await removeFromCart(productId);
+  }
  
 
   return (
@@ -66,14 +79,15 @@ const Cart = () => {
           {
             data?.cart.items.map((value : any,index:number) => {
 
-              const course = courseData.Allcourses.map((course:any) => course._id === value.product);
+              const course =  courseData?.Allcourses.find((course:any) => course._id === value.product);
+              console.log(course);
               return (
                 <div key={index} className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
                 <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
                   alt='text' width={125} height={90} />
                 <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
-                    <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>{course.name}</h4>
-                    <button className='mt-6 w-[65px]'>Remove</button>
+                    <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>{course?.name}</h4>
+                    <button className='mt-6 w-[65px]' onClick={()=>handleRemoveItem(value.product)}>Remove</button>
                 </div>
                 <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
                     <p>{value.price}</p>
@@ -88,7 +102,9 @@ const Cart = () => {
               )
             })
           }
-         
+
+         {
+           data?.cart.items.length !==0 &&(
           <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
             <button className='w-[20%]'>Clear Cart</button>
             <div className={`flex flex-col h-auto w-[80%] ${heheblack}`}>
@@ -107,9 +123,9 @@ const Cart = () => {
                         <button>Checkout</button>
                     </div>
                 </div>
-                
             </div>
-          </div>
+          </div>)
+          }
         </div>
       </div>
 

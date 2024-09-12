@@ -140,7 +140,6 @@ const EditCourse:FC<Props> = ({id}) => {
     console.log('courseInfo',courseInfo);
     console.log('courseData',courseData);
     console.log("courseData is :", courseData);
-
   }
 
   const createCourseFinal = async() => {

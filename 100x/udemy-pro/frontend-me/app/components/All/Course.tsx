@@ -12,8 +12,8 @@ const Course = () => {
   const [open,setOpen] = useState(false);
   const [route, setRoute] = useState('signin');
 
-  const {data,error,isLoading,refetch} = useGetallcourseQuery({},{refetchOnMountOrArgChange:true});
-
+  const {data,error,isLoading} = useGetallcourseQuery({},{refetchOnMountOrArgChange:true});
+  
 
   useEffect(()=>{
     if(isLoading){

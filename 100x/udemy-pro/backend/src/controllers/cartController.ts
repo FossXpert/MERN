@@ -98,13 +98,14 @@ export const removeFromCart = catchAsyncError(async (req: Request, res: Response
         // Recalculate the subtotal
         cart.subTotal = cart.items.reduce((sum: any, item: any) => sum + item.totalPrice, 0);
 
-        // If no items remain in the cart, you may want to delete the cart or leave it empty
-        if (cart.items.length === 0) {
-            await cart.remove();  // Optionally remove the cart if empty
-        } else {
-            // Save the cart after removal
-            await cart.save();
-        }
+        // // If no items remain in the cart, you may want to delete the cart or leave it empty
+        // if (cart.items.length === 0) {
+        //     await cart.remove();  // Optionally remove the cart if empty
+        // } else {
+        //     // Save the cart after removal
+        //     await cart.save();
+        // }
+        await cart.save();
 
         // Send response
         res.status(200).json({
