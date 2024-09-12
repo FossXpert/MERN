@@ -81,6 +81,7 @@ const Cart = () => {
                 <p>Total</p>
             </div>
           </div>
+          
          
           <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
             <button className='w-[20%]'>Clear Cart</button>
