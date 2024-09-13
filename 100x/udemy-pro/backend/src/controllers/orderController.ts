@@ -27,7 +27,7 @@ export const createOrder = catchAsyncError(async(req:Request,res:Response,next:N
         if(!course){
             return next(new ErrorHandler(`Failed to fetch course`,400));
         }
-        const orderData : any =  {
+        const orderData : any = {
                 courseId  : course._id,
                 userId : user._id,
                 payment_info : payment_info

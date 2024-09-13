@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useState } from 'react'
 import CourseCard from './CourseCard'
 import Header2 from '../Header2'
-import { useGetallcourseQuery, useGetSingleCourseQuery } from '../../../redux/features/courses/courseApi'
+import { useCreateCourseMutation, useGetallcourseQuery, useGetSingleCourseQuery } from '../../../redux/features/courses/courseApi'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 import { useAddToCartMutation, useGetCartStatusQuery, useRemoveFromCartMutation } from '../../../redux/features/cart/cartApi'
+import { useCreateOrderMutation } from '../../../redux/features/order/order'
 
 type Props = {
     productId : string;
@@ -21,6 +22,8 @@ const Cart = () => {
   const {data,isLoading,isSuccess,error,refetch} = useGetCartStatusQuery({},{refetchOnMountOrArgChange:true});
   const {data:courseData,isSuccess:courseSuccess,error:courseError,refetch:refetchCourse} = useGetallcourseQuery({},{refetchOnMountOrArgChange:true});
   const [removeFromCart,{isSuccess:removeSuccess,error:removeError}] = useRemoveFromCartMutation();
+  const [createOrder,{isSuccess:createSuccess,error:createError}] = useCreateOrderMutation();
+
   useEffect(()=>{
     if(isSuccess){
         console.log(data);
@@ -54,14 +57,30 @@ const Cart = () => {
         toast.error(errorMessage.data.message);
       }
     }
-  },[isSuccess,courseSuccess,removeSuccess]);
+    if(createSuccess){
+      refetch();
+      toast.success("Order created successfully");
+    }
+    if(createError){
+      if('data' in createError){
+        const errorMessage = createError as any;
+        toast.error(errorMessage.data.message);
+      }
+    }
+  },[isSuccess,courseSuccess,removeSuccess,createSuccess]);
 
 
   const handleRemoveItem = async(productId:any) => {
     console.log(productId);
     const data1 = await removeFromCart(productId);
   }
- 
+
+  const handleBuyNow = async(productId:any) => {
+   const cOrder =  await createOrder(productId);
+   if(cOrder.data.success){
+     await handleRemoveItem(productId);
+   }
+  }
 
   return (
     <>
@@ -98,6 +117,9 @@ const Cart = () => {
                 <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
                     <p>{value.totalPrice}</p>
                 </div>
+                <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
+                    <button onClick={()=>handleBuyNow(value.product)}>Buy Now</button>
+                </div>
               </div>
               )
             })
@@ -125,6 +147,19 @@ const Cart = () => {
                 </div>
             </div>
           </div>)
+          }
+          {
+            data?.cart.items.length ===0 &&(
+              <div className={`flex w-[90%] justify-center mt-2 h-auto ${hehegreen}`}>
+                <h4>Your Cart is Empty</h4>
+                    <div className={`flex justify-around items-center h-[60px] w-[30%] ${hehegreen}`}>
+                        <button className='flex gap-2'>
+                          <FaArrowLeftLong/>
+                          Continue Shopping
+                        </button>
+                    </div>
+              </div>
+            )
           }
         </div>
       </div>
