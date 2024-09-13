@@ -20,7 +20,9 @@ type Props = {
     price : string;
     estimatedPrice : string;
     tags : string;
-    thumbnail : string;
+    thumbnail : {
+      url: string;
+    };
     level : string;
     demoUrl : string;
     totalVideos : string;
@@ -67,7 +69,7 @@ const CourseCard:FC<Props> = ({id,name,postedBy,price,estimatedPrice,tags,thumbn
         <div onClick={handleOnClick} className={`flex flex-col bg-[rgb(249,250,251)] w-[250px] h-[310px] p-2 ${border} !border-[#ccc] rounded-sm shadow-md shadow-grey-700`}>
             <div className={`flex flex-col w-full h-[185px] ${border}`}>
             <Link href={`courses/${id}`} className='no-underline text-black'>
-              <Image src={'https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75'} alt='text' width={250} height={185}/>
+              <Image src={thumbnail?.url} alt='text' width={250} height={185}/>
             </Link>
             </div>
             <div className={`flex flex-col w-full h-[125px] ${border} !border-red-500`}>

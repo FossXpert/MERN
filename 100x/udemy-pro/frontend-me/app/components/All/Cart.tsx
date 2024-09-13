@@ -12,8 +12,8 @@ type Props = {
     productId : string;
 }
 
-const hehegreen= 'border border-solid border-green-500';
-const heheblack = 'border border-solid border-black';
+const hehegreen= '';
+const heheblack = '';
 
 const Cart = () => {
   const [open,setOpen] = useState(false);
@@ -101,23 +101,23 @@ const Cart = () => {
               const course =  courseData?.Allcourses.find((course:any) => course._id === value.product);
               console.log(course);
               return (
-                <div key={index} className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
-                <Image src='https://blog-card-gfe.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspacejoy.a67bd4e2.jpg&w=384&q=75' 
+                <div key={index} className={`flex w-[90%] mt-2 h-auto ${hehegreen} border border-solid  border-gray-300`}>
+                <Image src={course?.thumbnail?.url}
                   alt='text' width={125} height={90} />
-                <div className='flex flex-col w-[40%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <div className='flex flex-col w-[40%] h-auto rounded-sm p-2 '>
                     <h4 className='m-0 p-0 text-[1.1rem] font-semibold'>{course?.name}</h4>
                     <button className='mt-6 w-[65px]' onClick={()=>handleRemoveItem(value.product)}>Remove</button>
                 </div>
-                <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <div className='flex flex-col justify-center items-center border border-solid  border-gray-300 w-[10%] h-auto rounded-sm p-2 '>
                     <p>{value.price}</p>
                 </div>
-                <div className='flex flex-col justify-center items-center w-[10%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <div className='flex flex-col justify-center items-center border border-solid  border-gray-300 w-[10%] h-auto rounded-sm p-2 '>
                     <p>{value.quantity}</p>
                 </div>
-                <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <div className='flex flex-col justify-center items-center border border-solid  border-gray-300 w-[20%] h-auto rounded-sm p-2 '>
                     <p>{value.totalPrice}</p>
                 </div>
-                <div className='flex flex-col justify-center items-center w-[20%] h-auto border border-solid border-black rounded-sm p-2 '>
+                <div className='flex flex-col justify-center items-center w-[20%] h-auto rounded-sm p-2 '>
                     <button onClick={()=>handleBuyNow(value.product)}>Buy Now</button>
                 </div>
               </div>
@@ -128,9 +128,8 @@ const Cart = () => {
          {
            data?.cart.items.length !==0 &&(
           <div className={`flex w-[90%] mt-2 h-auto ${hehegreen}`}>
-            <button className='w-[20%]'>Clear Cart</button>
-            <div className={`flex flex-col h-auto w-[80%] ${heheblack}`}>
-                <div className={`flex justify-around items-center h-[60px] w-full ${hehegreen}`}>
+            <div className={`flex flex-col h-auto w-[80%] ${heheblack} border border-solid  border-gray-300`}>
+                <div className={`flex justify-around items-center h-[60px] w-full ${hehegreen} border border-solid  border-gray-300`}>
                     <h4>Subtotal</h4>
                     <h4>{data?.cart.subTotal}</h4>
                 </div>
