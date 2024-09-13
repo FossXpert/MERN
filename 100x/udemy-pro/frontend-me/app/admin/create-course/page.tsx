@@ -2,14 +2,11 @@
 
 import AdminSidebar from '@/app/components/Admin/Sidebar/AdminSidebar'
 import CreateCourse from '../../../app/components/Admin/Courses/CreateCourse'
-import React, { FC } from 'react'
+import React from 'react'
 
-type Props = {
-    active: number;
-    setActive: (active: number) => void;
-}
 
-const page:FC<Props> = ({active,setActive}) => {
+
+const page = () => {
   return (
     <div className='flex'>
         <AdminSidebar/>
