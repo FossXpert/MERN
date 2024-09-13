@@ -2,7 +2,6 @@
 import React from 'react'
 import AdminLayout from '../components/Admin/AdminLayout'
 
-type Props = {}
 
 const page = () => {
   return (

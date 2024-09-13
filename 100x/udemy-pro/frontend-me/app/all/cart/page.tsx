@@ -2,9 +2,9 @@
 import Cart from '../../../app/components/All/Cart'
 import React from 'react'
 
-type Props = {}
 
-const page = (props: Props) => {
+
+const page = () => {
   return (
     <div>
         <Cart/>

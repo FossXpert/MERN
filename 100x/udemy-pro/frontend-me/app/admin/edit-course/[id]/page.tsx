@@ -6,10 +6,7 @@ import React from 'react'
 import { IoMdNotifications } from 'react-icons/io';
 import EditCourse from '../../../../app/components/Admin/Courses/EditCourse';
 
-type Props = {
-    active : number;
-    setActive : (active:number) => void;
-}
+
 
 const page = ({params}:any) => {
     const id = params?.id;

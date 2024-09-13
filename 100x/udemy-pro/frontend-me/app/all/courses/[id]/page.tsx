@@ -4,7 +4,6 @@ import CoursePreview from '../../../../app/components/All/CoursePreview';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 
-type Props = {}
 
 const Page = ({params}:any) => {
 
