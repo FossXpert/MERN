@@ -8,12 +8,8 @@ import AdminHeader from '../../../app/components/Admin/AdminHeader';
 import { IoMdNotifications } from 'react-icons/io';
 import CreateCourse from '../../../app/components/Admin/Courses/CreateCourse';
 
-type Props = {
-  active: number;
-  setActive: (active: number) => void;
-}
 
-const page:FC<Props> = ({active,setActive}) => {
+const page = () => {
   return (
     <>
     <div className="admin-container">
