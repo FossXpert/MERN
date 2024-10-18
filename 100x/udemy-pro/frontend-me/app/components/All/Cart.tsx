@@ -77,7 +77,7 @@ const Cart = () => {
 
   const handleBuyNow = async(productId:any) => {
    const cOrder =  await createOrder(productId);
-   if(cOrder.data.success){
+   if(cOrder?.data?.success){
      await handleRemoveItem(productId);
    }
   }

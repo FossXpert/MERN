@@ -113,9 +113,6 @@ const Header2: FC<Props> = ({ open, setOpen, route, setRoute }) => {
             route={route}
             setRoute={setRoute} />
         }
-        {
-          
-        }
       </div>
     </>
   )
